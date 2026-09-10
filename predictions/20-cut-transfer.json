@@ -1,0 +1,22 @@
+{
+  "id": "20-cut-transfer",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "the transfer test nobody has run: every cut so far was fitted and evaluated in the same pool",
+  "cmd": ".venv/bin/python experiments/cut_transfer.py results/site_rules_all.csv results/site_rules_combined.csv results/site_rules_acs_d10.csv results/site_rules_eicu_only.csv | tee results/cut_transfer.log",
+  "inputs": [
+    "results/site_rules_all.csv",
+    "results/site_rules_acs_d10.csv",
+    "results/site_rules_eicu_only.csv"
+  ],
+  "outputs": [
+    "results/cut_transfer.log"
+  ],
+  "predicted": "clinical<->clinical transfers within ~0.02; clinical->ACS and ACS->clinical both fall to or below trivial; leave-one-collection-out moves the pooled cut <2x",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/20-cut-transfer.json",
+  "seconds": 0.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:14:04",
+  "tail": "==============================================================================\nTRANSFER: fit the cut on the row pool, apply it to the column pool\n==============================================================================\n\nfitted on site_rules_all: cut 7.5, self-accuracy 0.714\n   -> site_rules_combined              xfer 0.634 | its own cut   9.6 -> 0.645 | trivial 0.594   transfers\n   -> site_rules_acs_d10               xfer 0.521 | its own cut  37.4 -> 0.574 | trivial 0.597   WORSE than trivial\n   -> site_rules_eicu_only             xfer 0.631 | its own cut   8.5 -> 0.635 | trivial 0.646   WORSE than trivial\n\nfitted on site_rules_combined: cut 9.6, self-accuracy 0.645\n   -> site_rules_all                   xfer 0.702 | its own cut   7.5 -> 0.714 | trivial 0.610   transfers\n   -> site_rules_acs_d10               xfer 0.524 | its own cut  37.4 -> 0.574 | trivial 0.597   WORSE than trivial\n   -> site_rules_eicu_only             xfer 0.646 | its own cut   8.5 -> 0.635 | trivial 0.646   no better than trivial\n\nfitted on site_rules_acs_d10: cut 37.4, self-accuracy 0.574\n   -> site_rules_all                   xfer 0.430 | its own cut   7.5 -> 0.714 | trivial 0.610   WORSE than trivial\n   -> site_rules_combined              xfer 0.600 | its own cut   9.6 -> 0.645 | trivial 0.594   no better than trivial\n   -> site_rules_eicu_only             xfer 0.646 | its own cut   8.5 -> 0.635 | trivial 0.646   no better than trivial\n\nfitted on site_rules_eicu_only: cut 8.5, self-accuracy 0.635\n   -> site_rules_all                   xfer 0.713 | its own cut   7.5 -> 0.714 | trivial 0.610   transfers\n   -> site_rules_combined              xfer 0.635 | its own cut   9.6 -> 0.645 | trivial 0.594   transfers\n   -> site_rules_acs_d10               xfer 0.523 | its own cut  37.4 -> 0.574 | trivial 0.597   WORSE than trivial\n\n==============================================================================\nLEAVE-ONE-COLLECTION-OUT: how much does one collection set the pooled cut?\n==============================================================================\n\nsite_rules_all: all 4 collections -> cut 7.5 (acc 0.714)\n   without heart-4site            cut    7.0 (0.94x) acc 0.732\n   without mimic-11site           cut    2.1 (0.28x) acc 0.756  <-- moves the cut by >2x\n   without mimic4-9site           cut   10.7 (1.44x) acc 0.746\n   without plco-2cohort           cut    7.5 (1.00x) acc 0.719\n\nsite_rules_combined: all 4 collections -> cut 9.6 (acc 0.645)\n   without eicu                   cut    7.0 (0.74x) acc 0.736\n   without heart-4site            cut    9.6 (1.00x) acc 0.643\n   without mimic-11site           cut    9.5 (1.00x) acc 0.637\n   without mimic4-9site           cut    9.5 (1.00x) acc 0.645"
+}

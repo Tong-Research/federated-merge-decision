@@ -1,0 +1,15 @@
+{
+  "id": "50-ladder-build-10000",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "size-distribution ladder rung: log-uniform floor 10000 -> natural state size",
+  "cmd": ".venv/bin/python experiments/acs_sites.py --task ACSIncome --per-state 0 --log-uniform 10000 --out acs_ladder_10000",
+  "outputs": [],
+  "predicted": "a higher floor means larger sites, so a larger fraction above the ~5,000-record harm threshold and a lower helped rate",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/50-ladder-build-10000.json",
+  "seconds": 60.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:33:18",
+  "tail": "ACSIncome: (870361, 10), 51 states, prevalence 0.359\n  minority events per state: 962-24444 (median 4281)\n  EPV at d=10: 96.2-2444.4 (median 428.1)\n    EPV 20-999: 51 states"
+}

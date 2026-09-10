@@ -1,0 +1,21 @@
+{
+  "id": "60-heterogeneity-gate",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "Result 58's open question: can Q or I-squared flag the R-dominated regime in advance? Zero new compute -- site_rules already records both from aggregates only, and the seven outcome pools are a controlled comparison (same states, same sizes, different target).",
+  "cmd": ".venv/bin/python experiments/heterogeneity_gate.py site_rules_acs_span.csv site_rules_acs_pubcov.csv site_rules_employment.csv site_rules_mobility.csv site_rules_traveltime.csv site_rules_healthinsurance.csv site_rules_incomepovertyratio.csv | tee results/heterogeneity_gate.log",
+  "inputs": [
+    "results/site_rules_traveltime.csv",
+    "results/site_rules_employment.csv"
+  ],
+  "outputs": [
+    "results/heterogeneity_gate.log"
+  ],
+  "predicted": "P1 ACSTravelTime has the highest median I-squared (if not, Result 58's heterogeneity story collapses); P2 median I-squared correlates positively with rho(EPV,benefit) across pools; P3 within TravelTime I-squared beats EPV; P4 the I2xEPV composite beats EPV alone on the pooled set, as it did on clinical data (rho -0.486 in EICU-PRIOR-ART.md)",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/60-heterogeneity-gate.json",
+  "seconds": 0.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:50:48",
+  "tail": "outcome                   med I2    med Q  rho(EPV)  rho(I2)  lift EPV  lift I2\n----------------------------------------------------------------------------------\nacs_span                   0.811    15.04    -0.223   -0.033    +0.061   +0.005\nacs_pubcov                 0.932    39.19    -0.338   -0.139    +0.081   +0.038\nemployment                 0.943    48.02    -0.475   -0.163    +0.087   +0.007\nmobility                   0.904    27.36    -0.194   +0.042    +0.010   -0.002\ntraveltime                 0.830    15.97    +0.081   -0.162    +0.007   +0.000\nhealthinsurance            0.839    16.67    -0.366   -0.088    +0.007   +0.002\nincomepovertyratio         0.928    37.94    -0.247   -0.069    +0.103   +0.032\n\nP1  highest median I2: employment  -> REFUTED \u2014 the heterogeneity story for Result 58 fails\nP2  corr(median I2, rho(EPV,benefit)) across pools = -0.643 (p=0.12)  -> not supported\nP3  within ACSTravelTime: |rho(I2)| = 0.162 vs |rho(EPV)| = 0.081  -> CONFIRMED\nP4  pooled 12810 decisions: rho(I2 x EPV) = -0.245 (p=1.9e-174) vs rho(EPV) = -0.251 (p=7.5e-183)\n    lift: composite +0.048 vs EPV +0.045  -> REFUTED \u2014 the composite does not beat EPV here"
+}

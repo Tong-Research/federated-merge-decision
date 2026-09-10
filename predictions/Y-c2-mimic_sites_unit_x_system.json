@@ -1,0 +1,21 @@
+{
+  "id": "Y-c2-mimic_sites_unit_x_system",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "mimic_sites_unit_x_system"
+  ],
+  "timeout": 28800,
+  "note": "C2: coordinate-wise blend on mimic_sites_unit_x_system.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix mimic_sites_unit_x_system --seeds 5 --out results/c2_mimic_sites_unit_x_system.csv",
+  "outputs": [
+    "results/c2_mimic_sites_unit_x_system.csv"
+  ],
+  "predicted": "C2 from HYPERGRAPH-COMPLEMENTARITY-PLAN.md. The `blend` policy that R76/R79 made this paper's recommendation interpolates local and merged with ONE lambda for every coordinate. A coordinate the target does not measure has no local estimate to shrink toward, so the scalar blend discounts partner-only variables by (1-lambda) against nothing at all -- at lambda=0.25 it discards three quarters of the only information anyone has about that coefficient. blend_cw applies lambda per coordinate, reading the schema hypergraph's incidence structure directly: lambda_j = lambda inside the target's hyperedge, 1 outside it. It adds NO parameter; lambda is still chosen on the same inner split by the same rule. PREDICTION: blend_cw beats blend on the pools with schema variation (eicu_sites, mimic4_sites, mimic_sites_unit_x_system) and the margin grows with d_extra, the count of merged coordinates the target cannot estimate -- that is the mechanism and the per-decision column exists to test it rather than assert it. R86 is why: complementary partners contribute mostly coordinates the target lacks, and those are exactly the ones the scalar blend discounts. C3 NEGATIVE CONTROL, and it is not optional: on acs_span_income every site measures every variable, d_extra is 0 on every decision, and blend_cw must equal blend EXACTLY -- verified to 5.5e-16 in a unit check already. If it differs there the effect is an implementation artefact and the whole result is void. KILL CONDITION: if blend_cw <= blend on mean AND on worst pool where schemas vary, C2 fails and the coordinate-wise route is closed. ATTRIBUTION: oracle_lambda_cw is reported alongside, so a blend_cw below blend with oracle_lambda_cw ABOVE oracle_lambda means the rule is right and the lambda selection is failing, which is a different repair from the rule being wrong.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/Y-c2-mimic_sites_unit_x_system.json",
+  "seconds": 15.7,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T19:14:36",
+  "tail": "mimic_sites_unit_x_system: 42002 records x 42 features, 10 sites, prevalence 0.111\n\n  570 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.3312    +0.0000                0.0%\n  always_merge          0.3288    -0.0024              -14.1%\n  epv_gate              0.3337    +0.0025               15.0%\n  gate_loso             0.3330    +0.0018               10.9%\n  gate_bestcut          0.3338    +0.0026               15.1%\n  local_cv              0.3320    +0.0008                4.6%\n  fix_025               0.3383    +0.0071               42.3%\n  fix_050               0.3402    +0.0090               53.3%\n  fix_075               0.3374    +0.0062               36.5%\n  blend                 0.3385    +0.0073               43.1%\n  blend_cw              0.3383    +0.0071               42.1%\n  oracle_binary         0.3425    +0.0113               67.0%\n  oracle_lambda         0.3481    +0.0169              100.0%\n  oracle_lambda_cw      0.3464    +0.0152               89.7%\n\n  LOSO cut: median 9.2, range 6.5-9.2   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.496\n  lambda optimal on test    : mean 0.453\n  correlation chosen vs optimal: +0.260\n\nwrote results/c2_mimic_sites_unit_x_system.csv (570 rows)"
+}

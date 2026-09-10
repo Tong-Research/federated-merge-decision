@@ -1,0 +1,21 @@
+{
+  "id": "70-seeds-acs_span_income",
+  "priority": 10,
+  "matrices": [
+    "acs_span_income"
+  ],
+  "timeout": 18000,
+  "note": "precision: acs_span_income at 15 seeds against the 3 every claim currently rests on",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_span_income --seeds 15 --out results/site_rules_hs_acs_span_income.csv",
+  "outputs": [
+    "results/site_rules_hs_acs_span_income.csv"
+  ],
+  "predicted": "point estimates move by less than their current bootstrap half-widths; if any headline rho moves more than 0.05, the 3-seed figures were undersampled and every interval in the paper needs rewidening",
+  "machine": "pilot",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/70-seeds-acs_span_income.json",
+  "seconds": 117.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:02:20",
+  "tail": "acs_span_income: 215445 records x 10 features, 51 sites, prevalence 0.347\nacs_span_income: 9150 decisions\n\n9150 real merge decisions across 51 target sites; merging helped in 54%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.214   6.6e-95     0.496  0.537 lower\u2192merge\nn_target                          -0.203   8.9e-86     0.553  0.537 lower\u2192merge\nn_min                             -0.161   3.5e-54     0.524  0.537 lower\u2192merge\nn_partner_total                   -0.028   8.4e-03     0.542  0.537 lower\u2192merge\nratio_partner_to_target           +0.106   2.0e-24     0.536  0.537 higher\u2192merge\nn_partners                        +0.033   1.5e-03     0.537  0.537 higher\u2192merge\nschema_jaccard                      +nan       nan     0.537  0.537 higher\u2192merge\nq_median                          +0.002   8.8e-01     0.544  0.537 higher\u2192merge\ni2_median                         -0.022   3.4e-02     0.539  0.537 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_span_income  53.7%  of 9150 decisions\n\nwrote results/site_rules_hs_acs_span_income.csv"
+}

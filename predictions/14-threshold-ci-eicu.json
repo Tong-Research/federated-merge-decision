@@ -1,0 +1,17 @@
+{
+  "id": "14-threshold-ci-eicu",
+  "machine": "spinner",
+  "priority": 2,
+  "note": "Result 39 showed the ACS 'threshold' beats nothing. Check the same trivial-rule baseline on eICU, where every site is starved: is there a boundary there either?",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_ext_eicu.csv --boots 2000 | tee results/threshold_ci_eicu.log",
+  "outputs": [
+    "results/threshold_ci_eicu.log"
+  ],
+  "predicted": "eICU also has no boundary that beats always-merge, for the same reason as ACS -- every hospital sits below EPV 10. The boundary should be locatable ONLY in the pooled multi-dataset set that spans both regimes.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/14-threshold-ci-eicu.json",
+  "seconds": 7.4,
+  "exit_code": 1,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:32:52",
+  "tail": "Traceback (most recent call last):\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/experiments/threshold_ci.py\", line 44, in <module>\n    main()\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/experiments/threshold_ci.py\", line 19, in main\n    d = pd.read_csv(a.csv)\n        ^^^^^^^^^^^^^^^^^^\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 873, in read_csv\n    return _read(filepath_or_buffer, kwds)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 300, in _read\n    parser = TextFileReader(filepath_or_buffer, **kwds)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 1645, in __init__\n    self._engine = self._make_engine(f, self.engine)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 1904, in _make_engine\n    self.handles = get_handle(\n                   ^^^^^^^^^^^\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/io/common.py\", line 930, in get_handle\n    handle = open(\n             ^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'results/site_rules_ext_eicu.csv'"
+}

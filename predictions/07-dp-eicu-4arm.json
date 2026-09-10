@@ -1,0 +1,17 @@
+{
+  "id": "07-dp-eicu-4arm",
+  "machine": "pilot",
+  "priority": 2,
+  "note": "closes the gap Result 37 found: the eICU DP run predates the n^2 and EPV arms",
+  "cmd": ".venv/bin/python experiments/dp_merge.py --dataset matrix --matrix eicu_sites --seeds 2 --out results/dp_eicu_4arm.csv",
+  "outputs": [
+    "results/dp_eicu_4arm.csv"
+  ],
+  "predicted": "n^2 wins at every finite epsilon on eICU too, matching ACS",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/07-dp-eicu-4arm.json",
+  "seconds": 145.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:23:25",
+  "tail": "  384  (4500 rows)\n  386  (4560 rows)\n  387  (4620 rows)\n  388  (4680 rows)\n  390  (4740 rows)\n  391  (4800 rows)\n  392  (4860 rows)\n  394  (4920 rows)\n  396  (4980 rows)\n  400  (5040 rows)\n  403  (5100 rows)\n  407  (5160 rows)\n  411  (5220 rows)\n  413  (5280 rows)\n  416  (5340 rows)\n  417  (5400 rows)\n  420  (5460 rows)\n  421  (5520 rows)\n  435  (5580 rows)\n  440  (5640 rows)\n  443  (5700 rows)\n  444  (5760 rows)\n  449  (5820 rows)\n  452  (5880 rows)\n  458  (5940 rows)\n  459  (6000 rows)\n\n=== A. where does the merge benefit die? (6000 rows) ===\n  epsilon    local    merge   benefit        p  benefit(w=0.5)\n      0.5   0.1239   0.1342   +0.0103  1.5e-08         +0.0046\n        1   0.1379   0.1507   +0.0128  1.0e-10         +0.0029\n        2   0.1605   0.1806   +0.0201  5.9e-21         +0.0077\n        5   0.2047   0.2336   +0.0289  1.5e-32         +0.0186\n      inf   0.2485   0.2702   +0.0217  2.0e-27         +0.0209\n\n   split by target adequacy (privacy should cost small sites most):\n   target EPV 0-5:\n     eps= 0.5  local 0.1211  benefit +0.0121\n     eps=   1  local 0.1315  benefit +0.0162\n     eps=   2  local 0.1530  benefit +0.0240\n     eps=   5  local 0.1976  benefit +0.0323\n     eps= inf  local 0.2449  benefit +0.0229\n   target EPV 5-999:\n     eps= 0.5  local 0.1492  benefit -0.0058\n     eps=   1  local 0.1956  benefit -0.0180\n     eps=   2  local 0.2279  benefit -0.0147\n     eps=   5  local 0.2686  benefit -0.0015\n     eps= inf  local 0.2813  benefit +0.0113\n\n=== B. does composition reverse one-shot vs FedAvg? ===\n  epsilon   one-shot     fed 1r    fed 5r   fed 30r\n      0.5    +0.0103   -0.0104   -0.0176   -0.0271\n        1    +0.0128   -0.0209   -0.0237   -0.0386\n        2    +0.0201   -0.0374   -0.0426   -0.0582\n        5    +0.0289   -0.0698   -0.0825   -0.0927\n      inf    +0.0217   -0.0290   -0.0141   +0.0022\n\n(all figures are AUPRC gain over that site's own DP local model at the same epsilon)\n\nwrote results/dp_eicu_4arm.csv"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "D1-dp-fm-state",
+  "machine": "dugong",
+  "priority": 1,
+  "matrices": [
+    "freddiemac_propertystate"
+  ],
+  "timeout": 36000,
+  "note": "DP has never been run on Freddie Mac. 53 states, large sites, no harm regime.",
+  "cmd": "DP_EPSILONS=0.5,1,5,inf .venv/bin/python experiments/dp_merge.py --dataset matrix --matrix freddiemac_propertystate --seeds 5 --out results/dp_freddiemac_state.csv",
+  "outputs": [
+    "results/dp_freddiemac_state.csv"
+  ],
+  "predicted": "Freddie Mac is the first collection entering the privacy section with NO harm regime (R72/R73), so it tests R68's conditional directly. R68 says DP CREATES a benefit where merging is worthless without privacy. Freddie Mac's non-private benefit is ~0 above n=5,000, so R68 predicts a clear positive benefit under tight epsilon. I predict +0.005 to +0.05 at eps=1. If instead DP does nothing here, R68's mechanism is wrong: it would mean 'no benefit without privacy' is not sufficient for DP to create one, and the upper group of Table 6 shares some other property we have not identified.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/D1-dp-fm-state.json",
+  "seconds": 4915.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T21:47:10",
+  "tail": "  MI  (2880 rows)\n  MN  (3000 rows)\n  MO  (3120 rows)\n  MS  (3240 rows)\n  MT  (3360 rows)\n  NC  (3480 rows)\n  ND  (3600 rows)\n  NE  (3720 rows)\n  NH  (3840 rows)\n  NJ  (3960 rows)\n  NM  (4080 rows)\n  NV  (4200 rows)\n  NY  (4320 rows)\n  OH  (4440 rows)\n  OK  (4560 rows)\n  OR  (4680 rows)\n  PA  (4800 rows)\n  PR  (4920 rows)\n  RI  (5040 rows)\n  SC  (5160 rows)\n  SD  (5280 rows)\n  TN  (5400 rows)\n  TX  (5520 rows)\n  UT  (5640 rows)\n  VA  (5760 rows)\n  VT  (5880 rows)\n  WA  (6000 rows)\n  WI  (6120 rows)\n  WV  (6240 rows)\n  WY  (6360 rows)\n\n=== A. where does the merge benefit die? (6360 rows) ===\n  epsilon    local    merge   benefit        p  benefit(w=0.5)\n      0.5   0.0714   0.0812   +0.0099  3.8e-74         +0.0003\n        1   0.0777   0.0833   +0.0056  3.6e-29         -0.0000\n        5   0.0832   0.0842   +0.0011  2.9e-01         +0.0001\n      inf   0.0848   0.0842   -0.0006  2.4e-01         +0.0001\n\n   split by target adequacy (privacy should cost small sites most):\n   target EPV 0-5:\n     eps= 0.5  local 0.0988  benefit +0.0295\n     eps=   1  local 0.1087  benefit +0.0224\n     eps=   5  local 0.1269  benefit +0.0051\n     eps= inf  local 0.1535  benefit -0.0223\n   target EPV 5-999:\n     eps= 0.5  local 0.0697  benefit +0.0087\n     eps=   1  local 0.0759  benefit +0.0046\n     eps=   5  local 0.0805  benefit +0.0008\n     eps= inf  local 0.0807  benefit +0.0007\n\n=== B. does composition reverse one-shot vs FedAvg? ===\n  epsilon   one-shot     fed 1r    fed 5r   fed 30r\n      0.5    +0.0099   -0.0253   -0.0295   -0.0327\n        1    +0.0056   -0.0273   -0.0308   -0.0371\n        5    +0.0011   -0.0253   -0.0161   -0.0256\n      inf    -0.0006   -0.0254   -0.0056   +0.0001\n\n(all figures are AUPRC gain over that site's own DP local model at the same epsilon)\n\nwrote results/dp_freddiemac_state.csv"
+}

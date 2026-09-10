@@ -1,0 +1,17 @@
+{
+  "id": "06-threshold-ci-acs",
+  "machine": "dugong",
+  "priority": 5,
+  "note": "Result 35's bootstrap, out of domain: is EPV's cut sharper than n's on ACS too?",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_ext_acs_d10.csv --boots 2000 | tee results/threshold_ci_acs.log",
+  "outputs": [
+    "results/threshold_ci_acs.log"
+  ],
+  "predicted": "EPV's interval is again materially narrower than n's; if not, Result 35's sharpness advantage is clinical and does not generalise",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/06-threshold-ci-acs.json",
+  "seconds": 6.5,
+  "exit_code": 1,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:22:15",
+  "tail": "1530 decisions, 51 sites, 2000 bootstrap resamples of sites\n\nTraceback (most recent call last):\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/experiments/threshold_ci.py\", line 44, in <module>\n    main()\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/experiments/threshold_ci.py\", line 29, in main\n    h = (s.helped == 1).values\n         ^^^^^^^^\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/core/generic.py\", line 6194, in __getattr__\n    return object.__getattribute__(self, name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'DataFrame' object has no attribute 'helped'"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "56-task-build-employment",
+  "machine": "pilot",
+  "priority": 4,
+  "note": "prevalence lever: ACSEmployment on the same states",
+  "cmd": ".venv/bin/python experiments/acs_sites.py --task ACSEmployment --per-state 0 --log-uniform 250 --out acs_span_employment",
+  "outputs": [],
+  "predicted": "a different prevalence, so a different EPV at the same n",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/56-task-build-employment.json",
+  "seconds": 53.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:39:25",
+  "tail": "ACSEmployment: (368981, 16), 51 states, prevalence 0.462\n  minority events per state: 116-30289 (median 930)\n  EPV at d=16: 7.2-1893.1 (median 58.1)\n    EPV 5-10: 2 states\n    EPV 10-20: 9 states\n    EPV 20-999: 40 states"
+}

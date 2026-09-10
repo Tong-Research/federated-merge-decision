@@ -1,0 +1,23 @@
+{
+  "id": "57-task-rule-mobility",
+  "machine": "dugong",
+  "priority": 5,
+  "needs": [
+    "56-task-build-mobility"
+  ],
+  "matrices": [
+    "acs_span_mobility"
+  ],
+  "note": "the rule on ACSMobility",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_span_mobility --seeds 3 --out results/site_rules_mobility.csv",
+  "outputs": [
+    "results/site_rules_mobility.csv"
+  ],
+  "predicted": "EPV leads with a negative rho and a positive lift, as income and public coverage both gave -- seven outcomes agreeing makes 'prevalence acts through EPV' a claim rather than a coincidence",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/57-task-rule-mobility.json",
+  "seconds": 73.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:45:20",
+  "tail": "acs_span_mobility: 142656 records x 21 features, 51 sites, prevalence 0.730\nacs_span_mobility: 1830 decisions\n\n1830 real merge decisions across 51 target sites; merging helped in 58%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.194   6.3e-17     0.550  0.581 lower\u2192merge\nn_target                          -0.232   9.5e-24     0.556  0.581 lower\u2192merge\nn_min                             -0.099   2.0e-05     0.566  0.581 lower\u2192merge\nn_partner_total                   +0.087   1.9e-04     0.580  0.581 higher\u2192merge\nratio_partner_to_target           +0.215   1.4e-20     0.589  0.581 higher\u2192merge\nn_partners                        +0.035   1.4e-01     0.581  0.581 higher\u2192merge\nschema_jaccard                      +nan       nan     0.581  0.581 higher\u2192merge\nq_median                          +0.047   4.6e-02     0.549  0.581 higher\u2192merge\ni2_median                         +0.042   7.1e-02     0.555  0.581 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_span_mobility  58.1%  of 1830 decisions\n\nwrote results/site_rules_mobility.csv"
+}

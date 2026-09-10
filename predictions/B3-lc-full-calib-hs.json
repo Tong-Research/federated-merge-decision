@@ -1,0 +1,21 @@
+{
+  "id": "B3-lc-full-calib-hs",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "lendingclub_full"
+  ],
+  "timeout": 14400,
+  "note": "Result 66's adequacy-tracks-slope-damage finding, on the natural federation whose sites are the largest we hold (median 22,958)",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix lendingclub_full --seeds 10 --out results/calib_lc_full_hs.csv",
+  "outputs": [
+    "results/calib_lc_full_hs.csv"
+  ],
+  "predicted": "mean slope change NEGATIVE, joining MIMIC-IV and eICU-top30 as the third adequate-site collection with real slope damage. A3 at 8 seeds gave +0.0274, which contradicts that, so this is a genuine test rather than a formality.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/B3-lc-full-calib-hs.json",
+  "seconds": 56.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T09:56:17",
+  "tail": "lendingclub_full: 1874349 records x 21 features, 50 sites, prevalence 0.174\n  0/50 (10 rows)\n  20/50 (210 rows)\n  40/50 (410 rows)\n\n500 decisions on lendingclub_full, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       +0.0009    +0.0279     -0.00355\nB_merge_dp          -0.0001    +0.0151     -0.00360\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_lc_full_hs.csv"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "G1-eicu-regime-build",
+  "machine": "pilot",
+  "priority": 1,
+  "timeout": 7200,
+  "mem_gb": 8,
+  "note": "SHOWCASE item G: eICU treatment-regime matrix (raw on pilot; DUA: not shipped)",
+  "cmd": ".venv/bin/python experiments/build_eicu_regime.py",
+  "matrices": [],
+  "outputs": [],
+  "predicted": "ventilated 25-40% of stays, any infusion 20-35%, RRT 2-4%; patterns fragment as on MIMIC (coverage well below 0.9), screen NOT flagged; run anyway as an unflagged row",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/G1-eicu-regime-build.json",
+  "seconds": 13.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T16:08:57",
+  "tail": "cohort aligned: 95,197 stays [0s]\n  ventilator labels: ['FiO2', 'PEEP', 'Vent Rate', 'LPM O2', 'Tidal Volume (set)', 'TV/kg IBW', 'Pressure Support']\n  eicu_regime: n 95,197 d 57 prev 0.090 missing 48.0% patterns 35,188; ventilated 52,157, any infusion 18,021, RRT 3,371 -> /Users/tong/.cache/phd-matrices/cand_eicu_regime.npz [13s]"
+}

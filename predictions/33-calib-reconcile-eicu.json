@@ -1,0 +1,17 @@
+{
+  "id": "33-calib-reconcile-eicu",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "Result 49 vs Result 33: both combiners over the SAME decisions, slope AND intercept",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix eicu_sites --seeds 3 --out results/calib_reconcile_eicu.csv",
+  "outputs": [
+    "results/calib_reconcile_eicu.csv"
+  ],
+  "predicted": "merge_rules reproduces Result 33 (slope falls), merge_dp reproduces Result 49 (slope rises), so the disagreement is the unit-ball projection and Result 49 must be withdrawn as a calibration claim. Intercept should move the same way for both, since both average intercepts across different base rates.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/33-calib-reconcile-eicu.json",
+  "seconds": 7.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:35:31",
+  "tail": "eicu_sites: 95197 records x 42 features, 100 sites, prevalence 0.090\n  0/100 (3 rows)\n  20/100 (63 rows)\n  40/100 (123 rows)\n  60/100 (183 rows)\n  80/100 (243 rows)\n\n300 decisions on eicu_sites, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       +0.0190    +0.0030     -0.00625\nB_merge_dp          +0.0226    +0.1137     +0.00262\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_reconcile_eicu.csv"
+}

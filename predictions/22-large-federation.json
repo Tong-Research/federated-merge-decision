@@ -1,0 +1,21 @@
+{
+  "id": "22-large-federation",
+  "machine": "dugong",
+  "priority": 1,
+  "note": "every result caps partners at 4. A federation is not 4 sites -- test 10.",
+  "cmd": "MAX_PARTNERS=10 SUBSETS_PER_TARGET=20 .venv/bin/python experiments/site_rules.py --matrix eicu_sites --seeds 3 --out results/site_rules_eicu_k10.csv",
+  "matrices": [
+    "eicu_sites"
+  ],
+  "outputs": [
+    "results/site_rules_eicu_k10.csv",
+    "results/site_rules_eicu_k10_rules.csv"
+  ],
+  "predicted": "benefit keeps rising with k (Results 16/18 showed monotone increase to k=4) but flattens; the EPV rho weakens because more partners help even adequate sites",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/22-large-federation.json",
+  "seconds": 277.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:18:54",
+  "tail": "eicu_sites: 95197 records x 42 features, 100 sites, prevalence 0.090\neicu_sites: 5994 decisions\n\n5994 real merge decisions across 100 target sites; merging helped in 71%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.145   1.1e-29     0.694  0.711 lower\u2192merge\nn_target                          -0.162   2.1e-36     0.698  0.711 lower\u2192merge\nn_min                             -0.073   1.4e-08     0.711  0.711 lower\u2192merge\nn_partner_total                   +0.176   4.4e-43     0.700  0.711 higher\u2192merge\nratio_partner_to_target           +0.242   6.0e-81     0.704  0.711 higher\u2192merge\nn_partners                        +0.152   2.2e-32     0.711  0.711 higher\u2192merge\nschema_jaccard                    -0.123   1.3e-21     0.700  0.711 lower\u2192merge\nq_median                          +0.140   1.3e-27     0.704  0.711 higher\u2192merge\ni2_median                         +0.104   9.0e-16     0.700  0.711 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  eicu_sites      71.1%  of 5994 decisions\n\nwrote results/site_rules_eicu_k10.csv"
+}

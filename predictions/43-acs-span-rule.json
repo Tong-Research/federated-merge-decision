@@ -1,0 +1,18 @@
+{
+  "id": "43-acs-span-rule",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "the SPANNING pool: log-uniform sizes from 250 to natural, EPV 3.2-1,786, all four bands populated. Result 42 says a threshold is only fittable in a pool like this.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_span_income --seeds 3 --out results/site_rules_acs_span.csv",
+  "outputs": [
+    "results/site_rules_acs_span.csv",
+    "results/site_rules_acs_span_rules.csv"
+  ],
+  "predicted": "THIS is the one that should finally beat the trivial rule out of domain -- a positive lift, where capped-ACS gave -0.014. If it does not, the failure is about the domain rather than about the size distribution, and Result 42's explanation for ACS is wrong.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/43-acs-span-rule.json",
+  "seconds": 42.7,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:16:41",
+  "tail": "acs_span_income: 215445 records x 10 features, 51 sites, prevalence 0.347\nacs_span_income: 1830 decisions\n\n1830 real merge decisions across 51 target sites; merging helped in 53%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.223   5.6e-22     0.580  0.525 lower\u2192merge\nn_target                          -0.219   2.9e-21     0.497  0.525 lower\u2192merge\nn_min                             -0.143   7.4e-10     0.538  0.525 lower\u2192merge\nn_partner_total                   -0.041   7.8e-02     0.505  0.525 lower\u2192merge\nratio_partner_to_target           +0.098   2.7e-05     0.380  0.525 higher\u2192merge\nn_partners                        +0.003   9.0e-01     0.525  0.525 higher\u2192merge\nschema_jaccard                      +nan       nan     0.525  0.525 higher\u2192merge\nq_median                          -0.033   1.6e-01     0.522  0.525 lower\u2192merge\ni2_median                         -0.033   1.6e-01     0.528  0.525 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_span_income  52.5%  of 1830 decisions\n\nwrote results/site_rules_acs_span.csv"
+}

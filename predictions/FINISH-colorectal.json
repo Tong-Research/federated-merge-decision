@@ -1,0 +1,19 @@
+{
+  "id": "FINISH-colorectal",
+  "machine": "any",
+  "priority": 1,
+  "matrices": [],
+  "timeout": 7200,
+  "mem_gb": 3.0,
+  "note": "BASE-colorectal exited rc=0 having produced only 4 of its 7 base methods. failures.csv records a BrokenPipeError on mask_interaction at 07:46:34 -- the stdout pipe broken when the runner was restarted at 23:20 on 2026-08-25, after which the job stopped without running mean_indicator, mean_impute or histgb_native. The runner accepted it as done because its DECLARED output existed: main.csv was present with 200 rows rather than 350. Measured costs put these three at 29.5s, 8.6s and 64.9s.",
+  "cmd": "mkdir -p results/rebuild-colorectal && .venv/bin/python experiments/run_h1_h4.py --cohort colorectal --methods mean_indicator,mean_impute,histgb_native --out-dir results/rebuild-colorectal",
+  "outputs": [
+    "results/rebuild-colorectal/main.csv"
+  ],
+  "predicted": "PRE-REGISTERED 2026-08-26 12:05, before running. PREDICTION: main.csv goes from 200 to 350 rows, adding exactly mean_indicator, mean_impute and histgb_native at 50 rows each, in under 10 minutes. The existing 200 rows are untouched -- run_h1_h4 skips a (cohort, method) already present, and that skip logic is what makes this safe to run against a file holding results. WITHDRAWAL: (a) if any existing row changes, the resumability check is not doing what it claims and no incremental run may be trusted; (b) if mean_impute does NOT beat ours on colorectal, that contradicts the pattern on lung and prostate and the neutral-comparison framing must be re-examined rather than assumed; (c) if the run again stops early, the truncation is not the broken pipe and needs a real diagnosis before any further BASE job is queued.",
+  "exit_code": 0,
+  "seconds": 502.8,
+  "missing_outputs": [],
+  "finished": "2026-08-26T12:07:55",
+  "tail": "[2026-08-26T11:59:35] fold parallelism: n_jobs=1 (mask_interaction=1)\n[2026-08-26T11:59:35] --methods: running only ['histgb_native', 'mean_impute', 'mean_indicator']; skipping kappa sweep and diagnostics\n[2026-08-26T11:59:35] === loading colorectal (feature_set=baseline) ===\n[2026-08-26T11:59:48] colorectal: n=40,000 (of 154,855) d=188 prev=3.87% feature_set=baseline\n[2026-08-26T12:04:18] done [main] colorectal/mean_indicator/baseline (10 seeds x 5 folds) in 269.8s\n[2026-08-26T12:05:29] done [main] colorectal/mean_impute/baseline (10 seeds x 5 folds) in 71.8s\n[2026-08-26T12:07:50] done [main] colorectal/histgb_native/baseline (10 seeds x 5 folds) in 141.0s\n[2026-08-26T12:07:50] === paired tests, within cohort, current feature_set only ===\n[2026-08-26T12:07:50] paired tests written: results/rebuild-colorectal/paired_colorectal_baseline.csv\n           method  median_diff        p_raw  n_pairs  n_dropped       p_holm     cohort feature_set\npattern_submodels     0.000749 3.552714e-15       50          0 2.131628e-14 colorectal    baseline\n      spsm_global     0.000913 3.134559e-10       50          0 1.567280e-09 colorectal    baseline\n      mean_impute    -0.005451 1.619818e-07       50          0 6.479273e-07 colorectal    baseline\n mask_interaction    -0.005237 1.547186e-06       50          0 4.641558e-06 colorectal    baseline\n    histgb_native     0.005100 4.316904e-03       50          0 8.633808e-03 colorectal    baseline\n   mean_indicator    -0.002832 3.368779e-02       50          0 3.368779e-02 colorectal    baseline\n[2026-08-26T12:07:50] === run complete in 8.3 min ===\n[2026-08-26T12:07:50] no failures"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "FA0-zip2",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "fmA0_zip2"
+  ],
+  "timeout": 21600,
+  "note": "Freddie Mac zip2, 8250 rec/site AND 19 sites (EPV~16), draw 0.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix fmA0_zip2 --seeds 5 --out results/site_rules_fmA0_zip2.csv",
+  "outputs": [
+    "results/site_rules_fmA0_zip2.csv"
+  ],
+  "predicted": "SECOND ATTEMPT. The first Freddie Mac carving test (FM* jobs, 2,500 rec/site) was INCONCLUSIVE for a diagnosable reason recorded before this rerun: it was run in the wrong adequacy regime. Median EPV was 3.04 against ACS's 16.4, so every site sat far below the boundary and merging helped 63% of decisions regardless of carving -- there was no marginal decision left for carving to tip. Freddie Mac's 3% default rate means 2,500 records buys only ~75 events across 16 features. The five partitions spanned 0.00114 against a seed-to-seed sd of 0.00187, a spread/noise ratio of 0.61, and sellername sat below the geographic mean in only 2 of 3 draws (paired t p=0.448). Ordering matched the prediction; magnitude did not exist. This rerun caps at 8,250 records/site, chosen as 16*d/prevalence so median EPV lands near ACS's 16.4, and at 19 sites, the most sellername can supply at that size. PREDICTION unchanged: sellername's mean benefit is BELOW all four geographic partitions. NEW AND BINDING CONDITION, because the first version was mis-specified -- it tested RANK, and a five-way ordering puts sellername last 20% of the time by chance: the spread across the five partitions must exceed the seed-to-seed sd, i.e. spread/noise > 1, AND sellername must be below the geographic mean in all three draws. If either fails the economic/geographic pattern does not replicate on an independent population and comes OUT of section 11, and section 5's carving claim is scoped to collections whose sites sit near the adequacy boundary. CONTRARY EVIDENCE, still on record: at natural sizes sellername gives +0.0017 against propertystate's -0.0000.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/FA0-zip2.json",
+  "seconds": 21.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T21:46:46",
+  "tail": "fmA0_zip2: 156750 records x 16 features, 19 sites, prevalence 0.027\nfmA0_zip2: 1120 decisions\n\n1120 real merge decisions across 19 target sites; merging helped in 54%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.002   9.4e-01     0.453  0.545 lower\u2192merge\nn_target                            +nan       nan     0.545  0.545 higher\u2192merge\nn_min                               +nan       nan     0.545  0.545 higher\u2192merge\nn_partner_total                   -0.002   9.4e-01     0.512  0.545 lower\u2192merge\nratio_partner_to_target           -0.002   9.4e-01     0.512  0.545 lower\u2192merge\nn_partners                        -0.002   9.4e-01     0.512  0.545 lower\u2192merge\nschema_jaccard                      +nan       nan     0.545  0.545 higher\u2192merge\nq_median                          -0.062   3.9e-02     0.558  0.545 lower\u2192merge\ni2_median                         -0.083   5.6e-03     0.556  0.545 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  fmA0_zip2       54.5%  of 1120 decisions\n\nwrote results/site_rules_fmA0_zip2.csv"
+}

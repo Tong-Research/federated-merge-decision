@@ -1,0 +1,21 @@
+{
+  "id": "45b-acs-pubcov-rule",
+  "machine": "pilot",
+  "priority": 3,
+  "note": "the rule on the second outcome [retry on pilot: the previous run raced a producer on another machine]",
+  "matrices": [
+    "acs_span_pubcov"
+  ],
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_span_pubcov --seeds 3 --out results/site_rules_acs_pubcov.csv",
+  "outputs": [
+    "results/site_rules_acs_pubcov.csv",
+    "results/site_rules_acs_pubcov_rules.csv"
+  ],
+  "predicted": "same shape as income; if the two outcomes disagree, prevalence matters beyond its effect through EPV and the rule needs a prevalence term",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/45b-acs-pubcov-rule.json",
+  "seconds": 46.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:24:15",
+  "tail": "acs_span_pubcov: 187338 records x 19 features, 51 sites, prevalence 0.328\nacs_span_pubcov: 1830 decisions\n\n1830 real merge decisions across 51 target sites; merging helped in 55%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.338   2.8e-50     0.621  0.552 lower\u2192merge\nn_target                          -0.296   2.2e-38     0.608  0.552 lower\u2192merge\nn_min                             -0.163   2.6e-12     0.546  0.552 lower\u2192merge\nn_partner_total                   +0.027   2.4e-01     0.556  0.552 higher\u2192merge\nratio_partner_to_target           +0.216   1.0e-20     0.547  0.552 higher\u2192merge\nn_partners                        -0.001   9.7e-01     0.552  0.552 lower\u2192merge\nschema_jaccard                      +nan       nan     0.552  0.552 higher\u2192merge\nq_median                          -0.097   3.5e-05     0.589  0.552 lower\u2192merge\ni2_median                         -0.139   2.4e-09     0.563  0.552 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_span_pubcov  55.2%  of 1830 decisions\n\nwrote results/site_rules_acs_pubcov.csv"
+}

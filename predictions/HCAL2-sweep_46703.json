@@ -1,0 +1,21 @@
+{
+  "id": "HCAL2-sweep_46703",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "sweep_46703"
+  ],
+  "timeout": 28800,
+  "note": "HCAL post-hoc comparator (referee 5): switch_cv = global vs kappa=0 Platt by inner CV; other arms must reproduce results/hcal bit-for-bit",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset sweep_46703 --slice holdout --switch --out results/hcal2/sweep_46703.csv",
+  "outputs": [
+    "results/hcal2/sweep_46703.csv"
+  ],
+  "predicted": "Post hoc, not registered. If switch_cv matches hier_cv within 0.001 AUPRC and 0.001 log-loss on the four datasets where kappa=0 is harmful (MIMIC regimes, MIMIC first stays, ACS, NHANES), the 'safety' is the inner CV choosing global recalibration and the hierarchy gets no credit for it; the paper must say so. If hier_cv is below switch_cv in log-loss on those four (it can sit between global and per-pattern where switch_cv cannot), the hierarchy does something the switch cannot. Sanity: tree/global/pattern_k0/hier_cv rows must equal results/hcal exactly.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL2-sweep_46703.json",
+  "seconds": 81.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-05T00:08:50",
+  "tail": "sweep_46703 holdout: 60000 rows x 41 cols, prevalence 0.296\n  seed 0 fold 0: tree=0.9910 global=0.9910 pattern_k0=0.9911 hier_cv=0.9910 switch_cv=0.9910 kappa=10000 [5s]\n  seed 0 fold 1: tree=0.9910 global=0.9910 pattern_k0=0.9911 hier_cv=0.9911 switch_cv=0.9910 kappa=100 [9s]\n  seed 0 fold 2: tree=0.9909 global=0.9909 pattern_k0=0.9909 hier_cv=0.9910 switch_cv=0.9909 kappa=100 [14s]\n  seed 0 fold 3: tree=0.9920 global=0.9920 pattern_k0=0.9921 hier_cv=0.9920 switch_cv=0.9920 kappa=10000 [19s]\n  seed 0 fold 4: tree=0.9898 global=0.9898 pattern_k0=0.9899 hier_cv=0.9899 switch_cv=0.9898 kappa=100 [23s]\n  seed 1 fold 0: tree=0.9909 global=0.9909 pattern_k0=0.9910 hier_cv=0.9909 switch_cv=0.9909 kappa=10000 [28s]\n  seed 1 fold 1: tree=0.9904 global=0.9904 pattern_k0=0.9905 hier_cv=0.9904 switch_cv=0.9904 kappa=1000 [33s]\n  seed 1 fold 2: tree=0.9914 global=0.9914 pattern_k0=0.9915 hier_cv=0.9914 switch_cv=0.9914 kappa=10000 [37s]\n  seed 1 fold 3: tree=0.9908 global=0.9908 pattern_k0=0.9908 hier_cv=0.9908 switch_cv=0.9908 kappa=10000 [42s]\n  seed 1 fold 4: tree=0.9919 global=0.9919 pattern_k0=0.9919 hier_cv=0.9920 switch_cv=0.9919 kappa=100 [47s]\n  seed 2 fold 0: tree=0.9912 global=0.9912 pattern_k0=0.9913 hier_cv=0.9912 switch_cv=0.9912 kappa=1000 [51s]\n  seed 2 fold 1: tree=0.9911 global=0.9911 pattern_k0=0.9911 hier_cv=0.9911 switch_cv=0.9911 kappa=100 [56s]\n  seed 2 fold 2: tree=0.9916 global=0.9916 pattern_k0=0.9916 hier_cv=0.9916 switch_cv=0.9916 kappa=1000 [61s]\n  seed 2 fold 3: tree=0.9913 global=0.9913 pattern_k0=0.9914 hier_cv=0.9913 switch_cv=0.9913 kappa=1000 [65s]\n  seed 2 fold 4: tree=0.9904 global=0.9904 pattern_k0=0.9907 hier_cv=0.9904 switch_cv=0.9904 kappa=10000 [70s]\nwrote results/hcal2/sweep_46703.csv (75 rows)"
+}

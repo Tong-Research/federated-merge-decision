@@ -1,0 +1,21 @@
+{
+  "id": "A3-lc-calib",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "lendingclub_full"
+  ],
+  "timeout": 14400,
+  "note": "Result 53's one-boundary gradient on the natural federation",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix lendingclub_full --seeds 8 --out results/calib_lc_full.csv",
+  "outputs": [
+    "results/calib_lc_full.csv"
+  ],
+  "predicted": "negative rho between EPV and slope change; and since LC's sites are large, the mean slope change should be NEGATIVE like mimic4 and eicu_top30 rather than positive like the starved pools",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/A3-lc-calib.json",
+  "seconds": 117.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T07:11:40",
+  "tail": "lendingclub_full: 1874349 records x 21 features, 50 sites, prevalence 0.174\n  0/50 (8 rows)\n  20/50 (168 rows)\n  40/50 (328 rows)\n\n400 decisions on lendingclub_full, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       +0.0004    +0.0274     -0.00310\nB_merge_dp          -0.0003    +0.0170     -0.00320\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_lc_full.csv"
+}

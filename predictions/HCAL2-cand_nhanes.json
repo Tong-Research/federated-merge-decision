@@ -1,0 +1,21 @@
+{
+  "id": "HCAL2-cand_nhanes",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "cand_nhanes"
+  ],
+  "timeout": 28800,
+  "note": "HCAL post-hoc comparator (referee 5): switch_cv = global vs kappa=0 Platt by inner CV; other arms must reproduce results/hcal bit-for-bit",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset cand_nhanes --slice holdout --switch --out results/hcal2/cand_nhanes.csv",
+  "outputs": [
+    "results/hcal2/cand_nhanes.csv"
+  ],
+  "predicted": "Post hoc, not registered. If switch_cv matches hier_cv within 0.001 AUPRC and 0.001 log-loss on the four datasets where kappa=0 is harmful (MIMIC regimes, MIMIC first stays, ACS, NHANES), the 'safety' is the inner CV choosing global recalibration and the hierarchy gets no credit for it; the paper must say so. If hier_cv is below switch_cv in log-loss on those four (it can sit between global and per-pattern where switch_cv cannot), the hierarchy does something the switch cannot. Sanity: tree/global/pattern_k0/hier_cv rows must equal results/hcal exactly.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL2-cand_nhanes.json",
+  "seconds": 45.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T23:53:58",
+  "tail": "cand_nhanes holdout: 14715 rows x 52 cols, prevalence 0.073\n  seed 0 fold 0: tree=0.5890 global=0.5890 pattern_k0=0.5780 hier_cv=0.5890 switch_cv=0.5890 kappa=10000 [2s]\n  seed 0 fold 1: tree=0.5769 global=0.5769 pattern_k0=0.5654 hier_cv=0.5769 switch_cv=0.5769 kappa=10000 [4s]\n  seed 0 fold 2: tree=0.5157 global=0.5157 pattern_k0=0.3127 hier_cv=0.5154 switch_cv=0.5157 kappa=1000 [7s]\n  seed 0 fold 3: tree=0.6128 global=0.6128 pattern_k0=0.5682 hier_cv=0.6128 switch_cv=0.6128 kappa=10000 [9s]\n  seed 0 fold 4: tree=0.6067 global=0.6067 pattern_k0=0.6005 hier_cv=0.6066 switch_cv=0.6067 kappa=10000 [11s]\n  seed 1 fold 0: tree=0.5728 global=0.5728 pattern_k0=0.5155 hier_cv=0.5727 switch_cv=0.5728 kappa=1000 [13s]\n  seed 1 fold 1: tree=0.5697 global=0.5697 pattern_k0=0.5484 hier_cv=0.5697 switch_cv=0.5697 kappa=10000 [16s]\n  seed 1 fold 2: tree=0.5758 global=0.5758 pattern_k0=0.5647 hier_cv=0.5757 switch_cv=0.5758 kappa=10000 [18s]\n  seed 1 fold 3: tree=0.5936 global=0.5936 pattern_k0=0.5924 hier_cv=0.5936 switch_cv=0.5936 kappa=10000 [20s]\n  seed 1 fold 4: tree=0.5787 global=0.5787 pattern_k0=0.5494 hier_cv=0.5788 switch_cv=0.5787 kappa=10000 [22s]\n  seed 2 fold 0: tree=0.5752 global=0.5752 pattern_k0=0.5444 hier_cv=0.5752 switch_cv=0.5752 kappa=10000 [24s]\n  seed 2 fold 1: tree=0.5389 global=0.5389 pattern_k0=0.5211 hier_cv=0.5388 switch_cv=0.5389 kappa=1000 [27s]\n  seed 2 fold 2: tree=0.5979 global=0.5979 pattern_k0=0.5383 hier_cv=0.5980 switch_cv=0.5979 kappa=10000 [29s]\n  seed 2 fold 3: tree=0.5557 global=0.5557 pattern_k0=0.5459 hier_cv=0.5557 switch_cv=0.5557 kappa=10000 [31s]\n  seed 2 fold 4: tree=0.5776 global=0.5776 pattern_k0=0.5592 hier_cv=0.5776 switch_cv=0.5776 kappa=10000 [33s]\nwrote results/hcal2/cand_nhanes.csv (75 rows)"
+}

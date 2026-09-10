@@ -1,0 +1,21 @@
+{
+  "id": "C2-pf-zip2",
+  "machine": "pilot",
+  "priority": 2,
+  "matrices": [
+    "freddiemac_zip2"
+  ],
+  "timeout": 21600,
+  "note": "99 zip2 sites, regions by leading digit. Smaller than zip3 so it lands first and gives an early read on whether the regional contrast exists at all.",
+  "cmd": "MAX_PARTNERS=4 .venv/bin/python experiments/partner_formation.py --matrix freddiemac_zip2 --prefix 1 --seeds 3 --out results/partner_formation_zip2.csv",
+  "outputs": [
+    "results/partner_formation_zip2.csv"
+  ],
+  "predicted": "Random partner sampling has been the project's unexamined default, so this is a genuine two-sided test. I predict same_prefix (regional) partners give HIGHER benefit than random for starved targets, because a neighbouring zip3 shares an economy and its coefficients transfer, and that cross_prefix sits below random. I predict the SIGN of the rule is unchanged in every strategy -- adequate targets still lose -- because target adequacy, not partner identity, sets the sign (R45/R47). NOTE this prediction uses no transferred constant. If same_prefix and cross_prefix are indistinguishable, partner correlation does not matter and Section 8's limitation is closable by citing this null.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/C2-pf-zip2.json",
+  "seconds": 2083.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T21:03:57",
+  "tail": "freddiemac_zip2: 3069351 records x 16 features, 99 sites, prevalence 0.032\n  freddiemac_zip2 / random         3,555 decisions  helped 0.489  mean benefit +0.0016\nfreddiemac_zip2: 3069351 records x 16 features, 99 sites, prevalence 0.032\n  freddiemac_zip2 / same_prefix    3,348 decisions  helped 0.517  mean benefit +0.0016\nfreddiemac_zip2: 3069351 records x 16 features, 99 sites, prevalence 0.032\n  freddiemac_zip2 / cross_prefix   3,558 decisions  helped 0.499  mean benefit +0.0015\nfreddiemac_zip2: 3069351 records x 16 features, 99 sites, prevalence 0.032\n  freddiemac_zip2 / size_similar   3,441 decisions  helped 0.509  mean benefit +0.0008\nfreddiemac_zip2: 3069351 records x 16 features, 99 sites, prevalence 0.032\n  freddiemac_zip2 / size_largest   3,441 decisions  helped 0.511  mean benefit +0.0016\nwrote results/partner_formation_zip2.csv (17,343 rows)"
+}

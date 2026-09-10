@@ -1,0 +1,22 @@
+{
+  "id": "H2-higgs-holdout-cv",
+  "machine": "dugong",
+  "priority": 2,
+  "timeout": 14400,
+  "mem_gb": 10,
+  "note": "HIGGS amendment 14:50: CV arms on the holdout half",
+  "cmd": ".venv/bin/python experiments/run_candidate.py --npz cand_higgs --seeds 3 --folds 5",
+  "matrices": [
+    "cand_higgs"
+  ],
+  "outputs": [
+    "results/cand/cand_higgs.csv"
+  ],
+  "predicted": "exact_cv - imputation in [0.035, 0.055]; exact_cv - indicator in [0.025, 0.045]; family_cv own-rows kappa <= 100 in >= 12/15",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/H2-higgs-holdout-cv.json",
+  "seconds": 4722.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T15:48:50",
+  "tail": "cand_higgs HOLDOUT n=408,709 prev=0.3414\n      family_cv chose ('exact', 0)\n    seed 0 fold 0: mean_imp 0.6705 mean_ind 0.6780 mask_int 0.6777 histgb_n 0.8491 pattern_ 0.6448 ours 0.6401 ours_pro 0.6401 exact_su 0.7135 exact_cv 0.7135 family_c 0.7135  [319s]\n      family_cv chose ('exact', 0)\n    seed 0 fold 1: mean_imp 0.6699 mean_ind 0.6775 mask_int 0.6773 histgb_n 0.8507 pattern_ 0.6425 ours 0.6378 ours_pro 0.6378 exact_su 0.7133 exact_cv 0.7133 family_c 0.7133  [636s]\n      family_cv chose ('exact', 0)\n    seed 0 fold 2: mean_imp 0.6657 mean_ind 0.6739 mask_int 0.6736 histgb_n 0.8513 pattern_ 0.6372 ours 0.6324 ours_pro 0.6324 exact_su 0.7091 exact_cv 0.7091 family_c 0.7091  [950s]\n      family_cv chose ('exact', 0)\n    seed 0 fold 3: mean_imp 0.6673 mean_ind 0.6749 mask_int 0.6748 histgb_n 0.8515 pattern_ 0.6413 ours 0.6365 ours_pro 0.6365 exact_su 0.7141 exact_cv 0.7141 family_c 0.7141  [1253s]\n      family_cv chose ('exact', 0)\n    seed 0 fold 4: mean_imp 0.6672 mean_ind 0.6751 mask_int 0.6750 histgb_n 0.8506 pattern_ 0.6421 ours 0.6373 ours_pro 0.6373 exact_su 0.7074 exact_cv 0.7074 family_c 0.7074  [1555s]\n      family_cv chose ('exact', 0)\n    seed 1 fold 0: mean_imp 0.6671 mean_ind 0.6744 mask_int 0.6743 histgb_n 0.8518 pattern_ 0.6434 ours 0.6385 ours_pro 0.6385 exact_su 0.7125 exact_cv 0.7125 family_c 0.7125  [1861s]\n      family_cv chose ('exact', 0)\n    seed 1 fold 1: mean_imp 0.6644 mean_ind 0.6725 mask_int 0.6722 histgb_n 0.8508 pattern_ 0.6360 ours 0.6317 ours_pro 0.6317 exact_su 0.7095 exact_cv 0.7095 family_c 0.7095  [2166s]\n      family_cv chose ('exact', 0)\n    seed 1 fold 2: mean_imp 0.6719 mean_ind 0.6789 mask_int 0.6787 histgb_n 0.8508 pattern_ 0.6453 ours 0.6406 ours_pro 0.6406 exact_su 0.7137 exact_cv 0.7137 family_c 0.7137  [2470s]\n      family_cv chose ('exact', 0)\n    seed 1 fold 3: mean_imp 0.6722 mean_ind 0.6806 mask_int 0.6804 histgb_n 0.8517 pattern_ 0.6440 ours 0.6390 ours_pro 0.6390 exact_su 0.7142 exact_cv 0.7142 family_c 0.7142  [2776s]\n      family_cv chose ('exact', 0)\n    seed 1 fold 4: mean_imp 0.6650 mean_ind 0.6731 mask_int 0.6728 histgb_n 0.8492 pattern_ 0.6391 ours 0.6343 ours_pro 0.6343 exact_su 0.7079 exact_cv 0.7079 family_c 0.7079  [3080s]\n      family_cv chose ('exact', 0)\n    seed 2 fold 0: mean_imp 0.6677 mean_ind 0.6759 mask_int 0.6758 histgb_n 0.8524 pattern_ 0.6411 ours 0.6364 ours_pro 0.6364 exact_su 0.7122 exact_cv 0.7122 family_c 0.7122  [3384s]\n      family_cv chose ('exact', 0)\n    seed 2 fold 1: mean_imp 0.6672 mean_ind 0.6754 mask_int 0.6753 histgb_n 0.8500 pattern_ 0.6436 ours 0.6383 ours_pro 0.6383 exact_su 0.7127 exact_cv 0.7127 family_c 0.7127  [3689s]\n      family_cv chose ('exact', 0)\n    seed 2 fold 2: mean_imp 0.6638 mean_ind 0.6716 mask_int 0.6714 histgb_n 0.8496 pattern_ 0.6372 ours 0.6325 ours_pro 0.6325 exact_su 0.7085 exact_cv 0.7085 family_c 0.7085  [3991s]\n      family_cv chose ('exact', 0)\n    seed 2 fold 3: mean_imp 0.6699 mean_ind 0.6773 mask_int 0.6770 histgb_n 0.8509 pattern_ 0.6422 ours 0.6374 ours_pro 0.6374 exact_su 0.7113 exact_cv 0.7113 family_c 0.7113  [4295s]\n      family_cv chose ('exact', 0)\n    seed 2 fold 4: mean_imp 0.6718 mean_ind 0.6792 mask_int 0.6790 histgb_n 0.8501 pattern_ 0.6437 ours 0.6396 ours_pro 0.6396 exact_su 0.7130 exact_cv 0.7130 family_c 0.7130  [4601s]"
+}

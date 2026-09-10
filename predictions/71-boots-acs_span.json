@@ -1,0 +1,20 @@
+{
+  "id": "71-boots-acs_span",
+  "priority": 20,
+  "machine": "pilot",
+  "note": "10,000-resample interval on site_rules_acs_span.csv -- 5x the current 2,000",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_acs_span.csv --boots 10000 | tee results/ci10k_acs_span.log",
+  "inputs": [
+    "results/site_rules_acs_span.csv"
+  ],
+  "outputs": [
+    "results/ci10k_acs_span.log"
+  ],
+  "predicted": "intervals within 10% of the 2,000-boot versions; a larger change means 2,000 was too few and Results 35/44/47 need restating",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/71-boots-acs_span.json",
+  "seconds": 135.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:32:19",
+  "tail": "1830 decisions, 51 sites, 10000 bootstrap resamples of sites\n\nepv_target   cut =     17.1 events/variable   95% CI [13.1, 29.0]   width/median = 0.93   acc 0.596\nn_target     cut =   1094.0 records   95% CI [398.7, 3477.9]   width/median = 2.81   acc 0.595\n\nnarrower relative interval = the more sharply located boundary"
+}

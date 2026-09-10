@@ -1,0 +1,23 @@
+{
+  "id": "C1b-pf-zip3",
+  "machine": "pilot",
+  "priority": 1,
+  "matrices": [
+    "freddiemac_zip3"
+  ],
+  "timeout": 36000,
+  "note": "811 zip3 sites, regional federations by shared zip2. Restarted on the parallel code: the first attempt ran at 98.9% CPU (one core of ten) and was on track for ~4.6h. partner_formation now evaluates the drawn subsets across all cores, verified to reproduce the sequential output row for row.",
+  "cmd": "MAX_PARTNERS=4 .venv/bin/python experiments/partner_formation.py --matrix freddiemac_zip3 --prefix 2 --seeds 3 --out results/partner_formation_zip3.csv",
+  "outputs": [
+    "results/partner_formation_zip3.csv"
+  ],
+  "predicted": "Random partner sampling has been the project's unexamined default, so this is a genuine two-sided test. I predict same_prefix (regional) partners give HIGHER benefit than random for starved targets, because a neighbouring zip3 shares an economy and its coefficients transfer, and that cross_prefix sits below random. I predict the SIGN of the rule is unchanged in every strategy -- adequate targets still lose -- because target adequacy, not partner identity, sets the sign (R45/R47). NOTE this prediction uses no transferred constant. If same_prefix and cross_prefix are indistinguishable, partner correlation does not matter and Section 8's limitation is closable by citing this null.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/C1b-pf-zip3.json",
+  "seconds": 598.0,
+  "exit_code": -15,
+  "missing_outputs": [
+    "results/partner_formation_zip3.csv"
+  ],
+  "finished": "2026-08-10T22:09:46",
+  "tail": "freddiemac_zip3: 3060573 records x 16 features, 811 sites, prevalence 0.032\n/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/joblib/externals/loky/backend/resource_tracker.py:359: UserWarning: resource_tracker: There appear to be 2 leaked file objects to clean up at shutdown\n  warnings.warn(\n/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/joblib/externals/loky/backend/resource_tracker.py:359: UserWarning: resource_tracker: There appear to be 16 leaked semlock objects to clean up at shutdown\n  warnings.warn(\n/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/joblib/externals/loky/backend/resource_tracker.py:359: UserWarning: resource_tracker: There appear to be 2 leaked folder objects to clean up at shutdown\n  warnings.warn(\n/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/joblib/externals/loky/backend/resource_tracker.py:375: UserWarning: resource_tracker: /var/folders/w0/_qmtbv_d2wg1m01hqq_6pjkw0000gn/T/joblib_memmapping_folder_37082_28361d6b5deb4cea9183ad2b49ae778a_9b8a6147f4bf45018ef3f01799940a0b: FileNotFoundError(2, 'No such file or directory')\n  warnings.warn(f\"resource_tracker: {name}: {e!r}\")"
+}

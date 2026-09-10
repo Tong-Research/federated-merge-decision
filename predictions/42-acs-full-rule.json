@@ -1,0 +1,21 @@
+{
+  "id": "42-acs-full-rule",
+  "machine": "dugong",
+  "priority": 1,
+  "note": "full-size ACS states: EPV 96-8,033, every site far ABOVE the boundary and most far above the ~5,000-record harm threshold. The first out-of-domain pool that can show harm.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_full_income --seeds 3 --out results/site_rules_acs_full.csv",
+  "matrices": [
+    "acs_full_income"
+  ],
+  "outputs": [
+    "results/site_rules_acs_full.csv",
+    "results/site_rules_acs_full_rules.csv"
+  ],
+  "predicted": "merging HURTS most states -- helped rate well below 50%, the first time out of domain. Result 32 says harm needs n>~5,000 and these states hold 2,600-218,000. But no statistic will beat the trivial rule, because with every site above the cut there is no variation to exploit: the pool is all harm regime.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/42-acs-full-rule.json",
+  "seconds": 294.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:21:05",
+  "tail": "acs_full_income: 1664500 records x 10 features, 51 sites, prevalence 0.369\nacs_full_income: 1830 decisions\n\n1830 real merge decisions across 51 target sites; merging helped in 34%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        +0.346   9.3e-53     0.668  0.660 higher\u2192merge\nn_target                          +0.312   9.8e-43     0.613  0.660 higher\u2192merge\nn_min                             +0.053   2.4e-02     0.660  0.660 higher\u2192merge\nn_partner_total                   -0.168   5.4e-13     0.681  0.660 lower\u2192merge\nratio_partner_to_target           -0.346   1.4e-52     0.674  0.660 lower\u2192merge\nn_partners                        -0.038   1.1e-01     0.660  0.660 lower\u2192merge\nschema_jaccard                      +nan       nan     0.660  0.660 higher\u2192merge\nq_median                          -0.110   2.5e-06     0.646  0.660 lower\u2192merge\ni2_median                         -0.089   1.3e-04     0.646  0.660 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_full_income  34.0%  of 1830 decisions\n\nwrote results/site_rules_acs_full.csv"
+}

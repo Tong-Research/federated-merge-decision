@@ -1,0 +1,21 @@
+{
+  "id": "C3-pf-state",
+  "machine": "spinner",
+  "priority": 3,
+  "matrices": [
+    "freddiemac_propertystate"
+  ],
+  "timeout": 21600,
+  "note": "Size strategies only -- state labels do NOT nest geographically (grouping AK/AL/AR by first letter is alphabetical, not spatial), so the regional arms are correctly skipped here. This isolates the size-structure effect from the regional one.",
+  "cmd": ".venv/bin/python experiments/partner_formation.py --matrix freddiemac_propertystate --strategies random,size_similar,size_largest --seeds 3 --out results/partner_formation_state.csv",
+  "outputs": [
+    "results/partner_formation_state.csv"
+  ],
+  "predicted": "Random partner sampling has been the project's unexamined default, so this is a genuine two-sided test. I predict same_prefix (regional) partners give HIGHER benefit than random for starved targets, because a neighbouring zip3 shares an economy and its coefficients transfer, and that cross_prefix sits below random. I predict the SIGN of the rule is unchanged in every strategy -- adequate targets still lose -- because target adequacy, not partner identity, sets the sign (R45/R47). NOTE this prediction uses no transferred constant. If same_prefix and cross_prefix are indistinguishable, partner correlation does not matter and Section 8's limitation is closable by citing this null.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/C3-pf-state.json",
+  "seconds": 926.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T20:40:42",
+  "tail": "freddiemac_propertystate: 3069179 records x 16 features, 53 sites, prevalence 0.032\n  freddiemac_propertystate / random         1,905 decisions  helped 0.466  mean benefit -0.0000\nfreddiemac_propertystate: 3069179 records x 16 features, 53 sites, prevalence 0.032\n  freddiemac_propertystate / size_similar   1,851 decisions  helped 0.488  mean benefit -0.0002\nfreddiemac_propertystate: 3069179 records x 16 features, 53 sites, prevalence 0.032\n  freddiemac_propertystate / size_largest   1,851 decisions  helped 0.471  mean benefit +0.0002\nwrote results/partner_formation_state.csv (5,607 rows)"
+}

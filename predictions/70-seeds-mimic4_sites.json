@@ -1,0 +1,21 @@
+{
+  "id": "70-seeds-mimic4_sites",
+  "priority": 10,
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "timeout": 18000,
+  "note": "precision: mimic4_sites at 15 seeds against the 3 every claim currently rests on",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix mimic4_sites --seeds 15 --out results/site_rules_hs_mimic4_sites.csv",
+  "outputs": [
+    "results/site_rules_hs_mimic4_sites.csv"
+  ],
+  "predicted": "point estimates move by less than their current bootstrap half-widths; if any headline rho moves more than 0.05, the 3-seed figures were undersampled and every interval in the paper needs rewidening",
+  "machine": "spinner",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/70-seeds-mimic4_sites.json",
+  "seconds": 71.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:06:29",
+  "tail": "mimic4_sites: 66989 records x 42 features, 9 sites, prevalence 0.110\nmimic4_sites: 1485 decisions\n\n1485 real merge decisions across 9 target sites; merging helped in 21%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.296   2.0e-31     0.764  0.785 lower\u2192merge\nn_target                          -0.125   1.4e-06     0.722  0.785 lower\u2192merge\nn_min                             +0.169   6.0e-11     0.766  0.785 higher\u2192merge\nn_partner_total                   -0.192   8.6e-14     0.743  0.785 lower\u2192merge\nratio_partner_to_target           -0.008   7.6e-01     0.697  0.785 lower\u2192merge\nn_partners                        -0.229   4.7e-19     0.785  0.785 lower\u2192merge\nschema_jaccard                    +0.263   5.5e-25     0.785  0.785 higher\u2192merge\nq_median                          -0.169   6.3e-11     0.761  0.785 lower\u2192merge\ni2_median                         -0.062   1.7e-02     0.767  0.785 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  mimic4_sites    21.5%  of 1485 decisions\n\nwrote results/site_rules_hs_mimic4_sites.csv"
+}

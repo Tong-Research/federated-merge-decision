@@ -1,0 +1,21 @@
+{
+  "id": "REFETREE-lung",
+  "machine": "any",
+  "priority": 25,
+  "matrices": [],
+  "timeout": 86400,
+  "note": "refe_tree never ran on lung -- pilot's process predates its registration [requeued 15:40: failed rc=1 on a spinner-only PLCO_ROOT path] [2026-08-24: writes its OWN file, not the shared main.csv. Declaring the shared accumulator as an output let a remote job's near-empty copy overwrite pilot's and destroy 1,850 rows. Merge with experiments/merge_main.py.]",
+  "cmd": ".venv/bin/python experiments/run_extra_baselines.py --cohort lung --only refe_tree --out results/main_REFETREE-lung.csv",
+  "outputs": [
+    "results/main_REFETREE-lung.csv"
+  ],
+  "predicted": "Queued 2026-08-24 11:30. NOT a prediction about the world -- a gap-fill, recorded because the gap has an instructive cause. refe_tree was registered in METHODS at 09:24 (commit 52f369b). Pilot's run_extra_baselines.py process started at 07:44 and had already imported the module, so its in-memory METHODS never contained refe_tree and it silently skipped the method on colorectal and lung. Spinner started at 10:04, after the edit, so prostate and ovarian DO have it. Editing a file on disk does not reach a process that already imported it -- the same reasoning that kept mice_impute_lr_conv out of METHODS deliberately, applied here by accident and in the costly direction. Without this job the method set is unbalanced -- refe_tree on two cohorts, absent on two -- which breaks pairing and is exactly the condition claims_coverage_audit.py's method-count check fails on. EXPECTATION: refe_tree lands well below refe. On prostate it is 0.1136 against refe's 0.1652, because its members are single decision trees rather than logistic regressions. That is the point of having it: refe with linear members collapses onto mean imputation -- on colorectal both are 0.1371 to four places -- so refe alone cannot stand as the ReFE comparator. NO WITHDRAWAL CONDITION, because nothing is being claimed; if refe_tree comes back near refe on these cohorts that is a finding about cohort width, not a refutation.",
+  "started_at": 1787675089.888872,
+  "pid": 13016,
+  "pgid": 13016,
+  "exit_code": 0,
+  "seconds": 1103.2,
+  "missing_outputs": [],
+  "finished": "2026-08-26T06:41:14",
+  "tail": "lung: 40000 x 121\n  done refe_tree (10 seeds x 5 folds) in 1089.1s -> mean AUPRC 0.1124"
+}

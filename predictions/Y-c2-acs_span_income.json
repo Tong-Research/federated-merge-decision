@@ -1,0 +1,21 @@
+{
+  "id": "Y-c2-acs_span_income",
+  "machine": "pilot",
+  "priority": 1,
+  "matrices": [
+    "acs_span_income"
+  ],
+  "timeout": 28800,
+  "note": "C2: coordinate-wise blend on acs_span_income.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix acs_span_income --seeds 5 --out results/c2_acs_span_income.csv",
+  "outputs": [
+    "results/c2_acs_span_income.csv"
+  ],
+  "predicted": "C2 from HYPERGRAPH-COMPLEMENTARITY-PLAN.md. The `blend` policy that R76/R79 made this paper's recommendation interpolates local and merged with ONE lambda for every coordinate. A coordinate the target does not measure has no local estimate to shrink toward, so the scalar blend discounts partner-only variables by (1-lambda) against nothing at all -- at lambda=0.25 it discards three quarters of the only information anyone has about that coefficient. blend_cw applies lambda per coordinate, reading the schema hypergraph's incidence structure directly: lambda_j = lambda inside the target's hyperedge, 1 outside it. It adds NO parameter; lambda is still chosen on the same inner split by the same rule. PREDICTION: blend_cw beats blend on the pools with schema variation (eicu_sites, mimic4_sites, mimic_sites_unit_x_system) and the margin grows with d_extra, the count of merged coordinates the target cannot estimate -- that is the mechanism and the per-decision column exists to test it rather than assert it. R86 is why: complementary partners contribute mostly coordinates the target lacks, and those are exactly the ones the scalar blend discounts. C3 NEGATIVE CONTROL, and it is not optional: on acs_span_income every site measures every variable, d_extra is 0 on every decision, and blend_cw must equal blend EXACTLY -- verified to 5.5e-16 in a unit check already. If it differs there the effect is an implementation artefact and the whole result is void. KILL CONDITION: if blend_cw <= blend on mean AND on worst pool where schemas vary, C2 fails and the coordinate-wise route is closed. ATTRIBUTION: oracle_lambda_cw is reported alongside, so a blend_cw below blend with oracle_lambda_cw ABOVE oracle_lambda means the rule is right and the lambda selection is failing, which is a different repair from the rule being wrong.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/Y-c2-acs_span_income.json",
+  "seconds": 29.7,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T19:14:13",
+  "tail": "acs_span_income: 215445 records x 10 features, 51 sites, prevalence 0.347\n\n  3,050 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.7112    +0.0000                0.0%\n  always_merge          0.7146    +0.0034               43.0%\n  epv_gate              0.7131    +0.0019               24.1%\n  gate_loso             0.7145    +0.0033               42.0%\n  gate_bestcut          0.7151    +0.0039               49.5%\n  local_cv              0.7139    +0.0027               34.3%\n  fix_025               0.7130    +0.0017               22.2%\n  fix_050               0.7142    +0.0030               38.4%\n  fix_075               0.7150    +0.0038               48.5%\n  blend                 0.7145    +0.0033               42.0%\n  blend_cw              0.7145    +0.0033               42.0%\n  oracle_binary         0.7181    +0.0068               87.2%\n  oracle_lambda         0.7191    +0.0078              100.0%\n  oracle_lambda_cw      0.7191    +0.0078              100.0%\n\n  LOSO cut: median 21.1, range 20.2-31.3   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.552\n  lambda optimal on test    : mean 0.534\n  correlation chosen vs optimal: +0.284\n\nwrote results/c2_acs_span_income.csv (3,050 rows)"
+}

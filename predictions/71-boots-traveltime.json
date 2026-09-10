@@ -1,0 +1,20 @@
+{
+  "id": "71-boots-traveltime",
+  "priority": 20,
+  "machine": "pilot",
+  "note": "10,000-resample interval on site_rules_traveltime.csv -- 5x the current 2,000",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_traveltime.csv --boots 10000 | tee results/ci10k_traveltime.log",
+  "inputs": [
+    "results/site_rules_traveltime.csv"
+  ],
+  "outputs": [
+    "results/ci10k_traveltime.log"
+  ],
+  "predicted": "intervals within 10% of the 2,000-boot versions; a larger change means 2,000 was too few and Results 35/44/47 need restating",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/71-boots-traveltime.json",
+  "seconds": 136.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:44:46",
+  "tail": "1830 decisions, 51 sites, 10000 bootstrap resamples of sites\n\nepv_target   cut =      5.7 events/variable   95% CI [0.5, 7.7]   width/median = 1.26   acc 0.655\nn_target     cut =    200.0 records   95% CI [200.0, 498.0]   width/median = 1.49   acc 0.631\n\nnarrower relative interval = the more sharply located boundary"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "G3-gate-lc42k",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "lendingclub"
+  ],
+  "timeout": 36000,
+  "note": "Six-policy comparison on lendingclub. Closes the two gaps that can falsify the paper: local-CV gating (is the rule redundant?) and personalised blending (is declining the wrong action?). Oracle included, so every number is reported as a share of attainable gain rather than in isolation.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix lendingclub --seeds 3 --out results/gate_lc42k.csv",
+  "outputs": [
+    "results/gate_lc42k.csv"
+  ],
+  "predicted": "Six policies scored in AUPRC on identical held-out rows. Smoke test on freddiemac_sellername (356 decisions, 1 seed) gave epv_gate 72% of the oracle gain, always_merge 61%, blend 36%, local_cv 25%. I predict the ORDERING replicates: epv_gate above local_cv and above blend, on a majority of pools. Mechanism, which is the paper's own thesis applied to itself: local_cv decides by splitting the target's training rows, and the sites that most need to decide are the starved ones whose inner validation split is itself too small to trust. An aggregate rule does not pay that cost. FALSIFIABLE and dangerous: if blend beats epv_gate on most pools, 'most sites should not federate' is the wrong action and the headline becomes 'most sites should shrink toward local'. If local_cv matches epv_gate, the rule is redundant and a site should just try the merge.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/G3-gate-lc42k.json",
+  "seconds": 15.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T22:52:54",
+  "tail": "lendingclub: 42423 records x 21 features, 43 sites, prevalence 0.151\n\n  1,536 decisions\n\n  policy          mean AUPRC  vs never_merge  % of oracle gain\n  never_merge         0.2840         +0.0000              0.0%\n  always_merge        0.2947         +0.0107             31.9%\n  epv_gate            0.2948         +0.0108             32.1%\n  local_cv            0.2883         +0.0044             13.0%\n  blend               0.2904         +0.0064             19.1%\n  oracle              0.3176         +0.0336            100.0%\n\n  chosen shrinkage lambda: mean 0.613, median 0.750, at 0 in 17% and at 1 in 34% of decisions\n\nwrote results/gate_lc42k.csv (1,536 rows)"
+}

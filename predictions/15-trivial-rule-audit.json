@@ -1,0 +1,17 @@
+{
+  "id": "15-trivial-rule-audit",
+  "machine": "pilot",
+  "priority": 2,
+  "note": "Result 39's check, applied to EVERY fitted cut in the file: does the rule beat 'always merge' / 'never merge'? This is the audit that caught Result 38.",
+  "cmd": ".venv/bin/python experiments/trivial_baseline.py results/site_rules_10seed.csv results/site_rules_acs_d10.csv results/site_rules_combined.csv | tee results/trivial_baseline.log",
+  "outputs": [
+    "results/trivial_baseline.log"
+  ],
+  "predicted": "the pooled clinical set DOES beat the trivial rule (that is where the harm regime lives); ACS does not; eICU alone does not",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/15-trivial-rule-audit.json",
+  "seconds": 0.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:33:57",
+  "tail": "=== results/site_rules_10seed.csv \u2014 14310 decisions ===\n  always merge 0.592 | never merge 0.408 -> trivial baseline 0.592 (always merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        5.2   0.639   +0.047   beats trivial\n  n_target                       1766.0   0.638   +0.047   beats trivial\n  n_min                           588.0   0.634   +0.042   beats trivial\n  ratio_partner_to_target           0.4   0.602   +0.010   beats trivial\n  i2_median                         1.0   0.615   +0.023   beats trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample.\n\n=== results/site_rules_acs_d10.csv \u2014 3050 decisions ===\n  always merge 0.597 | never merge 0.403 -> trivial baseline 0.597 (always merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        2.2   0.584   -0.014   WORSE than trivial\n  n_target                         63.0   0.584   -0.014   WORSE than trivial\n  n_min                            56.0   0.597   +0.000   no better than trivial\n  ratio_partner_to_target           0.3   0.597   +0.000   no better than trivial\n  i2_median                         0.2   0.596   -0.002   no better than trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample.\n\n=== results/site_rules_combined.csv \u2014 2862 decisions ===\n  always merge 0.594 | never merge 0.406 -> trivial baseline 0.594 (always merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        8.9   0.639   +0.045   beats trivial\n  n_target                       2629.0   0.632   +0.038   beats trivial\n  n_min                           724.0   0.613   +0.019   beats trivial\n  ratio_partner_to_target           0.4   0.600   +0.006   no better than trivial\n  i2_median                         1.0   0.614   +0.020   beats trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample."
+}

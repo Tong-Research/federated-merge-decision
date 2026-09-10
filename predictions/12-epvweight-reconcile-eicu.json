@@ -1,0 +1,17 @@
+{
+  "id": "12-epvweight-reconcile-eicu",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "Result 40's top item: does merge_weight's CV-chosen blend agree with dp_merge's FIXED w=min(1,EPV/10) formula at eps=inf? If not, Result 24 is about a swept weight and never licensed a prescribed formula.",
+  "cmd": ".venv/bin/python experiments/merge_weight.py --matrix eicu_sites --seeds 3 --out results/merge_weight_eicu_recon.csv",
+  "outputs": [
+    "results/merge_weight_eicu_recon.csv"
+  ],
+  "predicted": "the CV-chosen own-weight is POSITIVE-benefit on eICU (it was in Result 20), so the two estimators disagree and the fault is the fixed formula, not the finding. If the CV blend is also negative, Result 24 must be withdrawn.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/12-epvweight-reconcile-eicu.json",
+  "seconds": 73.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:33:57",
+  "tail": "  eicu_sites: 307\n  eicu_sites: 318\n  eicu_sites: 331\n  eicu_sites: 336\n  eicu_sites: 337\n  eicu_sites: 338\n  eicu_sites: 345\n  eicu_sites: 353\n  eicu_sites: 357\n  eicu_sites: 365\n  eicu_sites: 382\n  eicu_sites: 384\n  eicu_sites: 386\n  eicu_sites: 387\n  eicu_sites: 388\n  eicu_sites: 390\n  eicu_sites: 391\n  eicu_sites: 392\n  eicu_sites: 394\n  eicu_sites: 396\n  eicu_sites: 400\n  eicu_sites: 403\n  eicu_sites: 407\n  eicu_sites: 411\n  eicu_sites: 413\n  eicu_sites: 416\n  eicu_sites: 417\n  eicu_sites: 420\n  eicu_sites: 421\n  eicu_sites: 435\n  eicu_sites: 440\n  eicu_sites: 443\n  eicu_sites: 444\n  eicu_sites: 449\n  eicu_sites: 452\n  eicu_sites: 458\n  eicu_sites: 459\n\n2394 decisions across 100 sites\n\nmean AUPRC by own-weight (0 = pure merge, 1 = stay local):\n partners     0.0     0.1     0.2     0.3     0.4     0.5     0.6     0.7     0.8     0.9     1.0\n        1  0.2681  0.2685  0.2687  0.2684  0.2678  0.2671  0.2662  0.2649  0.2633  0.2613  0.2592\n        2  0.2991  0.2998  0.3009  0.3003  0.2989  0.2967  0.2944  0.2919  0.2893  0.2857  0.2819\n        3  0.2932  0.2943  0.2959  0.2954  0.2940  0.2919  0.2893  0.2867  0.2839  0.2802  0.2766\n        4  0.2986  0.2996  0.2993  0.2982  0.2969  0.2944  0.2914  0.2887  0.2854  0.2817  0.2777\n\n partners  n-weight  oracle w    CV w    merge    local       CV   oracle\n        1      0.49      0.44    0.38   0.2681   0.2592   0.2677   0.2856\n        2      0.35      0.38    0.32   0.2991   0.2819   0.2977   0.3175\n        3      0.24      0.40    0.28   0.2932   0.2766   0.2907   0.3155\n        4      0.20      0.40    0.28   0.2986   0.2777   0.2975   0.3182\n\ndoes CV weighting remove the one-partner deficit? (benefit over staying local)\n  k=1:  n-weighted merge +0.0090 (p=3.2e-04)   CV-weighted +0.0085 (p=5.3e-08)\n  k=2:  n-weighted merge +0.0172 (p=9.7e-13)   CV-weighted +0.0158 (p=1.2e-17)\n  k=3:  n-weighted merge +0.0166 (p=8.5e-14)   CV-weighted +0.0141 (p=1.0e-17)\n  k=4:  n-weighted merge +0.0208 (p=1.2e-14)   CV-weighted +0.0197 (p=6.7e-20)\n\nwrote results/merge_weight_eicu_recon.csv"
+}

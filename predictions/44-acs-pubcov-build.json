@@ -1,0 +1,15 @@
+{
+  "id": "44-acs-pubcov-build",
+  "machine": "pilot",
+  "priority": 2,
+  "note": "prevalence lever: a different outcome on the same states changes EPV at fixed n, the same causal manipulation the d-sweep got by moving the denominator",
+  "cmd": ".venv/bin/python experiments/acs_sites.py --task ACSPublicCoverage --per-state 0 --log-uniform 250 --out acs_span_pubcov",
+  "outputs": [],
+  "predicted": "lower prevalence than income's 0.35, so lower EPV at the same n, so a larger share of states below the boundary",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/44-acs-pubcov-build.json",
+  "seconds": 57.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:17:38",
+  "tail": "ACSPublicCoverage: (187338, 19), 51 states, prevalence 0.328\n  minority events per state: 67-22958 (median 358)\n  EPV at d=19: 3.5-1208.3 (median 18.8)\n    EPV 2-5: 5 states\n    EPV 5-10: 9 states\n    EPV 10-20: 15 states\n    EPV 20-999: 22 states"
+}

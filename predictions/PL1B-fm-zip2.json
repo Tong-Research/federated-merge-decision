@@ -1,0 +1,21 @@
+{
+  "id": "PL1B-fm-zip2",
+  "machine": "pilot",
+  "priority": 20,
+  "matrices": [
+    "freddiemac_zip2"
+  ],
+  "timeout": 43200,
+  "note": "SOTA extension: pfedme (lam=1) on fm-zip2, 5 seeds.",
+  "cmd": "MERGE_MODE=pfedme PFEDME_LAMBDA=1 FEDAVG_ROUNDS=30 .venv/bin/python experiments/gate_baselines.py --matrix freddiemac_zip2 --seeds 5 --out results/cut_pl1b_freddiemac_zip2.csv",
+  "outputs": [
+    "results/cut_pl1b_freddiemac_zip2.csv"
+  ],
+  "predicted": "Extends the aggregation-axis comparison from four above-floor pools to eight, queued 2026-08-24 01:00 when the queue drained and the machines would otherwise idle. Results 112 and 113 rest on four pools; these four add the above-floor pools the SOTA set was missing. All four added pools are ones where merging HELPS -- the two remaining harmful pools in the corpus (acs_ladder_5000, acs_ladder_10000) are both below the 0.002 attainable-gain floor, so no additional harmful evidence is available at any price. State that when reporting: the floor claim rests on two above-floor harmful pools and cannot be strengthened with the data we hold. PREDICTIONS. (1) Aggregation still does not matter: FedAvg, FedProx and SCAFFOLD stay within 0.002 AUPRC of each other on the merged model across all eight pools, as in Result 112. (2) pFedMe at lambda=1 beats adaptive shrinkage on these four, since all four are pools where merging helps and that is exactly where it won before -- eICU and Lending Club, by 10.3 and 13.1 share points. (3) Despite (2), adaptive shrinkage still leads on MEAN share across all eight, because pFedMe's two catastrophic pools (-94.0 and -89.7) outweigh four moderate wins. WITHDRAWAL: if (3) fails -- if pFedMe leads on mean share across eight pools -- then section 6's recommendation does not survive a fair comparison against a published personalisation method, and the paper must say so and reframe around the downside column alone rather than around mean performance.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/PL1B-fm-zip2.json",
+  "seconds": 1815.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-24T02:32:34",
+  "tail": "freddiemac_zip2: 3069351 records x 16 features, 99 sites, prevalence 0.032\n\n  5,925 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.0925    +0.0000                0.0%\n  always_merge          0.0937    +0.0012               26.0%\n  epv_gate              0.0940    +0.0015               31.6%\n  gate_loso             0.0944    +0.0018               39.4%\n  gate_bestcut          0.0944    +0.0019               40.5%\n  local_cv              0.0936    +0.0011               23.0%\n  fix_025               0.0930    +0.0005                9.7%\n  fix_050               0.0935    +0.0010               20.9%\n  fix_075               0.0943    +0.0017               37.2%\n  blend                 0.0939    +0.0014               30.0%\n  blend_1se             0.0938    +0.0013               28.0%\n  blend_cv              0.0942    +0.0017               36.4%\n  blend_cw                 nan       +nan                nan%\n  ditto                    nan       +nan                nan%\n  oracle_binary         0.0964    +0.0039               82.5%\n  oracle_lambda         0.0972    +0.0047              100.0%\n  oracle_lambda_cw         nan       +nan                nan%\n  oracle_ditto             nan       +nan                nan%\n  oracle_extrap         0.0974    +0.0048              103.8%\n  oracle_rich           0.0974    +0.0048              103.8%\n  oracle_half           0.1036    +0.0111              237.1%\n  oracle_honest         0.0990    +0.0065              138.5%\n  blend_half            0.0989    +0.0064              136.2%\n  pfedme_personal       0.0942    +0.0016               34.9%\n\n  LOSO cut: median 19.4, range 15.9-19.4   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.662\n  lambda optimal on test    : mean 0.635\n  correlation chosen vs optimal: +0.084\n\nwrote results/cut_pl1b_freddiemac_zip2.csv (5,925 rows)"
+}

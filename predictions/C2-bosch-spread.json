@@ -1,0 +1,16 @@
+{
+  "id": "C2-bosch-spread",
+  "machine": "pilot",
+  "priority": 2,
+  "timeout": 21600,
+  "note": "second Bosch build, one feature per station across the visit-rate spectrum. The first build's top-20 features all came from co-occurring stations (degree 278-278), which removed the block-wise missingness. This keeps it.",
+  "cmd": ".venv/bin/python experiments/bosch_sites.py --top-d 20 --spread --out bosch_spread20",
+  "outputs": [],
+  "predicted": "feature degree varies substantially across routes -- somewhere near 30-380 rather than a constant -- giving Bosch real schema heterogeneity. EPV range should be similar to the top-d build since the event counts are unchanged. If degree still comes out constant, routes do not differ in which stations they visit as much as the 7,911 distinct signatures suggest, and the routing partition is finer than the schema structure behind it.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/C2-bosch-spread.json",
+  "seconds": 161.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T11:19:38",
+  "tail": "pass 1: routes in train_numeric.csv\n  970 columns, 50 stations\n  pass1 100,000 rows, 2,718 distinct routes\n  pass1 200,000 rows, 3,692 distinct routes\n  pass1 300,000 rows, 4,332 distinct routes\n  pass1 400,000 rows, 4,881 distinct routes\n  pass1 500,000 rows, 5,408 distinct routes\n  pass1 600,000 rows, 5,909 distinct routes\n  pass1 700,000 rows, 6,310 distinct routes\n  pass1 800,000 rows, 6,666 distinct routes\n  pass1 900,000 rows, 7,013 distinct routes\n  pass1 1,000,000 rows, 7,337 distinct routes\n  pass1 1,100,000 rows, 7,655 distinct routes\n  pass1 1,183,747 rows, 7,911 distinct routes\n\n7,911 distinct routes over 1,183,747 parts\n  sizes: min 1, median 2, max 58,379\n  spread: 58,379x\n  routes with >= 300 parts: 380 covering 1,067,940 parts\n    >=  1,000 parts: 110 routes\n    >=  5,000 parts: 58 routes\n    >= 20,000 parts: 6 routes\n    >= 100,000 parts: 0 routes\n\n  spread mode: one feature from each of 20 stations, visit rates 0.00-0.97\n  20 features observed in 2,017-1,031,812 of 1,067,940 kept parts\n  pass2 100,000 scanned, 90,296 kept\n  pass2 200,000 scanned, 180,858 kept\n  pass2 300,000 scanned, 271,598 kept\n  pass2 400,000 scanned, 362,012 kept\n  pass2 500,000 scanned, 451,927 kept\n  pass2 600,000 scanned, 541,705 kept\n  pass2 700,000 scanned, 631,699 kept\n  pass2 800,000 scanned, 722,013 kept\n  pass2 900,000 scanned, 812,550 kept\n  pass2 1,000,000 scanned, 902,702 kept\n  pass2 1,100,000 scanned, 992,635 kept\n  pass2 1,183,747 scanned, 1,067,940 kept\n\nwrote /Users/tong/.cache/phd-matrices/bosch_spread20.npz: (1067940, 20), 380 routes, positive rate 0.0049\n  EPV at d=20: 0.000 - 19.700 (median 0.200)\n  routes above EPV 10: 2"
+}

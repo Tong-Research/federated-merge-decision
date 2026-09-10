@@ -1,0 +1,21 @@
+{
+  "id": "28-site-rules-top30",
+  "machine": "dugong",
+  "priority": 2,
+  "note": "the rule on Yang et al.'s actual cohort",
+  "matrices": [
+    "eicu_top30"
+  ],
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix eicu_top30 --seeds 3 --out results/site_rules_top30.csv",
+  "outputs": [
+    "results/site_rules_top30.csv",
+    "results/site_rules_top30_rules.csv"
+  ],
+  "predicted": "helped rate FALLS below eICU-at-300's 64.6%, because the largest hospitals benefit least -- this is the number Result 26 actually needs",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/28-site-rules-top30.json",
+  "seconds": 53.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:29:59",
+  "tail": "eicu_top30: 54847 records x 42 features, 30 sites, prevalence 0.089\neicu_top30: 1068 decisions\n\n1068 real merge decisions across 30 target sites; merging helped in 69%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.069   2.4e-02     0.660  0.690 lower\u2192merge\nn_target                          -0.051   9.4e-02     0.665  0.690 lower\u2192merge\nn_min                             -0.063   4.1e-02     0.690  0.690 lower\u2192merge\nn_partner_total                   +0.121   6.9e-05     0.663  0.690 higher\u2192merge\nratio_partner_to_target           +0.129   2.4e-05     0.668  0.690 higher\u2192merge\nn_partners                        +0.120   8.0e-05     0.690  0.690 higher\u2192merge\nschema_jaccard                    -0.174   1.0e-08     0.646  0.690 lower\u2192merge\nq_median                          +0.033   2.9e-01     0.675  0.690 higher\u2192merge\ni2_median                         +0.002   9.6e-01     0.674  0.690 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  eicu_top30      69.0%  of 1068 decisions\n\nwrote results/site_rules_top30.csv"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "90-lc-full-fetch",
+  "machine": "pilot",
+  "priority": 1,
+  "timeout": 10800,
+  "note": "Result 63's named next step: the full Lending Club release. The 2007-2011 file has harm fraction 0.023 and cannot test the boundary; across all years California passes 300k loans and many states pass 20k, giving the first NATURAL distribution in this project with a substantial harm fraction.",
+  "cmd": "bash experiments/fetch_lendingclub_full.sh",
+  "outputs": [],
+  "predicted": "several files download; the endpoint served a real ZIP for 3a so the pattern should hold. Guarded against the .csv.gz-that-was-a-ZIP trap from last time.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/90-lc-full-fetch.json",
+  "seconds": 1545.7,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T00:48:43",
+  "tail": "got LoanStats3b\n  got LoanStats3c\n  got LoanStats3d\n  got LoanStats_2016Q1\n  got LoanStats_2016Q2\n  got LoanStats_2016Q3\n  got LoanStats_2016Q4\n  got LoanStats_2017Q2\n  got LoanStats_2017Q4\n  got LoanStats_2018Q1\n  got LoanStats_2018Q3\n  got LoanStats_2018Q4\nfiles present: 12\ntotal csv bytes: 1476 MB\ncurl: (28) Operation timed out after 599026 milliseconds with 10790297 bytes received\ncurl: (92) HTTP/2 stream 1 was not closed cleanly: INTERNAL_ERROR (err 2)\ncurl: (92) HTTP/2 stream 1 was not closed cleanly: INTERNAL_ERROR (err 2)"
+}

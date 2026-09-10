@@ -1,0 +1,24 @@
+{
+  "id": "96-law-highseed",
+  "machine": "pilot",
+  "priority": 20,
+  "needs": [
+    "95-ladder-hs-500",
+    "95-ladder-hs-1000",
+    "95-ladder-hs-2000",
+    "95-ladder-hs-5000",
+    "95-ladder-hs-10000"
+  ],
+  "note": "refit the distribution law entirely on high-seed pools -- the load-bearing check on whether Result 56 survives Result 62",
+  "cmd": ".venv/bin/python experiments/distribution_law.py site_rules_hs_acs_span_income.csv site_rules_hs_acs_full_income.csv site_rules_hsladder_500.csv site_rules_hsladder_1000.csv site_rules_hsladder_2000.csv site_rules_hsladder_5000.csv site_rules_hsladder_10000.csv site_rules_lendingclub.csv | tee results/distribution_law_hs.log",
+  "outputs": [
+    "results/distribution_law_hs.log"
+  ],
+  "predicted": "the inverted U survives with a peak still inside 0.35-0.65 and a max lift above +0.05. If the shape breaks at high seed, Result 56 goes the way of Result 58 and the paper loses its most practical figure.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/96-law-highseed.json",
+  "seconds": 0.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T00:51:26",
+  "tail": "pool                               harm frac  helped  trivial   best    lift    med n\n--------------------------------------------------------------------------------------------\nsite_rules_lendingclub                 0.023   0.613    0.613  0.603  -0.010      361\nsite_rules_hs_acs_span_income          0.138   0.537    0.537  0.574  +0.036     1020\nsite_rules_hsladder_1000               0.256   0.457    0.543  0.572  +0.028     2244\nsite_rules_hsladder_500                0.274   0.444    0.556  0.595  +0.039     2104\nsite_rules_hsladder_2000               0.372   0.427    0.573  0.625  +0.052     4029\nsite_rules_hsladder_5000               0.590   0.367    0.633  0.647  +0.014     5844\nsite_rules_hs_acs_full_income          0.823   0.340    0.660  0.690  +0.029    15343\nsite_rules_hsladder_10000              0.823   0.337    0.663  0.666  +0.003     9129\n\nprediction 4 (consistency): helped rate should fall as the harm fraction rises\n  corr(harm fraction, helped rate) = -0.940  -> consistent\n\nquadratic fit  lift = -0.210\u00b7f\u00b2 +0.189\u00b7f -0.001\n  leading coefficient -0.210 -> INVERTED U (predicted)\n  peak at harm fraction 0.45 -> within the predicted 0.35-0.65\n  max observed lift +0.052 -> exceeds +0.05 as predicted"
+}

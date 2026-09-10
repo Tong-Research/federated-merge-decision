@@ -1,0 +1,21 @@
+{
+  "id": "72-calib-acs_span_traveltime",
+  "priority": 30,
+  "matrices": [
+    "acs_span_traveltime"
+  ],
+  "timeout": 14400,
+  "note": "Result 51's slope finding at 10 seeds on acs_span_traveltime -- it currently rests on 3",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix acs_span_traveltime --seeds 10 --out results/calib_hs_acs_span_traveltime.csv",
+  "outputs": [
+    "results/calib_hs_acs_span_traveltime.csv"
+  ],
+  "predicted": "MIMIC-IV keeps the only clearly negative slope change; if it does not, Result 51 was a 3-seed artefact and Result 50's conclusion was right",
+  "machine": "pilot",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/72-calib-acs_span_traveltime.json",
+  "seconds": 7.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:44:54",
+  "tail": "acs_span_traveltime: 219722 records x 16 features, 51 sites, prevalence 0.436\n  0/51 (10 rows)\n  20/51 (210 rows)\n  40/51 (410 rows)\n\n510 decisions on acs_span_traveltime, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       -0.0134    +0.0785     +0.00008\nB_merge_dp          -0.0124    +0.5479     +0.00617\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_hs_acs_span_traveltime.csv"
+}

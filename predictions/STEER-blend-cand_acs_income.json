@@ -1,0 +1,21 @@
+{
+  "id": "STEER-blend-cand_acs_income",
+  "machine": "spinner",
+  "priority": 3,
+  "matrices": [
+    "cand_acs_income"
+  ],
+  "timeout": 21600,
+  "note": "prereg/STEER.md blend",
+  "cmd": ".venv/bin/python experiments/steer_probes.py blend --dataset cand_acs_income",
+  "outputs": [
+    "results/steer/blend_cand_acs_income.csv"
+  ],
+  "predicted": "blend_cv or hier_on_tree_logit >= tree + 0.003 on >=4/8, never below by >0.003; kill: no combination clears on >2",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/STEER-blend-cand_acs_income.json",
+  "seconds": 900.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-05T00:26:34",
+  "tail": "fold 0: histgb_native=0.7981 family_cv=0.7350 blend50=0.7876 blend_cv=0.7983 stack_tree_on_hier=0.7948 hier_on_tree_logit=0.7981 w=0.9 [297s]\n  fold 1: histgb_native=0.8012 family_cv=0.7370 blend50=0.7879 blend_cv=0.8008 stack_tree_on_hier=0.7986 hier_on_tree_logit=0.8007 w=0.9 [590s]\n  fold 2: histgb_native=0.8043 family_cv=0.7384 blend50=0.7937 blend_cv=0.8049 stack_tree_on_hier=0.8007 hier_on_tree_logit=0.8049 w=0.9 [889s]\nwrote /Users/tong/phd/papers/paper-plco-hypergraph/results/steer/blend_cand_acs_income.csv (18 rows)"
+}

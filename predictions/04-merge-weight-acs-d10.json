@@ -1,0 +1,17 @@
+{
+  "id": "04-merge-weight-acs-d10",
+  "machine": "pilot",
+  "priority": 3,
+  "note": "the NON-private half of Result 27, out of domain",
+  "cmd": ".venv/bin/python experiments/merge_weight.py --matrix acs_d10 --seeds 3 --out results/merge_weight_acs_d10.csv",
+  "outputs": [
+    "results/merge_weight_acs_d10.csv"
+  ],
+  "predicted": "the EPV-derived own-weight beats n-weighting by a margin similar to the clinical one, since Result 34 showed the benefit curve has the same shape",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/04-merge-weight-acs-d10.json",
+  "seconds": 32.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:20:00",
+  "tail": "  acs_d10: 19\n  acs_d10: 20\n  acs_d10: 21\n  acs_d10: 22\n  acs_d10: 23\n  acs_d10: 24\n  acs_d10: 25\n  acs_d10: 26\n  acs_d10: 27\n  acs_d10: 28\n  acs_d10: 29\n  acs_d10: 30\n  acs_d10: 31\n  acs_d10: 32\n  acs_d10: 33\n  acs_d10: 34\n  acs_d10: 35\n  acs_d10: 36\n  acs_d10: 37\n  acs_d10: 38\n  acs_d10: 39\n  acs_d10: 40\n  acs_d10: 41\n  acs_d10: 42\n  acs_d10: 44\n  acs_d10: 45\n  acs_d10: 46\n  acs_d10: 47\n  acs_d10: 48\n  acs_d10: 49\n  acs_d10: 50\n  acs_d10: 51\n  acs_d10: 53\n  acs_d10: 54\n  acs_d10: 55\n  acs_d10: 56\n  acs_d10: 72\n\n1224 decisions across 51 sites\n\nmean AUPRC by own-weight (0 = pure merge, 1 = stay local):\n partners     0.0     0.1     0.2     0.3     0.4     0.5     0.6     0.7     0.8     0.9     1.0\n        1  0.7185  0.7189  0.7203  0.7210  0.7215  0.7207  0.7188  0.7178  0.7163  0.7144  0.7120\n        2  0.7189  0.7198  0.7207  0.7211  0.7203  0.7194  0.7173  0.7158  0.7139  0.7112  0.7102\n        3  0.7077  0.7084  0.7090  0.7093  0.7091  0.7075  0.7057  0.7040  0.7017  0.6985  0.6969\n        4  0.7338  0.7351  0.7357  0.7351  0.7350  0.7338  0.7314  0.7295  0.7270  0.7238  0.7214\n\n partners  n-weight  oracle w    CV w    merge    local       CV   oracle\n        1      0.48      0.46    0.33   0.7185   0.7120   0.7186   0.7288\n        2      0.32      0.46    0.32   0.7189   0.7102   0.7167   0.7305\n        3      0.27      0.43    0.29   0.7077   0.6969   0.7049   0.7186\n        4      0.19      0.36    0.27   0.7338   0.7214   0.7309   0.7441\n\ndoes CV weighting remove the one-partner deficit? (benefit over staying local)\n  k=1:  n-weighted merge +0.0065 (p=2.6e-03)   CV-weighted +0.0066 (p=2.1e-06)\n  k=2:  n-weighted merge +0.0086 (p=7.9e-03)   CV-weighted +0.0065 (p=2.6e-06)\n  k=3:  n-weighted merge +0.0108 (p=1.1e-04)   CV-weighted +0.0080 (p=4.9e-09)\n  k=4:  n-weighted merge +0.0125 (p=5.0e-08)   CV-weighted +0.0096 (p=6.1e-13)\n\nwrote results/merge_weight_acs_d10.csv"
+}

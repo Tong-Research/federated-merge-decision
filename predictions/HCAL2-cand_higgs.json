@@ -1,0 +1,21 @@
+{
+  "id": "HCAL2-cand_higgs",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "cand_higgs"
+  ],
+  "timeout": 28800,
+  "note": "HCAL post-hoc comparator (referee 5): switch_cv = global vs kappa=0 Platt by inner CV; other arms must reproduce results/hcal bit-for-bit",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset cand_higgs --slice holdout --switch --out results/hcal2/cand_higgs.csv",
+  "outputs": [
+    "results/hcal2/cand_higgs.csv"
+  ],
+  "predicted": "Post hoc, not registered. If switch_cv matches hier_cv within 0.001 AUPRC and 0.001 log-loss on the four datasets where kappa=0 is harmful (MIMIC regimes, MIMIC first stays, ACS, NHANES), the 'safety' is the inner CV choosing global recalibration and the hierarchy gets no credit for it; the paper must say so. If hier_cv is below switch_cv in log-loss on those four (it can sit between global and per-pattern where switch_cv cannot), the hierarchy does something the switch cannot. Sanity: tree/global/pattern_k0/hier_cv rows must equal results/hcal exactly.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL2-cand_higgs.json",
+  "seconds": 78.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T23:51:52",
+  "tail": "cand_higgs holdout: 60000 rows x 30 cols, prevalence 0.342\n  seed 0 fold 0: tree=0.8366 global=0.8366 pattern_k0=0.8372 hier_cv=0.8372 switch_cv=0.8372 kappa=10 [5s]\n  seed 0 fold 1: tree=0.8432 global=0.8432 pattern_k0=0.8430 hier_cv=0.8431 switch_cv=0.8430 kappa=10 [9s]\n  seed 0 fold 2: tree=0.8349 global=0.8349 pattern_k0=0.8350 hier_cv=0.8349 switch_cv=0.8350 kappa=10 [14s]\n  seed 0 fold 3: tree=0.8448 global=0.8448 pattern_k0=0.8451 hier_cv=0.8451 switch_cv=0.8451 kappa=10 [18s]\n  seed 0 fold 4: tree=0.8365 global=0.8365 pattern_k0=0.8376 hier_cv=0.8374 switch_cv=0.8376 kappa=10 [22s]\n  seed 1 fold 0: tree=0.8344 global=0.8344 pattern_k0=0.8347 hier_cv=0.8347 switch_cv=0.8347 kappa=10 [27s]\n  seed 1 fold 1: tree=0.8342 global=0.8342 pattern_k0=0.8346 hier_cv=0.8344 switch_cv=0.8346 kappa=10 [31s]\n  seed 1 fold 2: tree=0.8400 global=0.8400 pattern_k0=0.8404 hier_cv=0.8403 switch_cv=0.8404 kappa=10 [36s]\n  seed 1 fold 3: tree=0.8454 global=0.8454 pattern_k0=0.8466 hier_cv=0.8454 switch_cv=0.8454 kappa=10000 [40s]\n  seed 1 fold 4: tree=0.8391 global=0.8391 pattern_k0=0.8395 hier_cv=0.8395 switch_cv=0.8395 kappa=10 [45s]\n  seed 2 fold 0: tree=0.8394 global=0.8394 pattern_k0=0.8404 hier_cv=0.8402 switch_cv=0.8404 kappa=10 [49s]\n  seed 2 fold 1: tree=0.8376 global=0.8376 pattern_k0=0.8382 hier_cv=0.8381 switch_cv=0.8382 kappa=10 [54s]\n  seed 2 fold 2: tree=0.8385 global=0.8385 pattern_k0=0.8386 hier_cv=0.8385 switch_cv=0.8386 kappa=10 [58s]\n  seed 2 fold 3: tree=0.8459 global=0.8459 pattern_k0=0.8465 hier_cv=0.8465 switch_cv=0.8465 kappa=10 [63s]\n  seed 2 fold 4: tree=0.8341 global=0.8341 pattern_k0=0.8342 hier_cv=0.8341 switch_cv=0.8342 kappa=10 [67s]\nwrote results/hcal2/cand_higgs.csv (75 rows)"
+}

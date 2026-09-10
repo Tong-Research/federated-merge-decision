@@ -1,0 +1,21 @@
+{
+  "id": "63-boundary-shift",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "Result 60's untested observation, tested properly. WITHIN-pool I2 terciles rather than a seven-point across-pool correlation -- holds outcome, states and size distribution fixed, varies only measured heterogeneity, 21 cut estimates instead of 7.",
+  "cmd": ".venv/bin/python experiments/boundary_shift.py site_rules_acs_span.csv site_rules_acs_pubcov.csv site_rules_employment.csv site_rules_mobility.csv site_rules_traveltime.csv site_rules_healthinsurance.csv site_rules_incomepovertyratio.csv | tee results/boundary_shift.log",
+  "inputs": [
+    "results/site_rules_traveltime.csv",
+    "results/site_rules_employment.csv"
+  ],
+  "outputs": [
+    "results/boundary_shift.log"
+  ],
+  "predicted": "P1 the fitted EPV cut FALLS from low- to high-I2 tercile within a pool; P2 in at least 5 of 7 pools; P3 the high-I2 tercile has the larger lift; P4 ACSTravelTime does NOT follow, since R60 ruled heterogeneity out there. If P1 holds and P4 fails, Result 58 gets a replacement account instead of an open question.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/63-boundary-shift.json",
+  "seconds": 0.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:54:54",
+  "tail": "pool                      I2 tercile  med I2      cut    acc    lift      n\n------------------------------------------------------------------------------\nacs_span                         low   0.657    20.20  0.584  +0.049    610\nacs_span                         mid   0.811    20.20  0.618  +0.079    610\nacs_span                        high   0.885    20.20  0.584  +0.082    610\n                              -> cut   20.20 -> 20.20   rises or flat\n\nacs_pubcov                       low   0.863    58.95  0.630  -0.002    610\nacs_pubcov                       mid   0.932    22.05  0.656  +0.087    610\nacs_pubcov                      high   0.964     8.16  0.654  +0.111    610\n                              -> cut   58.95 -> 8.16   FALLS (predicted)\n\nemployment                       low   0.878    64.06  0.693  +0.038    610\nemployment                       mid   0.943    64.06  0.664  +0.054    610\nemployment                      high   0.970   102.88  0.697  +0.177    610\n                              -> cut   64.06 -> 102.88   rises or flat\n\nmobility                         low   0.830    37.33  0.600  +0.041    610\nmobility                         mid   0.904    81.38  0.582  -0.007    610\nmobility                        high   0.939    81.38  0.636  +0.041    610\n                              -> cut   37.33 -> 81.38   rises or flat\n\ntraveltime                       low   0.668     8.75  0.585  +0.033    610\ntraveltime                       mid   0.830     6.38  0.648  +0.003    610\ntraveltime                      high   0.897     4.81  0.728  +0.002    610\n                              -> cut    8.75 -> 4.81   FALLS (predicted)\n\nhealthinsurance                  low   0.700   105.60  0.674  +0.008    610\nhealthinsurance                  mid   0.839   105.60  0.685  -0.003    610\nhealthinsurance                 high   0.907    30.24  0.670  +0.062    610\n                              -> cut  105.60 -> 30.24   FALLS (predicted)\n\nincomepovertyratio               low   0.877    30.46  0.579  +0.015    610\nincomepovertyratio               mid   0.928    11.45  0.618  +0.102    610\nincomepovertyratio              high   0.958    29.75  0.667  +0.134    610\n                              -> cut   30.46 -> 29.75   FALLS (predicted)\n\n==============================================================================\nP1/P2  cut falls with I2 in 4/7 pools -> NOT SUPPORTED \u2014 the mechanism is wrong\nP3     high-I2 tercile has the larger lift in 5/7 pools -> CONFIRMED\nP4     ACSTravelTime cut 8.75 -> 4.81: FOLLOWS the pattern \u2014 Result 58 may have a replacement account"
+}

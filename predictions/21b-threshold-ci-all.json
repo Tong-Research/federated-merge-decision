@@ -1,0 +1,20 @@
+{
+  "id": "21b-threshold-ci-all",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "retry on pilot; the file exists only there and I omitted the `inputs` guard",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_all.csv --boots 2000 | tee results/threshold_ci_all.log",
+  "outputs": [
+    "results/threshold_ci_all.log"
+  ],
+  "predicted": "a TIGHTER interval than Result 35's [4.2,9.7] because this pool actually spans the boundary; if it is wider, the 14,310-decision pool's precision came from repeated seeds rather than from site variation, which would be a real problem",
+  "inputs": [
+    "results/site_rules_all.csv"
+  ],
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/21b-threshold-ci-all.json",
+  "seconds": 28.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:15:16",
+  "tail": "711 decisions, 25 sites, 2000 bootstrap resamples of sites\n\nepv_target   cut =      6.7 events/variable   95% CI [0.7, 9.7]   width/median = 1.33   acc 0.737\nn_target     cut =   2285.9 records   95% CI [200.0, 3577.2]   width/median = 1.48   acc 0.746\n\nnarrower relative interval = the more sharply located boundary"
+}

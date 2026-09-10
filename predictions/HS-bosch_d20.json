@@ -1,0 +1,21 @@
+{
+  "id": "HS-bosch_d20",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "bosch_d20"
+  ],
+  "timeout": 36000,
+  "note": "High-seed policy comparison on bosch_d20 -- generalising R92 from one pool to eleven.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix bosch_d20 --seeds 15 --out results/cut_hs_bosch_d20.csv",
+  "outputs": [
+    "results/cut_hs_bosch_d20.csv"
+  ],
+  "predicted": "R92 re-ran MIMIC-IV's policy comparison at 15 seeds and found no policy mean moved by more than 0.00178 -- the 297-decision run was more stable than predicted. That was ONE pool, and it is the only one checked. Section 6's headline table (blend 30.7 mean, 29.6 median, +15.1 worst pool, 0 pools below zero) rests on the other ten at 3-5 seeds, and R62 showed three seeds could move rho by up to 0.103. PREDICTION: the policy ORDERING is unchanged on every pool -- blend still beats every binary policy and is still never negative -- and no per-pool mean moves by more than 0.005, generalising R92 from one pool to eleven. WHAT WOULD MATTER: if blend goes negative on any pool at high seed, the single strongest claim in the paper ('the only deployable policy never negative on any of eleven pools') is wrong, and section 6 must be rewritten rather than amended.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HS-bosch_d20.json",
+  "seconds": 155.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T12:05:50",
+  "tail": "bosch_d20: 1067940 records x 20 features, 380 sites, prevalence 0.005\n\n  16,080 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.0260    +0.0000                0.0%\n  always_merge          0.0221    -0.0039              -28.9%\n  epv_gate              0.0221    -0.0039              -28.9%\n  gate_loso             0.0240    -0.0021              -15.2%\n  gate_bestcut          0.0260    +0.0000                0.0%\n  local_cv              0.0245    -0.0015              -11.3%\n  fix_025               0.0260    -0.0000               -0.3%\n  fix_050               0.0256    -0.0005               -3.3%\n  fix_075               0.0241    -0.0019              -13.8%\n  blend                 0.0251    -0.0009               -6.7%\n  blend_cw              0.0251    -0.0009               -6.7%\n  oracle_binary         0.0345    +0.0085               62.2%\n  oracle_lambda         0.0397    +0.0136              100.0%\n  oracle_lambda_cw      0.0397    +0.0137              100.1%\n\n  LOSO cut: median 0.0, range 0.0-0.2   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.499\n  lambda optimal on test    : mean 0.494\n  correlation chosen vs optimal: +0.025\n\nwrote results/cut_hs_bosch_d20.csv (16,080 rows)"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "EXTRA-lung",
+  "machine": "any",
+  "priority": 15,
+  "matrices": [],
+  "timeout": 172800,
+  "note": "REBUILD after the loss: extra baselines on lung",
+  "cmd": ".venv/bin/python experiments/run_extra_baselines.py --cohort lung --only xgboost_native,lightgbm_native,refe,learnpp_mf --out results/main_EXTRA-lung.csv",
+  "outputs": [
+    "results/main_EXTRA-lung.csv"
+  ],
+  "predicted": "Queued 2026-08-24 17:35. Rebuild, not a claim. Same expectation as the BASE-* jobs: the seeds and folds are fixed, so every cell should reproduce the value it had before the loss. Colorectal's mice_impute_lr took 7,585s and is the long pole here; its recomputed mean AUPRC should be 0.0872 and refe should be 0.1371, equal to mean imputation to four places (Result 118). A DIFFERENT number means non-determinism, which would matter more than the rows themselves.",
+  "started_at": 1787674928.713832,
+  "pid": 12678,
+  "pgid": 12678,
+  "exit_code": 0,
+  "seconds": 3715.3,
+  "missing_outputs": [],
+  "finished": "2026-08-26T00:42:22",
+  "tail": "lung: 40000 x 121\n  skip xgboost_native (already in main_EXTRA-lung.csv)\n  skip lightgbm_native (already in main_EXTRA-lung.csv)\n  done refe (10 seeds x 5 folds) in 1210.0s -> mean AUPRC 0.1830\n  done learnpp_mf (10 seeds x 5 folds) in 2478.3s -> mean AUPRC 0.1582"
+}

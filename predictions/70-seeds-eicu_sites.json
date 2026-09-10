@@ -1,0 +1,21 @@
+{
+  "id": "70-seeds-eicu_sites",
+  "priority": 10,
+  "matrices": [
+    "eicu_sites"
+  ],
+  "timeout": 18000,
+  "note": "precision: eicu_sites at 15 seeds against the 3 every claim currently rests on",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix eicu_sites --seeds 15 --out results/site_rules_hs_eicu_sites.csv",
+  "outputs": [
+    "results/site_rules_hs_eicu_sites.csv"
+  ],
+  "predicted": "point estimates move by less than their current bootstrap half-widths; if any headline rho moves more than 0.05, the 3-seed figures were undersampled and every interval in the paper needs rewidening",
+  "machine": "pilot",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/70-seeds-eicu_sites.json",
+  "seconds": 180.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:05:20",
+  "tail": "eicu_sites: 95197 records x 42 features, 100 sites, prevalence 0.090\neicu_sites: 17940 decisions\n\n17940 real merge decisions across 100 target sites; merging helped in 63%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.163  2.4e-107     0.621  0.630 lower\u2192merge\nn_target                          -0.180  8.7e-130     0.614  0.630 lower\u2192merge\nn_min                             -0.079   4.8e-26     0.630  0.630 lower\u2192merge\nn_partner_total                   +0.120   9.1e-59     0.619  0.630 higher\u2192merge\nratio_partner_to_target           +0.201  3.5e-163     0.637  0.630 higher\u2192merge\nn_partners                        +0.093   5.0e-36     0.630  0.630 higher\u2192merge\nschema_jaccard                    -0.089   1.2e-32     0.620  0.630 lower\u2192merge\nq_median                          +0.059   2.0e-15     0.621  0.630 higher\u2192merge\ni2_median                         +0.034   6.8e-06     0.621  0.630 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  eicu_sites      63.0%  of 17940 decisions\n\nwrote results/site_rules_hs_eicu_sites.csv"
+}

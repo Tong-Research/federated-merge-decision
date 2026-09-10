@@ -1,0 +1,23 @@
+{
+  "id": "88-lc-distribution",
+  "machine": "dugong",
+  "priority": 12,
+  "needs": [
+    "82-lc-rule"
+  ],
+  "note": "place Lending Club on Result 56's curve -- an out-of-sample point for the law, from a distribution nobody chose",
+  "cmd": ".venv/bin/python experiments/distribution_law.py site_rules_acs_d10.csv site_rules_acs_span.csv site_rules_acs_full.csv site_rules_ladder_500.csv site_rules_ladder_1000.csv site_rules_ladder_2000.csv site_rules_ladder_5000.csv site_rules_ladder_10000.csv site_rules_lendingclub.csv site_rules_all.csv | tee results/distribution_law_2.log",
+  "inputs": [
+    "results/site_rules_lendingclub.csv"
+  ],
+  "outputs": [
+    "results/distribution_law_2.log"
+  ],
+  "predicted": "Lending Club falls ON the fitted curve within its residual spread. This is the law's first genuine out-of-sample test -- every point fitting it so far came from ACS builds we constructed.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/88-lc-distribution.json",
+  "seconds": 9.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:30:34",
+  "tail": "missing: site_rules_acs_span.csv\n  missing: site_rules_ladder_500.csv\n  missing: site_rules_ladder_2000.csv\n  missing: site_rules_ladder_5000.csv\n  missing: site_rules_all.csv\n\npool                               harm frac  helped  trivial   best    lift    med n\n--------------------------------------------------------------------------------------------\nsite_rules_acs_d10                     0.000   0.597    0.597  0.584  -0.014      728\nsite_rules_lendingclub                 0.023   0.613    0.613  0.603  -0.010      361\nsite_rules_ladder_1000                 0.256   0.474    0.526  0.574  +0.048     2244\nsite_rules_acs_full                    0.823   0.340    0.660  0.683  +0.023    15343\nsite_rules_ladder_10000                0.823   0.335    0.665  0.670  +0.005     9129\n\nprediction 4 (consistency): helped rate should fall as the harm fraction rises\n  corr(harm fraction, helped rate) = -0.984  -> consistent\n\nquadratic fit  lift = -0.373\u00b7f\u00b2 +0.344\u00b7f -0.016\n  leading coefficient -0.373 -> INVERTED U (predicted)\n  peak at harm fraction 0.46 -> within the predicted 0.35-0.65\n  max observed lift +0.048 -> below +0.05, prediction 3 refuted"
+}

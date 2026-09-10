@@ -1,0 +1,22 @@
+{
+  "id": "94-reaudit-seeds",
+  "machine": "spinner",
+  "priority": 2,
+  "note": "Result 62 forces a re-audit: which conclusions rested on 3-seed correlations that the high-seed reruns moved? Compare every pair on disk.",
+  "cmd": ".venv/bin/python experiments/trivial_baseline.py results/site_rules_hs_eicu_sites.csv results/site_rules_hs_acs_span_income.csv results/site_rules_hs_acs_span_traveltime.csv results/site_rules_hs_eicu_top30.csv results/site_rules_hs_acs_span_employment.csv | tee results/trivial_highseed.log",
+  "inputs": [
+    "results/site_rules_hs_eicu_sites.csv"
+  ],
+  "outputs": [
+    "results/trivial_highseed.log"
+  ],
+  "predicted": "the lift figures are stable even where the correlations moved, because lift is an accuracy difference over thousands of decisions rather than a rank statistic -- if lifts move too, Results 41/42/56 need rerunning at high seed as well",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/94-reaudit-seeds.json",
+  "seconds": 0.0,
+  "exit_code": 2,
+  "missing_outputs": [
+    "results/trivial_highseed.log"
+  ],
+  "finished": "2026-08-10T00:23:00",
+  "tail": "input check failed: declared inputs not present on spinner: ['results/site_rules_hs_eicu_sites.csv']"
+}

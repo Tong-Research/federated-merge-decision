@@ -1,0 +1,15 @@
+{
+  "id": "24b-eicu-floor540",
+  "machine": "pilot",
+  "priority": 2,
+  "note": "retry: the previous run was a silent cache no-op because the cache key omitted MIN_SITE_N",
+  "cmd": "EICU_MIN_SITE_N=540 MIMIC_CACHE=$HOME/.cache/phd-matrices .venv/bin/python -c \"import os,sys;sys.path.insert(0,'experiments');import numpy as np;from eicu_sites import load;X,y,g,n,_=load(verbose=True);assert len(n)<100, f'floor had no effect: {len(n)} sites';np.savez_compressed(os.path.expanduser('~/.cache/phd-matrices/eicu_floor540.npz'),X=X,y=y,g=g,names=np.array(n,dtype=np.str_));print('sites',len(n),'rows',len(y))\"",
+  "outputs": [],
+  "predicted": "strictly fewer than 100 hospitals (the assert enforces it), all larger, median EPV rises, and the benefit FALLS -- quantifying Result 26's selection effect",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/24b-eicu-floor540.json",
+  "seconds": 27.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:16:23",
+  "tail": "cohort: 80,055 first unit stays across 64 hospitals (>= 540 stays each), mortality 0.091\n  chunk 0: 258,356 (stay, lab) cells so far\n  chunk 1: 504,978 (stay, lab) cells so far\n  chunk 2: 752,578 (stay, lab) cells so far\n  chunk 3: 973,199 (stay, lab) cells so far\n  chunk 4: 1,292,408 (stay, lab) cells so far\n  chunk 5: 1,569,412 (stay, lab) cells so far\n  chunk 6: 1,737,624 (stay, lab) cells so far\n  chunk 7: 1,970,030 (stay, lab) cells so far\n  chunk 8: 2,241,836 (stay, lab) cells so far\n  chunk 9: 2,467,098 (stay, lab) cells so far\nsites 64 rows 80055"
+}

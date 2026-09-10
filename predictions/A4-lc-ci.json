@@ -1,0 +1,20 @@
+{
+  "id": "A4-lc-ci",
+  "machine": "pilot",
+  "priority": 3,
+  "note": "where does a natural federation's cut sit, with an interval?",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_lc_full.csv --boots 10000 | tee results/ci_lc_full.log",
+  "inputs": [
+    "results/site_rules_lc_full.csv"
+  ],
+  "outputs": [
+    "results/ci_lc_full.log"
+  ],
+  "predicted": "a cut far above the clinical [4.2, 9.7], since LC's EPV runs 19-2184 -- and per Result 61 the cut estimate will be unstable because the range extends far past the boundary, so the interval should be wide",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/A4-lc-ci.json",
+  "seconds": 281.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T07:14:25",
+  "tail": "5960 decisions, 50 sites, 10000 bootstrap resamples of sites\n\nepv_target   cut =     16.1 events/variable   95% CI [0.5, 29.3]   width/median = 1.78   acc 0.488\nn_target     cut =   8940.9 records   95% CI [3775.8, 15000.0]   width/median = 1.26   acc 0.561\n\nnarrower relative interval = the more sharply located boundary"
+}

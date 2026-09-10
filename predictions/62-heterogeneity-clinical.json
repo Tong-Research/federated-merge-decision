@@ -1,0 +1,22 @@
+{
+  "id": "62-heterogeneity-clinical",
+  "machine": "spinner",
+  "priority": 2,
+  "note": "the same test on clinical pools, where Results 6 and 15 refuted Q and I-squared. If the detector works out of domain but not here, that bounds it.",
+  "cmd": ".venv/bin/python experiments/heterogeneity_gate.py site_rules_all.csv site_rules_eicu_only.csv site_rules_combined.csv site_rules_acs_span.csv site_rules_traveltime.csv | tee results/heterogeneity_gate_clinical.log",
+  "inputs": [
+    "results/site_rules_all.csv"
+  ],
+  "outputs": [
+    "results/heterogeneity_gate_clinical.log"
+  ],
+  "predicted": "clinical pools cluster at similar median I-squared, TravelTime sits apart, and the across-pool correlation survives with clinical pools included",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/62-heterogeneity-clinical.json",
+  "seconds": 0.0,
+  "exit_code": 2,
+  "missing_outputs": [
+    "results/heterogeneity_gate_clinical.log"
+  ],
+  "finished": "2026-08-09T22:50:50",
+  "tail": "input check failed: declared inputs not present on spinner: ['results/site_rules_all.csv']"
+}

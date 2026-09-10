@@ -1,0 +1,20 @@
+{
+  "id": "35-calib-reconcile-acs",
+  "machine": "spinner",
+  "priority": 2,
+  "note": "out of domain, where Result 49's slope effect was largest (+0.311)",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix acs_d10 --seeds 3 --out results/calib_reconcile_acs.csv",
+  "matrices": [
+    "acs_d10"
+  ],
+  "outputs": [
+    "results/calib_reconcile_acs.csv"
+  ],
+  "predicted": "the gap between estimators is widest here, since ACS has no missingness and the unit-ball projection therefore bites hardest",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/35-calib-reconcile-acs.json",
+  "seconds": 11.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:35:36",
+  "tail": "acs_d10: 39771 records x 10 features, 51 sites, prevalence 0.352\n  0/51 (3 rows)\n  20/51 (63 rows)\n  40/51 (123 rows)\n\n153 decisions on acs_d10, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       +0.0104    +0.0540     +0.00582\nB_merge_dp          +0.0069    +0.0672     +0.00504\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_reconcile_acs.csv"
+}

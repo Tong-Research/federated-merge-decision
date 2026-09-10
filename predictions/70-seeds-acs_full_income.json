@@ -1,0 +1,21 @@
+{
+  "id": "70-seeds-acs_full_income",
+  "priority": 10,
+  "matrices": [
+    "acs_full_income"
+  ],
+  "timeout": 18000,
+  "note": "precision: acs_full_income at 10 seeds against the 3 every claim currently rests on",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_full_income --seeds 10 --out results/site_rules_hs_acs_full_income.csv",
+  "outputs": [
+    "results/site_rules_hs_acs_full_income.csv"
+  ],
+  "predicted": "point estimates move by less than their current bootstrap half-widths; if any headline rho moves more than 0.05, the 3-seed figures were undersampled and every interval in the paper needs rewidening",
+  "machine": "dugong",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/70-seeds-acs_full_income.json",
+  "seconds": 868.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:15:04",
+  "tail": "acs_full_income: 1664500 records x 10 features, 51 sites, prevalence 0.369\nacs_full_income: 6100 decisions\n\n6100 real merge decisions across 51 target sites; merging helped in 34%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        +0.371  5.6e-198     0.690  0.660 higher\u2192merge\nn_target                          +0.339  2.5e-164     0.620  0.660 higher\u2192merge\nn_min                             +0.066   2.2e-07     0.660  0.660 higher\u2192merge\nn_partner_total                   -0.154   1.2e-33     0.683  0.660 lower\u2192merge\nratio_partner_to_target           -0.362  8.2e-188     0.677  0.660 lower\u2192merge\nn_partners                        -0.036   4.7e-03     0.660  0.660 lower\u2192merge\nschema_jaccard                      +nan       nan     0.660  0.660 higher\u2192merge\nq_median                          -0.100   6.7e-15     0.649  0.660 lower\u2192merge\ni2_median                         -0.080   4.9e-10     0.651  0.660 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_full_income  34.0%  of 6100 decisions\n\nwrote results/site_rules_hs_acs_full_income.csv"
+}

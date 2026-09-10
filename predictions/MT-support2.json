@@ -1,0 +1,19 @@
+{
+  "id": "MT-support2",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [],
+  "timeout": 28800,
+  "note": "Paper 3 second metric: AUPRC/AUROC/Brier ceiling on support2.",
+  "cmd": ".venv/bin/python experiments/oracle_ceiling_metrics.py --datasets support2 --B 25 --out results/oc_metrics_support2.csv",
+  "outputs": [
+    "results/oc_metrics_support2.csv"
+  ],
+  "predicted": "Paper 3 section 7 concedes that everything is AUPRC and states the risk explicitly: 'A method could leave discrimination unchanged and improve calibration, and nothing here would detect it.' This tests that concession rather than restating it, computing the same oracle ceiling under three metrics that fail differently -- AUPRC (ranking, minority-weighted), AUROC (ranking, prevalence-insensitive), and Brier (a PROPER SCORING RULE, so it moves with calibration as well as ranking). Brier is a loss, so its ceiling is defined pooled-minus-best to keep 'positive means the family gained' true across all three columns; getting that backwards would report the family as helping exactly when it hurts. PREDICTION: the AUPRC and AUROC bounds stay negative and non-significant, matching R93, because both are ranking metrics and the family's failure is a ranking failure. Brier is the one at risk and I expect it to be negative too. WHAT WOULD MATTER, AND A SMOKE TEST ALREADY HINTS AT IT: on hepatitis at B=5 the Brier excess came out POSITIVE (+0.0072) while AUPRC was -0.0167. If that holds across datasets, then pattern-conditional shrinkage buys CALIBRATION where it buys no discrimination, the paper's headline is scoped to ranking rather than to prediction generally, and section 3's claim must be restated. That would be a substantive correction to the paper found by its own conceded limitation, which is the reason to run it. WITHDRAWAL CONDITION: if mean Brier excess is positive on a majority of the eleven datasets, section 3 and the abstract must say the bound is a bound on DISCRIMINATION, not on the family.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/MT-support2.json",
+  "seconds": 623.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T16:37:20",
+  "tail": "dataset          metric       real      null    excess       p\nsupport2         auprc     +0.0000   +0.0016   -0.0016   1.000\nsupport2         auroc     +0.0000   +0.0009   -0.0009   1.000\nsupport2         brier     -0.0000   +0.0006   -0.0006   1.000\n                 [615s]\n\n  mean excess by metric:\n    auprc   -0.00158   negative on 1/1   p<0.05 on 0\n    auroc   -0.00088   negative on 1/1   p<0.05 on 0\n    brier   -0.00056   negative on 1/1   p<0.05 on 0\n\n  wrote results/oc_metrics_support2.csv"
+}

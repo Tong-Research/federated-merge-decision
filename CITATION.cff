@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: If you use this code, please cite the article.
+title: "From Binary Gating to Continuous Shrinkage: A Decision-Level Evaluation of Federated Data Merging"
+authors:
+  - family-names: Kaveeta
+    given-names: Vivatchai
+    affiliation: "Department of Computer Engineering, Faculty of Engineering, Chiang Mai University"
+  - family-names: Sugunnasil
+    given-names: Prompong
+    affiliation: "Data Analytics and Knowledge Synthesis for Healthcare (DAkSH Research Center), Chiang Mai University"
+  - family-names: Natwichai
+    given-names: Juggapong
+    affiliation: "Data Science Consortium, Chiang Mai University"
+date-released: 2026-09-10
+version: 1.0.0

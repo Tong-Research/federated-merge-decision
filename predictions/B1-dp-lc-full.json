@@ -1,0 +1,21 @@
+{
+  "id": "B1-dp-lc-full",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "lendingclub_full"
+  ],
+  "timeout": 18000,
+  "note": "Result 68's table has no entry for the one NATURAL federation that beats the trivial rule. LC-full has a positive non-private benefit, so it should AMPLIFY rather than create -- and per Result 68 it may dip at tight budgets like eICU does.",
+  "cmd": "DP_EPSILONS=0.5,1,5,inf .venv/bin/python experiments/dp_merge.py --dataset matrix --matrix lendingclub_full --seeds 3 --out results/dp_lc_full.csv",
+  "outputs": [
+    "results/dp_lc_full.csv"
+  ],
+  "predicted": "amplifies rather than creates, and DIPS below the non-private benefit at eps<=1 as eICU does, because its sites are large and already adequate. If it creates instead, Result 68's split is not about the non-private benefit.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/B1-dp-lc-full.json",
+  "seconds": 587.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T09:55:20",
+  "tail": "  KY  (1224 rows)\n  LA  (1296 rows)\n  MA  (1368 rows)\n  MD  (1440 rows)\n  ME  (1512 rows)\n  MI  (1584 rows)\n  MN  (1656 rows)\n  MO  (1728 rows)\n  MS  (1800 rows)\n  MT  (1872 rows)\n  NC  (1944 rows)\n  ND  (2016 rows)\n  NE  (2088 rows)\n  NH  (2160 rows)\n  NJ  (2232 rows)\n  NM  (2304 rows)\n  NV  (2376 rows)\n  NY  (2448 rows)\n  OH  (2520 rows)\n  OK  (2592 rows)\n  OR  (2664 rows)\n  PA  (2736 rows)\n  RI  (2808 rows)\n  SC  (2880 rows)\n  SD  (2952 rows)\n  TN  (3024 rows)\n  TX  (3096 rows)\n  UT  (3168 rows)\n  VA  (3240 rows)\n  VT  (3312 rows)\n  WA  (3384 rows)\n  WI  (3456 rows)\n  WV  (3528 rows)\n  WY  (3600 rows)\n\n=== A. where does the merge benefit die? (3600 rows) ===\n  epsilon    local    merge   benefit        p  benefit(w=0.5)\n      0.5   0.2791   0.2940   +0.0149  5.7e-38         +0.0050\n        1   0.2909   0.2974   +0.0065  3.3e-17         +0.0035\n        5   0.2990   0.2986   -0.0004  1.0e-05         -0.0001\n      inf   0.2992   0.2986   -0.0006  1.8e-07         -0.0002\n\n   split by target adequacy (privacy should cost small sites most):\n   target EPV 0-5:\n   target EPV 5-999:\n     eps= 0.5  local 0.2791  benefit +0.0149\n     eps=   1  local 0.2909  benefit +0.0065\n     eps=   5  local 0.2990  benefit -0.0004\n     eps= inf  local 0.2992  benefit -0.0006\n\n=== B. does composition reverse one-shot vs FedAvg? ===\n  epsilon   one-shot     fed 1r    fed 5r   fed 30r\n      0.5    +0.0149   -0.0177   -0.0540   -0.0842\n        1    +0.0065   -0.0140   -0.0385   -0.0831\n        5    -0.0004   -0.0105   -0.0091   -0.0396\n      inf    -0.0006   -0.0098   -0.0034   -0.0000\n\n(all figures are AUPRC gain over that site's own DP local model at the same epsilon)\n\nwrote results/dp_lc_full.csv"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "97-claims-reaudit",
+  "machine": "pilot",
+  "priority": 25,
+  "note": "Result 62 moved numbers the outline quotes; re-run the claims audit",
+  "cmd": ".venv/bin/python experiments/claims_audit.py | tee results/claims_audit_2.log",
+  "outputs": [
+    "results/claims_audit_2.log"
+  ],
+  "predicted": "more STALE rows than the first pass, since the high-seed reruns changed correlations the outline cites",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/97-claims-reaudit.json",
+  "seconds": 0.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T00:51:26",
+  "tail": "================================================================================================\nRESULTS-TO-CLAIMS AUDIT \u2014 every number in PAPER-C-OUTLINE.md, re-derived\n================================================================================================\n\n  C1 threshold pool size\n    outline says : 711 decisions, 25 sites\n    recomputed   : 711 decisions, 25 sites\n    -> VERIFIED\n\n  C1 rho(EPV, benefit)\n    outline says : -0.475, p=3e-41\n    recomputed   : -0.475, p=3.0e-41\n    -> VERIFIED\n\n  C1 fitted cut and accuracy\n    outline says : cut 7.0, acc 0.717 vs 0.610\n    recomputed   : cut 7.5, acc 0.714 vs trivial 0.610\n    -> CLOSE  (cut and accuracy both drift with the grid; quote the bootstrap CI instead)\n\n  C4 complexity scaling\n    outline says : logistic 7.5 -> boosted 17.7 -> pooled trees 32.7\n    recomputed   : 238 decisions in site_rules_ext.csv; cuts recomputed in site_rules_ext_summary.csv\n    -> STALE  (Result 53 supersedes: report the BAND GRADIENT, not fitted cuts \u2014 the ACS cuts were withdrawn (R39) and cuts are not identified where no harm regime exists)\n\n  C5 pooling shows no EPV dependence\n    outline says : rho = -0.026, p=0.69\n    recomputed   : site_rules_ext_eicu_summary.csv gives lr_pooled rho=+0.042 p=0.06, gb_pooled rho=-0.012 p=0.61\n    -> VERIFIED IN DIRECTION  (different pool, same conclusion: pooling is not governed by EPV)\n\n------------------------------------------------------------------------------------------------\nSECTION 2 \u2014 the dataset table is incomplete\n------------------------------------------------------------------------------------------------\n  outline lists 4 datasets and 3,797 decisions.\n  collections acquired since, with committed CSVs:\n    + eICU (100 hospitals): 3588 decisions\n    + ACS d=10 (51 states): 3050 decisions\n    + eICU top-30: 1068 decisions\n    + eICU floor-540: 2295 decisions\n\n  Total distinct decisions\n    outline says : 3,797 across eight scripts\n    recomputed   : 166,833 across 37 committed decision files\n    -> STALE  (the headline number has grown by roughly an order of magnitude)\n\n  Section 9 'what we got wrong'\n    outline says : five predictions recorded and refuted\n    recomputed   : 41 predictions recorded; 14 did not hold as stated (34%) \u2014 prediction_audit.log present\n    -> STALE  (Result 52 replaces this section wholesale)\n\n  Limitations: 'eICU would settle the cross-source question'\n    outline says : listed as future work\n    recomputed   : eICU acquired and analysed: Results 22, 29, 42, 46, 47, 48\n    -> STALE  (rewrite as a finding, not a gap)\n\n================================================================================================\nClaims requiring edits before drafting are printed as STALE above.\n================================================================================================"
+}

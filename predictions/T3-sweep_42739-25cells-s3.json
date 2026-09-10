@@ -1,0 +1,22 @@
+{
+  "id": "T3-sweep_42739-25cells-s3",
+  "machine": "spinner",
+  "priority": 3,
+  "timeout": 28800,
+  "mem_gb": 6,
+  "note": "SWEEP amendment 17:10: 25 cells for every sweep row | split by seed 2026-09-04 22:30; seed 3",
+  "cmd": ".venv/bin/python experiments/run_candidate.py --npz sweep_42739 --seeds 1 --seed-start 3 --folds 5 --max-n 100000 --out results/cand/sweep_42739.s3.csv",
+  "matrices": [
+    "sweep_42739"
+  ],
+  "outputs": [
+    "results/cand/sweep_42739.s3.csv"
+  ],
+  "predicted": "paired median within 0.004 of the 10-cell value; outcome unchanged",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/T3-sweep_42739-25cells-s3.json",
+  "seconds": 5330.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T23:47:03",
+  "tail": "sweep_42739 HOLDOUT n=100,000 prev=0.3432\n      family_cv chose ('exact', 100)\n    seed 3 fold 0: mean_imp 0.6083 mean_ind 0.6322 mask_int 0.6322 histgb_n 0.8400 pattern_ 0.6240 ours 0.6212 ours_pro 0.6212 exact_su 0.6669 exact_cv 0.6719 family_c 0.6719  [1061s]\n      family_cv chose ('exact', 100)\n    seed 3 fold 1: mean_imp 0.6039 mean_ind 0.6312 mask_int 0.6312 histgb_n 0.8333 pattern_ 0.6205 ours 0.6182 ours_pro 0.6172 exact_su 0.6614 exact_cv 0.6706 family_c 0.6706  [2109s]\n      family_cv chose ('exact', 100)\n    seed 3 fold 2: mean_imp 0.6030 mean_ind 0.6252 mask_int 0.6251 histgb_n 0.8392 pattern_ 0.6204 ours 0.6180 ours_pro 0.6180 exact_su 0.6573 exact_cv 0.6640 family_c 0.6640  [3153s]\n      family_cv chose ('exact', 100)\n    seed 3 fold 3: mean_imp 0.5976 mean_ind 0.6225 mask_int 0.6224 histgb_n 0.8370 pattern_ 0.6144 ours 0.6112 ours_pro 0.6107 exact_su 0.6636 exact_cv 0.6699 family_c 0.6699  [4221s]\n      family_cv chose ('exact', 100)\n    seed 3 fold 4: mean_imp 0.5951 mean_ind 0.6213 mask_int 0.6213 histgb_n 0.8362 pattern_ 0.6088 ours 0.6067 ours_pro 0.6063 exact_su 0.6551 exact_cv 0.6644 family_c 0.6644  [5271s]"
+}

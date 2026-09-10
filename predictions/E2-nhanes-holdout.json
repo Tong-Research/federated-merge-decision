@@ -1,0 +1,22 @@
+{
+  "id": "E2-nhanes-holdout",
+  "machine": "orca",
+  "priority": 1,
+  "timeout": 14400,
+  "mem_gb": 6,
+  "note": "SHOWCASE E: NHANES holdout, flagged",
+  "cmd": ".venv/bin/python experiments/run_candidate.py --npz cand_nhanes --seeds 3 --folds 5",
+  "matrices": [
+    "cand_nhanes"
+  ],
+  "outputs": [
+    "results/cand/cand_nhanes.csv"
+  ],
+  "predicted": "family_cv >= imputation + 0.002 with excess; vs indicator uncertain (bar 0.005); published within [-0.02, +0.06] of imputation; tree >= family + 0.01",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/E2-nhanes-holdout.json",
+  "seconds": 4453.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T18:04:26",
+  "tail": "cand_nhanes HOLDOUT n=14,715 prev=0.0725\n      family_cv chose ('support', 0)\n    seed 0 fold 0: mean_imp 0.4756 mean_ind 0.5644 mask_int 0.5647 histgb_n 0.5798 pattern_ 0.4927 ours 0.4909 ours_pro 0.4933 exact_su 0.3476 exact_cv 0.3505 family_c 0.4927  [287s]\n      family_cv chose ('support', 0)\n    seed 0 fold 1: mean_imp 0.4514 mean_ind 0.5465 mask_int 0.5455 histgb_n 0.5682 pattern_ 0.4707 ours 0.4694 ours_pro 0.4707 exact_su 0.3708 exact_cv 0.3739 family_c 0.4707  [590s]\n      family_cv chose ('support', 0)\n    seed 0 fold 2: mean_imp 0.4264 mean_ind 0.5174 mask_int 0.5171 histgb_n 0.5055 pattern_ 0.4254 ours 0.4244 ours_pro 0.4239 exact_su 0.3569 exact_cv 0.3569 family_c 0.4254  [887s]\n      family_cv chose ('support', 0)\n    seed 0 fold 3: mean_imp 0.4933 mean_ind 0.5766 mask_int 0.5770 histgb_n 0.6049 pattern_ 0.5339 ours 0.5300 ours_pro 0.5318 exact_su 0.3917 exact_cv 0.3895 family_c 0.5339  [1185s]\n      family_cv chose ('support', 0)\n    seed 0 fold 4: mean_imp 0.4483 mean_ind 0.5990 mask_int 0.5960 histgb_n 0.5798 pattern_ 0.5015 ours 0.5010 ours_pro 0.5005 exact_su 0.3820 exact_cv 0.3850 family_c 0.5015  [1484s]\n      family_cv chose ('support', 0)\n    seed 1 fold 0: mean_imp 0.4447 mean_ind 0.5678 mask_int 0.5672 histgb_n 0.5755 pattern_ 0.4665 ours 0.4652 ours_pro 0.4541 exact_su 0.3879 exact_cv 0.3874 family_c 0.4665  [1783s]\n      family_cv chose ('support', 0)\n    seed 1 fold 1: mean_imp 0.4235 mean_ind 0.5436 mask_int 0.5437 histgb_n 0.5520 pattern_ 0.4718 ours 0.4652 ours_pro 0.4686 exact_su 0.3410 exact_cv 0.3462 family_c 0.4718  [2078s]\n      family_cv chose ('support', 0)\n    seed 1 fold 2: mean_imp 0.4881 mean_ind 0.5594 mask_int 0.5599 histgb_n 0.5484 pattern_ 0.5113 ours 0.5093 ours_pro 0.5098 exact_su 0.3537 exact_cv 0.3528 family_c 0.5113  [2378s]\n      family_cv chose ('support', 10)\n    seed 1 fold 3: mean_imp 0.4936 mean_ind 0.5692 mask_int 0.5737 histgb_n 0.5883 pattern_ 0.4925 ours 0.4955 ours_pro 0.4960 exact_su 0.3457 exact_cv 0.3500 family_c 0.4925  [2665s]\n      family_cv chose ('support', 10)\n    seed 1 fold 4: mean_imp 0.4679 mean_ind 0.5669 mask_int 0.5659 histgb_n 0.5736 pattern_ 0.4874 ours 0.4862 ours_pro 0.4883 exact_su 0.3700 exact_cv 0.3792 family_c 0.4874  [2956s]\n      family_cv chose ('support', 0)\n    seed 2 fold 0: mean_imp 0.4512 mean_ind 0.5626 mask_int 0.5635 histgb_n 0.5554 pattern_ 0.4797 ours 0.4800 ours_pro 0.4794 exact_su 0.3381 exact_cv 0.3425 family_c 0.4797  [3247s]\n      family_cv chose ('support', 0)\n    seed 2 fold 1: mean_imp 0.4367 mean_ind 0.5195 mask_int 0.5183 histgb_n 0.5266 pattern_ 0.4876 ours 0.4853 ours_pro 0.4868 exact_su 0.3170 exact_cv 0.3170 family_c 0.4876  [3545s]\n      family_cv chose ('support', 100)\n    seed 2 fold 2: mean_imp 0.4452 mean_ind 0.5707 mask_int 0.5690 histgb_n 0.6284 pattern_ 0.4620 ours 0.4584 ours_pro 0.4597 exact_su 0.4117 exact_cv 0.4103 family_c 0.4618  [3843s]\n      family_cv chose ('support', 100)\n    seed 2 fold 3: mean_imp 0.4501 mean_ind 0.5531 mask_int 0.5527 histgb_n 0.5423 pattern_ 0.4657 ours 0.4622 ours_pro 0.4613 exact_su 0.3950 exact_cv 0.3894 family_c 0.4655  [4137s]\n      family_cv chose ('support', 0)\n    seed 2 fold 4: mean_imp 0.4769 mean_ind 0.5682 mask_int 0.5675 histgb_n 0.5623 pattern_ 0.5237 ours 0.5242 ours_pro 0.5245 exact_su 0.3746 exact_cv 0.3777 family_c 0.5237  [4430s]"
+}

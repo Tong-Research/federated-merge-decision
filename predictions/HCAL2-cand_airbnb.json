@@ -1,0 +1,21 @@
+{
+  "id": "HCAL2-cand_airbnb",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "cand_airbnb"
+  ],
+  "timeout": 28800,
+  "note": "HCAL post-hoc comparator (referee 5): switch_cv = global vs kappa=0 Platt by inner CV; other arms must reproduce results/hcal bit-for-bit",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset cand_airbnb --slice holdout --switch --out results/hcal2/cand_airbnb.csv",
+  "outputs": [
+    "results/hcal2/cand_airbnb.csv"
+  ],
+  "predicted": "Post hoc, not registered. If switch_cv matches hier_cv within 0.001 AUPRC and 0.001 log-loss on the four datasets where kappa=0 is harmful (MIMIC regimes, MIMIC first stays, ACS, NHANES), the 'safety' is the inner CV choosing global recalibration and the hierarchy gets no credit for it; the paper must say so. If hier_cv is below switch_cv in log-loss on those four (it can sit between global and per-pattern where switch_cv cannot), the hierarchy does something the switch cannot. Sanity: tree/global/pattern_k0/hier_cv rows must equal results/hcal exactly.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL2-cand_airbnb.json",
+  "seconds": 84.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T23:50:34",
+  "tail": "cand_airbnb holdout: 60000 rows x 29 cols, prevalence 0.499\n  seed 0 fold 0: tree=0.9243 global=0.9243 pattern_k0=0.9243 hier_cv=0.9248 switch_cv=0.9243 kappa=10 [5s]\n  seed 0 fold 1: tree=0.9258 global=0.9258 pattern_k0=0.9260 hier_cv=0.9262 switch_cv=0.9258 kappa=10 [9s]\n  seed 0 fold 2: tree=0.9272 global=0.9272 pattern_k0=0.9272 hier_cv=0.9271 switch_cv=0.9272 kappa=10 [14s]\n  seed 0 fold 3: tree=0.9282 global=0.9282 pattern_k0=0.9282 hier_cv=0.9284 switch_cv=0.9282 kappa=10 [19s]\n  seed 0 fold 4: tree=0.9289 global=0.9289 pattern_k0=0.9293 hier_cv=0.9292 switch_cv=0.9293 kappa=10 [23s]\n  seed 1 fold 0: tree=0.9264 global=0.9264 pattern_k0=0.9266 hier_cv=0.9270 switch_cv=0.9266 kappa=10 [28s]\n  seed 1 fold 1: tree=0.9288 global=0.9288 pattern_k0=0.9290 hier_cv=0.9291 switch_cv=0.9290 kappa=10 [33s]\n  seed 1 fold 2: tree=0.9220 global=0.9220 pattern_k0=0.9222 hier_cv=0.9221 switch_cv=0.9222 kappa=10 [38s]\n  seed 1 fold 3: tree=0.9288 global=0.9288 pattern_k0=0.9289 hier_cv=0.9290 switch_cv=0.9288 kappa=10 [42s]\n  seed 1 fold 4: tree=0.9285 global=0.9285 pattern_k0=0.9288 hier_cv=0.9288 switch_cv=0.9285 kappa=10 [47s]\n  seed 2 fold 0: tree=0.9273 global=0.9273 pattern_k0=0.9278 hier_cv=0.9279 switch_cv=0.9278 kappa=10 [52s]\n  seed 2 fold 1: tree=0.9251 global=0.9251 pattern_k0=0.9254 hier_cv=0.9255 switch_cv=0.9254 kappa=10 [56s]\n  seed 2 fold 2: tree=0.9268 global=0.9268 pattern_k0=0.9264 hier_cv=0.9270 switch_cv=0.9264 kappa=10 [61s]\n  seed 2 fold 3: tree=0.9289 global=0.9289 pattern_k0=0.9292 hier_cv=0.9291 switch_cv=0.9292 kappa=10 [66s]\n  seed 2 fold 4: tree=0.9271 global=0.9271 pattern_k0=0.9272 hier_cv=0.9274 switch_cv=0.9272 kappa=10 [70s]\nwrote results/hcal2/cand_airbnb.csv (75 rows)"
+}

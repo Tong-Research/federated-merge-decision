@@ -1,0 +1,20 @@
+{
+  "id": "09-bias-variance-acs",
+  "machine": "spinner",
+  "priority": 5,
+  "note": "is 'one partner is worst' the same bias-variance mechanism outside medicine?",
+  "cmd": ".venv/bin/python experiments/bias_variance.py --matrix acs_d10 --seeds 3 --out results/bias_variance_acs.csv",
+  "matrices": [
+    "acs_d10"
+  ],
+  "outputs": [
+    "results/bias_variance_acs.csv"
+  ],
+  "predicted": "bias^2 worst at k=1 and falling in k, variance falling monotonically -- the one prediction of four that survived on clinical data",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/09-bias-variance-acs.json",
+  "seconds": 49.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:24:54",
+  "tail": "  acs_d10: 27\n  acs_d10: 28\n  acs_d10: 29\n  acs_d10: 30\n  acs_d10: 31\n  acs_d10: 32\n  acs_d10: 33\n  acs_d10: 34\n  acs_d10: 35\n  acs_d10: 36\n  acs_d10: 37\n  acs_d10: 38\n  acs_d10: 39\n  acs_d10: 40\n  acs_d10: 41\n  acs_d10: 42\n  acs_d10: 44\n  acs_d10: 45\n  acs_d10: 46\n  acs_d10: 47\n  acs_d10: 48\n  acs_d10: 49\n  acs_d10: 50\n  acs_d10: 51\n  acs_d10: 53\n  acs_d10: 54\n  acs_d10: 55\n  acs_d10: 56\n  acs_d10: 72\n\n765 (site, seed, k) cells from 51 target sites, 24 subsample draws each\n\n partners     bias^2   variance      total    AUPRC\n        0     0.0268     0.2772     0.3040   0.6983\n        1     0.2756     0.1607     0.4362   0.7149\n        2     0.3576     0.0972     0.4548   0.7175\n        3     0.3917     0.0706     0.4623   0.7188\n        4     0.4084     0.0553     0.4638   0.7201\n\nrelative to going solo (k=0):\n  k=1: bias^2 x10.29   variance x 0.58\n  k=2: bias^2 x13.35   variance x 0.35\n  k=3: bias^2 x14.62   variance x 0.25\n  k=4: bias^2 x15.24   variance x 0.20\n\nsplit by target adequacy:\n  target EPV 0-5:\n    k=0  bias^2   0.1021  variance   0.7617  total   0.8638  AUPRC 0.6727\n    k=1  bias^2   1.0220  variance   0.2995  total   1.3214  AUPRC 0.7326\n    k=2  bias^2   1.1999  variance   0.1443  total   1.3442  AUPRC 0.7389\n    k=3  bias^2   1.2479  variance   0.0917  total   1.3396  AUPRC 0.7423\n    k=4  bias^2   1.2608  variance   0.0652  total   1.3260  AUPRC 0.7468\n  target EPV 5-999:\n    k=0  bias^2   0.0107  variance   0.1734  total   0.1840  AUPRC 0.7038\n    k=1  bias^2   0.1156  variance   0.1309  total   0.2466  AUPRC 0.7111\n    k=2  bias^2   0.1771  variance   0.0871  total   0.2642  AUPRC 0.7129\n    k=3  bias^2   0.2082  variance   0.0661  total   0.2743  AUPRC 0.7138\n    k=4  bias^2   0.2258  variance   0.0532  total   0.2790  AUPRC 0.7144\n\nwrote results/bias_variance_acs.csv"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "T1-tune-tree-prostate",
+  "machine": "pilot",
+  "priority": 5,
+  "timeout": 14400,
+  "mem_gb": 6,
+  "note": "Referee 2026-09-03: tuned HistGB baseline, inner 3-fold grid, 3 seeds x 5 folds, primary 40k sample",
+  "cmd": ".venv/bin/python experiments/tune_tree.py --cohort prostate --seeds 3",
+  "matrices": [],
+  "outputs": [
+    "results/tune_tree_prostate.csv"
+  ],
+  "predicted": "tuned tree within +0.01 of the default on every PLCO cohort (paired median); no PLCO ordering changes: mean imputation stays ahead of every tree",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/T1-tune-tree-prostate.json",
+  "seconds": 2873.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T04:03:22",
+  "tail": "prostate seed 0 fold 0: default 0.1542 tuned 0.1705 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [200s]\n  prostate seed 0 fold 1: default 0.1536 tuned 0.1723 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 20} [396s]\n  prostate seed 0 fold 2: default 0.1522 tuned 0.1717 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [601s]\n  prostate seed 0 fold 3: default 0.1605 tuned 0.1580 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [803s]\n  prostate seed 0 fold 4: default 0.1485 tuned 0.1683 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [978s]\n  prostate seed 1 fold 0: default 0.1711 tuned 0.1774 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [1155s]\n  prostate seed 1 fold 1: default 0.1403 tuned 0.1577 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 20} [1329s]\n  prostate seed 1 fold 2: default 0.1595 tuned 0.1819 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [1504s]\n  prostate seed 1 fold 3: default 0.1407 tuned 0.1660 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [1681s]\n  prostate seed 1 fold 4: default 0.1501 tuned 0.1717 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [1878s]\n  prostate seed 2 fold 0: default 0.1500 tuned 0.1740 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [2077s]\n  prostate seed 2 fold 1: default 0.1539 tuned 0.1835 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [2278s]\n  prostate seed 2 fold 2: default 0.1497 tuned 0.1631 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [2475s]\n  prostate seed 2 fold 3: default 0.1588 tuned 0.1711 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 20} [2670s]\n  prostate seed 2 fold 4: default 0.1355 tuned 0.1641 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [2871s]"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "STEER-blend-cand_airbnb",
+  "machine": "trevally",
+  "priority": 3,
+  "matrices": [
+    "cand_airbnb"
+  ],
+  "timeout": 21600,
+  "note": "prereg/STEER.md blend",
+  "cmd": ".venv/bin/python experiments/steer_probes.py blend --dataset cand_airbnb",
+  "outputs": [
+    "results/steer/blend_cand_airbnb.csv"
+  ],
+  "predicted": "blend_cv or hier_on_tree_logit >= tree + 0.003 on >=4/8, never below by >0.003; kill: no combination clears on >2",
+  "reaped": "claim untouched for 15 min on trevally; runner presumed dead",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/STEER-blend-cand_airbnb.json",
+  "seconds": 925.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-05T02:13:26",
+  "tail": "fold 0: histgb_native=0.9392 family_cv=0.8868 blend50=0.9273 blend_cv=0.9392 stack_tree_on_hier=0.9369 hier_on_tree_logit=0.9396 w=1.0 [101s]\n  fold 1: histgb_native=0.9336 family_cv=0.8827 blend50=0.9217 blend_cv=0.9336 stack_tree_on_hier=0.9330 hier_on_tree_logit=0.9338 w=1.0 [203s]\n  fold 2: histgb_native=0.9382 family_cv=0.8899 blend50=0.9273 blend_cv=0.9382 stack_tree_on_hier=0.9380 hier_on_tree_logit=0.9388 w=1.0 [304s]\nwrote /home/tong/phd/papers/paper-plco-hypergraph/results/steer/blend_cand_airbnb.csv (18 rows)"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "X-mimic4-large_complement",
+  "machine": "pilot",
+  "priority": 1,
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "timeout": 21600,
+  "note": "C1b: size+complementarity combined on mimic4_sites.",
+  "cmd": ".venv/bin/python experiments/partner_formation.py --matrix mimic4_sites --strategies large_complement --seeds 5 --out results/pf_c1_mimic4_sites_large_complement.csv",
+  "outputs": [
+    "results/pf_c1_mimic4_sites_large_complement.csv"
+  ],
+  "predicted": "C1 measured the two partner signals separately on eICU: schema_complement beats random by +48% (0.0351 vs 0.0236) and its mirror schema_similar LOSES 14%, so complementarity is a real directional signal, not 'selecting on schema at all'. size_largest beats random by +74% (0.0412), so size is the stronger single signal. R86 measured the two as ORTHOGONAL: rho(schema overlap, n_target) = -0.024 and rho(overlap, EPV) = -0.036. PREDICTION: large_complement -- the most complementary partners WITHIN a generous pool of the largest -- beats size_largest on eICU, because it adds an orthogonal signal to the stronger one rather than trading one for the other. FALSIFIABLE: if large_complement merely matches size_largest, then size subsumes complementarity at selection time despite their orthogonality in the decision table, and the complementarity axis is descriptive rather than actionable -- which sends the plan to the C2 estimator (coordinate-wise weighting) or ends it. If it is WORSE than size_largest, the pool restriction is costing more than the ordering gains, which would show as fewer decisions rather than worse ones. NEGATIVE CONTROL: on mimic4_sites, where R86's gradient reverses because the sites are care units inside one hospital, large_complement should be no better than size_largest.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/X-mimic4-large_complement.json",
+  "seconds": 17.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T19:07:09",
+  "tail": "mimic4_sites: 66989 records x 42 features, 9 sites, prevalence 0.110\n  mimic4_sites / large_complement    495 decisions  helped 0.234  mean benefit -0.0212\nwrote results/pf_c1_mimic4_sites_large_complement.csv (495 rows)"
+}

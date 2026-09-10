@@ -1,0 +1,21 @@
+{
+  "id": "DL-eicu_d8",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "eicu_d8"
+  ],
+  "timeout": 28800,
+  "note": "Dimension ladder: eicu_d8 -- adequacy varied by feature count at fixed data.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix eicu_d8 --seeds 5 --out results/site_rules_eicu_d8.csv",
+  "outputs": [
+    "results/site_rules_eicu_d8.csv"
+  ],
+  "predicted": "Section 4's central axis is events per variable. Every test of it so far varies EPV by changing the SAMPLE SIZE -- capping records per site -- which moves the amount of data and the parameter count together, so EPV and n are confounded in every result the paper has. R97 varied n from median EPV 21.7 to 82.1 and found no harm at any level, which is itself evidence that the axis is not doing what the paper assumes. The eICU dimension ladder is the orthogonal lever and it is already built: eicu_d8/d16/d24/d42 are the SAME 95,197 records in the SAME 100 sites with the same 68 median events per site, differing only in feature count, giving median EPV 8.50 / 4.25 / 2.83 / 1.62 -- a 5.2x sweep with the data held exactly fixed. PREDICTION: mean merge benefit rises monotonically as d rises (EPV falls), because starved sites gain most, and the helped rate at d=42 exceeds that at d=8 by at least 10 percentage points. That is what section 4 asserts, tested for the first time without the sample-size confound. WHAT WOULD MATTER, AND IT IS THE REASON TO RUN THIS: if benefit does NOT track EPV when EPV is moved by d alone, then EPV is a proxy for sample size rather than an adequacy measure, and section 4's parameterisation is wrong even though its correlations are real. WITHDRAWAL CONDITION: a non-monotone or flat relationship across the four rungs means the paper must re-state its axis as n rather than EPV, or explain why the two levers differ.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/DL-eicu_d8.json",
+  "seconds": 29.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T13:19:47",
+  "tail": "eicu_d8: 95197 records x 8 features, 100 sites, prevalence 0.090\neicu_d8: 5980 decisions\n\n5980 real merge decisions across 100 target sites; merging helped in 55%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.121   5.1e-21     0.487  0.546 lower\u2192merge\nn_target                          -0.141   5.1e-28     0.489  0.546 lower\u2192merge\nn_min                             -0.058   6.5e-06     0.546  0.546 lower\u2192merge\nn_partner_total                   +0.019   1.4e-01     0.546  0.546 higher\u2192merge\nratio_partner_to_target           +0.100   8.5e-15     0.534  0.546 higher\u2192merge\nn_partners                        +0.012   3.6e-01     0.546  0.546 higher\u2192merge\nschema_jaccard                      +nan       nan     0.546  0.546 higher\u2192merge\nq_median                          +0.024   6.1e-02     0.541  0.546 higher\u2192merge\ni2_median                         +0.006   6.5e-01     0.546  0.546 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  eicu_d8         54.6%  of 5980 decisions\n\nwrote results/site_rules_eicu_d8.csv"
+}

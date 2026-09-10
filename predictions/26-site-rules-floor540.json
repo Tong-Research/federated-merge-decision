@@ -1,0 +1,21 @@
+{
+  "id": "26-site-rules-floor540",
+  "machine": "dugong",
+  "priority": 3,
+  "note": "the rule on Yang et al.'s cohort convention, for the sensitivity table",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix eicu_floor540 --seeds 3 --out results/site_rules_floor540.csv",
+  "matrices": [
+    "eicu_floor540"
+  ],
+  "outputs": [
+    "results/site_rules_floor540.csv",
+    "results/site_rules_floor540_rules.csv"
+  ],
+  "predicted": "lower helped-rate than eICU-at-300's 64.6%, because the surviving hospitals are the larger ones that benefit least",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/26-site-rules-floor540.json",
+  "seconds": 91.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:20:25",
+  "tail": "eicu_floor540: 80055 records x 42 features, 64 sites, prevalence 0.091\neicu_floor540: 2295 decisions\n\n2295 real merge decisions across 64 target sites; merging helped in 66%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.124   2.7e-09     0.641  0.660 lower\u2192merge\nn_target                          -0.158   2.3e-14     0.647  0.660 lower\u2192merge\nn_min                             -0.036   8.4e-02     0.660  0.660 lower\u2192merge\nn_partner_total                   +0.113   5.1e-08     0.651  0.660 higher\u2192merge\nratio_partner_to_target           +0.183   1.2e-18     0.653  0.660 higher\u2192merge\nn_partners                        +0.093   7.6e-06     0.660  0.660 higher\u2192merge\nschema_jaccard                    -0.087   2.8e-05     0.641  0.660 lower\u2192merge\nq_median                          +0.028   1.7e-01     0.648  0.660 higher\u2192merge\ni2_median                         +0.006   7.6e-01     0.629  0.660 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  eicu_floor540   66.0%  of 2295 decisions\n\nwrote results/site_rules_floor540.csv"
+}

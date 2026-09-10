@@ -1,0 +1,21 @@
+{
+  "id": "FM1-zip3",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "fm_ct1_zip3"
+  ],
+  "timeout": 21600,
+  "note": "Freddie Mac zip3, 2500 rec/site AND 25 sites, draw seed 1.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix fm_ct1_zip3 --seeds 5 --out results/site_rules_fm_ct1_zip3.csv",
+  "outputs": [
+    "results/site_rules_fm_ct1_zip3.csv"
+  ],
+  "predicted": "DOING.md 2a, the top item: the paper's safety argument rests on six harmful pools of which three are ACS variants, and R82's economic-vs-geographic observation (occupation and industry harm; state, PUMA and education help) rests on ACS alone. Freddie Mac supplies an independent population with the same contrast: SellerName is economic (which institution originated the loan) and propertystate/zip2/zip3/msa are geographic. Every partition is now capped to 2,500 records per site AND 25 sites, so site size and partner-pool size are both controlled -- the two confounds R82 and R84 had to fix in sequence. Prevalence spans only 0.027-0.034 here against ACS's 0.269-0.396, so the residual confound is far smaller. PREDICTION, from ACS: sellername's mean benefit is BELOW all four geographic partitions at matched size and count. NOTE THE CONTRARY EVIDENCE ALREADY ON DISK, recorded before running so this cannot be reinterpreted afterwards: at natural sizes sellername gives +0.0017 (53.2% helped, median site 29,290) while propertystate gives -0.0000 (46.6% helped, median site 24,952) -- the economic partition is BETTER at comparable size, which is the opposite of the ACS ordering. So this test is expected to REFUTE rather than confirm, and it is being run for that reason. WITHDRAWAL CONDITION, per DOING.md 2a: if sellername is not below the geographic partitions at matched size and count, the economic/geographic pattern is ACS-specific and is DELETED from section 11 rather than promoted to a mechanism. It is not rescued by reclassifying which axis counts as economic. Three seeds because drawing 25 sites is a random operation and R84 showed a single draw is one sample, not a result.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/FM1-zip3.json",
+  "seconds": 15.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T21:32:14",
+  "tail": "fm_ct1_zip3: 62500 records x 16 features, 25 sites, prevalence 0.027\nfm_ct1_zip3: 1485 decisions\n\n1485 real merge decisions across 25 target sites; merging helped in 62%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.187   3.3e-13     0.642  0.624 lower\u2192merge\nn_target                            +nan       nan     0.624  0.624 higher\u2192merge\nn_min                               +nan       nan     0.624  0.624 higher\u2192merge\nn_partner_total                   -0.011   6.6e-01     0.624  0.624 lower\u2192merge\nratio_partner_to_target           -0.011   6.6e-01     0.624  0.624 lower\u2192merge\nn_partners                        -0.011   6.6e-01     0.624  0.624 lower\u2192merge\nschema_jaccard                      +nan       nan     0.624  0.624 higher\u2192merge\nq_median                          -0.006   8.3e-01     0.609  0.624 lower\u2192merge\ni2_median                         +0.008   7.4e-01     0.614  0.624 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  fm_ct1_zip3     62.4%  of 1485 decisions\n\nwrote results/site_rules_fm_ct1_zip3.csv"
+}

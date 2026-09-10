@@ -1,0 +1,21 @@
+{
+  "id": "HCAL-cand_higgs",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "cand_higgs"
+  ],
+  "timeout": 28800,
+  "note": "HCAL holdout, prereg/HCAL.md",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset cand_higgs --slice holdout --out results/hcal/cand_higgs.csv",
+  "outputs": [
+    "results/hcal/cand_higgs.csv"
+  ],
+  "predicted": "prereg/HCAL.md P1 never worse (median AUPRC delta >= -0.002); P2 log-loss below tree p<0.05 on 12/17; P3 hier log-loss <= kappa=0 everywhere and kappa=0 harmful (>0.005) on 3+ sets; P4 AUPRC above tree p<0.05 on 6/17, road_safety > +0.003, never > +0.02; P5 global Platt delta exactly 0. Withdrawal: (a) P1 fails twice -> not safe; (c) kappa=0 as good on 3+ -> prior-art Mondrian recalibration, no hypergraph claim.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL-cand_higgs.json",
+  "seconds": 113.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T21:54:30",
+  "tail": "cand_higgs holdout: 60000 rows x 30 cols, prevalence 0.342\n  seed 0 fold 0: tree=0.8366 global=0.8366 pattern_k0=0.8372 hier_cv=0.8372 kappa=10 [4s]\n  seed 0 fold 1: tree=0.8432 global=0.8432 pattern_k0=0.8430 hier_cv=0.8431 kappa=10 [8s]\n  seed 0 fold 2: tree=0.8349 global=0.8349 pattern_k0=0.8350 hier_cv=0.8349 kappa=10 [12s]\n  seed 0 fold 3: tree=0.8448 global=0.8448 pattern_k0=0.8451 hier_cv=0.8451 kappa=10 [16s]\n  seed 0 fold 4: tree=0.8365 global=0.8365 pattern_k0=0.8376 hier_cv=0.8374 kappa=10 [21s]\n  seed 1 fold 0: tree=0.8344 global=0.8344 pattern_k0=0.8347 hier_cv=0.8347 kappa=10 [25s]\n  seed 1 fold 1: tree=0.8342 global=0.8342 pattern_k0=0.8346 hier_cv=0.8344 kappa=10 [29s]\n  seed 1 fold 2: tree=0.8400 global=0.8400 pattern_k0=0.8404 hier_cv=0.8403 kappa=10 [33s]\n  seed 1 fold 3: tree=0.8454 global=0.8454 pattern_k0=0.8466 hier_cv=0.8454 kappa=10000 [37s]\n  seed 1 fold 4: tree=0.8391 global=0.8391 pattern_k0=0.8395 hier_cv=0.8395 kappa=10 [41s]\n  seed 2 fold 0: tree=0.8394 global=0.8394 pattern_k0=0.8404 hier_cv=0.8402 kappa=10 [45s]\n  seed 2 fold 1: tree=0.8376 global=0.8376 pattern_k0=0.8382 hier_cv=0.8381 kappa=10 [49s]\n  seed 2 fold 2: tree=0.8385 global=0.8385 pattern_k0=0.8386 hier_cv=0.8385 kappa=10 [53s]\n  seed 2 fold 3: tree=0.8459 global=0.8459 pattern_k0=0.8465 hier_cv=0.8465 kappa=10 [57s]\n  seed 2 fold 4: tree=0.8341 global=0.8341 pattern_k0=0.8342 hier_cv=0.8341 kappa=10 [62s]\nwrote results/hcal/cand_higgs.csv (60 rows)"
+}

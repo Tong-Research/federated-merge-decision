@@ -1,0 +1,21 @@
+{
+  "id": "HCAL-cand_porto",
+  "machine": "orca",
+  "priority": 1,
+  "matrices": [
+    "cand_porto"
+  ],
+  "timeout": 28800,
+  "note": "HCAL holdout, prereg/HCAL.md",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset cand_porto --slice holdout --out results/hcal/cand_porto.csv",
+  "outputs": [
+    "results/hcal/cand_porto.csv"
+  ],
+  "predicted": "prereg/HCAL.md P1 never worse (median AUPRC delta >= -0.002); P2 log-loss below tree p<0.05 on 12/17; P3 hier log-loss <= kappa=0 everywhere and kappa=0 harmful (>0.005) on 3+ sets; P4 AUPRC above tree p<0.05 on 6/17, road_safety > +0.003, never > +0.02; P5 global Platt delta exactly 0. Withdrawal: (a) P1 fails twice -> not safe; (c) kappa=0 as good on 3+ -> prior-art Mondrian recalibration, no hypergraph claim.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL-cand_porto.json",
+  "seconds": 155.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T21:56:59",
+  "tail": "cand_porto holdout: 60000 rows x 57 cols, prevalence 0.036\n  seed 0 fold 0: tree=0.0671 global=0.0671 pattern_k0=0.0647 hier_cv=0.0672 kappa=10000 [10s]\n  seed 0 fold 1: tree=0.0609 global=0.0609 pattern_k0=0.0552 hier_cv=0.0608 kappa=1000 [19s]\n  seed 0 fold 2: tree=0.0585 global=0.0585 pattern_k0=0.0561 hier_cv=0.0586 kappa=1000 [29s]\n  seed 0 fold 3: tree=0.0699 global=0.0699 pattern_k0=0.0714 hier_cv=0.0699 kappa=1000 [38s]\n  seed 0 fold 4: tree=0.0536 global=0.0536 pattern_k0=0.0528 hier_cv=0.0536 kappa=1000 [48s]\n  seed 1 fold 0: tree=0.0629 global=0.0629 pattern_k0=0.0599 hier_cv=0.0630 kappa=10000 [57s]\n  seed 1 fold 1: tree=0.0654 global=0.0654 pattern_k0=0.0599 hier_cv=0.0655 kappa=10000 [67s]\n  seed 1 fold 2: tree=0.0603 global=0.0603 pattern_k0=0.0574 hier_cv=0.0602 kappa=10000 [76s]\n  seed 1 fold 3: tree=0.0617 global=0.0617 pattern_k0=0.0583 hier_cv=0.0619 kappa=10000 [85s]\n  seed 1 fold 4: tree=0.0665 global=0.0665 pattern_k0=0.0663 hier_cv=0.0659 kappa=1000 [95s]\n  seed 2 fold 0: tree=0.0651 global=0.0651 pattern_k0=0.0620 hier_cv=0.0655 kappa=1000 [104s]\n  seed 2 fold 1: tree=0.0605 global=0.0605 pattern_k0=0.0596 hier_cv=0.0606 kappa=1000 [114s]\n  seed 2 fold 2: tree=0.0648 global=0.0648 pattern_k0=0.0618 hier_cv=0.0652 kappa=1000 [123s]\n  seed 2 fold 3: tree=0.0589 global=0.0589 pattern_k0=0.0550 hier_cv=0.0587 kappa=1000 [133s]\n  seed 2 fold 4: tree=0.0588 global=0.0588 pattern_k0=0.0577 hier_cv=0.0585 kappa=1000 [142s]\nwrote results/hcal/cand_porto.csv (60 rows)"
+}

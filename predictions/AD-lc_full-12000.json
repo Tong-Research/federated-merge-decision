@@ -1,0 +1,21 @@
+{
+  "id": "AD-lc_full-12000",
+  "machine": "spinner",
+  "priority": 22,
+  "matrices": [
+    "lendingclub_full"
+  ],
+  "timeout": 28800,
+  "note": "Adequacy sweep: lc_full capped to 12000 rec/site, 15 sites -- pushing ABOVE the boundary to look for harm. [matrix name corrected: the cache holds lendingclub_full; lc_full is the results shorthand]",
+  "cmd": ".venv/bin/python experiments/cap_matrix.py --matrix lendingclub_full --out ad_lendingclub_full_12000 --cap 12000 --max-sites 15 --seed 0 && .venv/bin/python experiments/site_rules.py --matrix ad_lendingclub_full_12000 --seeds 5 --out results/site_rules_ad_lendingclub_full_12000.csv",
+  "outputs": [
+    "results/site_rules_ad_lendingclub_full_12000.csv"
+  ],
+  "predicted": "Section 11's open item, unchanged by R90: the safety argument rests on six harmful pools of which three are ACS variants, leaving MIMIC-IV and ACS TravelTime as the only independent evidence. R90 supplies the lever it also failed to use. Its scope condition is that carving -- and merging generally -- decides the marginal case, and BELOW the adequacy boundary there is no marginal case: at median EPV 3.04 every Freddie Mac carving helped ~63% of decisions regardless. So harm should be manufacturable on demand by capping a collection ABOVE the boundary rather than below it. These cap Freddie Mac and Lending Club to EPV ~25-40, far above the EPV-10 region, on partitions that helped everywhere at low adequacy. PREDICTION: mean benefit turns NEGATIVE on at least one of these, giving section 11 an independent harmful collection that is neither ACS nor clinical. FALSIFIABLE AND INFORMATIVE EITHER WAY: if every pool still helps at EPV 40, then harm is not a function of adequacy alone and section 4's gradient needs a stated scope condition of its own -- which would be a bigger finding than the harmful pool.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/AD-lc_full-12000.json",
+  "seconds": 19.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T13:03:06",
+  "tail": "ad_lendingclub_full_12000: 180,000 rows x 21 features, 15 sites, prevalence 0.176\n  from lendingclub_full: 1,874,349 rows, 50 sites -> retained 9.6% of rows, 30.0% of sites\n  site sizes 12,000-12,000 (median 12,000)\n  CAPPED: report prevalence 0.176 beside the benefit -- it is the confound size-matching does not remove\nad_lendingclub_full_12000: 180000 records x 21 features, 15 sites, prevalence 0.176\nad_lendingclub_full_12000: 880 decisions\n\n880 real merge decisions across 15 target sites; merging helped in 67%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.048   1.5e-01     0.673  0.673 lower\u2192merge\nn_target                            +nan       nan     0.673  0.673 higher\u2192merge\nn_min                               +nan       nan     0.673  0.673 higher\u2192merge\nn_partner_total                   -0.052   1.2e-01     0.673  0.673 lower\u2192merge\nratio_partner_to_target           -0.052   1.2e-01     0.673  0.673 lower\u2192merge\nn_partners                        -0.052   1.2e-01     0.673  0.673 lower\u2192merge\nschema_jaccard                    +0.045   1.8e-01     0.673  0.673 higher\u2192merge\nq_median                          -0.030   3.8e-01     0.653  0.673 lower\u2192merge\ni2_median                         -0.006   8.5e-01     0.655  0.673 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  ad_lendingclub_full_12000  67.3%  of 880 decisions\n\nwrote results/site_rules_ad_lendingclub_full_12000.csv"
+}

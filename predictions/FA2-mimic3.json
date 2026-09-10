@@ -1,0 +1,21 @@
+{
+  "id": "FA2-mimic3",
+  "machine": "spinner",
+  "priority": 20,
+  "matrices": [
+    "mimic_sites_unit_x_system"
+  ],
+  "timeout": 43200,
+  "note": "SOTA extension: fedavg (lam=15) on mimic3, 5 seeds.",
+  "cmd": "MERGE_MODE=fedavg PFEDME_LAMBDA=15 FEDAVG_ROUNDS=30 .venv/bin/python experiments/gate_baselines.py --matrix mimic_sites_unit_x_system --seeds 5 --out results/cut_fa2_mimic_sites_unit_x_system.csv",
+  "outputs": [
+    "results/cut_fa2_mimic_sites_unit_x_system.csv"
+  ],
+  "predicted": "Extends the aggregation-axis comparison from four above-floor pools to eight, queued 2026-08-24 01:00 when the queue drained and the machines would otherwise idle. Results 112 and 113 rest on four pools; these four add the above-floor pools the SOTA set was missing. All four added pools are ones where merging HELPS -- the two remaining harmful pools in the corpus (acs_ladder_5000, acs_ladder_10000) are both below the 0.002 attainable-gain floor, so no additional harmful evidence is available at any price. State that when reporting: the floor claim rests on two above-floor harmful pools and cannot be strengthened with the data we hold. PREDICTIONS. (1) Aggregation still does not matter: FedAvg, FedProx and SCAFFOLD stay within 0.002 AUPRC of each other on the merged model across all eight pools, as in Result 112. (2) pFedMe at lambda=1 beats adaptive shrinkage on these four, since all four are pools where merging helps and that is exactly where it won before -- eICU and Lending Club, by 10.3 and 13.1 share points. (3) Despite (2), adaptive shrinkage still leads on MEAN share across all eight, because pFedMe's two catastrophic pools (-94.0 and -89.7) outweigh four moderate wins. WITHDRAWAL: if (3) fails -- if pFedMe leads on mean share across eight pools -- then section 6's recommendation does not survive a fair comparison against a published personalisation method, and the paper must say so and reframe around the downside column alone rather than around mean performance.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/FA2-mimic3.json",
+  "seconds": 35.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-24T01:23:26",
+  "tail": "mimic_sites_unit_x_system: 42002 records x 42 features, 10 sites, prevalence 0.111\n\n  570 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.3312    +0.0000                0.0%\n  always_merge          0.3245    -0.0067              -57.7%\n  epv_gate              0.3286    -0.0026              -22.7%\n  gate_loso             0.3279    -0.0033              -28.9%\n  gate_bestcut          0.3312    +0.0000                0.0%\n  local_cv              0.3294    -0.0018              -15.4%\n  fix_025               0.3348    +0.0036               30.7%\n  fix_050               0.3355    +0.0043               36.7%\n  fix_075               0.3327    +0.0015               12.8%\n  blend                 0.3321    +0.0009                7.9%\n  blend_1se             0.3332    +0.0020               17.5%\n  blend_cv              0.3332    +0.0020               17.1%\n  blend_cw                 nan       +nan                nan%\n  ditto                    nan       +nan                nan%\n  oracle_binary         0.3389    +0.0077               66.8%\n  oracle_lambda         0.3428    +0.0116              100.0%\n  oracle_lambda_cw         nan       +nan                nan%\n  oracle_ditto             nan       +nan                nan%\n  oracle_extrap         0.3438    +0.0126              108.3%\n  oracle_rich           0.3438    +0.0126              108.3%\n  oracle_half           0.3555    +0.0242              209.2%\n  oracle_honest         0.3449    +0.0137              118.4%\n  blend_half            0.3422    +0.0110               94.7%\n  pfedme_personal          nan       +nan                nan%\n\n  LOSO cut: median 0.0, range 0.0-9.2   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.509\n  lambda optimal on test    : mean 0.447\n  correlation chosen vs optimal: +0.147\n\nwrote results/cut_fa2_mimic_sites_unit_x_system.csv (570 rows)"
+}

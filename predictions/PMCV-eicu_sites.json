@@ -1,0 +1,21 @@
+{
+  "id": "PMCV-eicu_sites",
+  "machine": "spinner",
+  "priority": 30,
+  "matrices": [
+    "eicu_sites"
+  ],
+  "timeout": 86400,
+  "note": "pfedme_cv (lambda on val) on eicu_sites, 5 seeds.",
+  "cmd": "MERGE_MODE=pfedme_cv PFEDME_LAMS=1,5,15,50 FEDAVG_ROUNDS=30 .venv/bin/python experiments/gate_baselines.py --matrix eicu_sites --seeds 5 --out results/cut_pmcv_eicu_sites.csv",
+  "outputs": [
+    "results/cut_pmcv_eicu_sites.csv"
+  ],
+  "predicted": "pfedme_cv: pFedMe with lambda selected on the inner validation split, the way Ditto sweeps DITTO_LAMS and adaptive shrinkage sweeps LAMBDAS. Queued 2026-08-24 10:15. WHY THIS EXISTS. Result 111 found pFedMe handicapped by a fixed lambda of 15 that made its personalisation vacuous, and the fix -- sweeping lambda across separate runs and reporting the best -- overcorrected: choosing across runs is selection with hindsight, which neither competitor gets. This arm chooses inside each decision, on validation, and the outer scoring call is then frozen at that value so it cannot re-select on the test rows. It costs four full federated trainings per decision because lambda changes the whole trajectory rather than a final proximal solve. PREDICTIONS. (1) pfedme_cv lands BETWEEN the fixed-lambda arms and the hindsight best: better than lambda=15, worse than the per-pool best of the sweep, because honest selection on a small validation split recovers some but not all of what hindsight gets. (2) It keeps pFedMe's shape from Result 113 -- competitive or ahead where merging helps, far behind where merging harms -- because lambda moves the floor and not the peak, and no swept value repaired the floor. (3) Adaptive shrinkage still leads on mean share across the eight above-floor pools. WITHDRAWAL: if pfedme_cv beats adaptive shrinkage on mean share above the floor, then section 6's recommendation loses to a published personalisation method under a fully symmetric comparison, and the paper must say so and reframe around the downside column alone. A 1-seed 6-round lendingclub probe gave blend 17.7% against pfedme_cv 33.3%, so this is a live possibility on the helping pools and the mean is what decides it.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/PMCV-eicu_sites.json",
+  "seconds": 210.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-24T15:45:19",
+  "tail": "eicu_sites: 95197 records x 42 features, 100 sites, prevalence 0.090\n\n  5,980 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.2624    +0.0000                0.0%\n  always_merge          0.2827    +0.0203               46.7%\n  epv_gate              0.2827    +0.0203               46.7%\n  gate_loso             0.2822    +0.0198               45.4%\n  gate_bestcut          0.2831    +0.0207               47.7%\n  local_cv              0.2759    +0.0135               31.1%\n  fix_025               0.2679    +0.0055               12.6%\n  fix_050               0.2757    +0.0133               30.7%\n  fix_075               0.2845    +0.0221               50.7%\n  blend                 0.2792    +0.0168               38.7%\n  blend_1se             0.2782    +0.0158               36.4%\n  blend_cv              0.2828    +0.0204               46.8%\n  blend_cw                 nan       +nan                nan%\n  ditto                    nan       +nan                nan%\n  oracle_binary         0.2973    +0.0349               80.2%\n  oracle_lambda         0.3059    +0.0435              100.0%\n  oracle_lambda_cw         nan       +nan                nan%\n  oracle_ditto             nan       +nan                nan%\n  oracle_extrap         0.3114    +0.0490              112.7%\n  oracle_rich           0.3114    +0.0490              112.7%\n  oracle_half           0.3434    +0.0810              186.2%\n  oracle_honest         0.3007    +0.0383               87.9%\n  blend_half            0.3039    +0.0415               95.3%\n  pfedme_personal       0.2832    +0.0208               47.9%\n\n  LOSO cut: median 3.9, range 2.8-8.4   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.725\n  lambda optimal on test    : mean 0.685\n  correlation chosen vs optimal: -0.025\n\nwrote results/cut_pmcv_eicu_sites.csv (5,980 rows)"
+}

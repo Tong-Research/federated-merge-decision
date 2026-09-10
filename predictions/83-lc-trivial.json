@@ -1,0 +1,23 @@
+{
+  "id": "83-lc-trivial",
+  "machine": "pilot",
+  "priority": 7,
+  "needs": [
+    "82-lc-rule"
+  ],
+  "note": "the standing audit on the new domain",
+  "cmd": ".venv/bin/python experiments/trivial_baseline.py results/site_rules_lendingclub.csv | tee results/trivial_lendingclub.log",
+  "inputs": [
+    "results/site_rules_lendingclub.csv"
+  ],
+  "outputs": [
+    "results/trivial_lendingclub.log"
+  ],
+  "predicted": "positive lift, unlike every single-collection pool tested so far",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/83-lc-trivial.json",
+  "seconds": 0.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:25:26",
+  "tail": "=== results/site_rules_lendingclub.csv \u2014 7680 decisions ===\n  always merge 0.613 | never merge 0.387 -> trivial baseline 0.613 (always merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        0.5   0.599   -0.013   WORSE than trivial\n  n_target                         60.0   0.603   -0.010   no better than trivial\n  n_min                            39.0   0.613   +0.000   no better than trivial\n  ratio_partner_to_target           0.2   0.606   -0.007   no better than trivial\n  i2_median                         0.1   0.603   -0.009   no better than trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample."
+}

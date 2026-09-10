@@ -1,0 +1,16 @@
+{
+  "id": "80-lendingclub-fetch",
+  "machine": "pilot",
+  "priority": 5,
+  "timeout": 3600,
+  "note": "Tier 3: a third domain whose site sizes vary naturally, which is the confound Result 55 exposed and ACS cannot resolve. Expected to FAIL -- no stable public mirror -- and the failure is the useful output: it tells us in the morning whether a manual download is needed rather than us assuming one is not.",
+  "cmd": "bash experiments/fetch_lendingclub.sh",
+  "outputs": [],
+  "predicted": "fails with exit 3 and a clear instruction. If it succeeds, the loader is the next job and a finance-domain replication is available.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/80-lendingclub-fetch.json",
+  "seconds": 5.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:00:23",
+  "tail": "trying https://resources.lendingclub.com/LoanStats3a.csv.zip\ndownloaded 9.2M"
+}

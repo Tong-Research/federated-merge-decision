@@ -1,0 +1,20 @@
+{
+  "id": "T1-tune-tree-colorectal",
+  "machine": "pilot",
+  "priority": 3,
+  "timeout": 14400,
+  "mem_gb": 6,
+  "note": "Referee 2026-09-03: tuned HistGB baseline, inner 3-fold grid, 3 seeds x 5 folds, primary 40k sample",
+  "cmd": ".venv/bin/python experiments/tune_tree.py --cohort colorectal --seeds 3",
+  "matrices": [],
+  "outputs": [
+    "results/tune_tree_colorectal.csv"
+  ],
+  "predicted": "tuned tree within +0.01 of the default on every PLCO cohort (paired median); no PLCO ordering changes: mean imputation stays ahead of every tree",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/T1-tune-tree-colorectal.json",
+  "seconds": 7450.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T02:02:42",
+  "tail": "colorectal seed 0 fold 0: default 0.1342 tuned 0.1645 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [191s]\n  colorectal seed 0 fold 1: default 0.1215 tuned 0.1296 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [439s]\n  colorectal seed 0 fold 2: default 0.1339 tuned 0.1526 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [768s]\n  colorectal seed 0 fold 3: default 0.1137 tuned 0.1316 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [1755s]\n  colorectal seed 0 fold 4: default 0.1360 tuned 0.1619 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [2219s]\n  colorectal seed 1 fold 0: default 0.1379 tuned 0.1602 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [2780s]\n  colorectal seed 1 fold 1: default 0.1124 tuned 0.1299 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [3248s]\n  colorectal seed 1 fold 2: default 0.1157 tuned 0.1407 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [3934s]\n  colorectal seed 1 fold 3: default 0.1131 tuned 0.1251 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [4583s]\n  colorectal seed 1 fold 4: default 0.1193 tuned 0.1559 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [5018s]\n  colorectal seed 2 fold 0: default 0.1132 tuned 0.1455 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [5447s]\n  colorectal seed 2 fold 1: default 0.1225 tuned 0.1543 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [5946s]\n  colorectal seed 2 fold 2: default 0.1276 tuned 0.1577 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [6439s]\n  colorectal seed 2 fold 3: default 0.1269 tuned 0.1252 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [7017s]\n  colorectal seed 2 fold 4: default 0.1179 tuned 0.1317 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [7445s]"
+}

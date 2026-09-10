@@ -1,0 +1,22 @@
+{
+  "id": "REPRO-colorectal",
+  "machine": "any",
+  "priority": 5,
+  "matrices": [],
+  "timeout": 43200,
+  "mem_gb": 3.0,
+  "note": "Determinism test. Queued 2026-08-25 17:05 in response to Result 124: FINGERPRINTS.md matched 15/15 and every match was circular, because the fingerprint had been computed from the file it was checking. No cell in this project has ever been computed twice, so determinism is believed rather than known. This re-runs colorectal/ours into a SEPARATE output file so the comparison has two independent sources. mean_impute is included because it costs 8.6s and will cross-check against BASE-colorectal's copy of the same method once that job reaches it.",
+  "cmd": "mkdir -p results/repro-colorectal && .venv/bin/python experiments/run_h1_h4.py --cohort colorectal --methods ours,mean_impute --out-dir results/repro-colorectal",
+  "outputs": [
+    "results/repro-colorectal/main.csv"
+  ],
+  "predicted": "PRE-REGISTERED 2026-08-25 17:05, before running. PREDICTION: colorectal/ours recomputes BIT-IDENTICALLY, sha12 e0cdca691a13, because every split and estimator is explicitly seeded. WITHDRAWAL CONDITION: (a) if the sha differs but max per-cell |diff| <= 0.002 -- the attainable-gain floor, this paper's own smallest reported effect -- then results are reproducible only to within that bound, the paper may not report a difference smaller than the observed max |diff|, and every such claim must be rechecked at the coarser precision. (b) if max per-cell |diff| > 0.002, the pipeline is not deterministic at the precision the paper's conclusions rest on, and NO number is reportable until the seed handling is fixed and all four cohorts re-run. (c) if the two runs disagree on which cells exist at all, that is a scheduling or resumability defect, not a numerical one, and must be diagnosed before either arm is scored. Scoring is per (seed, fold) cell and by sha over the whole block -- never on the cohort mean, which would hide two cells swapping values.",
+  "started_at": 1787674888.5295858,
+  "pid": 12561,
+  "pgid": 12561,
+  "exit_code": 0,
+  "seconds": 5474.1,
+  "missing_outputs": [],
+  "finished": "2026-08-26T00:52:42",
+  "tail": "[2026-08-25T23:21:29] fold parallelism: n_jobs=1 (mask_interaction=1)\n[2026-08-25T23:21:29] --methods: running only ['mean_impute', 'ours']; skipping kappa sweep and diagnostics\n[2026-08-25T23:21:29] === loading colorectal (feature_set=baseline) ===\n[2026-08-25T23:21:36] colorectal: n=40,000 (of 154,855) d=188 prev=3.87% feature_set=baseline\n[2026-08-26T00:52:08] done [main] colorectal/ours/baseline (10 seeds x 5 folds) in 5432.8s\n[2026-08-26T00:52:08] colorectal/ours: pre-specified kappa (median training-fold support, median lambda=0.5) -- median 1014.8 over 50 folds (range 975.0-1049.0)\n[2026-08-26T00:52:25] done [main] colorectal/mean_impute/baseline (10 seeds x 5 folds) in 16.8s\n[2026-08-26T00:52:25] === paired tests, within cohort, current feature_set only ===\n[2026-08-26T00:52:25] paired tests written: results/repro-colorectal/paired_colorectal_baseline.csv\n     method  median_diff        p_raw  n_pairs  n_dropped       p_holm     cohort feature_set\nmean_impute    -0.005451 1.619818e-07       50          0 1.619818e-07 colorectal    baseline\n[2026-08-26T00:52:25] === run complete in 90.9 min ===\n[2026-08-26T00:52:25] no failures"
+}

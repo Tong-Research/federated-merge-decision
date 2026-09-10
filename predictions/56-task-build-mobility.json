@@ -1,0 +1,15 @@
+{
+  "id": "56-task-build-mobility",
+  "machine": "pilot",
+  "priority": 4,
+  "note": "prevalence lever: ACSMobility on the same states",
+  "cmd": ".venv/bin/python experiments/acs_sites.py --task ACSMobility --per-state 0 --log-uniform 250 --out acs_span_mobility",
+  "outputs": [],
+  "predicted": "a different prevalence, so a different EPV at the same n",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/56-task-build-mobility.json",
+  "seconds": 55.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:42:07",
+  "tail": "ACSMobility: (142656, 21), 51 states, prevalence 0.730\n  minority events per state: 67-3623 (median 399)\n  EPV at d=21: 3.2-172.5 (median 19.0)\n    EPV 2-5: 4 states\n    EPV 5-10: 10 states\n    EPV 10-20: 13 states\n    EPV 20-999: 24 states"
+}

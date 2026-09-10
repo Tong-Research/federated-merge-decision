@@ -1,0 +1,21 @@
+{
+  "id": "U1-acscap-state",
+  "machine": "pilot",
+  "priority": 2,
+  "matrices": [
+    "acs_cap_state"
+  ],
+  "timeout": 36000,
+  "note": "ACS by state, every site capped to 800 records: carving vs size.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_cap_state --seeds 5 --out results/site_rules_acs_cap_state.csv",
+  "outputs": [
+    "results/site_rules_acs_cap_state.csv"
+  ],
+  "predicted": "The uncapped run found merging's SIGN flips across carvings of the same 1.66M people -- PUMA +0.0029 with 54% helped, industry -0.0080 with 33% -- and the EPV gradient flips too (+0.386 state, -0.164 PUMA). But median site size runs 562 to 15,343 across those partitions, so the result is equally consistent with size doing the work. The tell that it might be: the two size-matched partitions, state (15,343) and education (13,371), give nearly IDENTICAL mean benefit (-0.0032, -0.0028) while their gradients differ in sign. This run caps every site at exactly 800 records in all five partitions, so they differ only in which people are grouped together. PREDICTION: the mean benefits CONVERGE -- spread below 0.003 against the uncapped 0.011 -- while the gradients continue to differ, because size sets whether merging helps and carving sets the shape within a partition. That is a WEAKER claim than R75's and I expect it to win. If instead the mean benefits still differ widely at matched size, carving is causal for the level too and R75's strong form survives on a second population. CONFOUND NAMED: capping changes prevalence across partitions, 0.269 to 0.396, because different carvings retain different people. Rows, site size and prevalence cannot all be held fixed across different partitions at once.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/U1-acscap-state.json",
+  "seconds": 46.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T15:47:03",
+  "tail": "acs_cap_state: 40800 records x 10 features, 51 sites, prevalence 0.353\nacs_cap_state: 3050 decisions\n\n3050 real merge decisions across 51 target sites; merging helped in 62%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.043   1.7e-02     0.607  0.615 lower\u2192merge\nn_target                            +nan       nan     0.615  0.615 higher\u2192merge\nn_min                               +nan       nan     0.615  0.615 higher\u2192merge\nn_partner_total                   +0.082   5.7e-06     0.615  0.615 higher\u2192merge\nratio_partner_to_target           +0.082   5.7e-06     0.615  0.615 higher\u2192merge\nn_partners                        +0.082   5.7e-06     0.615  0.615 higher\u2192merge\nschema_jaccard                      +nan       nan     0.615  0.615 higher\u2192merge\nq_median                          +0.103   1.1e-08     0.604  0.615 higher\u2192merge\ni2_median                         +0.083   4.0e-06     0.590  0.615 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_cap_state   61.5%  of 3050 decisions\n\nwrote results/site_rules_acs_cap_state.csv"
+}

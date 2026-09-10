@@ -1,0 +1,21 @@
+{
+  "id": "HCAL-sweep_42093",
+  "machine": "orca",
+  "priority": 1,
+  "matrices": [
+    "sweep_42093"
+  ],
+  "timeout": 28800,
+  "note": "HCAL holdout, prereg/HCAL.md",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset sweep_42093 --slice holdout --out results/hcal/sweep_42093.csv",
+  "outputs": [
+    "results/hcal/sweep_42093.csv"
+  ],
+  "predicted": "prereg/HCAL.md P1 never worse (median AUPRC delta >= -0.002); P2 log-loss below tree p<0.05 on 12/17; P3 hier log-loss <= kappa=0 everywhere and kappa=0 harmful (>0.005) on 3+ sets; P4 AUPRC above tree p<0.05 on 6/17, road_safety > +0.003, never > +0.02; P5 global Platt delta exactly 0. Withdrawal: (a) P1 fails twice -> not safe; (c) kappa=0 as good on 3+ -> prior-art Mondrian recalibration, no hypergraph claim.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL-sweep_42093.json",
+  "seconds": 142.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T21:59:21",
+  "tail": "sweep_42093 holdout: 60000 rows x 35 cols, prevalence 0.499\n  seed 0 fold 0: tree=1.0000 global=1.0000 pattern_k0=0.9990 hier_cv=1.0000 kappa=10000 [9s]\n  seed 0 fold 1: tree=0.9999 global=0.9999 pattern_k0=0.9994 hier_cv=0.9999 kappa=10000 [18s]\n  seed 0 fold 2: tree=1.0000 global=1.0000 pattern_k0=0.9997 hier_cv=1.0000 kappa=1000 [26s]\n  seed 0 fold 3: tree=1.0000 global=1.0000 pattern_k0=0.9980 hier_cv=1.0000 kappa=10000 [35s]\n  seed 0 fold 4: tree=1.0000 global=1.0000 pattern_k0=0.9994 hier_cv=1.0000 kappa=100 [44s]\n  seed 1 fold 0: tree=1.0000 global=1.0000 pattern_k0=0.9997 hier_cv=1.0000 kappa=10000 [53s]\n  seed 1 fold 1: tree=1.0000 global=1.0000 pattern_k0=0.9995 hier_cv=1.0000 kappa=10000 [62s]\n  seed 1 fold 2: tree=1.0000 global=1.0000 pattern_k0=0.9993 hier_cv=1.0000 kappa=10 [71s]\n  seed 1 fold 3: tree=1.0000 global=1.0000 pattern_k0=0.9989 hier_cv=1.0000 kappa=10000 [80s]\n  seed 1 fold 4: tree=1.0000 global=1.0000 pattern_k0=0.9997 hier_cv=1.0000 kappa=10000 [88s]\n  seed 2 fold 0: tree=1.0000 global=1.0000 pattern_k0=0.9994 hier_cv=1.0000 kappa=10000 [97s]\n  seed 2 fold 1: tree=1.0000 global=1.0000 pattern_k0=0.9998 hier_cv=1.0000 kappa=10000 [106s]\n  seed 2 fold 2: tree=1.0000 global=1.0000 pattern_k0=0.9990 hier_cv=1.0000 kappa=10000 [115s]\n  seed 2 fold 3: tree=1.0000 global=1.0000 pattern_k0=0.9989 hier_cv=1.0000 kappa=10000 [123s]\n  seed 2 fold 4: tree=1.0000 global=1.0000 pattern_k0=0.9988 hier_cv=1.0000 kappa=10000 [132s]\nwrote results/hcal/sweep_42093.csv (60 rows)"
+}

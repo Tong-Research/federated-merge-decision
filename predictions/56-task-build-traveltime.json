@@ -1,0 +1,15 @@
+{
+  "id": "56-task-build-traveltime",
+  "machine": "pilot",
+  "priority": 4,
+  "note": "prevalence lever: ACSTravelTime on the same states",
+  "cmd": ".venv/bin/python experiments/acs_sites.py --task ACSTravelTime --per-state 0 --log-uniform 250 --out acs_span_traveltime",
+  "outputs": [],
+  "predicted": "a different prevalence, so a different EPV at the same n",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/56-task-build-traveltime.json",
+  "seconds": 59.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:43:07",
+  "tail": "ACSTravelTime: (219722, 16), 51 states, prevalence 0.436\n  minority events per state: 94-25115 (median 451)\n  EPV at d=16: 5.9-1569.7 (median 28.2)\n    EPV 5-10: 10 states\n    EPV 10-20: 11 states\n    EPV 20-999: 30 states"
+}

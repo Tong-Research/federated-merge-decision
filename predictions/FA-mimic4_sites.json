@@ -1,0 +1,21 @@
+{
+  "id": "FA-mimic4_sites",
+  "machine": "spinner",
+  "priority": 12,
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "timeout": 36000,
+  "note": "Iterative FedAvg policy comparison on mimic4_sites -- section 11's scope limit.",
+  "cmd": "MERGE_MODE=fedavg FEDAVG_ROUNDS=30 .venv/bin/python experiments/gate_baselines.py --matrix mimic4_sites --seeds 5 --out results/cut_fa_mimic4_sites.csv",
+  "outputs": [
+    "results/cut_fa_mimic4_sites.csv"
+  ],
+  "predicted": "Section 11's remaining scope limit: every result in Paper C is ONE-SHOT coefficient averaging, and section 6's recommendation -- shrink toward local by a locally chosen weight -- is established only for that setting. A reviewer will ask whether it survives iterative federated averaging, which is strictly more capable and is the standard baseline. MERGE_MODE=fedavg swaps the merged model at the SCORING boundary (30 rounds, 5 local epochs), leaving every policy definition untouched, so any difference is the merge rule and not a changed comparison. These are the five pools where the recommendation is most at risk: the three where merging HARMS (mimic4_sites, acs_span_traveltime, acs_full_income) and two where it clearly helps (eicu_sites, lendingclub). PREDICTION: blend still beats every binary policy on all five, and remains non-negative against never_merge, so section 6's recommendation carries over and section 11's scope limit can be narrowed rather than kept. A 1-seed probe on mimic4_sites already gives blend 37.5% of the lambda-oracle under FedAvg. WHAT WOULD MATTER: if a binary policy beats blend under iterative merging on any harmful pool, the recommendation is specific to one-shot merging and section 6 must SAY so rather than generalise. That is the honest outcome to look for, because iterative merging produces a stronger merged model and a stronger merged model is exactly the condition under which shrinking toward local should stop paying. blend_cw is reported as nan under this mode by design -- it needs the merged model's per-coordinate parameters, which FedAvg does not expose, and faking them would put a meaningless number in the table.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/FA-mimic4_sites.json",
+  "seconds": 28.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T12:48:01",
+  "tail": "mimic4_sites: 66989 records x 42 features, 9 sites, prevalence 0.110\n\n  495 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.3463    +0.0000                0.0%\n  always_merge          0.3299    -0.0164             -103.5%\n  epv_gate              0.3425    -0.0039              -24.4%\n  gate_loso             0.3463    +0.0000                0.0%\n  gate_bestcut          0.3508    +0.0045               28.5%\n  local_cv              0.3478    +0.0015                9.3%\n  fix_025               0.3466    +0.0003                1.8%\n  fix_050               0.3494    +0.0031               19.2%\n  fix_075               0.3469    +0.0006                3.9%\n  blend                 0.3522    +0.0059               37.2%\n  blend_cw                 nan       +nan                nan%\n  oracle_binary         0.3530    +0.0067               42.0%\n  oracle_lambda         0.3622    +0.0159              100.0%\n  oracle_lambda_cw         nan       +nan                nan%\n\n  LOSO cut: median 2.1, range 0.0-2.1   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.423\n  lambda optimal on test    : mean 0.382\n  correlation chosen vs optimal: +0.327\n\nwrote results/cut_fa_mimic4_sites.csv (495 rows)"
+}

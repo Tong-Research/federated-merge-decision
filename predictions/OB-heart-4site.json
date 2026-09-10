@@ -1,0 +1,19 @@
+{
+  "id": "OB-heart-4site",
+  "machine": "spinner",
+  "priority": 3,
+  "matrices": [],
+  "timeout": 36000,
+  "note": "Paper 3: B=50 permutation null on heart-4site (was B=1). [cost rank 3: n*n_pat=32,200]",
+  "cmd": ".venv/bin/python experiments/oracle_ceiling_b.py --datasets heart-4site --B 50 --out results/oracle_ceiling_b_heart-4site.csv",
+  "outputs": [
+    "results/oracle_ceiling_b_heart-4site.csv"
+  ],
+  "predicted": "Paper 3's central claim -- exploitable structure -0.0039 -- comes from oracle_ceiling.py, which draws ONE mask permutation per dataset and then Mann-Whitney tests its 15 fold-gains against the real 15. Those 15 permuted gains are folds within a single draw and share a mask, so the effective null sample size is one and the test treats it as fifteen. The headline is a difference between a measured quantity and a single draw of a random one, reported with no interval. This runs B=50 INDEPENDENT permutations per dataset, giving the null distribution, a permutation p-value with the +1 correction, and a percentile interval. It also extends the bound from the 8 datasets that carried it to all 12 the suite wires, which is the concession section 7 makes explicitly. PREDICTION: the sign survives -- mean excess stays negative and the real ceiling stays below the permuted mean on a majority of datasets -- but the per-dataset magnitudes move, because a single draw of a random quantity is not its mean. A 12-permutation probe on hepatitis already moved excess from -0.0089 to -0.0072, same sign, 19% smaller. WHAT WOULD MATTER: if the mean excess crosses zero, or if the real ceiling is above the permuted mean on most datasets, Paper 3's headline is wrong and the paper becomes a different one. That is the risk being taken deliberately -- the current design cannot tell a stable property from an unlucky mask, and shipping it unfixed would be indefensible in review.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/OB-heart-4site.json",
+  "seconds": 26.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T12:15:28",
+  "tail": "dataset               n      real  perm mean    excess  perm 2.5%  perm 97.5%       p\nheart-4site         920   +0.0021    +0.0028   -0.0007    +0.0002     +0.0052   0.647  [14s]\n\n  datasets            1\n  mean real ceiling   +0.0021\n  mean permuted       +0.0028\n  mean excess         -0.0007\n  real BELOW the permuted mean on 1/1\n  datasets with p < 0.05          0/1\n\n  wrote results/oracle_ceiling_b_heart-4site.csv"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "STEER-abstain-cand_higgs",
+  "machine": "spinner",
+  "priority": 3,
+  "matrices": [
+    "cand_higgs"
+  ],
+  "timeout": 21600,
+  "note": "prereg/STEER.md abstain | v2 00:20: AUROC added, AUPRC of a retained subset is prevalence-confounded",
+  "cmd": ".venv/bin/python experiments/steer_probes.py abstain --dataset cand_higgs",
+  "outputs": [
+    "results/steer/abstain_cand_higgs.csv"
+  ],
+  "predicted": "expected NEGATIVE: confidence-ranked retention has higher retained-set AUROC than support-ranked at every coverage on >=6/8",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/STEER-abstain-cand_higgs.json",
+  "seconds": 14.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-05T00:27:16",
+  "tail": "fold 0: tree_confidence@0.7: 0.888 | lattice_support@0.7: 0.819 | pattern_depth@0.7: 0.858 | random@0.7: 0.836 | tree_confidence@0.9: 0.855 | lattice_support@0.9: 0.843 | pattern_depth@0.9: 0.841 | random@0.9: 0.836 [1s]\n  fold 1: tree_confidence@0.7: 0.886 | lattice_support@0.7: 0.822 | pattern_depth@0.7: 0.856 | random@0.7: 0.835 | tree_confidence@0.9: 0.854 | lattice_support@0.9: 0.841 | pattern_depth@0.9: 0.840 | random@0.9: 0.835 [1s]\n  fold 2: tree_confidence@0.7: 0.895 | lattice_support@0.7: 0.831 | pattern_depth@0.7: 0.863 | random@0.7: 0.842 | tree_confidence@0.9: 0.863 | lattice_support@0.9: 0.850 | pattern_depth@0.9: 0.848 | random@0.9: 0.841 [2s]\nwrote /Users/tong/phd/papers/paper-plco-hypergraph/results/steer/abstain_cand_higgs.csv (36 rows)"
+}

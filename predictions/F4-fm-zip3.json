@@ -1,0 +1,23 @@
+{
+  "id": "F4-fm-zip3",
+  "machine": "pilot",
+  "priority": 4,
+  "matrices": [
+    "freddiemac_zip3"
+  ],
+  "timeout": 21600,
+  "note": "Freddie Mac 2016+2017, partitioned by zip3. The hierarchy moves the harm fraction without touching a row, which is the natural experiment on Result 64's x-axis that ACS could only simulate.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix freddiemac_zip3 --seeds 3 --out results/site_rules_freddiemac_zip3.csv",
+  "outputs": [
+    "results/site_rules_freddiemac_zip3.csv"
+  ],
+  "predicted": "the five partitions trace Result 64's curve. Concretely: zip3 and MSA sit at low harm fraction and should give small or negative lift; state, zip2 and seller sit high and should give small positive lift. NOTE the natural granularities cluster at f~0.1 and f~0.75 with nothing near the 0.45 peak, so if all five give small lifts that is consistent with the law AND with the peak being unreachable by any natural partition -- which would matter more than a confirmation.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/F4-fm-zip3.json",
+  "seconds": 0.8,
+  "exit_code": 1,
+  "missing_outputs": [
+    "results/site_rules_freddiemac_zip3.csv"
+  ],
+  "finished": "2026-08-10T13:14:56",
+  "tail": "Traceback (most recent call last):\n  File \"/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/experiments/site_rules.py\", line 231, in <module>\n    main()\n  File \"/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/experiments/site_rules.py\", line 176, in main\n    X, y, g, nm = load_matrix(a.matrix)\n                  ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/experiments/matrix_loader.py\", line 31, in load_matrix\n    raise FileNotFoundError(\nFileNotFoundError: /Users/tong/.cache/phd-matrices/freddiemac_zip3.npz not found. Available: ['acs_d10', 'acs_d65', 'acs_full_income', 'acs_income', 'acs_ladder_1000', 'acs_ladder_10000', 'acs_ladder_2000', 'acs_ladder_500', 'acs_ladder_5000', 'acs_span_employment', 'acs_span_healthinsurance', 'acs_span_income', 'acs_span_incomepovertyratio', 'acs_span_mobility', 'acs_span_pubcov', 'acs_span_traveltime', 'bosch_d20', 'bosch_spread20', 'eicu_d16', 'eicu_d24', 'eicu_d42', 'eicu_d8', 'eicu_floor100', 'eicu_floor540', 'eicu_longstay', 'eicu_sites', 'eicu_sites_min540', 'eicu_temporal', 'eicu_top30', 'freddiemac_msa_2017', 'freddiemac_propertystate', 'freddiemac_propertystate_2017', 'freddiemac_sellername_2017', 'freddiemac_zip3_2017', 'lendingclub', 'lendingclub_full', 'mimic4_sites', 'mimic_sites', 'mimic_sites_unit_x_system']"
+}

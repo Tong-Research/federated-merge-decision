@@ -1,0 +1,23 @@
+{
+  "id": "87-lc-transfer",
+  "machine": "pilot",
+  "priority": 11,
+  "needs": [
+    "82-lc-rule"
+  ],
+  "note": "does a clinical cut transfer to finance? Result 43 said cuts transfer within a domain and not across; this is the first genuinely third domain to test that on",
+  "cmd": ".venv/bin/python experiments/cut_transfer.py results/site_rules_all.csv results/site_rules_lendingclub.csv results/site_rules_acs_span.csv results/site_rules_eicu_only.csv | tee results/cut_transfer_lc.log",
+  "inputs": [
+    "results/site_rules_all.csv"
+  ],
+  "outputs": [
+    "results/cut_transfer_lc.log"
+  ],
+  "predicted": "clinical->finance transfers BETTER than clinical->ACS did (0.430, below trivial), because the prevalences are closer. If it transfers as badly, the barrier is the domain rather than the prevalence.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/87-lc-transfer.json",
+  "seconds": 0.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:30:03",
+  "tail": "==============================================================================\nTRANSFER: fit the cut on the row pool, apply it to the column pool\n==============================================================================\n\nfitted on site_rules_all: cut 7.5, self-accuracy 0.714\n   -> site_rules_lendingclub           xfer 0.566 | its own cut  14.7 -> 0.601 | trivial 0.613   WORSE than trivial\n   -> site_rules_acs_span              xfer 0.497 | its own cut  21.1 -> 0.586 | trivial 0.525   WORSE than trivial\n   -> site_rules_eicu_only             xfer 0.631 | its own cut   8.5 -> 0.635 | trivial 0.646   WORSE than trivial\n\nfitted on site_rules_lendingclub: cut 14.7, self-accuracy 0.601\n   -> site_rules_all                   xfer 0.664 | its own cut   7.5 -> 0.714 | trivial 0.610   transfers\n   -> site_rules_acs_span              xfer 0.583 | its own cut  21.1 -> 0.586 | trivial 0.525   transfers\n   -> site_rules_eicu_only             xfer 0.646 | its own cut   8.5 -> 0.635 | trivial 0.646   no better than trivial\n\nfitted on site_rules_acs_span: cut 21.1, self-accuracy 0.586\n   -> site_rules_all                   xfer 0.610 | its own cut   7.5 -> 0.714 | trivial 0.610   no better than trivial\n   -> site_rules_lendingclub           xfer 0.599 | its own cut  14.7 -> 0.601 | trivial 0.613   WORSE than trivial\n   -> site_rules_eicu_only             xfer 0.646 | its own cut   8.5 -> 0.635 | trivial 0.646   no better than trivial\n\nfitted on site_rules_eicu_only: cut 8.5, self-accuracy 0.635\n   -> site_rules_all                   xfer 0.713 | its own cut   7.5 -> 0.714 | trivial 0.610   transfers\n   -> site_rules_lendingclub           xfer 0.572 | its own cut  14.7 -> 0.601 | trivial 0.613   WORSE than trivial\n   -> site_rules_acs_span              xfer 0.511 | its own cut  21.1 -> 0.586 | trivial 0.525   WORSE than trivial\n\n==============================================================================\nLEAVE-ONE-COLLECTION-OUT: how much does one collection set the pooled cut?\n==============================================================================\n\nsite_rules_all: all 4 collections -> cut 7.5 (acc 0.714)\n   without heart-4site            cut    7.0 (0.94x) acc 0.732\n   without mimic-11site           cut    2.1 (0.28x) acc 0.756  <-- moves the cut by >2x\n   without mimic4-9site           cut   10.7 (1.44x) acc 0.746\n   without plco-2cohort           cut    7.5 (1.00x) acc 0.719"
+}

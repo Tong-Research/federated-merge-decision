@@ -1,0 +1,21 @@
+{
+  "id": "HCAL2-mimic4",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "timeout": 28800,
+  "note": "HCAL post-hoc comparator (referee 5): switch_cv = global vs kappa=0 Platt by inner CV; other arms must reproduce results/hcal bit-for-bit",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset mimic4 --slice holdout --switch --out results/hcal2/mimic4.csv",
+  "outputs": [
+    "results/hcal2/mimic4.csv"
+  ],
+  "predicted": "Post hoc, not registered. If switch_cv matches hier_cv within 0.001 AUPRC and 0.001 log-loss on the four datasets where kappa=0 is harmful (MIMIC regimes, MIMIC first stays, ACS, NHANES), the 'safety' is the inner CV choosing global recalibration and the hierarchy gets no credit for it; the paper must say so. If hier_cv is below switch_cv in log-loss on those four (it can sit between global and per-pattern where switch_cv cannot), the hierarchy does something the switch cannot. Sanity: tree/global/pattern_k0/hier_cv rows must equal results/hcal exactly.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL2-mimic4.json",
+  "seconds": 68.7,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T23:57:05",
+  "tail": "mimic4 holdout: 33470 rows x 42 cols, prevalence 0.110\n  seed 0 fold 0: tree=0.4544 global=0.4544 pattern_k0=0.4059 hier_cv=0.4550 switch_cv=0.4544 kappa=100 [4s]\n  seed 0 fold 1: tree=0.4434 global=0.4434 pattern_k0=0.4143 hier_cv=0.4435 switch_cv=0.4434 kappa=1000 [8s]\n  seed 0 fold 2: tree=0.4615 global=0.4615 pattern_k0=0.4166 hier_cv=0.4613 switch_cv=0.4615 kappa=10000 [12s]\n  seed 0 fold 3: tree=0.4526 global=0.4526 pattern_k0=0.4312 hier_cv=0.4526 switch_cv=0.4526 kappa=10000 [16s]\n  seed 0 fold 4: tree=0.4179 global=0.4179 pattern_k0=0.4007 hier_cv=0.4183 switch_cv=0.4179 kappa=1000 [19s]\n  seed 1 fold 0: tree=0.4642 global=0.4642 pattern_k0=0.4165 hier_cv=0.4643 switch_cv=0.4642 kappa=10000 [23s]\n  seed 1 fold 1: tree=0.4270 global=0.4270 pattern_k0=0.3915 hier_cv=0.4270 switch_cv=0.4270 kappa=10000 [27s]\n  seed 1 fold 2: tree=0.4430 global=0.4430 pattern_k0=0.4035 hier_cv=0.4430 switch_cv=0.4430 kappa=10000 [31s]\n  seed 1 fold 3: tree=0.4326 global=0.4326 pattern_k0=0.4200 hier_cv=0.4326 switch_cv=0.4326 kappa=10000 [35s]\n  seed 1 fold 4: tree=0.4661 global=0.4661 pattern_k0=0.4274 hier_cv=0.4661 switch_cv=0.4661 kappa=10000 [39s]\n  seed 2 fold 0: tree=0.4662 global=0.4662 pattern_k0=0.4136 hier_cv=0.4662 switch_cv=0.4662 kappa=10000 [42s]\n  seed 2 fold 1: tree=0.4533 global=0.4533 pattern_k0=0.4217 hier_cv=0.4534 switch_cv=0.4533 kappa=1000 [46s]\n  seed 2 fold 2: tree=0.4412 global=0.4412 pattern_k0=0.4256 hier_cv=0.4422 switch_cv=0.4412 kappa=100 [50s]\n  seed 2 fold 3: tree=0.4327 global=0.4327 pattern_k0=0.3858 hier_cv=0.4331 switch_cv=0.4327 kappa=100 [54s]\n  seed 2 fold 4: tree=0.4309 global=0.4309 pattern_k0=0.4146 hier_cv=0.4309 switch_cv=0.4309 kappa=10000 [58s]\nwrote results/hcal2/mimic4.csv (75 rows)"
+}

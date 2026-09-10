@@ -1,0 +1,20 @@
+{
+  "id": "E1-nhanes-build",
+  "machine": "orca",
+  "priority": 1,
+  "timeout": 7200,
+  "mem_gb": 6,
+  "note": "SHOWCASE item E: NHANES 2005-2018 + linked mortality, built on orca (network), then screened locally",
+  "cmd": ".venv/bin/python experiments/build_nhanes.py",
+  "matrices": [],
+  "outputs": [
+    "results/cand_nhanes.npz"
+  ],
+  "predicted": "n around 35-45k eligible adults after the 5-year rule; prevalence 5-10%; design missingness from the fasting subsample gives a handful of large disjoint patterns; screen expected to FLAG on H_exc, uncertain on iota",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/E1-nhanes-build.json",
+  "seconds": 228.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T16:08:42",
+  "tail": "INS_D: not available (HTTPError)\n    HSCRP_D: not available (HTTPError)\n  cycle D (2005-2006): 10,348 rows with mortality linkage, 54 cols\n    INS_E: not available (HTTPError)\n    HSCRP_E: not available (HTTPError)\n  cycle E (2007-2008): 10,149 rows with mortality linkage, 54 cols\n    INS_F: not available (HTTPError)\n    HSCRP_F: not available (HTTPError)\n  cycle F (2009-2010): 10,537 rows with mortality linkage, 54 cols\n    INS_G: not available (HTTPError)\n    HSCRP_G: not available (HTTPError)\n  cycle G (2011-2012): 9,756 rows with mortality linkage, 54 cols\n    HSCRP_H: not available (HTTPError)\n  cycle H (2013-2014): 10,175 rows with mortality linkage, 55 cols\n  cycle I (2015-2016): 9,971 rows with mortality linkage, 56 cols\n  cycle J (2017-2018): 9,254 rows with mortality linkage, 56 cols\n  nhanes: n 29,625 d 52 prev 0.072 missing 11.7% patterns 593 -> /home/tong/phd/papers/paper-plco-hypergraph/results/cand_nhanes.npz"
+}

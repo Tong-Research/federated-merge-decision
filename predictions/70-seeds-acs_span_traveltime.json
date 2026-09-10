@@ -1,0 +1,21 @@
+{
+  "id": "70-seeds-acs_span_traveltime",
+  "priority": 10,
+  "matrices": [
+    "acs_span_traveltime"
+  ],
+  "timeout": 18000,
+  "note": "precision: acs_span_traveltime at 15 seeds against the 3 every claim currently rests on",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_span_traveltime --seeds 15 --out results/site_rules_hs_acs_span_traveltime.csv",
+  "outputs": [
+    "results/site_rules_hs_acs_span_traveltime.csv"
+  ],
+  "predicted": "point estimates move by less than their current bootstrap half-widths; if any headline rho moves more than 0.05, the 3-seed figures were undersampled and every interval in the paper needs rewidening",
+  "machine": "spinner",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/70-seeds-acs_span_traveltime.json",
+  "seconds": 147.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:02:46",
+  "tail": "acs_span_traveltime: 219722 records x 16 features, 51 sites, prevalence 0.436\nacs_span_traveltime: 9150 decisions\n\n9150 real merge decisions across 51 target sites; merging helped in 37%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        +0.027   8.8e-03     0.631  0.633 higher\u2192merge\nn_target                          +0.028   8.0e-03     0.598  0.633 higher\u2192merge\nn_min                             -0.040   1.4e-04     0.633  0.633 lower\u2192merge\nn_partner_total                   -0.177   3.3e-65     0.630  0.633 lower\u2192merge\nratio_partner_to_target           -0.161   3.2e-54     0.604  0.633 lower\u2192merge\nn_partners                        -0.088   2.7e-17     0.633  0.633 lower\u2192merge\nschema_jaccard                      +nan       nan     0.633  0.633 higher\u2192merge\nq_median                          -0.130   8.8e-36     0.629  0.633 lower\u2192merge\ni2_median                         -0.129   4.9e-35     0.630  0.633 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_span_traveltime  36.7%  of 9150 decisions\n\nwrote results/site_rules_hs_acs_span_traveltime.csv"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "53-dp-spanning",
+  "machine": "dugong",
+  "priority": 1,
+  "note": "Tier 1B, the highest-risk open item: every DP measurement was taken where merging ALWAYS helps. Does privacy still amplify a benefit that can be negative?",
+  "cmd": "DP_EPSILONS=0.5,1,5,inf .venv/bin/python experiments/dp_merge.py --dataset matrix --matrix acs_span_income --seeds 3 --out results/dp_acs_span.csv",
+  "matrices": [
+    "acs_span_income"
+  ],
+  "outputs": [
+    "results/dp_acs_span.csv"
+  ],
+  "predicted": "amplification SHRINKS relative to the capped build's 12.6x, because DP noise cannot manufacture a benefit for a site that is already adequate. If it holds at 12x here too, the privacy claim is stronger than we thought; if it inverts and DP makes harm worse, the privacy framing needs a scope condition.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/53-dp-spanning.json",
+  "seconds": 206.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:34:49",
+  "tail": "  26  (1584 rows)\n  27  (1656 rows)\n  28  (1728 rows)\n  29  (1800 rows)\n  30  (1872 rows)\n  31  (1944 rows)\n  32  (2016 rows)\n  33  (2088 rows)\n  34  (2160 rows)\n  35  (2232 rows)\n  36  (2304 rows)\n  37  (2376 rows)\n  38  (2448 rows)\n  39  (2520 rows)\n  40  (2592 rows)\n  41  (2664 rows)\n  42  (2736 rows)\n  44  (2808 rows)\n  45  (2880 rows)\n  46  (2952 rows)\n  47  (3024 rows)\n  48  (3096 rows)\n  49  (3168 rows)\n  50  (3240 rows)\n  51  (3312 rows)\n  53  (3384 rows)\n  54  (3456 rows)\n  55  (3528 rows)\n  56  (3600 rows)\n  72  (3672 rows)\n\n=== A. where does the merge benefit die? (3672 rows) ===\n  epsilon    local    merge   benefit        p  benefit(w=0.5)\n      0.5   0.5386   0.6275   +0.0889  2.9e-66         -0.0080\n        1   0.5994   0.6762   +0.0769  3.3e-78         +0.0111\n        5   0.6977   0.7151   +0.0174  1.3e-28         +0.0112\n      inf   0.7179   0.7179   -0.0001  3.6e-01         +0.0006\n\n   split by target adequacy (privacy should cost small sites most):\n   target EPV 0-5:\n     eps= 0.5  local 0.1286  benefit +0.1203\n     eps=   1  local 0.1316  benefit +0.1020\n     eps=   5  local 0.2593  benefit +0.1048\n     eps= inf  local 0.4147  benefit -0.0355\n   target EPV 5-999:\n     eps= 0.5  local 0.5468  benefit +0.0882\n     eps=   1  local 0.6087  benefit +0.0764\n     eps=   5  local 0.7064  benefit +0.0157\n     eps= inf  local 0.7240  benefit +0.0006\n\n=== B. does composition reverse one-shot vs FedAvg? ===\n  epsilon   one-shot     fed 1r    fed 5r   fed 30r\n      0.5    +0.0889   -0.0658   -0.1145   -0.1553\n        1    +0.0769   -0.0651   -0.1426   -0.1919\n        5    +0.0174   -0.0283   -0.0934   -0.1950\n      inf    -0.0001   -0.0106   -0.0061   +0.0003\n\n(all figures are AUPRC gain over that site's own DP local model at the same epsilon)\n\nwrote results/dp_acs_span.csv"
+}

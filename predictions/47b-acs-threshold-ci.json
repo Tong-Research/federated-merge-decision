@@ -1,0 +1,20 @@
+{
+  "id": "47b-acs-threshold-ci",
+  "machine": "pilot",
+  "priority": 5,
+  "note": "bootstrap CI on the spanning pool's cut: does it land near the clinical 8.4? [retry on pilot: the previous run raced a producer on another machine]",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_acs_span.csv --boots 2000 | tee results/threshold_ci_acs_span.log",
+  "outputs": [
+    "results/threshold_ci_acs_span.log"
+  ],
+  "predicted": "the cut sits ABOVE the clinical interval, because ACS prevalence is 0.35 against ICU mortality's 0.09 -- Result 43 already showed the ACS cut does not transfer to clinical data, and this quantifies where it actually sits",
+  "inputs": [
+    "results/site_rules_acs_span.csv"
+  ],
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/47b-acs-threshold-ci.json",
+  "seconds": 56.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:25:11",
+  "tail": "1830 decisions, 51 sites, 2000 bootstrap resamples of sites\n\nepv_target   cut =     17.1 events/variable   95% CI [13.1, 29.0]   width/median = 0.93   acc 0.596\nn_target     cut =   1094.0 records   95% CI [398.7, 3477.9]   width/median = 2.81   acc 0.595\n\nnarrower relative interval = the more sharply located boundary"
+}

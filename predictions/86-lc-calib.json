@@ -1,0 +1,21 @@
+{
+  "id": "86-lc-calib",
+  "machine": "dugong",
+  "priority": 10,
+  "matrices": [
+    "lendingclub"
+  ],
+  "timeout": 14400,
+  "note": "one boundary or two, in a third domain",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix lendingclub --seeds 10 --out results/calib_lendingclub.csv",
+  "outputs": [
+    "results/calib_lendingclub.csv"
+  ],
+  "predicted": "negative rho between EPV and slope change, as on all six collections so far",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/86-lc-calib.json",
+  "seconds": 23.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:30:25",
+  "tail": "lendingclub: 42423 records x 21 features, 43 sites, prevalence 0.151\n  0/43 (10 rows)\n  20/43 (210 rows)\n  40/43 (410 rows)\n\n430 decisions on lendingclub, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       +0.0173    +0.1666     +0.00633\nB_merge_dp          +0.0096    +0.0965     +0.00055\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_lendingclub.csv"
+}

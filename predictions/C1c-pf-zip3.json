@@ -1,0 +1,21 @@
+{
+  "id": "C1c-pf-zip3",
+  "machine": "pilot",
+  "priority": 1,
+  "matrices": [
+    "freddiemac_zip3"
+  ],
+  "timeout": 36000,
+  "note": "811 zip3 sites. Third attempt: first ran single-core (~4.6h projected), second stalled in joblib serialisation because `groups` was passed as a list of 811 arrays and got pickled into every batch. Index arrays are now packed flat so joblib memmaps them once. Timed: 29,184 tasks/strategy at 0.123s each, ~5h serial, ~40min on ten cores.",
+  "cmd": "MAX_PARTNERS=4 .venv/bin/python experiments/partner_formation.py --matrix freddiemac_zip3 --prefix 2 --seeds 3 --out results/partner_formation_zip3.csv",
+  "outputs": [
+    "results/partner_formation_zip3.csv"
+  ],
+  "predicted": "Random partner sampling has been the project's unexamined default, so this is a genuine two-sided test. I predict same_prefix (regional) partners give HIGHER benefit than random for starved targets, because a neighbouring zip3 shares an economy and its coefficients transfer, and that cross_prefix sits below random. I predict the SIGN of the rule is unchanged in every strategy -- adequate targets still lose -- because target adequacy, not partner identity, sets the sign (R45/R47). NOTE this prediction uses no transferred constant. If same_prefix and cross_prefix are indistinguishable, partner correlation does not matter and Section 8's limitation is closable by citing this null.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/C1c-pf-zip3.json",
+  "seconds": 1181.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T22:29:27",
+  "tail": "freddiemac_zip3: 3060573 records x 16 features, 811 sites, prevalence 0.032\n  freddiemac_zip3 / random        29,184 decisions  helped 0.619  mean benefit +0.0128\nfreddiemac_zip3: 3060573 records x 16 features, 811 sites, prevalence 0.032\n  freddiemac_zip3 / same_prefix   26,691 decisions  helped 0.641  mean benefit +0.0118\nfreddiemac_zip3: 3060573 records x 16 features, 811 sites, prevalence 0.032\n  freddiemac_zip3 / cross_prefix  29,187 decisions  helped 0.620  mean benefit +0.0122\nfreddiemac_zip3: 3060573 records x 16 features, 811 sites, prevalence 0.032\n  freddiemac_zip3 / size_similar  28,209 decisions  helped 0.620  mean benefit +0.0104\nfreddiemac_zip3: 3060573 records x 16 features, 811 sites, prevalence 0.032\n  freddiemac_zip3 / size_largest  28,209 decisions  helped 0.648  mean benefit +0.0172\nwrote results/partner_formation_zip3.csv (141,480 rows)"
+}

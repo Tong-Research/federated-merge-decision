@@ -1,0 +1,21 @@
+{
+  "id": "Z-c2b-mimic4_sites",
+  "machine": "pilot",
+  "priority": 1,
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "timeout": 28800,
+  "note": "C2 rerun after the clipping fix, on mimic4_sites.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix mimic4_sites --seeds 5 --out results/c2b_mimic4_sites.csv",
+  "outputs": [
+    "results/c2b_mimic4_sites.csv"
+  ],
+  "predicted": "C2 from HYPERGRAPH-COMPLEMENTARITY-PLAN.md. The `blend` policy that R76/R79 made this paper's recommendation interpolates local and merged with ONE lambda for every coordinate. A coordinate the target does not measure has no local estimate to shrink toward, so the scalar blend discounts partner-only variables by (1-lambda) against nothing at all -- at lambda=0.25 it discards three quarters of the only information anyone has about that coefficient. blend_cw applies lambda per coordinate, reading the schema hypergraph's incidence structure directly: lambda_j = lambda inside the target's hyperedge, 1 outside it. It adds NO parameter; lambda is still chosen on the same inner split by the same rule. PREDICTION: blend_cw beats blend on the pools with schema variation (eicu_sites, mimic4_sites, mimic_sites_unit_x_system) and the margin grows with d_extra, the count of merged coordinates the target cannot estimate -- that is the mechanism and the per-decision column exists to test it rather than assert it. R86 is why: complementary partners contribute mostly coordinates the target lacks, and those are exactly the ones the scalar blend discounts. C3 NEGATIVE CONTROL, and it is not optional: on acs_span_income every site measures every variable, d_extra is 0 on every decision, and blend_cw must equal blend EXACTLY -- verified to 5.5e-16 in a unit check already. If it differs there the effect is an implementation artefact and the whole result is void. KILL CONDITION: if blend_cw <= blend on mean AND on worst pool where schemas vary, C2 fails and the coordinate-wise route is closed. ATTRIBUTION: oracle_lambda_cw is reported alongside, so a blend_cw below blend with oracle_lambda_cw ABOVE oracle_lambda means the rule is right and the lambda selection is failing, which is a different repair from the rule being wrong. RERUN: the first pass FAILED its own C3 control -- 66 of 3,050 ACS decisions differed at the SAME lambda because `blend` round-trips through expit/logit and clips at +/-20.7 while _cw_logit returned the raw linear predictor. On large well-separated sites that difference was the clipping, not the rule. _cw_logit now round-trips identically. The first pass's numbers (eicu +0.00044 ns, mimic4 -0.0119) are superseded and must not be quoted.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/Z-c2b-mimic4_sites.json",
+  "seconds": 17.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T19:17:45",
+  "tail": "mimic4_sites: 66989 records x 42 features, 9 sites, prevalence 0.110\n\n  495 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.3463    +0.0000                0.0%\n  always_merge          0.3223    -0.0240             -183.1%\n  epv_gate              0.3431    -0.0033              -24.9%\n  gate_loso             0.3463    +0.0000                0.0%\n  gate_bestcut          0.3498    +0.0035               26.6%\n  local_cv              0.3477    +0.0014               10.8%\n  fix_025               0.3498    +0.0035               26.5%\n  fix_050               0.3460    -0.0003               -2.1%\n  fix_075               0.3379    -0.0084              -63.9%\n  blend                 0.3510    +0.0047               36.0%\n  blend_cw              0.3391    -0.0072              -54.8%\n  oracle_binary         0.3527    +0.0064               48.9%\n  oracle_lambda         0.3594    +0.0131              100.0%\n  oracle_lambda_cw      0.3459    -0.0004               -3.3%\n\n  LOSO cut: median 2.1, range 0.0-2.1   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.342\n  lambda optimal on test    : mean 0.310\n  correlation chosen vs optimal: +0.493\n\nwrote results/c2b_mimic4_sites.csv (495 rows)"
+}

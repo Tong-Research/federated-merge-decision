@@ -1,0 +1,21 @@
+{
+  "id": "H1-lam-fm-state",
+  "machine": "pilot",
+  "priority": 1,
+  "matrices": [
+    "freddiemac_propertystate"
+  ],
+  "timeout": 36000,
+  "note": "Fixed-lambda arms + lambda-oracle on freddiemac_propertystate. Decides whether the paper can recommend a PREDICTED shrinkage or only a constant one.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix freddiemac_propertystate --seeds 3 --out results/lam_fm-state.csv",
+  "outputs": [
+    "results/lam_fm-state.csv"
+  ],
+  "predicted": "Adds fixed-lambda arms and a lambda-oracle so every policy shares one ceiling, closing R76's stated caveat. Smoke test on freddiemac_sellername (356 decisions, 1 seed): fix_075 61.1% of the lambda-oracle against blend 30.5%, and the correlation between the lambda chosen on inner validation and the lambda that was optimal is +0.016 -- zero. PREDICTION: on a majority of the seven pools, at least one FIXED lambda beats adaptive blend, and the pooled chosen-vs-optimal lambda correlation is below 0.15. Mechanism is the one that killed local_cv: the inner validation split is untrustworthy exactly where the decision matters, so choosing lambda from it is noise. If instead blend beats every fixed arm, adaptivity is real and R76's recommendation stands as written.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/H1-lam-fm-state.json",
+  "seconds": 159.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T03:45:40",
+  "tail": "freddiemac_propertystate: 3069179 records x 16 features, 53 sites, prevalence 0.032\n\n  1,905 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.0920    +0.0000                0.0%\n  always_merge          0.0919    -0.0001               -1.8%\n  epv_gate              0.0917    -0.0003               -8.3%\n  local_cv              0.0923    +0.0003               10.9%\n  fix_025               0.0926    +0.0006               21.2%\n  fix_050               0.0927    +0.0007               24.6%\n  fix_075               0.0926    +0.0006               20.4%\n  blend                 0.0925    +0.0005               15.6%\n  oracle_binary         0.0945    +0.0025               83.1%\n  oracle_lambda         0.0950    +0.0030              100.0%\n\n  lambda chosen on inner val: mean 0.499\n  lambda optimal on test    : mean 0.483\n  correlation chosen vs optimal: +0.152\n\nwrote results/lam_fm-state.csv (1,905 rows)"
+}

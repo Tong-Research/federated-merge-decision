@@ -1,0 +1,21 @@
+{
+  "id": "HS-eicu_sites",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "eicu_sites"
+  ],
+  "timeout": 36000,
+  "note": "High-seed policy comparison on eicu_sites -- generalising R92 from one pool to eleven.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix eicu_sites --seeds 15 --out results/cut_hs_eicu_sites.csv",
+  "outputs": [
+    "results/cut_hs_eicu_sites.csv"
+  ],
+  "predicted": "R92 re-ran MIMIC-IV's policy comparison at 15 seeds and found no policy mean moved by more than 0.00178 -- the 297-decision run was more stable than predicted. That was ONE pool, and it is the only one checked. Section 6's headline table (blend 30.7 mean, 29.6 median, +15.1 worst pool, 0 pools below zero) rests on the other ten at 3-5 seeds, and R62 showed three seeds could move rho by up to 0.103. PREDICTION: the policy ORDERING is unchanged on every pool -- blend still beats every binary policy and is still never negative -- and no per-pool mean moves by more than 0.005, generalising R92 from one pool to eleven. WHAT WOULD MATTER: if blend goes negative on any pool at high seed, the single strongest claim in the paper ('the only deployable policy never negative on any of eleven pools') is wrong, and section 6 must be rewritten rather than amended.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HS-eicu_sites.json",
+  "seconds": 87.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T12:07:18",
+  "tail": "eicu_sites: 95197 records x 42 features, 100 sites, prevalence 0.090\n\n  17,940 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.2639    +0.0000                0.0%\n  always_merge          0.2930    +0.0291               51.5%\n  epv_gate              0.2930    +0.0291               51.5%\n  gate_loso             0.2921    +0.0282               49.8%\n  gate_bestcut          0.2930    +0.0291               51.5%\n  local_cv              0.2862    +0.0224               39.6%\n  fix_025               0.2800    +0.0161               28.5%\n  fix_050               0.2918    +0.0279               49.4%\n  fix_075               0.2968    +0.0329               58.2%\n  blend                 0.2913    +0.0274               48.5%\n  blend_cw              0.2895    +0.0256               45.3%\n  oracle_binary         0.3104    +0.0465               82.2%\n  oracle_lambda         0.3204    +0.0566              100.0%\n  oracle_lambda_cw      0.3123    +0.0485               85.7%\n\n  LOSO cut: median 5.8, range 5.8-8.9   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.630\n  lambda optimal on test    : mean 0.606\n  correlation chosen vs optimal: +0.096\n\nwrote results/cut_hs_eicu_sites.csv (17,940 rows)"
+}

@@ -1,0 +1,12 @@
+[project]
+name = "hgmiss"
+version = "1.0.0"
+requires-python = ">=3.12"
+description = "Code for: From Binary Gating to Continuous Shrinkage: A Decision-Level Evaluation of Federated Data Merging"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

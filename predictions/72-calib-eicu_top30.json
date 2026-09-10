@@ -1,0 +1,21 @@
+{
+  "id": "72-calib-eicu_top30",
+  "priority": 30,
+  "matrices": [
+    "eicu_top30"
+  ],
+  "timeout": 14400,
+  "note": "Result 51's slope finding at 10 seeds on eicu_top30 -- it currently rests on 3",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix eicu_top30 --seeds 10 --out results/calib_hs_eicu_top30.csv",
+  "outputs": [
+    "results/calib_hs_eicu_top30.csv"
+  ],
+  "predicted": "MIMIC-IV keeps the only clearly negative slope change; if it does not, Result 51 was a 3-seed artefact and Result 50's conclusion was right",
+  "machine": "dugong",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/72-calib-eicu_top30.json",
+  "seconds": 20.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:30:55",
+  "tail": "eicu_top30: 54847 records x 42 features, 30 sites, prevalence 0.089\n  0/30 (10 rows)\n  20/30 (210 rows)\n\n300 decisions on eicu_top30, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       +0.0122    -0.0556     -0.00770\nB_merge_dp          +0.0165    +0.1030     +0.00049\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_hs_eicu_top30.csv"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "KAPPA-colorectal",
+  "machine": "any",
+  "priority": 20,
+  "matrices": [],
+  "timeout": 172800,
+  "note": "H1 kappa sweep only on colorectal, so H1 has paired cells on all four cohorts. Ovarian and prostate already have h1_kappa_cells.csv (271 rows each); these two do not. Uses the new --kappa-only flag rather than a full run: --methods CANNOT isolate the sweep because it disables it, and a full run would redo mask_interaction, which took 12h40 on colorectal.",
+  "cmd": "mkdir -p results/kappa-colorectal && .venv/bin/python experiments/run_h1_h4.py --kappa-only --cohort colorectal --out-dir results/kappa-colorectal",
+  "outputs": [
+    "results/kappa-colorectal/h1_kappa_cells.csv",
+    "results/kappa-colorectal/h1_kappa_path.csv"
+  ],
+  "predicted": "Queued 2026-08-27 11:54. PREDICTION: the recomputed kappa PATH means will match the committed h1_kappa_path.csv for colorectal to within solver tolerance, because seeds and folds are fixed (kappa_seeds = FULL_SEEDS[:3], n_splits = 5). The cells file is new output, not a recomputation, so it has nothing to match. WITHDRAWAL: if the path means differ from the committed ones by more than 1e-6, the pipeline is not deterministic across runs and that is a larger finding than the missing paired test -- stop and report it rather than using the cells. VERIFY ON ARRIVAL: cells must average back to the path means (Result 140 checked this at 5.55e-17 on ovarian); if they do not, the cells are not the decomposition they claim to be.",
+  "exclusive": false,
+  "mem_gb": 6.5,
+  "mem_gb_basis": "Result 126 measured RSS inside mask_interaction: colorectal 6.30 GB, lung 3.88 GB. --kappa-only does NOT run mask_interaction, so these are upper bounds carried over deliberately rather than a measurement of this job.",
+  "exit_code": 0,
+  "seconds": 16503.3,
+  "missing_outputs": [],
+  "finished": "2026-08-27T17:22:44",
+  "tail": "[2026-08-27T12:47:42] fold parallelism: n_jobs=1 (mask_interaction=1)\n[2026-08-27T12:47:42] === loading colorectal (feature_set=baseline) ===\n[2026-08-27T12:47:52] colorectal: n=40,000 (of 154,855) d=188 prev=3.87% feature_set=baseline\n[2026-08-27T17:18:27]   wrote 270 per-cell kappa rows to h1_kappa_cells.csv\n[2026-08-27T17:18:27] done [h1-sweep] colorectal/baseline (3 seeds x 5 folds x 9 kappas x 2 targets, fit cached) in 16235.7s\n[2026-08-27T17:22:36] done [diagnostics] colorectal/baseline: no_match_rate=0.0000 in 248.9s\n[2026-08-27T17:22:36] === paired tests, within cohort, current feature_set only ===\n[2026-08-27T17:22:36] no main.csv rows yet -- skipping paired tests\n[2026-08-27T17:22:36] === run complete in 274.9 min ===\n[2026-08-27T17:22:36] no failures"
+}

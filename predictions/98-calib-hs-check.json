@@ -1,0 +1,17 @@
+{
+  "id": "98-calib-hs-check",
+  "machine": "spinner",
+  "priority": 30,
+  "note": "Result 51 (MIMIC-IV is the only collection with real slope damage) rested on 3 seeds; the 10-seed reruns are on disk and have never been read",
+  "cmd": ".venv/bin/python -c \"import csv,glob,numpy as np;[print(f.split('calib_hs_')[-1][:-4].ljust(30), '%+.4f'%np.nanmean([float(r['A_merge_rules_dslope']) for r in csv.DictReader(open(f))])) for f in sorted(glob.glob('results/calib_hs_*.csv'))]\" | tee results/calib_highseed_summary.log",
+  "outputs": [
+    "results/calib_highseed_summary.log"
+  ],
+  "predicted": "MIMIC-IV keeps the only clearly negative value; if every collection lands near zero, Result 51 was a 3-seed artefact and Result 50's original conclusion stands",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/98-calib-hs-check.json",
+  "seconds": 7.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T00:38:36",
+  "tail": "acs_span_income                +0.0258\neicu_sites                     +0.0252"
+}

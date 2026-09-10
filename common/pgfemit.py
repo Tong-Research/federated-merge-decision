@@ -1,0 +1,233 @@
+"""Emit pgfplots source from data.
+
+Every figure in this repository is a LaTeX picture built from a committed
+results file.  This module is the only place that formats numbers into TeX, so
+no coordinate is ever typed by hand and a figure cannot drift from the file it
+claims to plot.
+
+Usage from a paper's figure generator:
+
+    from pgfemit import Fig, Axis, fmt
+    fig = Fig()
+    ax = fig.axis("A", "hg panel, hg legend below",
+                  xlabel="support", ylabel="gain", title=r"\\textbf{A}\\quad Fits")
+    ax.plot("hg s1", xs, ys, yerr=err, legend="aligned")
+    open(path, "w").write(fig.render(__file__))
+"""
+
+from __future__ import annotations
+
+import os
+
+
+def fmt(v, digits=4):
+    """Format one number for TeX: no exponent soup, no trailing zero noise."""
+    if v is None:
+        return ""
+    f = float(v)
+    if f != f:                                    # NaN
+        raise ValueError("refusing to emit NaN into a figure")
+    if f == 0:
+        return "0"
+    if abs(f) >= 1e6 or abs(f) < 1e-4:
+        s = f"{f:.{digits}e}"
+        mant, exp = s.split("e")
+        return f"{mant.rstrip('0').rstrip('.')}e{int(exp)}"
+    s = f"{f:.{digits}f}".rstrip("0").rstrip(".")
+    return s or "0"
+
+
+def coords(xs, ys, yerr=None, xerr=None, digits=4):
+    """A pgfplots ``coordinates {...}`` body, optionally with explicit errors."""
+    xs, ys = list(xs), list(ys)
+    if len(xs) != len(ys):
+        raise ValueError(f"x/y length mismatch: {len(xs)} vs {len(ys)}")
+    out = []
+    for i, (x, y) in enumerate(zip(xs, ys)):
+        sx = x if isinstance(x, str) else fmt(x, digits)
+        p = f"({sx},{fmt(y, digits)})"
+        if yerr is not None:
+            p += f" +- (0,{fmt(yerr[i], digits)})"
+        elif xerr is not None:
+            p += f" +- ({fmt(xerr[i], digits)},0)"
+        out.append(p)
+    return " ".join(out)
+
+
+class Axis:
+    def __init__(self, name, style, **opts):
+        self.name, self.style, self.opts, self.body = name, style, opts, []
+
+    def opt(self, **kw):
+        self.opts.update(kw)
+        return self
+
+    def plot(self, style, xs, ys, yerr=None, xerr=None, legend=None,
+             digits=4, forget=False):
+        if yerr is not None:
+            style = f"{style}, hg err"
+        if xerr is not None:
+            style = f"{style}, hg errx"
+        if forget:
+            style = f"{style}, forget plot"
+        self.body.append(
+            f"\\addplot[{style}] coordinates {{{coords(xs, ys, yerr, xerr, digits)}}};")
+        if legend is not None:
+            self.body.append(f"\\addlegendentry{{{legend}}}")
+        return self
+
+    def band(self, xs, lo, hi, style="hg band", digits=4):
+        """A filled region between two curves, drawn behind everything else."""
+        pts = coords(xs, lo, digits=digits) + " " + \
+              coords(list(reversed(xs)), list(reversed(hi)), digits=digits)
+        self.body.append(f"\\addplot[{style}, forget plot] coordinates {{{pts}}} \\closedcycle;")
+        return self
+
+    def raw(self, line):
+        self.body.append(line)
+        return self
+
+    def node(self, x, y, text, style="hg note", anchor="center", digits=4):
+        sx = x if isinstance(x, str) else fmt(x, digits)
+        self.body.append(
+            f"\\node[{style}, anchor={anchor}] at (axis cs:{sx},{fmt(y, digits)}) {{{text}}};")
+        return self
+
+    def render(self):
+        opts = [self.style]
+        if self.name:
+            opts.append(f"name={self.name}")
+        for k, v in self.opts.items():
+            key = k.replace("_star", "*").replace("_", " ")
+            if v is True:
+                opts.append(key)
+            elif v is False:
+                opts.append(f"{key}=false")
+            else:
+                opts.append(f"{key}={{{v}}}")
+        head = ",\n  ".join(_wrap(opts))
+        lines = [f"\\begin{{axis}}[{head}]", *self.body, "\\end{axis}"]
+        return "\n".join(lines)
+
+
+def _wrap(opts, width=88):
+    out, cur = [], ""
+    for o in opts:
+        if cur and len(cur) + len(o) + 2 > width:
+            out.append(cur)
+            cur = o
+        else:
+            cur = f"{cur}, {o}" if cur else o
+    if cur:
+        out.append(cur)
+    return out
+
+
+class Fig:
+    def __init__(self, scale=None):
+        self.axes, self.pre, self.post, self.scale = [], [], [], scale
+
+    def axis(self, name, style, **opts):
+        ax = Axis(name, style, **opts)
+        self.axes.append(ax)
+        return ax
+
+    def right_of(self, name, style, anchor_axis, gap="1.9cm", **opts):
+        """A panel placed to the right of an earlier one, tops aligned."""
+        opts["at"] = f"($({anchor_axis}.east)+({gap},0)$)"
+        opts["anchor"] = "west"
+        return self.axis(name, style, **opts)
+
+    def raw(self, line, after=True):
+        (self.post if after else self.pre).append(line)
+        return self
+
+    def render(self, generator):
+        gen = os.path.basename(generator)
+        head = f"% generated by figures/{gen} -- do not edit; edit the generator"
+        opt = f"[{self.scale}]" if self.scale else ""
+        parts = [head, f"\\begin{{tikzpicture}}{opt}", *self.pre]
+        parts += [a.render() for a in self.axes]
+        parts += [*self.post, "\\end{tikzpicture}", ""]
+        return "\n".join(parts)
+
+
+# --- label placement --------------------------------------------------------
+# Several scatter figures label every point.  Placing each label at a fixed
+# offset makes crowded points collide; choosing the offset from hash(name) is
+# worse, because Python randomises str hashing per process, so the figure moves
+# on every rebuild.  This picks an offset deterministically.
+
+_COMPASS = [
+    # (anchor, dx, dy) in multiples of the offset radius; ordered by preference
+    ("west",       1.0,  0.35), ("west",       1.0, -0.35),
+    ("east",      -1.0,  0.35), ("east",      -1.0, -0.35),
+    ("south",      0.0,  1.0),  ("north",      0.0, -1.0),
+    ("south west", 0.8,  0.8),  ("north west", 0.8, -0.8),
+    ("south east",-0.8,  0.8),  ("north east",-0.8, -0.8),
+]
+
+
+def declutter(points, xlim, ylim, box, font_pt=6.0, radius=7.0, pad=1.0):
+    """Choose a non-overlapping offset for each point label.
+
+    ``points`` is a sequence of ``(x, y, text)``; ``box`` is the panel's plot
+    area as ``(width_pt, height_pt)``.  Returns a list of ``(anchor, dx_pt,
+    dy_pt)`` in the same order, for use as::
+
+        \\node[anchor=<anchor>, xshift=<dx>pt, yshift=<dy>pt] at (axis cs:x,y)
+
+    Everything is computed in points, in the panel's own geometry, so a label
+    that would not fit is scored as not fitting.  An earlier version worked in
+    an abstract 100-unit space with a hand-set character width, which made a
+    label half the width of the panel look comfortable.
+
+    Deterministic: the result depends only on the arguments.
+    """
+    (x0, x1), (y0, y1) = xlim, ylim
+    W, H = box
+    sx = W / (x1 - x0) if x1 != x0 else 1.0
+    sy = H / (y1 - y0) if y1 != y0 else 1.0
+
+    # Computer Modern averages about 0.55 em per character across mixed case,
+    # measured against rendered labels; the line height runs a little over the
+    # nominal size.  At an 11pt base, \tiny is 6pt and \scriptsize is 8pt.
+    char_w, line_h = 0.55 * font_pt, 1.15 * font_pt
+
+    pts = [((x - x0) * sx, (y - y0) * sy, t) for x, y, t in points]
+    near_x, near_y = 6 * char_w, 1.6 * line_h
+    order = sorted(range(len(pts)),
+                   key=lambda i: -sum(1 for j in range(len(pts)) if j != i
+                                      and abs(pts[i][0] - pts[j][0]) < near_x
+                                      and abs(pts[i][1] - pts[j][1]) < near_y))
+
+    placed, out = [], [None] * len(pts)
+    for i in order:
+        px, py, text = pts[i]
+        w, h = char_w * len(text) + 2 * pad, line_h + 2 * pad
+        best = None
+        for rank, (anchor, ux, uy) in enumerate(_COMPASS):
+            cx, cy = px + ux * radius, py + uy * radius
+            # box centre, given the anchor sits on the box edge
+            bx = cx + (w / 2 if "west" in anchor else -w / 2 if "east" in anchor else 0)
+            by = cy + (h / 2 if "south" in anchor else -h / 2 if "north" in anchor else 0)
+            cost = rank * 0.4
+            for (ox, oy, ow, oh) in placed:
+                dx = (ow + w) / 2 - abs(bx - ox)
+                dy = (oh + h) / 2 - abs(by - oy)
+                if dx > 0 and dy > 0:
+                    cost += dx * dy                      # overlapping labels
+            for j, (qx, qy, _) in enumerate(pts):
+                if j == i:
+                    continue
+                if abs(bx - qx) < w / 2 + 2 and abs(by - qy) < h / 2 + 2:
+                    cost += 30 * line_h                  # label sits on a marker
+            over = (max(0, bx + w / 2 - W) + max(0, -(bx - w / 2))
+                    + max(0, by + h / 2 - H) + max(0, -(by - h / 2)))
+            cost += 4 * line_h * over                    # label leaves the panel
+            if best is None or cost < best[0]:
+                best = (cost, anchor, ux * radius, uy * radius, bx, by, w, h)
+        _, anchor, dx, dy, bx, by, w, h = best
+        placed.append((bx, by, w, h))
+        out[i] = (anchor, round(dx, 2), round(dy, 2))
+    return out

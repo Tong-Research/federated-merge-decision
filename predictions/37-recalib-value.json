@@ -1,0 +1,18 @@
+{
+  "id": "37-recalib-value",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "Result 50 says a local intercept undoes the whole calibration cost. Never measured: how much does recalibrating actually recover, and does it cost discrimination?",
+  "cmd": ".venv/bin/python experiments/site_rules_ext.py --matrix eicu_sites --seeds 3 --out results/site_rules_recalib_eicu.csv",
+  "outputs": [
+    "results/site_rules_recalib_eicu.csv",
+    "results/site_rules_recalib_eicu_summary.csv"
+  ],
+  "predicted": "the recalibrated merge keeps the full AUPRC gain (an intercept shift cannot change a ranking) while removing the intercept error -- if AUPRC moves at all, the recalibration is not a pure intercept shift and there is a bug",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/37-recalib-value.json",
+  "seconds": 843.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:52:55",
+  "tail": "  eicu_sites: 282 done (1797 rows)\n  eicu_sites: 283 done (1827 rows)\n  eicu_sites: 300 done (1857 rows)\n  eicu_sites: 301 done (1887 rows)\n  eicu_sites: 307 done (1917 rows)\n  eicu_sites: 318 done (1947 rows)\n  eicu_sites: 331 done (1977 rows)\n  eicu_sites: 336 done (2007 rows)\n  eicu_sites: 337 done (2037 rows)\n  eicu_sites: 338 done (2067 rows)\n  eicu_sites: 345 done (2097 rows)\n  eicu_sites: 353 done (2127 rows)\n  eicu_sites: 357 done (2157 rows)\n  eicu_sites: 365 done (2187 rows)\n  eicu_sites: 382 done (2217 rows)\n  eicu_sites: 384 done (2247 rows)\n  eicu_sites: 386 done (2274 rows)\n  eicu_sites: 387 done (2304 rows)\n  eicu_sites: 388 done (2334 rows)\n  eicu_sites: 390 done (2364 rows)\n  eicu_sites: 391 done (2394 rows)\n  eicu_sites: 392 done (2424 rows)\n  eicu_sites: 394 done (2454 rows)\n  eicu_sites: 396 done (2484 rows)\n  eicu_sites: 400 done (2514 rows)\n  eicu_sites: 403 done (2544 rows)\n  eicu_sites: 407 done (2574 rows)\n  eicu_sites: 411 done (2604 rows)\n  eicu_sites: 413 done (2634 rows)\n  eicu_sites: 416 done (2664 rows)\n  eicu_sites: 417 done (2694 rows)\n  eicu_sites: 420 done (2724 rows)\n  eicu_sites: 421 done (2754 rows)\n  eicu_sites: 435 done (2784 rows)\n  eicu_sites: 440 done (2814 rows)\n  eicu_sites: 443 done (2844 rows)\n  eicu_sites: 444 done (2874 rows)\n  eicu_sites: 449 done (2904 rows)\n  eicu_sites: 452 done (2934 rows)\n  eicu_sites: 458 done (2964 rows)\n  eicu_sites: 459 done (2994 rows)\n\ncombiner           n  rho(EPV,benefit)         p  best EPV cut    acc   base\nlr_merge        2994            -0.142   4.8e-15           8.4  0.647  0.652\nlr_ensemble     2994            -0.240   1.6e-40           2.8  0.636  0.625\nlr_pooled       2994            -0.006   7.4e-01           8.4  0.740  0.790\nlr_fedavg5      2994            -0.188   2.9e-25           8.4  0.660  0.648\ngb_ensemble     2994            -0.120   5.1e-11           8.4  0.681  0.697\ngb_pooled       2865            -0.029   1.2e-01           8.5  0.746  0.792\n\nexpected benefit by EPV band (AUPRC gain over the local model):\ncombiner                 0-2           2-5          5-10         10-20          20-\u221e\nlr_merge             +0.0339       +0.0187       +0.0081             -             -\nlr_ensemble          +0.0330       +0.0083       -0.0048             -             -\nlr_pooled            +0.0600       +0.0620       +0.0660             -             -\nlr_fedavg5           +0.0297       +0.0119       +0.0033             -             -\ngb_ensemble          +0.0423       +0.0282       +0.0124             -             -\ngb_pooled            +0.0801       +0.0769       +0.0556             -             -\n\nwrote results/site_rules_recalib_eicu.csv"
+}

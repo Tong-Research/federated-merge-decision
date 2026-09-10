@@ -1,0 +1,21 @@
+{
+  "id": "85-lc-dp",
+  "machine": "spinner",
+  "priority": 9,
+  "matrices": [
+    "lendingclub"
+  ],
+  "timeout": 14400,
+  "note": "Result 57's sign change, in a third domain",
+  "cmd": "DP_EPSILONS=0.1,0.5,1,2,5,inf .venv/bin/python experiments/dp_merge.py --dataset matrix --matrix lendingclub --seeds 5 --out results/dp_lendingclub.csv",
+  "outputs": [
+    "results/dp_lendingclub.csv"
+  ],
+  "predicted": "benefit at eps=inf near zero or negative, strongly positive by eps=1",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/85-lc-dp.json",
+  "seconds": 152.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:05:18",
+  "tail": "  MT  (3960 rows)\n  NC  (4140 rows)\n  NH  (4320 rows)\n  NJ  (4500 rows)\n  NM  (4680 rows)\n  NV  (4860 rows)\n  NY  (5040 rows)\n  OH  (5220 rows)\n  OK  (5400 rows)\n  OR  (5580 rows)\n  PA  (5760 rows)\n  RI  (5940 rows)\n  SC  (6120 rows)\n  SD  (6300 rows)\n  TX  (6480 rows)\n  UT  (6660 rows)\n  VA  (6840 rows)\n  VT  (7020 rows)\n  WA  (7200 rows)\n  WI  (7380 rows)\n  WV  (7560 rows)\n  WY  (7740 rows)\n\n=== A. where does the merge benefit die? (7740 rows) ===\n  epsilon    local    merge   benefit        p  benefit(w=0.5)\n      0.1   0.1681   0.1856   +0.0175  1.6e-17         +0.0022\n      0.5   0.1910   0.2036   +0.0126  2.1e-11         -0.0001\n        1   0.2064   0.2222   +0.0158  4.5e-14         -0.0038\n        2   0.2226   0.2479   +0.0252  1.1e-26         -0.0025\n        5   0.2481   0.2718   +0.0237  2.7e-31         -0.0008\n      inf   0.2791   0.2888   +0.0097  7.3e-13         +0.0070\n\n   split by target adequacy (privacy should cost small sites most):\n   target EPV 0-5:\n     eps= 0.1  local 0.1672  benefit +0.0259\n     eps= 0.5  local 0.1914  benefit +0.0171\n     eps=   1  local 0.2046  benefit +0.0214\n     eps=   2  local 0.2178  benefit +0.0355\n     eps=   5  local 0.2412  benefit +0.0335\n     eps= inf  local 0.2821  benefit +0.0131\n   target EPV 5-999:\n     eps= 0.1  local 0.1697  benefit +0.0017\n     eps= 0.5  local 0.1902  benefit +0.0041\n     eps=   1  local 0.2098  benefit +0.0054\n     eps=   2  local 0.2317  benefit +0.0061\n     eps=   5  local 0.2611  benefit +0.0054\n     eps= inf  local 0.2736  benefit +0.0033\n\n=== B. does composition reverse one-shot vs FedAvg? ===\n  epsilon   one-shot     fed 1r    fed 5r   fed 30r\n      0.1    +0.0175   +0.0150   -0.0082   -0.0163\n      0.5    +0.0126   -0.0024   -0.0175   -0.0327\n        1    +0.0158   -0.0105   -0.0242   -0.0433\n        2    +0.0252   -0.0183   -0.0328   -0.0540\n        5    +0.0237   -0.0238   -0.0481   -0.0670\n      inf    +0.0097   +0.0033   +0.0083   +0.0097\n\n(all figures are AUPRC gain over that site's own DP local model at the same epsilon)\n\nwrote results/dp_lendingclub.csv"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "P2-harm-mimic4-hs",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "timeout": 36000,
+  "note": "Same pool at 15 seeds. MIMIC-IV has only 9 sites, so the 3-seed run is thin for a pool that decides a headline claim -- and 3-seed undersampling is what produced the false Results 58-61.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix mimic4_sites --seeds 15 --out results/lam_mimic4_hs.csv",
+  "outputs": [
+    "results/lam_mimic4_hs.csv"
+  ],
+  "predicted": "Section 5 claims fixed shrinkage is high-return but UNSAFE, and that claim currently rests on one pool: ACS at natural size, where fix_075 scored -270% of the oracle gain. This tests it on independent harmful pools. MIMIC-IV is the most harmful pool in the project (mean benefit -0.0228, merging helped 21.5%), seven times more harmful than ACS natural (-0.0032), and it is a different SOURCE rather than another ACS variant. PREDICTION: on mimic4_sites, always_merge and fix_075 both score strongly NEGATIVE as a share of the lambda-oracle gain, while blend stays positive and is best or within a few points of best. FALSIFIABLE: if fix_075 is fine on MIMIC-IV, then the ACS-natural catastrophe was pool-specific, the 'unsafe' argument rests on a single observation, and Section 5's recommendation must be softened from a safety claim to an average-return claim.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/P2-harm-mimic4-hs.json",
+  "seconds": 22.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T10:23:29",
+  "tail": "mimic4_sites: 66989 records x 42 features, 9 sites, prevalence 0.110\n\n  1,485 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.3458    +0.0000                0.0%\n  always_merge          0.3193    -0.0266             -187.5%\n  epv_gate              0.3403    -0.0056              -39.3%\n  local_cv              0.3465    +0.0007                5.0%\n  fix_025               0.3484    +0.0025               17.9%\n  fix_050               0.3444    -0.0014               -9.9%\n  fix_075               0.3352    -0.0107              -75.2%\n  blend                 0.3491    +0.0033               23.0%\n  oracle_binary         0.3530    +0.0072               50.9%\n  oracle_lambda         0.3600    +0.0142              100.0%\n\n  lambda chosen on inner val: mean 0.313\n  lambda optimal on test    : mean 0.291\n  correlation chosen vs optimal: +0.414\n\nwrote results/lam_mimic4_hs.csv (1,485 rows)"
+}

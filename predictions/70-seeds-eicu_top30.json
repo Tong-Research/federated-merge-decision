@@ -1,0 +1,21 @@
+{
+  "id": "70-seeds-eicu_top30",
+  "priority": 10,
+  "matrices": [
+    "eicu_top30"
+  ],
+  "timeout": 18000,
+  "note": "precision: eicu_top30 at 15 seeds against the 3 every claim currently rests on",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix eicu_top30 --seeds 15 --out results/site_rules_hs_eicu_top30.csv",
+  "outputs": [
+    "results/site_rules_hs_eicu_top30.csv"
+  ],
+  "predicted": "point estimates move by less than their current bootstrap half-widths; if any headline rho moves more than 0.05, the 3-seed figures were undersampled and every interval in the paper needs rewidening",
+  "machine": "pilot",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/70-seeds-eicu_top30.json",
+  "seconds": 64.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:06:24",
+  "tail": "eicu_top30: 54847 records x 42 features, 30 sites, prevalence 0.089\neicu_top30: 5340 decisions\n\n5340 real merge decisions across 30 target sites; merging helped in 64%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.023   9.2e-02     0.640  0.643 lower\u2192merge\nn_target                          -0.043   1.6e-03     0.638  0.643 lower\u2192merge\nn_min                             -0.017   2.3e-01     0.643  0.643 lower\u2192merge\nn_partner_total                   +0.076   2.7e-08     0.632  0.643 higher\u2192merge\nratio_partner_to_target           +0.088   1.0e-10     0.632  0.643 higher\u2192merge\nn_partners                        +0.083   1.2e-09     0.643  0.643 higher\u2192merge\nschema_jaccard                    -0.146   1.1e-26     0.634  0.643 lower\u2192merge\nq_median                          +0.037   7.6e-03     0.633  0.643 higher\u2192merge\ni2_median                         +0.025   6.3e-02     0.630  0.643 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  eicu_top30      64.3%  of 5340 decisions\n\nwrote results/site_rules_hs_eicu_top30.csv"
+}

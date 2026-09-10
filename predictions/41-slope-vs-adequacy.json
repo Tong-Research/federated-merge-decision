@@ -1,0 +1,22 @@
+{
+  "id": "41-slope-vs-adequacy",
+  "machine": "dugong",
+  "priority": 1,
+  "note": "Result 51's open question made testable: does slope damage track target adequacy? The reconcile CSVs carry per-decision epv and dslope -- correlate them.",
+  "cmd": ".venv/bin/python -c \"import csv,glob,numpy as np;from scipy import stats;rows=[r for f in glob.glob('results/calib_reconcile_*.csv') for r in csv.DictReader(open(f))];e=np.array([float(r['epv']) for r in rows]);s=np.array([float(r['A_merge_rules_dslope']) for r in rows]);m=np.isfinite(e)&np.isfinite(s);rho,p=stats.spearmanr(e[m],s[m]);print(f'{m.sum()} decisions across collections');print(f'rho(EPV, slope change) = {rho:+.3f}  p={p:.1e}');q=np.quantile(e[m],[0,.25,.5,.75,1]);[print(f'  EPV {q[i]:6.1f}-{q[i+1]:6.1f}: mean dslope {s[m][(e[m]>=q[i])&(e[m]<=q[i+1])].mean():+.4f}') for i in range(4)]\" | tee results/slope_vs_adequacy.log",
+  "inputs": [
+    "results/calib_reconcile_eicu.csv"
+  ],
+  "outputs": [
+    "results/slope_vs_adequacy.log"
+  ],
+  "predicted": "NEGATIVE rho: higher-adequacy targets suffer more slope damage, because they had a well-calibrated local model to lose. If so the recalibration advice becomes conditional -- exactly the sites the rule tells NOT to merge are the ones that would need full recalibration if they did",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/41-slope-vs-adequacy.json",
+  "seconds": 0.0,
+  "exit_code": 2,
+  "missing_outputs": [
+    "results/slope_vs_adequacy.log"
+  ],
+  "finished": "2026-08-09T21:55:33",
+  "tail": "input check failed: declared inputs not present on dugong: ['results/calib_reconcile_eicu.csv']"
+}

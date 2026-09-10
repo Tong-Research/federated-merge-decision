@@ -1,0 +1,21 @@
+{
+  "id": "Q7-cut-mimic",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "mimic_sites_unit_x_system"
+  ],
+  "timeout": 21600,
+  "note": "Per-pool fitted cut on mimic_sites_unit_x_system: is binary gating wrong, or was the cut wrong?",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix mimic_sites_unit_x_system --seeds 3 --out results/cut_mimic.csv",
+  "outputs": [
+    "results/cut_mimic.csv"
+  ],
+  "predicted": "R78 showed the fixed EPV cut of 10 is actively harmful on MIMIC-IV (-40) and ACS TravelTime (-46), because the sign flips near EPV 5 there rather than 10. This asks whether binary gating is wrong or our CUT was wrong, with two new arms: gate_loso fits the cut on other target sites and applies it to the held-out one (deployable, same protocol as every other fitted rule here); gate_bestcut is the best single cut on the pool itself (in-sample, an upper bound on any single-threshold gate). MIMIC-IV smoke test: epv_gate -40, gate_loso 0, gate_bestcut +30, blend +30. PREDICTION: (1) gate_loso removes the negatives -- no pool below about -5 -- but does NOT reach blend, because a cut fitted to maximise mean AUPRC across sites is systematically too conservative where harm dominates; (2) gate_bestcut comes close to blend on most pools, so binary gating is achievable IN PRINCIPLE but not FITTABLE. FALSIFIABLE: if gate_loso matches blend, the paper should recommend a per-federation fitted gate and the continuous framing loses its main advantage.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/Q7-cut-mimic.json",
+  "seconds": 12.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T10:30:28",
+  "tail": "mimic_sites_unit_x_system: 42002 records x 42 features, 10 sites, prevalence 0.111\n\n  342 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.3278    +0.0000                0.0%\n  always_merge          0.3285    +0.0007                3.9%\n  epv_gate              0.3350    +0.0072               39.8%\n  gate_loso             0.3344    +0.0066               36.4%\n  gate_bestcut          0.3350    +0.0072               39.8%\n  local_cv              0.3306    +0.0029               15.7%\n  fix_025               0.3355    +0.0077               42.3%\n  fix_050               0.3382    +0.0104               57.1%\n  fix_075               0.3364    +0.0086               47.5%\n  blend                 0.3369    +0.0091               50.0%\n  oracle_binary         0.3403    +0.0125               68.9%\n  oracle_lambda         0.3460    +0.0182              100.0%\n\n  LOSO cut: median 10.7, range 9.6-10.7   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.480\n  lambda optimal on test    : mean 0.481\n  correlation chosen vs optimal: +0.306\n\nwrote results/cut_mimic.csv (342 rows)"
+}

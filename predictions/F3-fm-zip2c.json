@@ -1,0 +1,21 @@
+{
+  "id": "F3-fm-zip2c",
+  "machine": "pilot",
+  "priority": 0,
+  "matrices": [
+    "freddiemac_zip2"
+  ],
+  "timeout": 21600,
+  "note": "third attempt: the matrix was built at 13:25, after both earlier attempts had run",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix freddiemac_zip2 --seeds 3 --out results/site_rules_freddiemac_zip2.csv",
+  "outputs": [
+    "results/site_rules_freddiemac_zip2.csv"
+  ],
+  "predicted": "the five partitions trace Result 64's curve. Concretely: zip3 and MSA sit at low harm fraction and should give small or negative lift; state, zip2 and seller sit high and should give small positive lift. NOTE the natural granularities cluster at f~0.1 and f~0.75 with nothing near the 0.45 peak, so if all five give small lifts that is consistent with the law AND with the peak being unreachable by any natural partition -- which would matter more than a confirmation.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/F3-fm-zip2c.json",
+  "seconds": 472.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T13:40:01",
+  "tail": "freddiemac_zip2: 3069351 records x 16 features, 99 sites, prevalence 0.032\nfreddiemac_zip2: 3555 decisions\n\n3555 real merge decisions across 99 target sites; merging helped in 49%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.241   2.6e-48     0.518  0.511 lower\u2192merge\nn_target                          -0.196   3.1e-32     0.551  0.511 lower\u2192merge\nn_min                             -0.068   4.8e-05     0.515  0.511 lower\u2192merge\nn_partner_total                   +0.011   5.1e-01     0.423  0.511 higher\u2192merge\nratio_partner_to_target           +0.171   1.1e-24     0.530  0.511 higher\u2192merge\nn_partners                        -0.000   9.9e-01     0.403  0.511 lower\u2192merge\nschema_jaccard                      +nan       nan     0.511  0.511 higher\u2192merge\nq_median                          -0.029   8.0e-02     0.460  0.511 lower\u2192merge\ni2_median                         -0.046   5.9e-03     0.513  0.511 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  freddiemac_zip2  48.9%  of 3555 decisions\n\nwrote results/site_rules_freddiemac_zip2.csv"
+}

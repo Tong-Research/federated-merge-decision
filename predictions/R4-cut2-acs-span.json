@@ -1,0 +1,21 @@
+{
+  "id": "R4-cut2-acs-span",
+  "machine": "pilot",
+  "priority": 2,
+  "matrices": [
+    "acs_span_income"
+  ],
+  "timeout": 21600,
+  "note": "Fitted cut with endpoints on acs_span_income.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix acs_span_income --seeds 3 --out results/cut_acs-span.csv",
+  "outputs": [
+    "results/cut_acs-span.csv"
+  ],
+  "predicted": "Rerun after fixing the fitted-gate grid, which lacked the endpoints and so could not express 'merge nothing' or 'merge everything' -- denying the FITTED gate two options the FIXED gate had by accident, and making an in-sample optimum score worse than a constant. With endpoints: gate_bestcut is now a true upper bound on any single-threshold gate. PREDICTION: gate_loso >= about -5 on every pool (it can now decline), gate_bestcut >= epv_gate on every pool by construction, and gate_bestcut still below blend on a majority -- because a single EPV threshold cannot express 'shrink partially', which is what the harmful pools need. FALSIFIABLE: if gate_bestcut matches blend everywhere, binary gating is adequate given the right cut and the continuous framing is only a fitting convenience.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/R4-cut2-acs-span.json",
+  "seconds": 38.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T10:34:13",
+  "tail": "acs_span_income: 215445 records x 10 features, 51 sites, prevalence 0.347\n\n  1,830 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.7104    +0.0000                0.0%\n  always_merge          0.7133    +0.0029               39.7%\n  epv_gate              0.7126    +0.0022               30.4%\n  gate_loso             0.7139    +0.0036               48.6%\n  gate_bestcut          0.7142    +0.0038               51.4%\n  local_cv              0.7137    +0.0034               45.8%\n  fix_025               0.7119    +0.0015               20.4%\n  fix_050               0.7130    +0.0026               35.2%\n  fix_075               0.7138    +0.0034               46.3%\n  blend                 0.7142    +0.0038               51.6%\n  oracle_binary         0.7166    +0.0062               85.0%\n  oracle_lambda         0.7177    +0.0074              100.0%\n\n  LOSO cut: median 20.2, range 17.1-20.2   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.572\n  lambda optimal on test    : mean 0.531\n  correlation chosen vs optimal: +0.353\n\nwrote results/cut_acs-span.csv (1,830 rows)"
+}

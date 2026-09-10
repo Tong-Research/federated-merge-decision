@@ -1,0 +1,20 @@
+{
+  "id": "71-boots-all",
+  "priority": 20,
+  "machine": "pilot",
+  "note": "10,000-resample interval on site_rules_all.csv -- 5x the current 2,000",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_all.csv --boots 10000 | tee results/ci10k_all.log",
+  "inputs": [
+    "results/site_rules_all.csv"
+  ],
+  "outputs": [
+    "results/ci10k_all.log"
+  ],
+  "predicted": "intervals within 10% of the 2,000-boot versions; a larger change means 2,000 was too few and Results 35/44/47 need restating",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/71-boots-all.json",
+  "seconds": 65.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:33:25",
+  "tail": "711 decisions, 25 sites, 10000 bootstrap resamples of sites\n\nepv_target   cut =      6.7 events/variable   95% CI [0.7, 9.7]   width/median = 1.33   acc 0.738\nn_target     cut =   2285.9 records   95% CI [200.0, 3577.2]   width/median = 1.48   acc 0.745\n\nnarrower relative interval = the more sharply located boundary"
+}

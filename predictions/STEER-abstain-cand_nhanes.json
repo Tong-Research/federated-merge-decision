@@ -1,0 +1,21 @@
+{
+  "id": "STEER-abstain-cand_nhanes",
+  "machine": "spinner",
+  "priority": 3,
+  "matrices": [
+    "cand_nhanes"
+  ],
+  "timeout": 21600,
+  "note": "prereg/STEER.md abstain | v2 00:20: AUROC added, AUPRC of a retained subset is prevalence-confounded",
+  "cmd": ".venv/bin/python experiments/steer_probes.py abstain --dataset cand_nhanes",
+  "outputs": [
+    "results/steer/abstain_cand_nhanes.csv"
+  ],
+  "predicted": "expected NEGATIVE: confidence-ranked retention has higher retained-set AUROC than support-ranked at every coverage on >=6/8",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/STEER-abstain-cand_nhanes.json",
+  "seconds": 1501.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-05T00:52:32",
+  "tail": "fold 0: tree_confidence@0.7: 0.389 | lattice_support@0.7: 0.377 | pattern_depth@0.7: 0.597 | random@0.7: 0.568 | tree_confidence@0.9: 0.472 | lattice_support@0.9: 0.555 | pattern_depth@0.9: 0.579 | random@0.9: 0.575 [0s]\n  fold 1: tree_confidence@0.7: 0.368 | lattice_support@0.7: 0.324 | pattern_depth@0.7: 0.520 | random@0.7: 0.552 | tree_confidence@0.9: 0.482 | lattice_support@0.9: 0.451 | pattern_depth@0.9: 0.542 | random@0.9: 0.543 [1s]\n  fold 2: tree_confidence@0.7: 0.407 | lattice_support@0.7: 0.361 | pattern_depth@0.7: 0.555 | random@0.7: 0.622 | tree_confidence@0.9: 0.480 | lattice_support@0.9: 0.554 | pattern_depth@0.9: 0.586 | random@0.9: 0.609 [1s]\nwrote /Users/tong/phd/papers/paper-plco-hypergraph/results/steer/abstain_cand_nhanes.csv (36 rows)"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "36-partner-mass-confound",
+  "machine": "dugong",
+  "priority": 3,
+  "note": "Result 48 found benchmark cohorts confound target size with partner mass. Nobody has separated them: n_partner_total is in every rules table but was never controlled for.",
+  "cmd": ".venv/bin/python experiments/trivial_baseline.py results/site_rules_top30.csv results/site_rules_eicu_only.csv results/site_rules_10seed.csv | tee results/trivial_baseline_5.log",
+  "outputs": [
+    "results/trivial_baseline_5.log"
+  ],
+  "predicted": "ratio_partner_to_target beats the trivial rule nowhere, as in every earlier audit -- partner mass drives benefit MAGNITUDE without predicting its SIGN",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/36-partner-mass-confound.json",
+  "seconds": 6.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:35:53",
+  "tail": "=== results/site_rules_top30.csv \u2014 1068 decisions ===\n  always merge 0.690 | never merge 0.310 -> trivial baseline 0.690 (always merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        1.7   0.669   -0.021   WORSE than trivial\n  n_target                        756.0   0.677   -0.013   WORSE than trivial\n  n_min                           724.0   0.690   +0.000   no better than trivial\n  ratio_partner_to_target           0.6   0.669   -0.021   WORSE than trivial\n  i2_median                         1.0   0.675   -0.015   WORSE than trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample.\n\n=== results/site_rules_eicu_only.csv \u2014 3588 decisions ===\n  always merge 0.646 | never merge 0.354 -> trivial baseline 0.646 (always merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        0.5   0.635   -0.011   WORSE than trivial\n  n_target                        222.7   0.638   -0.008   no better than trivial\n  n_min                           212.0   0.646   +0.000   no better than trivial\n  ratio_partner_to_target           0.4   0.647   +0.002   no better than trivial\n  i2_median                         0.9   0.636   -0.010   WORSE than trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample.\n\n=== results/site_rules_10seed.csv \u2014 missing ==="
+}

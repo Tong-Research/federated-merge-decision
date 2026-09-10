@@ -1,0 +1,18 @@
+{
+  "id": "F1-mimic-regime-build",
+  "machine": "pilot",
+  "priority": 1,
+  "timeout": 10800,
+  "mem_gb": 8,
+  "note": "SHOWCASE item F: MIMIC-IV first-ICU-stay matrix + treatment fields present only for treated patients (raw files live on pilot; DUA: not shipped)",
+  "cmd": ".venv/bin/python experiments/build_mimic_regime.py",
+  "matrices": [],
+  "outputs": [],
+  "predicted": "about 20-30% of stays ventilated in the first 24h, 15-25% on a vasopressor, 2-4% on RRT; the treatment fields create a few large disjoint regimes on top of the nested lab patterns; screen expected to FLAG (H_exc up from +0.31); the question is whether family_cv picks own-rows or support here",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/F1-mimic-regime-build.json",
+  "seconds": 161.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T14:32:07",
+  "tail": "cohort aligned: 66,989 stays [1s]\n    chartevents chunk 0: 430 stays with any ventilator setting [2s]\n    chartevents chunk 10: 4,462 stays with any ventilator setting [20s]\n    chartevents chunk 20: 8,445 stays with any ventilator setting [37s]\n    chartevents chunk 30: 12,528 stays with any ventilator setting [54s]\n    chartevents chunk 40: 16,699 stays with any ventilator setting [70s]\n    chartevents chunk 50: 20,698 stays with any ventilator setting [88s]\n    chartevents chunk 60: 24,641 stays with any ventilator setting [105s]\n    chartevents chunk 70: 28,644 stays with any ventilator setting [120s]\n    chartevents chunk 80: 32,704 stays with any ventilator setting [138s]\n  mimic4_regime: n 66,989 d 57 prev 0.110 missing 37.3% patterns 9,448; ventilated 34,926, any vasopressor 22,971, RRT 1,387 -> /Users/tong/.cache/phd-matrices/cand_mimic4_regime.npz [161s]"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "S7-pf-lendingclub",
+  "machine": "pilot",
+  "priority": 3,
+  "matrices": [
+    "lendingclub_full"
+  ],
+  "timeout": 36000,
+  "note": "Partner formation on a second natural collection. Size strategies only -- state labels do not nest geographically, so the regional arms are correctly skipped.",
+  "cmd": ".venv/bin/python experiments/partner_formation.py --matrix lendingclub_full --strategies random,size_similar,size_largest --seeds 3 --out results/partner_formation_lendingclub.csv",
+  "outputs": [
+    "results/partner_formation_lendingclub.csv"
+  ],
+  "predicted": "C2 and C3 found the rule's sign survives partner selection on Freddie Mac -- rho(EPV,benefit) negative under all seven strategy arms. Lending Club is a second natural collection with a size distribution nobody chose. I predict rho stays negative and significant under random, size_similar and size_largest, and that size_largest again buys far more partner mass for no extra benefit.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/S7-pf-lendingclub.json",
+  "seconds": 243.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T22:47:07",
+  "tail": "lendingclub_full: 1874349 records x 21 features, 50 sites, prevalence 0.174\n  lendingclub_full / random         1,788 decisions  helped 0.501  mean benefit +0.0002\nlendingclub_full: 1874349 records x 21 features, 50 sites, prevalence 0.174\n  lendingclub_full / size_similar   1,746 decisions  helped 0.503  mean benefit +0.0001\nlendingclub_full: 1874349 records x 21 features, 50 sites, prevalence 0.174\n  lendingclub_full / size_largest   1,746 decisions  helped 0.497  mean benefit +0.0003\nwrote results/partner_formation_lendingclub.csv (5,280 rows)"
+}

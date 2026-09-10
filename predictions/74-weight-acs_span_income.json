@@ -1,0 +1,21 @@
+{
+  "id": "74-weight-acs_span_income",
+  "priority": 45,
+  "matrices": [
+    "acs_span_income"
+  ],
+  "timeout": 14400,
+  "note": "the CV-chosen own-weight at 10 seeds on acs_span_income (Result 41 used 3)",
+  "cmd": ".venv/bin/python experiments/merge_weight.py --matrix acs_span_income --seeds 10 --out results/weight_hs_acs_span_income.csv",
+  "outputs": [
+    "results/weight_hs_acs_span_income.csv"
+  ],
+  "predicted": "CV weighting still beats n-weighting on MIMIC and ties elsewhere",
+  "machine": "spinner",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/74-weight-acs_span_income.json",
+  "seconds": 100.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:16:27",
+  "tail": "  acs_span_income: 19\n  acs_span_income: 20\n  acs_span_income: 21\n  acs_span_income: 22\n  acs_span_income: 23\n  acs_span_income: 24\n  acs_span_income: 25\n  acs_span_income: 26\n  acs_span_income: 27\n  acs_span_income: 28\n  acs_span_income: 29\n  acs_span_income: 30\n  acs_span_income: 31\n  acs_span_income: 32\n  acs_span_income: 33\n  acs_span_income: 34\n  acs_span_income: 35\n  acs_span_income: 36\n  acs_span_income: 37\n  acs_span_income: 38\n  acs_span_income: 39\n  acs_span_income: 40\n  acs_span_income: 41\n  acs_span_income: 42\n  acs_span_income: 44\n  acs_span_income: 45\n  acs_span_income: 46\n  acs_span_income: 47\n  acs_span_income: 48\n  acs_span_income: 49\n  acs_span_income: 50\n  acs_span_income: 51\n  acs_span_income: 53\n  acs_span_income: 54\n  acs_span_income: 55\n  acs_span_income: 56\n  acs_span_income: 72\n\n4080 decisions across 51 sites\n\nmean AUPRC by own-weight (0 = pure merge, 1 = stay local):\n partners     0.0     0.1     0.2     0.3     0.4     0.5     0.6     0.7     0.8     0.9     1.0\n        1  0.7101  0.7105  0.7108  0.7109  0.7108  0.7107  0.7104  0.7101  0.7095  0.7089  0.7084\n        2  0.7190  0.7195  0.7197  0.7198  0.7194  0.7191  0.7186  0.7180  0.7173  0.7164  0.7157\n        3  0.7010  0.7021  0.7027  0.7030  0.7030  0.7025  0.7021  0.7016  0.7010  0.7002  0.6991\n        4  0.7269  0.7274  0.7277  0.7277  0.7277  0.7275  0.7271  0.7266  0.7258  0.7250  0.7241\n\n partners  n-weight  oracle w    CV w    merge    local       CV   oracle\n        1      0.52      0.47    0.38   0.7101   0.7084   0.7107   0.7146\n        2      0.30      0.46    0.37   0.7190   0.7157   0.7196   0.7241\n        3      0.25      0.47    0.39   0.7010   0.6991   0.7019   0.7076\n        4      0.23      0.46    0.35   0.7269   0.7241   0.7277   0.7314\n\ndoes CV weighting remove the one-partner deficit? (benefit over staying local)\n  k=1:  n-weighted merge +0.0017 (p=3.3e-03)   CV-weighted +0.0023 (p=3.6e-17)\n  k=2:  n-weighted merge +0.0033 (p=1.6e-03)   CV-weighted +0.0039 (p=4.4e-26)\n  k=3:  n-weighted merge +0.0018 (p=4.9e-04)   CV-weighted +0.0028 (p=1.5e-29)\n  k=4:  n-weighted merge +0.0028 (p=3.1e-05)   CV-weighted +0.0036 (p=6.8e-27)\n\nwrote results/weight_hs_acs_span_income.csv"
+}

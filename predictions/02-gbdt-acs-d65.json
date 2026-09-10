@@ -1,0 +1,21 @@
+{
+  "id": "02-gbdt-acs-d65",
+  "machine": "spinner",
+  "priority": 2,
+  "note": "the low-EPV arm of the same states: median EPV 4.2 against d10's 27.4",
+  "cmd": ".venv/bin/python experiments/site_rules_ext.py --matrix acs_d65 --seeds 3 --out results/site_rules_ext_acs_d65.csv",
+  "matrices": [
+    "acs_d65"
+  ],
+  "outputs": [
+    "results/site_rules_ext_acs_d65.csv",
+    "results/site_rules_ext_acs_d65_summary.csv"
+  ],
+  "predicted": "same ordering of combiners, but no cut is locatable because the support stops below 10 -- the same structural limit eICU hit",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/02-gbdt-acs-d65.json",
+  "seconds": 227.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:23:16",
+  "tail": "  acs_d65: 15 done (330 rows)\n  acs_d65: 16 done (360 rows)\n  acs_d65: 17 done (390 rows)\n  acs_d65: 18 done (420 rows)\n  acs_d65: 19 done (450 rows)\n  acs_d65: 20 done (480 rows)\n  acs_d65: 21 done (510 rows)\n  acs_d65: 22 done (540 rows)\n  acs_d65: 23 done (570 rows)\n  acs_d65: 24 done (600 rows)\n  acs_d65: 25 done (630 rows)\n  acs_d65: 26 done (660 rows)\n  acs_d65: 27 done (690 rows)\n  acs_d65: 28 done (720 rows)\n  acs_d65: 29 done (750 rows)\n  acs_d65: 30 done (780 rows)\n  acs_d65: 31 done (810 rows)\n  acs_d65: 32 done (840 rows)\n  acs_d65: 33 done (870 rows)\n  acs_d65: 34 done (900 rows)\n  acs_d65: 35 done (930 rows)\n  acs_d65: 36 done (960 rows)\n  acs_d65: 37 done (990 rows)\n  acs_d65: 38 done (1020 rows)\n  acs_d65: 39 done (1050 rows)\n  acs_d65: 40 done (1080 rows)\n  acs_d65: 41 done (1110 rows)\n  acs_d65: 42 done (1140 rows)\n  acs_d65: 44 done (1170 rows)\n  acs_d65: 45 done (1200 rows)\n  acs_d65: 46 done (1230 rows)\n  acs_d65: 47 done (1260 rows)\n  acs_d65: 48 done (1290 rows)\n  acs_d65: 49 done (1320 rows)\n  acs_d65: 50 done (1350 rows)\n  acs_d65: 51 done (1380 rows)\n  acs_d65: 53 done (1410 rows)\n  acs_d65: 54 done (1440 rows)\n  acs_d65: 55 done (1470 rows)\n  acs_d65: 56 done (1500 rows)\n  acs_d65: 72 done (1530 rows)\n\ncombiner           n  rho(EPV,benefit)         p  best EPV cut    acc   base\nlr_merge        1530            -0.347   1.5e-44           5.8  0.713  0.724\nlr_ensemble     1530            -0.424   8.0e-68           5.2  0.700  0.700\nlr_pooled       1530            -0.301   2.0e-33           5.8  0.724  0.741\nlr_fedavg5      1530            -0.415   1.1e-64           5.2  0.667  0.617\ngb_ensemble     1530            -0.415   8.6e-65           5.8  0.697  0.750\ngb_pooled       1530            -0.352   7.1e-46           5.8  0.705  0.742\n\nexpected benefit by EPV band (AUPRC gain over the local model):\ncombiner                 0-2           2-5          5-10         10-20          20-\u221e\nlr_merge             +0.0526       +0.0156       +0.0046             -             -\nlr_ensemble          +0.0559       +0.0137       +0.0015             -             -\nlr_pooled            +0.0485       +0.0204       +0.0062             -             -\nlr_fedavg5           +0.0524       +0.0070       -0.0062             -             -\ngb_ensemble          +0.0719       +0.0137       +0.0121             -             -\ngb_pooled            +0.0691       +0.0174       +0.0117             -             -\n\nwrote results/site_rules_ext_acs_d65.csv"
+}

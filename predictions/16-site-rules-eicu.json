@@ -1,0 +1,21 @@
+{
+  "id": "16-site-rules-eicu",
+  "machine": "dugong",
+  "priority": 1,
+  "note": "site_rules format on eICU; job 14 failed twice for want of a `helped` column",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix eicu_sites --seeds 3 --out results/site_rules_eicu_only.csv",
+  "matrices": [
+    "eicu_sites"
+  ],
+  "outputs": [
+    "results/site_rules_eicu_only.csv",
+    "results/site_rules_eicu_only_rules.csv"
+  ],
+  "predicted": "eICU alone does NOT beat the trivial rule, because every hospital sits below EPV 10 -- same structural reason as ACS. If it DOES beat it, the harm regime is not the whole story and Result 41's scope condition needs revising.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/16-site-rules-eicu.json",
+  "seconds": 109.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:39:13",
+  "tail": "eicu_sites: 95197 records x 42 features, 100 sites, prevalence 0.090\neicu_sites: 3588 decisions\n\n3588 real merge decisions across 100 target sites; merging helped in 65%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.144   4.5e-18     0.605  0.646 lower\u2192merge\nn_target                          -0.158   1.4e-21     0.622  0.646 lower\u2192merge\nn_min                             -0.062   1.8e-04     0.646  0.646 lower\u2192merge\nn_partner_total                   +0.129   9.8e-15     0.634  0.646 higher\u2192merge\nratio_partner_to_target           +0.191   1.1e-30     0.649  0.646 higher\u2192merge\nn_partners                        +0.093   2.1e-08     0.646  0.646 higher\u2192merge\nschema_jaccard                    -0.086   2.5e-07     0.634  0.646 lower\u2192merge\nq_median                          +0.066   8.5e-05     0.634  0.646 higher\u2192merge\ni2_median                         +0.044   9.0e-03     0.636  0.646 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  eicu_sites      64.6%  of 3588 decisions\n\nwrote results/site_rules_eicu_only.csv"
+}

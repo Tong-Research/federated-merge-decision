@@ -1,0 +1,23 @@
+{
+  "id": "57-task-rule-employment",
+  "machine": "pilot",
+  "priority": 5,
+  "needs": [
+    "56-task-build-employment"
+  ],
+  "matrices": [
+    "acs_span_employment"
+  ],
+  "note": "the rule on ACSEmployment",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_span_employment --seeds 3 --out results/site_rules_employment.csv",
+  "outputs": [
+    "results/site_rules_employment.csv"
+  ],
+  "predicted": "EPV leads with a negative rho and a positive lift, as income and public coverage both gave -- seven outcomes agreeing makes 'prevalence acts through EPV' a claim rather than a coincidence",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/57-task-rule-employment.json",
+  "seconds": 73.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:44:20",
+  "tail": "acs_span_employment: 368981 records x 16 features, 51 sites, prevalence 0.462\nacs_span_employment: 1830 decisions\n\n1830 real merge decisions across 51 target sites; merging helped in 60%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.475  1.6e-103     0.650  0.595 lower\u2192merge\nn_target                          -0.486  2.7e-109     0.652  0.595 lower\u2192merge\nn_min                             -0.269   9.4e-32     0.590  0.595 lower\u2192merge\nn_partner_total                   -0.046   4.7e-02     0.592  0.595 lower\u2192merge\nratio_partner_to_target           +0.325   3.8e-46     0.564  0.595 higher\u2192merge\nn_partners                        -0.029   2.2e-01     0.595  0.595 lower\u2192merge\nschema_jaccard                      +nan       nan     0.595  0.595 higher\u2192merge\nq_median                          -0.121   2.3e-07     0.574  0.595 lower\u2192merge\ni2_median                         -0.163   2.5e-12     0.592  0.595 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_span_employment  59.5%  of 1830 decisions\n\nwrote results/site_rules_employment.csv"
+}

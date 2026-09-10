@@ -1,0 +1,21 @@
+{
+  "id": "R8-cut2-mimic4",
+  "machine": "pilot",
+  "priority": 2,
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "timeout": 21600,
+  "note": "Fitted cut with endpoints on mimic4_sites.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix mimic4_sites --seeds 3 --out results/cut_mimic4.csv",
+  "outputs": [
+    "results/cut_mimic4.csv"
+  ],
+  "predicted": "Rerun after fixing the fitted-gate grid, which lacked the endpoints and so could not express 'merge nothing' or 'merge everything' -- denying the FITTED gate two options the FIXED gate had by accident, and making an in-sample optimum score worse than a constant. With endpoints: gate_bestcut is now a true upper bound on any single-threshold gate. PREDICTION: gate_loso >= about -5 on every pool (it can now decline), gate_bestcut >= epv_gate on every pool by construction, and gate_bestcut still below blend on a majority -- because a single EPV threshold cannot express 'shrink partially', which is what the harmful pools need. FALSIFIABLE: if gate_bestcut matches blend everywhere, binary gating is adequate given the right cut and the continuous framing is only a fitting convenience.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/R8-cut2-mimic4.json",
+  "seconds": 18.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T10:34:34",
+  "tail": "mimic4_sites: 66989 records x 42 features, 9 sites, prevalence 0.110\n\n  297 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.3466    +0.0000                0.0%\n  always_merge          0.3198    -0.0268             -219.2%\n  epv_gate              0.3417    -0.0049              -40.2%\n  gate_loso             0.3466    +0.0000                0.0%\n  gate_bestcut          0.3502    +0.0036               29.7%\n  local_cv              0.3473    +0.0007                5.9%\n  fix_025               0.3482    +0.0016               13.0%\n  fix_050               0.3435    -0.0031              -25.3%\n  fix_075               0.3351    -0.0115              -94.2%\n  blend                 0.3503    +0.0037               30.2%\n  oracle_binary         0.3531    +0.0065               53.1%\n  oracle_lambda         0.3588    +0.0122              100.0%\n\n  LOSO cut: median 2.1, range 0.0-2.1   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.343\n  lambda optimal on test    : mean 0.293\n  correlation chosen vs optimal: +0.501\n\nwrote results/cut_mimic4.csv (297 rows)"
+}

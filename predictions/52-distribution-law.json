@@ -1,0 +1,24 @@
+{
+  "id": "52-distribution-law",
+  "machine": "pilot",
+  "priority": 3,
+  "needs": [
+    "51-ladder-rule-500",
+    "51-ladder-rule-1000",
+    "51-ladder-rule-2000",
+    "51-ladder-rule-5000",
+    "51-ladder-rule-10000"
+  ],
+  "note": "Tier 1A: turn Result 55's limitation into a quantified law",
+  "cmd": ".venv/bin/python experiments/distribution_law.py site_rules_acs_d10.csv site_rules_acs_span.csv site_rules_acs_full.csv site_rules_ladder_500.csv site_rules_ladder_1000.csv site_rules_ladder_2000.csv site_rules_ladder_5000.csv site_rules_ladder_10000.csv | tee results/distribution_law.log",
+  "outputs": [
+    "results/distribution_law.log"
+  ],
+  "predicted": "lift is an INVERTED U in the harm fraction, peaking between 0.35 and 0.65 with a maximum above +0.05, and the helped rate falls monotonically. If lift is flat, Result 55's explanation was wrong and must be withdrawn.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/52-distribution-law.json",
+  "seconds": 0.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:39:26",
+  "tail": "pool                               harm frac  helped  trivial   best    lift    med n\n--------------------------------------------------------------------------------------------\nsite_rules_acs_d10                     0.000   0.597    0.597  0.584  -0.014      728\nsite_rules_acs_span                    0.138   0.525    0.525  0.586  +0.061     1020\nsite_rules_ladder_1000                 0.256   0.474    0.526  0.574  +0.048     2244\nsite_rules_ladder_500                  0.274   0.440    0.560  0.619  +0.059     2104\nsite_rules_ladder_2000                 0.372   0.396    0.604  0.653  +0.049     4029\nsite_rules_ladder_5000                 0.590   0.387    0.613  0.620  +0.007     5844\nsite_rules_acs_full                    0.823   0.340    0.660  0.683  +0.023    15343\nsite_rules_ladder_10000                0.823   0.335    0.665  0.670  +0.005     9129\n\nprediction 4 (consistency): helped rate should fall as the harm fraction rises\n  corr(harm fraction, helped rate) = -0.942  -> consistent\n\nquadratic fit  lift = -0.251\u00b7f\u00b2 +0.202\u00b7f +0.010\n  leading coefficient -0.251 -> INVERTED U (predicted)\n  peak at harm fraction 0.40 -> within the predicted 0.35-0.65\n  max observed lift +0.061 -> exceeds +0.05 as predicted"
+}

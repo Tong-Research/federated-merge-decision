@@ -1,0 +1,21 @@
+{
+  "id": "HCAL2-cand_acs_income",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "cand_acs_income"
+  ],
+  "timeout": 28800,
+  "note": "HCAL post-hoc comparator (referee 5): switch_cv = global vs kappa=0 Platt by inner CV; other arms must reproduce results/hcal bit-for-bit",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset cand_acs_income --slice holdout --switch --out results/hcal2/cand_acs_income.csv",
+  "outputs": [
+    "results/hcal2/cand_acs_income.csv"
+  ],
+  "predicted": "Post hoc, not registered. If switch_cv matches hier_cv within 0.001 AUPRC and 0.001 log-loss on the four datasets where kappa=0 is harmful (MIMIC regimes, MIMIC first stays, ACS, NHANES), the 'safety' is the inner CV choosing global recalibration and the hierarchy gets no credit for it; the paper must say so. If hier_cv is below switch_cv in log-loss on those four (it can sit between global and per-pattern where switch_cv cannot), the hierarchy does something the switch cannot. Sanity: tree/global/pattern_k0/hier_cv rows must equal results/hcal exactly.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL2-cand_acs_income.json",
+  "seconds": 126.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T23:49:09",
+  "tail": "cand_acs_income holdout: 60000 rows x 43 cols, prevalence 0.266\n  seed 0 fold 0: tree=0.7892 global=0.7892 pattern_k0=0.7612 hier_cv=0.7893 switch_cv=0.7892 kappa=10 [6s]\n  seed 0 fold 1: tree=0.7922 global=0.7922 pattern_k0=0.7689 hier_cv=0.7922 switch_cv=0.7922 kappa=100 [12s]\n  seed 0 fold 2: tree=0.7927 global=0.7927 pattern_k0=0.7840 hier_cv=0.7935 switch_cv=0.7927 kappa=100 [18s]\n  seed 0 fold 3: tree=0.7916 global=0.7916 pattern_k0=0.7613 hier_cv=0.7927 switch_cv=0.7916 kappa=100 [24s]\n  seed 0 fold 4: tree=0.7955 global=0.7955 pattern_k0=0.7762 hier_cv=0.7959 switch_cv=0.7955 kappa=100 [30s]\n  seed 1 fold 0: tree=0.7867 global=0.7867 pattern_k0=0.7675 hier_cv=0.7874 switch_cv=0.7867 kappa=100 [36s]\n  seed 1 fold 1: tree=0.7935 global=0.7935 pattern_k0=0.7813 hier_cv=0.7936 switch_cv=0.7935 kappa=1000 [42s]\n  seed 1 fold 2: tree=0.7893 global=0.7893 pattern_k0=0.7673 hier_cv=0.7896 switch_cv=0.7893 kappa=1000 [48s]\n  seed 1 fold 3: tree=0.8024 global=0.8024 pattern_k0=0.7832 hier_cv=0.8025 switch_cv=0.8024 kappa=100 [54s]\n  seed 1 fold 4: tree=0.7958 global=0.7958 pattern_k0=0.7858 hier_cv=0.7967 switch_cv=0.7958 kappa=100 [60s]\n  seed 2 fold 0: tree=0.7972 global=0.7972 pattern_k0=0.7670 hier_cv=0.7980 switch_cv=0.7972 kappa=100 [66s]\n  seed 2 fold 1: tree=0.7871 global=0.7871 pattern_k0=0.7813 hier_cv=0.7871 switch_cv=0.7871 kappa=100 [72s]\n  seed 2 fold 2: tree=0.7898 global=0.7898 pattern_k0=0.7645 hier_cv=0.7897 switch_cv=0.7898 kappa=100 [78s]\n  seed 2 fold 3: tree=0.7956 global=0.7956 pattern_k0=0.7933 hier_cv=0.7962 switch_cv=0.7956 kappa=100 [84s]\n  seed 2 fold 4: tree=0.7919 global=0.7919 pattern_k0=0.7695 hier_cv=0.7923 switch_cv=0.7919 kappa=1000 [90s]\nwrote results/hcal2/cand_acs_income.csv (75 rows)"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "MH-mimic4-hs",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "timeout": 28800,
+  "note": "MIMIC-IV policy comparison at 15 seeds -- the gap decision_census found.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix mimic4_sites --seeds 15 --out results/cut_mimic4_hs.csv",
+  "outputs": [
+    "results/cut_mimic4_hs.csv"
+  ],
+  "predicted": "decision_census.py found this on its first run: lam_mimic4_hs.csv holds 1,485 high-seed decisions but has no cut_* twin, so MIMIC-IV's policy comparison in R79 runs on cut_mimic4.csv -- 297 rows, a 5x thinner run. MIMIC-IV is ONE OF ONLY TWO independent harmful pools (section 11), so it is simultaneously the pool carrying the most weight in the safety argument and the one with the least seed support in the policy table. R62 showed three seeds moved rho by up to 0.103. PREDICTION: at 15 seeds the policy ORDERING is unchanged -- blend still beats every binary policy, and gate_bestcut is still non-negative -- but the per-policy means move by more than 0.005 AUPRC on at least one policy, because 297 decisions over 9 sites is too few to pin them. WHAT WOULD MATTER: if gate_bestcut turns NEGATIVE on MIMIC-IV at high seed, R79's claim that the best-possible cut removes every catastrophe is wrong on the pool where it matters most, and section 6 must say so. That is the reason to run this rather than leave it.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/MH-mimic4-hs.json",
+  "seconds": 35.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T23:53:31",
+  "tail": "mimic4_sites: 66989 records x 42 features, 9 sites, prevalence 0.110\n\n  1,485 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.3458    +0.0000                0.0%\n  always_merge          0.3193    -0.0266             -187.5%\n  epv_gate              0.3403    -0.0056              -39.3%\n  gate_loso             0.3458    +0.0000                0.0%\n  gate_bestcut          0.3485    +0.0026               18.6%\n  local_cv              0.3465    +0.0007                5.0%\n  fix_025               0.3484    +0.0025               17.9%\n  fix_050               0.3444    -0.0014               -9.9%\n  fix_075               0.3352    -0.0107              -75.2%\n  blend                 0.3491    +0.0033               23.0%\n  blend_cw              0.3366    -0.0092              -65.3%\n  oracle_binary         0.3530    +0.0072               50.9%\n  oracle_lambda         0.3600    +0.0142              100.0%\n  oracle_lambda_cw      0.3456    -0.0003               -1.8%\n\n  LOSO cut: median 2.1, range 0.0-2.1   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.313\n  lambda optimal on test    : mean 0.291\n  correlation chosen vs optimal: +0.414\n\nwrote results/cut_mimic4_hs.csv (1,485 rows)"
+}

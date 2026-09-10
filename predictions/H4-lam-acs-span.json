@@ -1,0 +1,21 @@
+{
+  "id": "H4-lam-acs-span",
+  "machine": "dugong",
+  "priority": 1,
+  "matrices": [
+    "acs_span_income"
+  ],
+  "timeout": 36000,
+  "note": "Fixed-lambda arms + lambda-oracle on acs_span_income. Decides whether the paper can recommend a PREDICTED shrinkage or only a constant one.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix acs_span_income --seeds 3 --out results/lam_acs-span.csv",
+  "outputs": [
+    "results/lam_acs-span.csv"
+  ],
+  "predicted": "Adds fixed-lambda arms and a lambda-oracle so every policy shares one ceiling, closing R76's stated caveat. Smoke test on freddiemac_sellername (356 decisions, 1 seed): fix_075 61.1% of the lambda-oracle against blend 30.5%, and the correlation between the lambda chosen on inner validation and the lambda that was optimal is +0.016 -- zero. PREDICTION: on a majority of the seven pools, at least one FIXED lambda beats adaptive blend, and the pooled chosen-vs-optimal lambda correlation is below 0.15. Mechanism is the one that killed local_cv: the inner validation split is untrustworthy exactly where the decision matters, so choosing lambda from it is noise. If instead blend beats every fixed arm, adaptivity is real and R76's recommendation stands as written.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/H4-lam-acs-span.json",
+  "seconds": 24.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T03:43:58",
+  "tail": "acs_span_income: 215445 records x 10 features, 51 sites, prevalence 0.347\n\n  1,830 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.7104    +0.0000                0.0%\n  always_merge          0.7133    +0.0029               39.7%\n  epv_gate              0.7126    +0.0022               30.4%\n  local_cv              0.7137    +0.0034               45.8%\n  fix_025               0.7119    +0.0015               20.4%\n  fix_050               0.7130    +0.0026               35.2%\n  fix_075               0.7138    +0.0034               46.3%\n  blend                 0.7142    +0.0038               51.6%\n  oracle_binary         0.7166    +0.0062               85.0%\n  oracle_lambda         0.7177    +0.0074              100.0%\n\n  lambda chosen on inner val: mean 0.572\n  lambda optimal on test    : mean 0.531\n  correlation chosen vs optimal: +0.353\n\nwrote results/lam_acs-span.csv (1,830 rows)"
+}

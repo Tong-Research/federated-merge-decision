@@ -1,0 +1,20 @@
+{
+  "id": "25-dp-calibration",
+  "machine": "dugong",
+  "priority": 4,
+  "note": "untested interaction: Result 33 says merging sells calibration, Result 21 says DP amplifies the merge benefit. Does DP amplify the calibration damage too?",
+  "cmd": "DP_EPSILONS=0.5,1,5,inf .venv/bin/python experiments/dp_merge.py --dataset matrix --matrix eicu_sites --seeds 3 --out results/dp_calib_eicu.csv",
+  "matrices": [
+    "eicu_sites"
+  ],
+  "outputs": [
+    "results/dp_calib_eicu.csv"
+  ],
+  "predicted": "yes -- DP noise shifts intercepts too, so the calibration cost should grow with the discrimination gain, making merge-then-recalibrate MORE important under privacy",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/25-dp-calibration.json",
+  "seconds": 255.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:24:41",
+  "tail": "  353  (5112 rows)\n  357  (5184 rows)\n  365  (5256 rows)\n  382  (5328 rows)\n  384  (5400 rows)\n  386  (5472 rows)\n  387  (5544 rows)\n  388  (5616 rows)\n  390  (5688 rows)\n  391  (5760 rows)\n  392  (5832 rows)\n  394  (5904 rows)\n  396  (5976 rows)\n  400  (6048 rows)\n  403  (6120 rows)\n  407  (6192 rows)\n  411  (6264 rows)\n  413  (6336 rows)\n  416  (6408 rows)\n  417  (6480 rows)\n  420  (6552 rows)\n  421  (6624 rows)\n  435  (6696 rows)\n  440  (6768 rows)\n  443  (6840 rows)\n  444  (6912 rows)\n  449  (6984 rows)\n  452  (7056 rows)\n  458  (7128 rows)\n  459  (7200 rows)\n\n=== A. where does the merge benefit die? (7200 rows) ===\n  epsilon    local    merge   benefit        p  benefit(w=0.5)\n      0.5   0.1257   0.1363   +0.0106  7.3e-11         +0.0041\n        1   0.1392   0.1516   +0.0125  4.7e-14         +0.0041\n        5   0.1990   0.2304   +0.0314  4.8e-57         +0.0201\n      inf   0.2460   0.2685   +0.0225  8.8e-41         +0.0214\n\n   split by target adequacy (privacy should cost small sites most):\n   target EPV 0-5:\n     eps= 0.5  local 0.1232  benefit +0.0122\n     eps=   1  local 0.1341  benefit +0.0161\n     eps=   5  local 0.1920  benefit +0.0355\n     eps= inf  local 0.2431  benefit +0.0240\n   target EPV 5-999:\n     eps= 0.5  local 0.1482  benefit -0.0034\n     eps=   1  local 0.1842  benefit -0.0203\n     eps=   5  local 0.2615  benefit -0.0051\n     eps= inf  local 0.2717  benefit +0.0092\n\n=== B. does composition reverse one-shot vs FedAvg? ===\n  epsilon   one-shot     fed 1r    fed 5r   fed 30r\n      0.5    +0.0106   -0.0093   -0.0171   -0.0295\n        1    +0.0125   -0.0225   -0.0252   -0.0404\n        5    +0.0314   -0.0666   -0.0782   -0.0873\n      inf    +0.0225   -0.0255   -0.0125   +0.0026\n\n(all figures are AUPRC gain over that site's own DP local model at the same epsilon)\n\nwrote results/dp_calib_eicu.csv"
+}

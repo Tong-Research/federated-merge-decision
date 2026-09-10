@@ -1,0 +1,21 @@
+{
+  "id": "73-dp-acs_span_income",
+  "priority": 40,
+  "matrices": [
+    "acs_span_income"
+  ],
+  "timeout": 18000,
+  "note": "DP at 5 seeds and 6 budgets on acs_span_income, reported in ABSOLUTE benefit per Result 57",
+  "cmd": "DP_EPSILONS=0.1,0.5,1,2,5,inf .venv/bin/python experiments/dp_merge.py --dataset matrix --matrix acs_span_income --seeds 5 --out results/dp_hs_acs_span_income.csv",
+  "outputs": [
+    "results/dp_hs_acs_span_income.csv"
+  ],
+  "predicted": "the sign change survives at every collection -- negative or zero benefit at eps=inf turning positive by eps=1. This is the claim most worth hardening because it is the paper's most portable one.",
+  "machine": "pilot",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/73-dp-acs_span_income.json",
+  "seconds": 200.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:48:17",
+  "tail": "  34  (5400 rows)\n  35  (5580 rows)\n  36  (5760 rows)\n  37  (5940 rows)\n  38  (6120 rows)\n  39  (6300 rows)\n  40  (6480 rows)\n  41  (6660 rows)\n  42  (6840 rows)\n  44  (7020 rows)\n  45  (7200 rows)\n  46  (7380 rows)\n  47  (7560 rows)\n  48  (7740 rows)\n  49  (7920 rows)\n  50  (8100 rows)\n  51  (8280 rows)\n  53  (8460 rows)\n  54  (8640 rows)\n  55  (8820 rows)\n  56  (9000 rows)\n  72  (9180 rows)\n\n=== A. where does the merge benefit die? (9180 rows) ===\n  epsilon    local    merge   benefit        p  benefit(w=0.5)\n      0.1   0.4298   0.4751   +0.0452  1.6e-33         -0.0210\n      0.5   0.5405   0.6325   +0.0919 1.7e-122         -0.0034\n        1   0.5952   0.6796   +0.0844 3.9e-138         +0.0158\n        2   0.6539   0.7049   +0.0509 6.0e-117         +0.0200\n        5   0.6997   0.7173   +0.0176  3.8e-52         +0.0113\n      inf   0.7190   0.7190   +0.0001  2.8e-01         +0.0004\n\n   split by target adequacy (privacy should cost small sites most):\n   target EPV 0-5:\n     eps= 0.1  local 0.0919  benefit +0.0671\n     eps= 0.5  local 0.1551  benefit +0.0640\n     eps=   1  local 0.1379  benefit +0.1456\n     eps=   2  local 0.1604  benefit +0.1314\n     eps=   5  local 0.2635  benefit +0.0915\n     eps= inf  local 0.4113  benefit -0.0560\n   target EPV 5-999:\n     eps= 0.1  local 0.4366  benefit +0.0448\n     eps= 0.5  local 0.5482  benefit +0.0925\n     eps=   1  local 0.6043  benefit +0.0832\n     eps=   2  local 0.6638  benefit +0.0493\n     eps=   5  local 0.7084  benefit +0.0161\n     eps= inf  local 0.7251  benefit +0.0012\n\n=== B. does composition reverse one-shot vs FedAvg? ===\n  epsilon   one-shot     fed 1r    fed 5r   fed 30r\n      0.1    +0.0452   -0.0382   -0.0558   -0.0687\n      0.5    +0.0919   -0.0662   -0.1150   -0.1556\n        1    +0.0844   -0.0569   -0.1310   -0.1919\n        2    +0.0509   -0.0491   -0.1342   -0.2176\n        5    +0.0176   -0.0303   -0.0888   -0.1921\n      inf    +0.0001   -0.0095   -0.0051   +0.0009\n\n(all figures are AUPRC gain over that site's own DP local model at the same epsilon)\n\nwrote results/dp_hs_acs_span_income.csv"
+}

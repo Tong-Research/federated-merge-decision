@@ -1,0 +1,17 @@
+{
+  "id": "17-trivial-audit-round2",
+  "machine": "dugong",
+  "priority": 3,
+  "note": "the standing audit, now including eICU-only and the 3-way cross-source pool",
+  "cmd": ".venv/bin/python experiments/trivial_baseline.py results/site_rules_eicu_only.csv results/site_rules_all.csv results/cross_database_3way.csv | tee results/trivial_baseline_2.log",
+  "outputs": [
+    "results/trivial_baseline_2.log"
+  ],
+  "predicted": "the pooled sets beat trivial; eICU alone does not",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/17-trivial-audit-round2.json",
+  "seconds": 6.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:39:20",
+  "tail": "=== results/site_rules_eicu_only.csv \u2014 3588 decisions ===\n  always merge 0.646 | never merge 0.354 -> trivial baseline 0.646 (always merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        0.5   0.635   -0.011   WORSE than trivial\n  n_target                        222.7   0.638   -0.008   no better than trivial\n  n_min                           212.0   0.646   +0.000   no better than trivial\n  ratio_partner_to_target           0.4   0.647   +0.002   no better than trivial\n  i2_median                         0.9   0.636   -0.010   WORSE than trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample.\n\n=== results/site_rules_all.csv \u2014 missing ===\n\n=== results/cross_database_3way.csv \u2014 missing ==="
+}

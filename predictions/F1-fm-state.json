@@ -1,0 +1,21 @@
+{
+  "id": "F1-fm-state",
+  "machine": "pilot",
+  "priority": 1,
+  "matrices": [
+    "freddiemac_propertystate"
+  ],
+  "timeout": 21600,
+  "note": "Freddie Mac 2016+2017, partitioned by state. The hierarchy moves the harm fraction without touching a row, which is the natural experiment on Result 64's x-axis that ACS could only simulate.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix freddiemac_propertystate --seeds 3 --out results/site_rules_freddiemac_propertystate.csv",
+  "outputs": [
+    "results/site_rules_freddiemac_propertystate.csv"
+  ],
+  "predicted": "the five partitions trace Result 64's curve. Concretely: zip3 and MSA sit at low harm fraction and should give small or negative lift; state, zip2 and seller sit high and should give small positive lift. NOTE the natural granularities cluster at f~0.1 and f~0.75 with nothing near the 0.45 peak, so if all five give small lifts that is consistent with the law AND with the peak being unreachable by any natural partition -- which would matter more than a confirmation.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/F1-fm-state.json",
+  "seconds": 179.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T13:17:50",
+  "tail": "freddiemac_propertystate: 3069179 records x 16 features, 53 sites, prevalence 0.032\nfreddiemac_propertystate: 1905 decisions\n\n1905 real merge decisions across 53 target sites; merging helped in 47%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.161   1.5e-12     0.606  0.534 lower\u2192merge\nn_target                          -0.115   4.6e-07     0.546  0.534 lower\u2192merge\nn_min                             -0.045   4.9e-02     0.516  0.534 lower\u2192merge\nn_partner_total                   -0.059   1.1e-02     0.434  0.534 lower\u2192merge\nratio_partner_to_target           +0.068   2.9e-03     0.561  0.534 higher\u2192merge\nn_partners                        +0.007   7.6e-01     0.508  0.534 higher\u2192merge\nschema_jaccard                    +0.152   2.2e-11     0.515  0.534 higher\u2192merge\nq_median                          -0.036   1.2e-01     0.535  0.534 lower\u2192merge\ni2_median                         -0.065   4.8e-03     0.504  0.534 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  freddiemac_propertystate  46.6%  of 1905 decisions\n\nwrote results/site_rules_freddiemac_propertystate.csv"
+}

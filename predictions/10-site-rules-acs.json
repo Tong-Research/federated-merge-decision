@@ -1,0 +1,21 @@
+{
+  "id": "10-site-rules-acs",
+  "machine": "dugong",
+  "priority": 4,
+  "note": "site_rules format on ACS: needed because threshold_ci bootstraps a `helped` column",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_d10 --seeds 5 --out results/site_rules_acs_d10.csv",
+  "matrices": [
+    "acs_d10"
+  ],
+  "outputs": [
+    "results/site_rules_acs_d10.csv",
+    "results/site_rules_acs_d10_rules.csv"
+  ],
+  "predicted": "EPV leads the feature table on ACS as it does clinically",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/10-site-rules-acs.json",
+  "seconds": 73.7,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:26:20",
+  "tail": "acs_d10: 39771 records x 10 features, 51 sites, prevalence 0.352\nacs_d10: 3050 decisions\n\n3050 real merge decisions across 51 target sites; merging helped in 60%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.236   9.6e-40     0.576  0.597 lower\u2192merge\nn_target                          -0.287   1.0e-58     0.566  0.597 lower\u2192merge\nn_min                             -0.138   2.1e-14     0.575  0.597 lower\u2192merge\nn_partner_total                   +0.061   7.4e-04     0.583  0.597 higher\u2192merge\nratio_partner_to_target           +0.256   6.0e-47     0.599  0.597 higher\u2192merge\nn_partners                        +0.045   1.2e-02     0.597  0.597 higher\u2192merge\nschema_jaccard                      +nan       nan     0.597  0.597 higher\u2192merge\nq_median                          +0.027   1.4e-01     0.596  0.597 higher\u2192merge\ni2_median                         +0.018   3.1e-01     0.596  0.597 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_d10         59.7%  of 3050 decisions\n\nwrote results/site_rules_acs_d10.csv"
+}

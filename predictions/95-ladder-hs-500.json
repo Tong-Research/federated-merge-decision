@@ -1,0 +1,21 @@
+{
+  "id": "95-ladder-hs-500",
+  "priority": 10,
+  "matrices": [
+    "acs_ladder_500"
+  ],
+  "timeout": 18000,
+  "note": "ladder rung 500 at 12 seeds: Result 56's law was fitted on 3-seed pools",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_ladder_500 --seeds 12 --out results/site_rules_hsladder_500.csv",
+  "outputs": [
+    "results/site_rules_hsladder_500.csv"
+  ],
+  "predicted": "harm fraction and lift both within 0.01 of the 3-seed values, because both are averages over thousands of decisions rather than rank statistics",
+  "machine": "dugong",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/95-ladder-hs-500.json",
+  "seconds": 311.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T00:36:01",
+  "tail": "acs_ladder_500: 382335 records x 10 features, 51 sites, prevalence 0.377\nacs_ladder_500: 7320 decisions\n\n7320 real merge decisions across 51 target sites; merging helped in 44%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.073   3.5e-10     0.569  0.556 lower\u2192merge\nn_target                          -0.076   6.1e-11     0.548  0.556 lower\u2192merge\nn_min                             -0.072   6.3e-10     0.550  0.556 lower\u2192merge\nn_partner_total                   -0.129   1.0e-28     0.544  0.556 lower\u2192merge\nratio_partner_to_target           -0.065   2.5e-08     0.566  0.556 lower\u2192merge\nn_partners                        -0.047   5.7e-05     0.556  0.556 lower\u2192merge\nschema_jaccard                      +nan       nan     0.556  0.556 higher\u2192merge\nq_median                          -0.101   3.3e-18     0.549  0.556 lower\u2192merge\ni2_median                         -0.093   1.5e-15     0.550  0.556 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_ladder_500  44.4%  of 7320 decisions\n\nwrote results/site_rules_hsladder_500.csv"
+}

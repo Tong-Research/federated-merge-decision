@@ -1,0 +1,23 @@
+{
+  "id": "C1-pf-zip3",
+  "machine": "pilot",
+  "priority": 2,
+  "matrices": [
+    "freddiemac_zip3"
+  ],
+  "timeout": 36000,
+  "note": "811 zip3 sites, regional federations by shared zip2. The heaviest C job; dugong has 62GB and 16 cores and is idle. | moved to pilot 21:30: both remaining jobs were addressed to dugong, which is busy with D1, so pilot and spinner sat idle. zip3 is 3.06M x 16 float32 (~196MB), well within pilot's 32GB.",
+  "cmd": "MAX_PARTNERS=4 .venv/bin/python experiments/partner_formation.py --matrix freddiemac_zip3 --prefix 2 --seeds 3 --out results/partner_formation_zip3.csv",
+  "outputs": [
+    "results/partner_formation_zip3.csv"
+  ],
+  "predicted": "Random partner sampling has been the project's unexamined default, so this is a genuine two-sided test. I predict same_prefix (regional) partners give HIGHER benefit than random for starved targets, because a neighbouring zip3 shares an economy and its coefficients transfer, and that cross_prefix sits below random. I predict the SIGN of the rule is unchanged in every strategy -- adequate targets still lose -- because target adequacy, not partner identity, sets the sign (R45/R47). NOTE this prediction uses no transferred constant. If same_prefix and cross_prefix are indistinguishable, partner correlation does not matter and Section 8's limitation is closable by citing this null.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/C1-pf-zip3.json",
+  "seconds": 1630.0,
+  "exit_code": -15,
+  "missing_outputs": [
+    "results/partner_formation_zip3.csv"
+  ],
+  "finished": "2026-08-10T21:59:18",
+  "tail": "freddiemac_zip3: 3060573 records x 16 features, 811 sites, prevalence 0.032\n  freddiemac_zip3 / random        29,184 decisions  helped 0.619  mean benefit +0.0128\nfreddiemac_zip3: 3060573 records x 16 features, 811 sites, prevalence 0.032"
+}

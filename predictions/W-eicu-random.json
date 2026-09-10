@@ -1,0 +1,21 @@
+{
+  "id": "W-eicu-random",
+  "machine": "pilot",
+  "priority": 1,
+  "matrices": [
+    "eicu_sites"
+  ],
+  "timeout": 21600,
+  "note": "C1: partner selection by random on eicu_sites.",
+  "cmd": ".venv/bin/python experiments/partner_formation.py --matrix eicu_sites --strategies random --seeds 5 --out results/pf_c1_eicu_sites_random.csv",
+  "outputs": [
+    "results/pf_c1_eicu_sites_random.csv"
+  ],
+  "predicted": "Result 17 measured that partner signals computable in advance recover at most 4% of the oracle gap, and that ceiling has been quoted since as a bound on partner selection generally. Every strategy it tested was a flavour of SIMILARITY -- same region, similar size, largest. R86 found the axis that predicts benefit is COMPLEMENTARITY: on all four eICU pools, in every adequacy quartile, targets gain more from partners whose schemas overlap them LESS, orthogonal to adequacy (rho with EPV -0.036, with n -0.024). PREDICTION: schema_complement beats random on mean benefit on eICU by more than size_largest does, i.e. it clears the Result 17 ceiling that was measured on the wrong axis. FALSIFIABLE AND CHEAP: if schema_complement is no better than random, then R86 describes which decisions are good without being a lever for making them better, and the complementarity-weighted estimator in HYPERGRAPH-COMPLEMENTARITY-PLAN.md is not worth writing -- that is the kill condition C1 and it is deliberately first. CONTROL: schema_similar is run as the mirror. If BOTH beat random by the same margin then the effect is 'selecting on schema at all' rather than complementarity, which would be a different and much weaker claim. On mimic4_sites the R86 gradient REVERSES (care units inside one hospital, not separate institutions), so schema_complement should be no better or worse there -- that is the negative control that distinguishes a real mechanism from a fitting artefact.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/W-eicu-random.json",
+  "seconds": 38.7,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T17:17:03",
+  "tail": "eicu_sites: 95197 records x 42 features, 100 sites, prevalence 0.090\n  eicu_sites / random         5,980 decisions  helped 0.629  mean benefit +0.0236\nwrote results/pf_c1_eicu_sites_random.csv (5,980 rows)"
+}

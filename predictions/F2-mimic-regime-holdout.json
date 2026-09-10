@@ -1,0 +1,22 @@
+{
+  "id": "F2-mimic-regime-holdout",
+  "machine": "spinner",
+  "priority": 2,
+  "timeout": 14400,
+  "mem_gb": 8,
+  "note": "SHOWCASE F: unflagged row, holdout half of the MIMIC regime matrix",
+  "cmd": ".venv/bin/python experiments/run_candidate.py --npz cand_mimic4_regime --seeds 3 --folds 5",
+  "matrices": [
+    "cand_mimic4_regime"
+  ],
+  "outputs": [
+    "results/cand/cand_mimic4_regime.csv"
+  ],
+  "predicted": "indicator - imputation >= 0.03; published - imputation <= 0; family_cv picks support in a majority and within 0.01 of published; no hypergraph arm beats the indicator",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/F2-mimic-regime-holdout.json",
+  "seconds": 10854.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T18:10:52",
+  "tail": "cand_mimic4_regime HOLDOUT n=33,531 prev=0.1081\n      family_cv chose ('support', 0)\n    seed 0 fold 0: mean_imp 0.4132 mean_ind 0.4490 mask_int 0.4492 histgb_n 0.4909 pattern_ 0.4276 ours 0.4271 ours_pro 0.4271 exact_su 0.2605 exact_cv 0.3673 family_c 0.4276  [724s]\n      family_cv chose ('support', 0)\n    seed 0 fold 1: mean_imp 0.3825 mean_ind 0.4140 mask_int 0.4139 histgb_n 0.4583 pattern_ 0.3889 ours 0.3887 ours_pro 0.3879 exact_su 0.2202 exact_cv 0.3066 family_c 0.3889  [1436s]\n      family_cv chose ('support', 0)\n    seed 0 fold 2: mean_imp 0.3789 mean_ind 0.4138 mask_int 0.4139 histgb_n 0.4575 pattern_ 0.3757 ours 0.3751 ours_pro 0.3760 exact_su 0.2111 exact_cv 0.2925 family_c 0.3757  [2170s]\n      family_cv chose ('support', 100)\n    seed 0 fold 3: mean_imp 0.3869 mean_ind 0.4405 mask_int 0.4401 histgb_n 0.4562 pattern_ 0.3846 ours 0.3842 ours_pro 0.3853 exact_su 0.2382 exact_cv 0.3131 family_c 0.3846  [2888s]\n      family_cv chose ('support', 0)\n    seed 0 fold 4: mean_imp 0.3850 mean_ind 0.4440 mask_int 0.4439 histgb_n 0.4617 pattern_ 0.3922 ours 0.3918 ours_pro 0.3928 exact_su 0.2509 exact_cv 0.3126 family_c 0.3922  [3613s]\n      family_cv chose ('support', 0)\n    seed 1 fold 0: mean_imp 0.4041 mean_ind 0.4326 mask_int 0.4329 histgb_n 0.4691 pattern_ 0.4120 ours 0.4111 ours_pro 0.4107 exact_su 0.2835 exact_cv 0.3386 family_c 0.4120  [4331s]\n      family_cv chose ('support', 0)\n    seed 1 fold 1: mean_imp 0.3755 mean_ind 0.4208 mask_int 0.4208 histgb_n 0.4594 pattern_ 0.3822 ours 0.3818 ours_pro 0.3821 exact_su 0.2335 exact_cv 0.3054 family_c 0.3822  [5065s]\n      family_cv chose ('support', 0)\n    seed 1 fold 2: mean_imp 0.4041 mean_ind 0.4470 mask_int 0.4480 histgb_n 0.4833 pattern_ 0.4035 ours 0.4033 ours_pro 0.4037 exact_su 0.2470 exact_cv 0.3164 family_c 0.4035  [5792s]\n      family_cv chose ('support', 0)\n    seed 1 fold 3: mean_imp 0.3946 mean_ind 0.4472 mask_int 0.4472 histgb_n 0.4997 pattern_ 0.4110 ours 0.4102 ours_pro 0.4121 exact_su 0.2325 exact_cv 0.3075 family_c 0.4110  [6516s]\n      family_cv chose ('support', 0)\n    seed 1 fold 4: mean_imp 0.3524 mean_ind 0.4051 mask_int 0.4054 histgb_n 0.4348 pattern_ 0.3583 ours 0.3578 ours_pro 0.3573 exact_su 0.2357 exact_cv 0.3115 family_c 0.3583  [7232s]\n      family_cv chose ('support', 10)\n    seed 2 fold 0: mean_imp 0.3927 mean_ind 0.4349 mask_int 0.4346 histgb_n 0.4724 pattern_ 0.3865 ours 0.3863 ours_pro 0.3868 exact_su 0.2749 exact_cv 0.3263 family_c 0.3865  [7948s]\n      family_cv chose ('support', 0)\n    seed 2 fold 1: mean_imp 0.3746 mean_ind 0.4207 mask_int 0.4217 histgb_n 0.4703 pattern_ 0.3939 ours 0.3922 ours_pro 0.3930 exact_su 0.2589 exact_cv 0.3361 family_c 0.3939  [8677s]\n      family_cv chose ('support', 0)\n    seed 2 fold 2: mean_imp 0.4114 mean_ind 0.4540 mask_int 0.4539 histgb_n 0.4870 pattern_ 0.4131 ours 0.4125 ours_pro 0.4144 exact_su 0.2523 exact_cv 0.3463 family_c 0.4131  [9401s]\n      family_cv chose ('support', 0)\n    seed 2 fold 3: mean_imp 0.3811 mean_ind 0.4268 mask_int 0.4266 histgb_n 0.4677 pattern_ 0.3876 ours 0.3874 ours_pro 0.3884 exact_su 0.2312 exact_cv 0.3046 family_c 0.3876  [10123s]\n      family_cv chose ('support', 0)\n    seed 2 fold 4: mean_imp 0.3820 mean_ind 0.4261 mask_int 0.4260 histgb_n 0.4601 pattern_ 0.3841 ours 0.3840 ours_pro 0.3840 exact_su 0.2252 exact_cv 0.3020 family_c 0.3841  [10850s]"
+}

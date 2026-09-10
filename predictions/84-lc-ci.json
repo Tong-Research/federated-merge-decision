@@ -1,0 +1,23 @@
+{
+  "id": "84-lc-ci",
+  "machine": "pilot",
+  "priority": 8,
+  "needs": [
+    "82-lc-rule"
+  ],
+  "note": "where does a finance-domain cut sit?",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_lendingclub.csv --boots 10000 | tee results/ci_lendingclub.log",
+  "inputs": [
+    "results/site_rules_lendingclub.csv"
+  ],
+  "outputs": [
+    "results/ci_lendingclub.log"
+  ],
+  "predicted": "the cut lands nearer the clinical [4.2, 9.7] than ACS's [13.1, 29.0] did, because default at 15% is closer to ICU mortality's 9% than to income's 35% -- which would make prevalence, not domain, the thing that moves the cut",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/84-lc-ci.json",
+  "seconds": 277.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:30:03",
+  "tail": "7680 decisions, 43 sites, 10000 bootstrap resamples of sites\n\nepv_target   cut =     22.8 events/variable   95% CI [9.9, 22.8]   width/median = 0.57   acc 0.616\nn_target     cut =   2881.9 records   95% CI [1193.3, 2881.9]   width/median = 0.59   acc 0.616\n\nnarrower relative interval = the more sharply located boundary"
+}

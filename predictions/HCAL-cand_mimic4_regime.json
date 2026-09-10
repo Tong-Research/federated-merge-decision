@@ -1,0 +1,21 @@
+{
+ "id": "HCAL-cand_mimic4_regime",
+ "machine": "spinner",
+ "priority": 1,
+ "matrices": [
+  "cand_mimic4_regime"
+ ],
+ "timeout": 28800,
+ "note": "HCAL holdout, prereg/HCAL.md | output fetched by hand 21:55: the runner's rsync failed because results/hcal/ did not exist on pilot; run itself exit 0",
+ "cmd": ".venv/bin/python experiments/run_hcal.py --dataset cand_mimic4_regime --slice holdout --out results/hcal/cand_mimic4_regime.csv",
+ "outputs": [
+  "results/hcal/cand_mimic4_regime.csv"
+ ],
+ "predicted": "prereg/HCAL.md P1 never worse (median AUPRC delta >= -0.002); P2 log-loss below tree p<0.05 on 12/17; P3 hier log-loss <= kappa=0 everywhere and kappa=0 harmful (>0.005) on 3+ sets; P4 AUPRC above tree p<0.05 on 6/17, road_safety > +0.003, never > +0.02; P5 global Platt delta exactly 0. Withdrawal: (a) P1 fails twice -> not safe; (c) kappa=0 as good on 3+ -> prior-art Mondrian recalibration, no hypergraph claim.",
+ "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL-cand_mimic4_regime.json",
+ "seconds": 74.4,
+ "exit_code": 0,
+ "missing_outputs": [],
+ "finished": "2026-09-04T21:52:37",
+ "tail": "cand_mimic4_regime holdout: 33531 rows x 57 cols, prevalence 0.108\n  seed 0 fold 0: tree=0.4936 global=0.4936 pattern_k0=0.4114 hier_cv=0.4936 kappa=10000 [4s]\n  seed 0 fold 1: tree=0.4531 global=0.4531 pattern_k0=0.3736 hier_cv=0.4530 kappa=10000 [8s]\n  seed 0 fold 2: tree=0.4487 global=0.4487 pattern_k0=0.3718 hier_cv=0.4487 kappa=10000 [12s]\n  seed 0 fold 3: tree=0.4595 global=0.4595 pattern_k0=0.3849 hier_cv=0.4597 kappa=10000 [17s]\n  seed 0 fold 4: tree=0.4697 global=0.4697 pattern_k0=0.3893 hier_cv=0.4696 kappa=10000 [21s]\n  seed 1 fold 0: tree=0.4744 global=0.4744 pattern_k0=0.4012 hier_cv=0.4744 kappa=10000 [25s]\n  seed 1 fold 1: tree=0.4513 global=0.4513 pattern_k0=0.3674 hier_cv=0.4514 kappa=10000 [29s]\n  seed 1 fold 2: tree=0.4776 global=0.4776 pattern_k0=0.3548 hier_cv=0.4777 kappa=10000 [33s]\n  seed 1 fold 3: tree=0.4855 global=0.4855 pattern_k0=0.3856 hier_cv=0.4855 kappa=10000 [37s]\n  seed 1 fold 4: tree=0.4303 global=0.4303 pattern_k0=0.3683 hier_cv=0.4303 kappa=10000 [42s]\n  seed 2 fold 0: tree=0.4664 global=0.4664 pattern_k0=0.3999 hier_cv=0.4665 kappa=10000 [46s]\n  seed 2 fold 1: tree=0.4628 global=0.4628 pattern_k0=0.3082 hier_cv=0.4627 kappa=10000 [50s]\n  seed 2 fold 2: tree=0.4788 global=0.4788 pattern_k0=0.3512 hier_cv=0.4788 kappa=10000 [54s]\n  seed 2 fold 3: tree=0.4734 global=0.4734 pattern_k0=0.3957 hier_cv=0.4734 kappa=10000 [58s]\n  seed 2 fold 4: tree=0.4640 global=0.4640 pattern_k0=0.3288 hier_cv=0.4640 kappa=10000 [62s]\nwrote results/hcal/cand_mimic4_regime.csv (60 rows)"
+}

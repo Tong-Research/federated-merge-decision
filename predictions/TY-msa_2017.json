@@ -1,0 +1,21 @@
+{
+  "id": "TY-msa_2017",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "freddiemac_msa_2017"
+  ],
+  "timeout": 36000,
+  "note": "Temporal replication: freddiemac_msa_2017 -- a held-out origination year.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix freddiemac_msa_2017 --seeds 5 --out results/site_rules_freddiemac_msa_2017.csv",
+  "outputs": [
+    "results/site_rules_freddiemac_msa_2017.csv"
+  ],
+  "predicted": "Every replication in this corpus is cross-collection or cross-partition. NONE is temporal, and temporal transfer is the axis that matters most for a deployment recommendation: a site deciding whether to federate is applying a rule fitted on historical data. Freddie Mac 2017 is a different origination year -- 1.38M loans, the same 16-feature schema, the same 0.035 default rate, and the same four partitions -- so it is a clean held-out year rather than a new collection. PREDICTION: the adequacy gradient replicates in sign and rough magnitude on 2017, and the ordering of partitions by mean benefit is preserved against the original year. FALSIFIABLE AND IMPORTANT EITHER WAY: if the gradient or the ordering does not survive a change of year on the same lender, the same schema and the same outcome, then every cross-collection replication in the paper is weaker than it looks -- because a rule that cannot cross a year boundary on identical data has no business crossing a domain boundary. WITHDRAWAL CONDITION: if the sign of rho(EPV, benefit) flips between years on the same partition, section 4 must report temporal instability as a limitation rather than claim replication.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/TY-msa_2017.json",
+  "seconds": 100.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T13:21:28",
+  "tail": "freddiemac_msa_2017: 1228196 records x 16 features, 398 sites, prevalence 0.035\nfreddiemac_msa_2017: 23855 decisions\n\n23855 real merge decisions across 398 target sites; merging helped in 62%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.170  1.6e-154     0.619  0.617 lower\u2192merge\nn_target                          -0.143  1.3e-109     0.603  0.617 lower\u2192merge\nn_min                             -0.027   3.9e-05     0.609  0.617 lower\u2192merge\nn_partner_total                   +0.084   3.3e-38     0.607  0.617 higher\u2192merge\nratio_partner_to_target           +0.166  6.1e-147     0.609  0.617 higher\u2192merge\nn_partners                        +0.047   3.6e-13     0.617  0.617 higher\u2192merge\nschema_jaccard                    -0.015   2.0e-02     0.610  0.617 lower\u2192merge\nq_median                          +0.043   2.9e-11     0.610  0.617 higher\u2192merge\ni2_median                         +0.027   3.5e-05     0.609  0.617 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  freddiemac_msa_2017  61.7%  of 23855 decisions\n\nwrote results/site_rules_freddiemac_msa_2017.csv"
+}

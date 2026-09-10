@@ -1,0 +1,21 @@
+{
+  "id": "G7-gate-mimic",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "mimic_sites_unit_x_system"
+  ],
+  "timeout": 36000,
+  "note": "Six-policy comparison on mimic_sites_unit_x_system. Closes the two gaps that can falsify the paper: local-CV gating (is the rule redundant?) and personalised blending (is declining the wrong action?). Oracle included, so every number is reported as a share of attainable gain rather than in isolation.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix mimic_sites_unit_x_system --seeds 3 --out results/gate_mimic.csv",
+  "outputs": [
+    "results/gate_mimic.csv"
+  ],
+  "predicted": "Six policies scored in AUPRC on identical held-out rows. Smoke test on freddiemac_sellername (356 decisions, 1 seed) gave epv_gate 72% of the oracle gain, always_merge 61%, blend 36%, local_cv 25%. I predict the ORDERING replicates: epv_gate above local_cv and above blend, on a majority of pools. Mechanism, which is the paper's own thesis applied to itself: local_cv decides by splitting the target's training rows, and the sites that most need to decide are the starved ones whose inner validation split is itself too small to trust. An aggregate rule does not pay that cost. FALSIFIABLE and dangerous: if blend beats epv_gate on most pools, 'most sites should not federate' is the wrong action and the headline becomes 'most sites should shrink toward local'. If local_cv matches epv_gate, the rule is redundant and a site should just try the merge.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/G7-gate-mimic.json",
+  "seconds": 13.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T22:53:58",
+  "tail": "mimic_sites_unit_x_system: 42002 records x 42 features, 10 sites, prevalence 0.111\n\n  342 decisions\n\n  policy          mean AUPRC  vs never_merge  % of oracle gain\n  never_merge         0.3278         +0.0000              0.0%\n  always_merge        0.3285         +0.0007              5.6%\n  epv_gate            0.3350         +0.0072             57.8%\n  local_cv            0.3306         +0.0029             22.8%\n  blend               0.3369         +0.0091             72.5%\n  oracle              0.3403         +0.0125            100.0%\n\n  chosen shrinkage lambda: mean 0.480, median 0.500, at 0 in 13% and at 1 in 13% of decisions\n\nwrote results/gate_mimic.csv (342 rows)"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "56-task-build-incomepovertyratio",
+  "machine": "pilot",
+  "priority": 4,
+  "note": "prevalence lever: ACSIncomePovertyRatio on the same states",
+  "cmd": ".venv/bin/python experiments/acs_sites.py --task ACSIncomePovertyRatio --per-state 0 --log-uniform 250 --out acs_span_incomepovertyratio",
+  "outputs": [],
+  "predicted": "a different prevalence, so a different EPV at the same n",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/56-task-build-incomepovertyratio.json",
+  "seconds": 52.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:41:12",
+  "tail": "ACSIncomePovertyRatio: (368981, 20), 51 states, prevalence 0.336\n  minority events per state: 70-20566 (median 850)\n  EPV at d=20: 3.5-1028.3 (median 42.5)\n    EPV 2-5: 2 states\n    EPV 5-10: 6 states\n    EPV 10-20: 9 states\n    EPV 20-999: 34 states"
+}

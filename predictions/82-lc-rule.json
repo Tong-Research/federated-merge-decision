@@ -1,0 +1,22 @@
+{
+  "id": "82-lc-rule",
+  "machine": "dugong",
+  "priority": 6,
+  "matrices": [
+    "lendingclub"
+  ],
+  "timeout": 14400,
+  "note": "the rule on Lending Club: 43 states, EPV 0.2-58.7 with ALL FIVE bands populated, and the size distribution arrived with the data rather than being chosen by us -- the confound Result 55 exposed and ACS structurally cannot resolve",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix lendingclub --seeds 15 --out results/site_rules_lendingclub.csv",
+  "outputs": [
+    "results/site_rules_lendingclub.csv",
+    "results/site_rules_lendingclub_rules.csv"
+  ],
+  "predicted": "EPV leads with rho around -0.3, and the pool BEATS the trivial rule -- it has a genuine harm regime (3 states above EPV 20, sites up to 7,429 loans) and a genuine starved tail (14 states below EPV 2). Per Result 56 its harm fraction should sit near the +0.06 peak. If it fails, every spanning result so far rests on distributions we selected.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/82-lc-rule.json",
+  "seconds": 204.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:18:28",
+  "tail": "lendingclub: 42423 records x 21 features, 43 sites, prevalence 0.151\nlendingclub: 7680 decisions\n\n7680 real merge decisions across 43 target sites; merging helped in 61%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.181   1.1e-57     0.562  0.613 lower\u2192merge\nn_target                          -0.186   2.0e-60     0.581  0.613 lower\u2192merge\nn_min                             -0.099   3.2e-18     0.613  0.613 lower\u2192merge\nn_partner_total                   +0.110   4.3e-22     0.605  0.613 higher\u2192merge\nratio_partner_to_target           +0.217   8.1e-83     0.604  0.613 higher\u2192merge\nn_partners                        +0.089   6.1e-15     0.613  0.613 higher\u2192merge\nschema_jaccard                      +nan       nan     0.613  0.613 higher\u2192merge\nq_median                          +0.067   3.6e-09     0.606  0.613 higher\u2192merge\ni2_median                         +0.038   8.5e-04     0.599  0.613 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  lendingclub     61.3%  of 7680 decisions\n\nwrote results/site_rules_lendingclub.csv"
+}

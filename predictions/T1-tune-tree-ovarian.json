@@ -1,0 +1,20 @@
+{
+  "id": "T1-tune-tree-ovarian",
+  "machine": "pilot",
+  "priority": 4,
+  "timeout": 14400,
+  "mem_gb": 6,
+  "note": "Referee 2026-09-03: tuned HistGB baseline, inner 3-fold grid, 3 seeds x 5 folds, primary 40k sample",
+  "cmd": ".venv/bin/python experiments/tune_tree.py --cohort ovarian --seeds 3",
+  "matrices": [],
+  "outputs": [
+    "results/tune_tree_ovarian.csv"
+  ],
+  "predicted": "tuned tree within +0.01 of the default on every PLCO cohort (paired median); no PLCO ordering changes: mean imputation stays ahead of every tree",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/T1-tune-tree-ovarian.json",
+  "seconds": 4366.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T03:15:28",
+  "tail": "ovarian seed 0 fold 0: default 0.0885 tuned 0.0991 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [421s]\n  ovarian seed 0 fold 1: default 0.1020 tuned 0.1026 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [812s]\n  ovarian seed 0 fold 2: default 0.0786 tuned 0.1094 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [1190s]\n  ovarian seed 0 fold 3: default 0.1058 tuned 0.1161 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [1565s]\n  ovarian seed 0 fold 4: default 0.1104 tuned 0.1238 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [1943s]\n  ovarian seed 1 fold 0: default 0.1091 tuned 0.1162 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [2219s]\n  ovarian seed 1 fold 1: default 0.0936 tuned 0.1283 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [2478s]\n  ovarian seed 1 fold 2: default 0.0743 tuned 0.0960 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [2769s]\n  ovarian seed 1 fold 3: default 0.0783 tuned 0.0976 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [3038s]\n  ovarian seed 1 fold 4: default 0.0879 tuned 0.0983 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [3304s]\n  ovarian seed 2 fold 0: default 0.0757 tuned 0.0902 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 20} [3560s]\n  ovarian seed 2 fold 1: default 0.0905 tuned 0.1266 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [3786s]\n  ovarian seed 2 fold 2: default 0.0853 tuned 0.1077 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [3976s]\n  ovarian seed 2 fold 3: default 0.0909 tuned 0.1126 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [4166s]\n  ovarian seed 2 fold 4: default 0.0866 tuned 0.0937 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [4363s]"
+}

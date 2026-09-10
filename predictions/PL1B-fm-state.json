@@ -1,0 +1,21 @@
+{
+  "id": "PL1B-fm-state",
+  "machine": "spinner",
+  "priority": 20,
+  "matrices": [
+    "freddiemac_propertystate"
+  ],
+  "timeout": 43200,
+  "note": "SOTA extension: pfedme (lam=1) on fm-state, 5 seeds.",
+  "cmd": "MERGE_MODE=pfedme PFEDME_LAMBDA=1 FEDAVG_ROUNDS=30 .venv/bin/python experiments/gate_baselines.py --matrix freddiemac_propertystate --seeds 5 --out results/cut_pl1b_freddiemac_propertystate.csv",
+  "outputs": [
+    "results/cut_pl1b_freddiemac_propertystate.csv"
+  ],
+  "predicted": "Extends the aggregation-axis comparison from four above-floor pools to eight, queued 2026-08-24 01:00 when the queue drained and the machines would otherwise idle. Results 112 and 113 rest on four pools; these four add the above-floor pools the SOTA set was missing. All four added pools are ones where merging HELPS -- the two remaining harmful pools in the corpus (acs_ladder_5000, acs_ladder_10000) are both below the 0.002 attainable-gain floor, so no additional harmful evidence is available at any price. State that when reporting: the floor claim rests on two above-floor harmful pools and cannot be strengthened with the data we hold. PREDICTIONS. (1) Aggregation still does not matter: FedAvg, FedProx and SCAFFOLD stay within 0.002 AUPRC of each other on the merged model across all eight pools, as in Result 112. (2) pFedMe at lambda=1 beats adaptive shrinkage on these four, since all four are pools where merging helps and that is exactly where it won before -- eICU and Lending Club, by 10.3 and 13.1 share points. (3) Despite (2), adaptive shrinkage still leads on MEAN share across all eight, because pFedMe's two catastrophic pools (-94.0 and -89.7) outweigh four moderate wins. WITHDRAWAL: if (3) fails -- if pFedMe leads on mean share across eight pools -- then section 6's recommendation does not survive a fair comparison against a published personalisation method, and the paper must say so and reframe around the downside column alone rather than around mean performance.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/PL1B-fm-state.json",
+  "seconds": 1796.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-24T02:22:01",
+  "tail": "freddiemac_propertystate: 3069179 records x 16 features, 53 sites, prevalence 0.032\n\n  3,175 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.0923    +0.0000                0.0%\n  always_merge          0.0915    -0.0007              -25.0%\n  epv_gate              0.0920    -0.0002               -7.9%\n  gate_loso             0.0913    -0.0009              -32.1%\n  gate_bestcut          0.0926    +0.0003               11.0%\n  local_cv              0.0922    -0.0001               -1.9%\n  fix_025               0.0924    +0.0001                3.4%\n  fix_050               0.0927    +0.0004               14.0%\n  fix_075               0.0929    +0.0006               20.3%\n  blend                 0.0926    +0.0003               10.4%\n  blend_1se             0.0925    +0.0003                9.1%\n  blend_cv              0.0926    +0.0003               11.5%\n  blend_cw                 nan       +nan                nan%\n  ditto                    nan       +nan                nan%\n  oracle_binary         0.0947    +0.0025               83.5%\n  oracle_lambda         0.0952    +0.0029              100.0%\n  oracle_lambda_cw         nan       +nan                nan%\n  oracle_ditto             nan       +nan                nan%\n  oracle_extrap         0.0961    +0.0038              130.4%\n  oracle_rich           0.0961    +0.0038              130.4%\n  oracle_half           0.1006    +0.0083              283.4%\n  oracle_honest         0.0966    +0.0044              148.7%\n  blend_half            0.0965    +0.0043              144.9%\n  pfedme_personal       0.0919    -0.0004              -12.8%\n\n  LOSO cut: median 2.9, range 0.0-17.9   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.621\n  lambda optimal on test    : mean 0.610\n  correlation chosen vs optimal: +0.121\n\nwrote results/cut_pl1b_freddiemac_propertystate.csv (3,175 rows)"
+}

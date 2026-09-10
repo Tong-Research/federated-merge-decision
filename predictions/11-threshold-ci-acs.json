@@ -1,0 +1,17 @@
+{
+  "id": "11-threshold-ci-acs",
+  "machine": "dugong",
+  "priority": 6,
+  "note": "Result 35's bootstrap out of domain; same machine at lower priority = runs after 10",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_acs_d10.csv --boots 2000 | tee results/threshold_ci_acs.log",
+  "outputs": [
+    "results/threshold_ci_acs.log"
+  ],
+  "predicted": "EPV's interval is again narrower than n's; the ACS cut sits ABOVE the clinical 8.4 because Result 38 put the ACS logistic cut at 17.7, so the transferable quantity may be the ordering rather than the absolute value",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/11-threshold-ci-acs.json",
+  "seconds": 89.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:27:50",
+  "tail": "3050 decisions, 51 sites, 2000 bootstrap resamples of sites\n\nepv_target   cut =     28.0 events/variable   95% CI [11.4, 28.3]   width/median = 0.60   acc 0.566\nn_target     cut =    895.3 records   95% CI [498.0, 895.3]   width/median = 0.44   acc 0.603\n\nnarrower relative interval = the more sharply located boundary"
+}

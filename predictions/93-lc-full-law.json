@@ -1,0 +1,23 @@
+{
+  "id": "93-lc-full-law",
+  "machine": "pilot",
+  "priority": 4,
+  "needs": [
+    "92b-lc-full-rule"
+  ],
+  "note": "place the full release on the distribution law | needs repointed 2026-08-10: 92-lc-full-rule failed and was superseded by 92b, which is done; the old id would never be satisfied",
+  "cmd": ".venv/bin/python experiments/distribution_law.py site_rules_acs_d10.csv site_rules_acs_span.csv site_rules_acs_full.csv site_rules_ladder_500.csv site_rules_ladder_1000.csv site_rules_ladder_2000.csv site_rules_ladder_5000.csv site_rules_ladder_10000.csv site_rules_lendingclub.csv site_rules_lc_full.csv | tee results/distribution_law_3.log",
+  "inputs": [
+    "results/site_rules_lc_full.csv"
+  ],
+  "outputs": [
+    "results/distribution_law_3.log"
+  ],
+  "predicted": "it falls on the curve, as the 42k file did -- a second out-of-sample point, this one at a high harm fraction where the law has only ACS builds so far",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/93-lc-full-law.json",
+  "seconds": 0.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T20:11:33",
+  "tail": "pool                               harm frac  helped  trivial   best    lift    med n\n--------------------------------------------------------------------------------------------\nsite_rules_acs_d10                     0.000   0.597    0.597  0.584  -0.014      728\nsite_rules_lendingclub                 0.023   0.613    0.613  0.603  -0.010      361\nsite_rules_acs_span                    0.138   0.525    0.525  0.586  +0.061     1020\nsite_rules_ladder_1000                 0.256   0.474    0.526  0.574  +0.048     2244\nsite_rules_ladder_500                  0.274   0.440    0.560  0.619  +0.059     2104\nsite_rules_ladder_2000                 0.372   0.396    0.604  0.653  +0.049     4029\nsite_rules_ladder_5000                 0.590   0.387    0.613  0.620  +0.007     5844\nsite_rules_lc_full                     0.779   0.536    0.536  0.590  +0.054    16070\nsite_rules_acs_full                    0.823   0.340    0.660  0.683  +0.023    15343\nsite_rules_ladder_10000                0.823   0.335    0.665  0.670  +0.005     9129\n\nprediction 4 (consistency): helped rate should fall as the harm fraction rises\n  corr(harm fraction, helped rate) = -0.734  -> consistent\n\nquadratic fit  lift = -0.271\u00b7f\u00b2 +0.245\u00b7f -0.001\n  leading coefficient -0.271 -> INVERTED U (predicted)\n  peak at harm fraction 0.45 -> within the predicted 0.35-0.65\n  max observed lift +0.061 -> exceeds +0.05 as predicted"
+}

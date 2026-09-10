@@ -1,0 +1,21 @@
+{
+  "id": "S6-dp-bosch",
+  "machine": "pilot",
+  "priority": 3,
+  "matrices": [
+    "bosch_d20"
+  ],
+  "timeout": 36000,
+  "note": "Does DP create a benefit where the TASK is noise rather than where the sites are adequate? Separates two cases R68 treats alike.",
+  "cmd": "DP_EPSILONS=0.5,1,5,inf .venv/bin/python experiments/dp_merge.py --dataset matrix --matrix bosch_d20 --seeds 5 --out results/dp_bosch_d20.csv",
+  "outputs": [
+    "results/dp_bosch_d20.csv"
+  ],
+  "predicted": "R68 says DP creates a merge benefit where merging is worthless without privacy, by averaging away injected noise. Bosch is worthless for a different reason: R70 found the TASK is too weak (median local AUROC 0.576, benefit sd 870x its mean). That separates two things R68 conflates. I predict DP creates NO benefit on Bosch at any epsilon, because averaging noise toward a signal requires a signal. If DP does create one here, the mechanism is not what R68 says it is.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/S6-dp-bosch.json",
+  "seconds": 277.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T22:43:04",
+  "tail": "  route350  (10588 rows)\n  route351  (10640 rows)\n  route352  (10640 rows)\n  route353  (10640 rows)\n  route354  (10696 rows)\n  route355  (10696 rows)\n  route356  (10696 rows)\n  route357  (10696 rows)\n  route358  (10740 rows)\n  route359  (10740 rows)\n  route360  (10740 rows)\n  route361  (10740 rows)\n  route362  (10772 rows)\n  route363  (10772 rows)\n  route364  (10824 rows)\n  route365  (10824 rows)\n  route366  (10824 rows)\n  route367  (10824 rows)\n  route368  (10824 rows)\n  route369  (10824 rows)\n  route370  (10876 rows)\n  route371  (10928 rows)\n  route372  (10996 rows)\n  route373  (10996 rows)\n  route374  (10996 rows)\n  route375  (11040 rows)\n  route376  (11040 rows)\n  route377  (11040 rows)\n  route378  (11104 rows)\n  route379  (11104 rows)\n\n=== A. where does the merge benefit die? (11104 rows) ===\n  epsilon    local    merge   benefit        p  benefit(w=0.5)\n      0.5   0.0217   0.0197   -0.0020  4.5e-01         -0.0016\n        1   0.0197   0.0197   +0.0000  9.3e-01         -0.0009\n        5   0.0233   0.0219   -0.0014  3.1e-03         -0.0031\n      inf   0.0338   0.0246   -0.0091  7.7e-04         -0.0053\n\n   split by target adequacy (privacy should cost small sites most):\n   target EPV 0-5:\n     eps= 0.5  local 0.0218  benefit -0.0020\n     eps=   1  local 0.0197  benefit +0.0000\n     eps=   5  local 0.0235  benefit -0.0014\n     eps= inf  local 0.0340  benefit -0.0092\n   target EPV 5-999:\n     eps= 0.5  local 0.0094  benefit -0.0001\n     eps=   1  local 0.0107  benefit -0.0009\n     eps=   5  local 0.0103  benefit +0.0004\n     eps= inf  local 0.0102  benefit +0.0001\n\n=== B. does composition reverse one-shot vs FedAvg? ===\n  epsilon   one-shot     fed 1r    fed 5r   fed 30r\n      0.5    -0.0020   -0.0020   -0.0027   -0.0090\n        1    +0.0000   -0.0009   -0.0012   -0.0049\n        5    -0.0014   -0.0034   -0.0047   -0.0046\n      inf    -0.0091   -0.0160   -0.0162   -0.0151\n\n(all figures are AUPRC gain over that site's own DP local model at the same epsilon)\n\nwrote results/dp_bosch_d20.csv"
+}

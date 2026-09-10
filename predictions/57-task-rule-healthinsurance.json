@@ -1,0 +1,23 @@
+{
+  "id": "57-task-rule-healthinsurance",
+  "machine": "pilot",
+  "priority": 5,
+  "needs": [
+    "56-task-build-healthinsurance"
+  ],
+  "matrices": [
+    "acs_span_healthinsurance"
+  ],
+  "note": "the rule on ACSHealthInsurance",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_span_healthinsurance --seeds 3 --out results/site_rules_healthinsurance.csv",
+  "outputs": [
+    "results/site_rules_healthinsurance.csv"
+  ],
+  "predicted": "EPV leads with a negative rho and a positive lift, as income and public coverage both gave -- seven outcomes agreeing makes 'prevalence acts through EPV' a claim rather than a coincidence",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/57-task-rule-healthinsurance.json",
+  "seconds": 74.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:45:34",
+  "tail": "acs_span_healthinsurance: 368981 records x 25 features, 51 sites, prevalence 0.152\nacs_span_healthinsurance: 1830 decisions\n\n1830 real merge decisions across 51 target sites; merging helped in 65%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.366   4.2e-59     0.620  0.654 lower\u2192merge\nn_target                          -0.365   9.2e-59     0.626  0.654 lower\u2192merge\nn_min                             -0.136   4.9e-09     0.654  0.654 lower\u2192merge\nn_partner_total                   -0.008   7.2e-01     0.664  0.654 lower\u2192merge\nratio_partner_to_target           +0.276   2.0e-33     0.621  0.654 higher\u2192merge\nn_partners                        +0.010   6.7e-01     0.654  0.654 higher\u2192merge\nschema_jaccard                      +nan       nan     0.654  0.654 higher\u2192merge\nq_median                          -0.069   3.1e-03     0.650  0.654 lower\u2192merge\ni2_median                         -0.088   1.5e-04     0.658  0.654 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_span_healthinsurance  65.4%  of 1830 decisions\n\nwrote results/site_rules_healthinsurance.csv"
+}

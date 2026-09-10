@@ -1,0 +1,20 @@
+{
+  "id": "T1-tune-tree-lung",
+  "machine": "pilot",
+  "priority": 2,
+  "timeout": 14400,
+  "mem_gb": 6,
+  "note": "Referee 2026-09-03: tuned HistGB baseline, inner 3-fold grid, 3 seeds x 5 folds, primary 40k sample",
+  "cmd": ".venv/bin/python experiments/tune_tree.py --cohort lung --seeds 3",
+  "matrices": [],
+  "outputs": [
+    "results/tune_tree_lung.csv"
+  ],
+  "predicted": "tuned tree within +0.01 of the default on every PLCO cohort (paired median); no PLCO ordering changes: mean imputation stays ahead of every tree",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/T1-tune-tree-lung.json",
+  "seconds": 2519.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-03T23:58:31",
+  "tail": "lung seed 0 fold 0: default 0.1871 tuned 0.2292 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [176s]\n  lung seed 0 fold 1: default 0.1687 tuned 0.1974 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [345s]\n  lung seed 0 fold 2: default 0.1550 tuned 0.1786 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [502s]\n  lung seed 0 fold 3: default 0.1619 tuned 0.1716 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [666s]\n  lung seed 0 fold 4: default 0.1562 tuned 0.1762 {'max_depth': 6, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [887s]\n  lung seed 1 fold 0: default 0.1785 tuned 0.2073 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [1065s]\n  lung seed 1 fold 1: default 0.1578 tuned 0.1846 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 20} [1273s]\n  lung seed 1 fold 2: default 0.1818 tuned 0.1929 {'max_depth': 6, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [1506s]\n  lung seed 1 fold 3: default 0.1419 tuned 0.1688 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [1674s]\n  lung seed 1 fold 4: default 0.1683 tuned 0.1862 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [1834s]\n  lung seed 2 fold 0: default 0.1499 tuned 0.1852 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 20} [1978s]\n  lung seed 2 fold 1: default 0.1749 tuned 0.1980 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [2128s]\n  lung seed 2 fold 2: default 0.1650 tuned 0.2041 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [2256s]\n  lung seed 2 fold 3: default 0.1623 tuned 0.1812 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 100} [2385s]\n  lung seed 2 fold 4: default 0.1463 tuned 0.1644 {'max_depth': 3, 'learning_rate': 0.03, 'max_iter': 200, 'min_samples_leaf': 20} [2514s]"
+}

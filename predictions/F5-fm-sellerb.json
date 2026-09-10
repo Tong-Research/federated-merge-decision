@@ -1,0 +1,21 @@
+{
+  "id": "F5-fm-sellerb",
+  "machine": "pilot",
+  "priority": 5,
+  "matrices": [
+    "freddiemac_sellername"
+  ],
+  "timeout": 21600,
+  "note": "Freddie Mac 2016+2017, partitioned by seller. The hierarchy moves the harm fraction without touching a row, which is the natural experiment on Result 64's x-axis that ACS could only simulate. [retry: the first attempt raced the sequential builds]",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix freddiemac_sellername --seeds 3 --out results/site_rules_freddiemac_sellername.csv",
+  "outputs": [
+    "results/site_rules_freddiemac_sellername.csv"
+  ],
+  "predicted": "the five partitions trace Result 64's curve. Concretely: zip3 and MSA sit at low harm fraction and should give small or negative lift; state, zip2 and seller sit high and should give small positive lift. NOTE the natural granularities cluster at f~0.1 and f~0.75 with nothing near the 0.45 peak, so if all five give small lifts that is consistent with the law AND with the peak being unreachable by any natural partition -- which would matter more than a confirmation.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/F5-fm-sellerb.json",
+  "seconds": 128.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T13:28:22",
+  "tail": "freddiemac_sellername: 1955905 records x 16 features, 30 sites, prevalence 0.034\nfreddiemac_sellername: 1068 decisions\n\n1068 real merge decisions across 30 target sites; merging helped in 53%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.218   5.6e-13     0.422  0.532 lower\u2192merge\nn_target                          -0.175   8.5e-09     0.445  0.532 lower\u2192merge\nn_min                             -0.152   5.8e-07     0.487  0.532 lower\u2192merge\nn_partner_total                   -0.055   7.1e-02     0.487  0.532 lower\u2192merge\nratio_partner_to_target           +0.116   1.5e-04     0.335  0.532 higher\u2192merge\nn_partners                        +0.008   7.8e-01     0.491  0.532 higher\u2192merge\nschema_jaccard                      +nan       nan     0.532  0.532 higher\u2192merge\nq_median                          -0.052   9.1e-02     0.485  0.532 lower\u2192merge\ni2_median                         -0.096   1.7e-03     0.539  0.532 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  freddiemac_sellername  53.2%  of 1068 decisions\n\nwrote results/site_rules_freddiemac_sellername.csv"
+}

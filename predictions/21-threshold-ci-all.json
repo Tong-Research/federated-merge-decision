@@ -1,0 +1,17 @@
+{
+  "id": "21-threshold-ci-all",
+  "machine": "spinner",
+  "priority": 1,
+  "note": "bootstrap CI on the 711-pool cut of 7.5 -- the sharpest pool, where trivial is NEVER merge",
+  "cmd": ".venv/bin/python experiments/threshold_ci.py --csv results/site_rules_all.csv --boots 2000 | tee results/threshold_ci_all.log",
+  "outputs": [
+    "results/threshold_ci_all.log"
+  ],
+  "predicted": "a TIGHTER interval than Result 35's [4.2,9.7] because this pool actually spans the boundary; if it is wider, the 14,310-decision pool's precision came from repeated seeds rather than from site variation, which would be a real problem",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/21-threshold-ci-all.json",
+  "seconds": 7.2,
+  "exit_code": 1,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:14:13",
+  "tail": "Traceback (most recent call last):\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/experiments/threshold_ci.py\", line 58, in <module>\n    main()\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/experiments/threshold_ci.py\", line 19, in main\n    d = pd.read_csv(a.csv)\n        ^^^^^^^^^^^^^^^^^^\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 873, in read_csv\n    return _read(filepath_or_buffer, kwds)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 300, in _read\n    parser = TextFileReader(filepath_or_buffer, **kwds)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 1645, in __init__\n    self._engine = self._make_engine(f, self.engine)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 1904, in _make_engine\n    self.handles = get_handle(\n                   ^^^^^^^^^^^\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/pandas/io/common.py\", line 930, in get_handle\n    handle = open(\n             ^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'results/site_rules_all.csv'"
+}

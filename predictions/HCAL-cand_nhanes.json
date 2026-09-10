@@ -1,0 +1,21 @@
+{
+  "id": "HCAL-cand_nhanes",
+  "machine": "orca",
+  "priority": 1,
+  "matrices": [
+    "cand_nhanes"
+  ],
+  "timeout": 28800,
+  "note": "HCAL holdout, prereg/HCAL.md",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset cand_nhanes --slice holdout --out results/hcal/cand_nhanes.csv",
+  "outputs": [
+    "results/hcal/cand_nhanes.csv"
+  ],
+  "predicted": "prereg/HCAL.md P1 never worse (median AUPRC delta >= -0.002); P2 log-loss below tree p<0.05 on 12/17; P3 hier log-loss <= kappa=0 everywhere and kappa=0 harmful (>0.005) on 3+ sets; P4 AUPRC above tree p<0.05 on 6/17, road_safety > +0.003, never > +0.02; P5 global Platt delta exactly 0. Withdrawal: (a) P1 fails twice -> not safe; (c) kappa=0 as good on 3+ -> prior-art Mondrian recalibration, no hypergraph claim.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL-cand_nhanes.json",
+  "seconds": 56.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T21:54:24",
+  "tail": "cand_nhanes holdout: 14715 rows x 52 cols, prevalence 0.073\n  seed 0 fold 0: tree=0.5890 global=0.5890 pattern_k0=0.5780 hier_cv=0.5890 kappa=10000 [3s]\n  seed 0 fold 1: tree=0.5769 global=0.5769 pattern_k0=0.5654 hier_cv=0.5769 kappa=10000 [6s]\n  seed 0 fold 2: tree=0.5157 global=0.5157 pattern_k0=0.3127 hier_cv=0.5154 kappa=1000 [10s]\n  seed 0 fold 3: tree=0.6128 global=0.6128 pattern_k0=0.5682 hier_cv=0.6128 kappa=10000 [13s]\n  seed 0 fold 4: tree=0.6067 global=0.6067 pattern_k0=0.6005 hier_cv=0.6066 kappa=10000 [16s]\n  seed 1 fold 0: tree=0.5728 global=0.5728 pattern_k0=0.5155 hier_cv=0.5727 kappa=1000 [19s]\n  seed 1 fold 1: tree=0.5697 global=0.5697 pattern_k0=0.5484 hier_cv=0.5697 kappa=10000 [22s]\n  seed 1 fold 2: tree=0.5758 global=0.5758 pattern_k0=0.5647 hier_cv=0.5757 kappa=10000 [26s]\n  seed 1 fold 3: tree=0.5936 global=0.5936 pattern_k0=0.5924 hier_cv=0.5936 kappa=10000 [29s]\n  seed 1 fold 4: tree=0.5787 global=0.5787 pattern_k0=0.5494 hier_cv=0.5788 kappa=10000 [32s]\n  seed 2 fold 0: tree=0.5752 global=0.5752 pattern_k0=0.5546 hier_cv=0.5752 kappa=10000 [35s]\n  seed 2 fold 1: tree=0.5389 global=0.5389 pattern_k0=0.5211 hier_cv=0.5388 kappa=1000 [38s]\n  seed 2 fold 2: tree=0.5979 global=0.5979 pattern_k0=0.5383 hier_cv=0.5980 kappa=10000 [42s]\n  seed 2 fold 3: tree=0.5557 global=0.5557 pattern_k0=0.5459 hier_cv=0.5557 kappa=10000 [45s]\n  seed 2 fold 4: tree=0.5776 global=0.5776 pattern_k0=0.5592 hier_cv=0.5776 kappa=10000 [48s]\nwrote results/hcal/cand_nhanes.csv (60 rows)"
+}

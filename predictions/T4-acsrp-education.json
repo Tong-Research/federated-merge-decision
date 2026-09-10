@@ -1,0 +1,21 @@
+{
+  "id": "T4-acsrp-education",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "acs_rp_education"
+  ],
+  "timeout": 36000,
+  "note": "ACS re-partitioned by education: second population for the partition claim.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_rp_education --seeds 3 --out results/site_rules_acs_rp_education.csv",
+  "outputs": [
+    "results/site_rules_acs_rp_education.csv"
+  ],
+  "predicted": "Section 10 names the partition claim's weakest point: R75 rests on ONE population, five largely-nested carvings of Freddie Mac. This is a second population and the carvings are ORTHOGONAL -- the same 1,664,500 respondents grouped by where they live (state, PUMA) or what they do (occupation, industry) or what they studied (education), with no nesting between the geographic and economic axes, and 100% of the shared rows in three of five. PREDICTION: the crossing points differ across these five by at least the 6.2x that Freddie Mac's five gave, because orthogonal carvings should disagree at least as much as nested ones. FALSIFIABLE and it matters either way: if the five agree closely, then Freddie Mac's spread was driven by something the ACS partitions share -- most likely their site-SIZE distributions rather than the carving semantics -- and R75's causal reading weakens to a statement about size distributions. NOTE the confound is real and not controlled here: these partitions differ in median site size from 804 (PUMA) to 17,291 (education), so a spread in crossings is consistent with either reading. A follow-up matching the size distributions across partitions is the experiment that separates them.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/T4-acsrp-education.json",
+  "seconds": 30.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T15:36:08",
+  "tail": "acs_rp_education: 1664500 records x 10 features, 24 sites, prevalence 0.369\nacs_rp_education: 855 decisions\n\n855 real merge decisions across 24 target sites; merging helped in 36%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.097   4.5e-03     0.694  0.644 lower\u2192merge\nn_target                          -0.082   1.6e-02     0.677  0.644 lower\u2192merge\nn_min                             -0.118   5.2e-04     0.644  0.644 lower\u2192merge\nn_partner_total                   -0.232   6.6e-12     0.625  0.644 lower\u2192merge\nratio_partner_to_target           -0.049   1.5e-01     0.678  0.644 lower\u2192merge\nn_partners                        -0.073   3.2e-02     0.644  0.644 lower\u2192merge\nschema_jaccard                      +nan       nan     0.644  0.644 higher\u2192merge\nq_median                          -0.239   1.6e-12     0.646  0.644 lower\u2192merge\ni2_median                         -0.248   2.0e-13     0.663  0.644 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_rp_education  35.6%  of 855 decisions\n\nwrote results/site_rules_acs_rp_education.csv"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "55-calib-spanning",
+  "machine": "dugong",
+  "priority": 2,
+  "note": "Tier 1C: Result 53's one-boundary finding, on a pool that HAS a harm regime",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix acs_span_income --seeds 3 --out results/calib_reconcile_span.csv",
+  "matrices": [
+    "acs_span_income"
+  ],
+  "outputs": [
+    "results/calib_reconcile_span.csv"
+  ],
+  "predicted": "the EPV gradient in slope change survives with sites on both sides -- if it vanishes, Result 53 was an artefact of pools that were mostly benefit regime",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/55-calib-spanning.json",
+  "seconds": 15.3,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:39:37",
+  "tail": "acs_span_income: 215445 records x 10 features, 51 sites, prevalence 0.347\n  0/51 (3 rows)\n  20/51 (63 rows)\n  40/51 (123 rows)\n\n153 decisions on acs_span_income, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       +0.0038    +0.0189     +0.00166\nB_merge_dp          +0.0002    +0.0270     +0.00173\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_reconcile_span.csv"
+}

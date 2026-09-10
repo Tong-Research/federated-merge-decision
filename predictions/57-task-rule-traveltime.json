@@ -1,0 +1,23 @@
+{
+  "id": "57-task-rule-traveltime",
+  "machine": "spinner",
+  "priority": 5,
+  "needs": [
+    "56-task-build-traveltime"
+  ],
+  "matrices": [
+    "acs_span_traveltime"
+  ],
+  "note": "the rule on ACSTravelTime",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_span_traveltime --seeds 3 --out results/site_rules_traveltime.csv",
+  "outputs": [
+    "results/site_rules_traveltime.csv"
+  ],
+  "predicted": "EPV leads with a negative rho and a positive lift, as income and public coverage both gave -- seven outcomes agreeing makes 'prevalence acts through EPV' a claim rather than a coincidence",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/57-task-rule-traveltime.json",
+  "seconds": 39.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:43:53",
+  "tail": "acs_span_traveltime: 219722 records x 16 features, 51 sites, prevalence 0.436\nacs_span_traveltime: 1830 decisions\n\n1830 real merge decisions across 51 target sites; merging helped in 36%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        +0.081   5.0e-04     0.617  0.641 higher\u2192merge\nn_target                          +0.087   2.1e-04     0.605  0.641 higher\u2192merge\nn_min                             -0.006   8.1e-01     0.641  0.641 lower\u2192merge\nn_partner_total                   -0.197   1.9e-17     0.621  0.641 lower\u2192merge\nratio_partner_to_target           -0.212   4.4e-20     0.630  0.641 lower\u2192merge\nn_partners                        -0.094   6.0e-05     0.641  0.641 lower\u2192merge\nschema_jaccard                      +nan       nan     0.641  0.641 higher\u2192merge\nq_median                          -0.153   4.8e-11     0.639  0.641 lower\u2192merge\ni2_median                         -0.162   2.7e-12     0.632  0.641 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_span_traveltime  35.9%  of 1830 decisions\n\nwrote results/site_rules_traveltime.csv"
+}

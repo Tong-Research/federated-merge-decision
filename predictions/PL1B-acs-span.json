@@ -1,0 +1,21 @@
+{
+  "id": "PL1B-acs-span",
+  "machine": "spinner",
+  "priority": 20,
+  "matrices": [
+    "acs_span_income"
+  ],
+  "timeout": 43200,
+  "note": "SOTA extension: pfedme (lam=1) on acs-span, 5 seeds.",
+  "cmd": "MERGE_MODE=pfedme PFEDME_LAMBDA=1 FEDAVG_ROUNDS=30 .venv/bin/python experiments/gate_baselines.py --matrix acs_span_income --seeds 5 --out results/cut_pl1b_acs_span_income.csv",
+  "outputs": [
+    "results/cut_pl1b_acs_span_income.csv"
+  ],
+  "predicted": "Extends the aggregation-axis comparison from four above-floor pools to eight, queued 2026-08-24 01:00 when the queue drained and the machines would otherwise idle. Results 112 and 113 rest on four pools; these four add the above-floor pools the SOTA set was missing. All four added pools are ones where merging HELPS -- the two remaining harmful pools in the corpus (acs_ladder_5000, acs_ladder_10000) are both below the 0.002 attainable-gain floor, so no additional harmful evidence is available at any price. State that when reporting: the floor claim rests on two above-floor harmful pools and cannot be strengthened with the data we hold. PREDICTIONS. (1) Aggregation still does not matter: FedAvg, FedProx and SCAFFOLD stay within 0.002 AUPRC of each other on the merged model across all eight pools, as in Result 112. (2) pFedMe at lambda=1 beats adaptive shrinkage on these four, since all four are pools where merging helps and that is exactly where it won before -- eICU and Lending Club, by 10.3 and 13.1 share points. (3) Despite (2), adaptive shrinkage still leads on MEAN share across all eight, because pFedMe's two catastrophic pools (-94.0 and -89.7) outweigh four moderate wins. WITHDRAWAL: if (3) fails -- if pFedMe leads on mean share across eight pools -- then section 6's recommendation does not survive a fair comparison against a published personalisation method, and the paper must say so and reframe around the downside column alone rather than around mean performance.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/PL1B-acs-span.json",
+  "seconds": 106.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-24T01:52:04",
+  "tail": "acs_span_income: 215445 records x 10 features, 51 sites, prevalence 0.347\n\n  3,050 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.7112    +0.0000                0.0%\n  always_merge          0.7134    +0.0022               27.0%\n  epv_gate              0.7133    +0.0021               25.5%\n  gate_loso             0.7143    +0.0030               37.2%\n  gate_bestcut          0.7148    +0.0035               43.4%\n  local_cv              0.7130    +0.0018               21.9%\n  fix_025               0.7128    +0.0016               19.5%\n  fix_050               0.7142    +0.0030               36.7%\n  fix_075               0.7149    +0.0037               45.4%\n  blend                 0.7141    +0.0029               35.6%\n  blend_1se             0.7139    +0.0026               32.5%\n  blend_cv              0.7147    +0.0034               42.3%\n  blend_cw                 nan       +nan                nan%\n  ditto                    nan       +nan                nan%\n  oracle_binary         0.7179    +0.0067               82.2%\n  oracle_lambda         0.7194    +0.0081              100.0%\n  oracle_lambda_cw         nan       +nan                nan%\n  oracle_ditto             nan       +nan                nan%\n  oracle_extrap         0.7205    +0.0093              114.3%\n  oracle_rich           0.7205    +0.0093              114.3%\n  oracle_half           0.7267    +0.0155              191.0%\n  oracle_honest         0.7198    +0.0086              105.9%\n  blend_half            0.7198    +0.0085              105.0%\n  pfedme_personal       0.7142    +0.0030               36.5%\n\n  LOSO cut: median 21.1, range 20.2-31.3   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.525\n  lambda optimal on test    : mean 0.497\n  correlation chosen vs optimal: +0.233\n\nwrote results/cut_pl1b_acs_span_income.csv (3,050 rows)"
+}

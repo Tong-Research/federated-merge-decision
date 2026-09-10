@@ -1,0 +1,21 @@
+{
+  "id": "HCAL2-cand_porto",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "cand_porto"
+  ],
+  "timeout": 28800,
+  "note": "HCAL post-hoc comparator (referee 5): switch_cv = global vs kappa=0 Platt by inner CV; other arms must reproduce results/hcal bit-for-bit",
+  "cmd": ".venv/bin/python experiments/run_hcal.py --dataset cand_porto --slice holdout --switch --out results/hcal2/cand_porto.csv",
+  "outputs": [
+    "results/hcal2/cand_porto.csv"
+  ],
+  "predicted": "Post hoc, not registered. If switch_cv matches hier_cv within 0.001 AUPRC and 0.001 log-loss on the four datasets where kappa=0 is harmful (MIMIC regimes, MIMIC first stays, ACS, NHANES), the 'safety' is the inner CV choosing global recalibration and the hierarchy gets no credit for it; the paper must say so. If hier_cv is below switch_cv in log-loss on those four (it can sit between global and per-pattern where switch_cv cannot), the hierarchy does something the switch cannot. Sanity: tree/global/pattern_k0/hier_cv rows must equal results/hcal exactly.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL2-cand_porto.json",
+  "seconds": 118.7,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-04T23:55:57",
+  "tail": "cand_porto holdout: 60000 rows x 57 cols, prevalence 0.036\n  seed 0 fold 0: tree=0.0671 global=0.0671 pattern_k0=0.0647 hier_cv=0.0672 switch_cv=0.0671 kappa=10000 [6s]\n  seed 0 fold 1: tree=0.0609 global=0.0609 pattern_k0=0.0552 hier_cv=0.0608 switch_cv=0.0609 kappa=1000 [13s]\n  seed 0 fold 2: tree=0.0585 global=0.0585 pattern_k0=0.0561 hier_cv=0.0586 switch_cv=0.0585 kappa=1000 [19s]\n  seed 0 fold 3: tree=0.0699 global=0.0699 pattern_k0=0.0714 hier_cv=0.0699 switch_cv=0.0699 kappa=1000 [25s]\n  seed 0 fold 4: tree=0.0536 global=0.0536 pattern_k0=0.0528 hier_cv=0.0536 switch_cv=0.0536 kappa=1000 [31s]\n  seed 1 fold 0: tree=0.0629 global=0.0629 pattern_k0=0.0599 hier_cv=0.0630 switch_cv=0.0629 kappa=10000 [38s]\n  seed 1 fold 1: tree=0.0654 global=0.0654 pattern_k0=0.0599 hier_cv=0.0655 switch_cv=0.0654 kappa=10000 [44s]\n  seed 1 fold 2: tree=0.0603 global=0.0603 pattern_k0=0.0574 hier_cv=0.0602 switch_cv=0.0603 kappa=10000 [50s]\n  seed 1 fold 3: tree=0.0617 global=0.0617 pattern_k0=0.0583 hier_cv=0.0619 switch_cv=0.0617 kappa=10000 [57s]\n  seed 1 fold 4: tree=0.0665 global=0.0665 pattern_k0=0.0663 hier_cv=0.0659 switch_cv=0.0665 kappa=1000 [63s]\n  seed 2 fold 0: tree=0.0651 global=0.0651 pattern_k0=0.0620 hier_cv=0.0655 switch_cv=0.0651 kappa=1000 [69s]\n  seed 2 fold 1: tree=0.0605 global=0.0605 pattern_k0=0.0596 hier_cv=0.0606 switch_cv=0.0605 kappa=1000 [76s]\n  seed 2 fold 2: tree=0.0648 global=0.0648 pattern_k0=0.0618 hier_cv=0.0652 switch_cv=0.0648 kappa=1000 [82s]\n  seed 2 fold 3: tree=0.0589 global=0.0589 pattern_k0=0.0550 hier_cv=0.0587 switch_cv=0.0589 kappa=1000 [88s]\n  seed 2 fold 4: tree=0.0588 global=0.0588 pattern_k0=0.0577 hier_cv=0.0585 switch_cv=0.0588 kappa=1000 [94s]\nwrote results/hcal2/cand_porto.csv (75 rows)"
+}

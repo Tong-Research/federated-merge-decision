@@ -1,0 +1,16 @@
+{
+  "id": "81-sepsis-fetch",
+  "machine": "dugong",
+  "priority": 5,
+  "timeout": 3600,
+  "note": "PhysioNet 2019 Sepsis Challenge -- OPEN access, no credentialing, two hospital systems as natural sites. The cheapest additional clinical site structure available.",
+  "cmd": "D=${MIMIC_CACHE:-$HOME/.cache/phd-matrices}/sepsis; mkdir -p $D; curl -fsSL --max-time 1800 -o $D/training_setA.zip https://archive.physionet.org/users/shared/challenge-2019/training_setA.zip && echo fetched $(du -h $D/training_setA.zip | cut -f1) || { echo 'sepsis fetch failed - check the 2019 challenge URL'; exit 3; }",
+  "outputs": [],
+  "predicted": "succeeds -- this is open access and the URL pattern is stable. Two hospital systems is only two sites, so it adds a cross-source test rather than a site-size test.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/81-sepsis-fetch.json",
+  "seconds": 6.4,
+  "exit_code": 3,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:00:35",
+  "tail": "sepsis fetch failed - check the 2019 challenge URL\ncurl: (22) The requested URL returned error: 404"
+}

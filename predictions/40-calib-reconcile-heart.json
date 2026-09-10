@@ -1,0 +1,20 @@
+{
+  "id": "40-calib-reconcile-heart",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "the FOURTH collection check, applied to itself: Result 51 says three-of-four is not enough, so run the two remaining collections rather than assume they agree",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix eicu_top30 --seeds 3 --out results/calib_reconcile_top30.csv",
+  "matrices": [
+    "eicu_top30"
+  ],
+  "outputs": [
+    "results/calib_reconcile_top30.csv"
+  ],
+  "predicted": "slope damage appears here too, because top30 selects the larger hospitals and MIMIC-IV suggests slope damage tracks site adequacy -- if it does, slope damage has a PREDICTOR (target size) rather than being collection-specific noise",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/40-calib-reconcile-heart.json",
+  "seconds": 9.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:55:30",
+  "tail": "eicu_top30: 54847 records x 42 features, 30 sites, prevalence 0.089\n  0/30 (3 rows)\n  20/30 (63 rows)\n\n90 decisions on eicu_top30, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       +0.0222    -0.0199     -0.00925\nB_merge_dp          +0.0166    +0.0745     -0.00128\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_reconcile_top30.csv"
+}

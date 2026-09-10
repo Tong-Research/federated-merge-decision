@@ -1,0 +1,17 @@
+{
+  "id": "46-acs-trivial-audit",
+  "machine": "dugong",
+  "priority": 4,
+  "note": "the standing audit on every new ACS pool",
+  "cmd": ".venv/bin/python experiments/trivial_baseline.py results/site_rules_acs_full.csv results/site_rules_acs_span.csv results/site_rules_acs_pubcov.csv results/site_rules_acs_d10.csv | tee results/trivial_baseline_acs.log",
+  "outputs": [
+    "results/trivial_baseline_acs.log"
+  ],
+  "predicted": "the spanning pool beats trivial; the full-size and capped pools do not, for opposite reasons -- one is all harm regime, the other all benefit regime",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/46-acs-trivial-audit.json",
+  "seconds": 6.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:21:12",
+  "tail": "=== results/site_rules_acs_full.csv \u2014 1830 decisions ===\n  always merge 0.340 | never merge 0.660 -> trivial baseline 0.660 (never merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                     1477.4   0.683   +0.023   beats trivial\n  n_target                      33446.0   0.658   -0.002   no better than trivial\n  n_min                          2144.0   0.660   +0.000   no better than trivial\n  ratio_partner_to_target           0.4   0.691   +0.031   beats trivial\n  i2_median                         0.8   0.647   -0.013   WORSE than trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample.\n\n=== results/site_rules_acs_span.csv \u2014 missing ===\n\n=== results/site_rules_acs_pubcov.csv \u2014 missing ===\n\n=== results/site_rules_acs_d10.csv \u2014 3050 decisions ===\n  always merge 0.597 | never merge 0.403 -> trivial baseline 0.597 (always merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        2.2   0.584   -0.014   WORSE than trivial\n  n_target                         63.0   0.584   -0.014   WORSE than trivial\n  n_min                            56.0   0.597   +0.000   no better than trivial\n  ratio_partner_to_target           0.3   0.597   +0.000   no better than trivial\n  i2_median                         0.2   0.596   -0.002   no better than trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample."
+}

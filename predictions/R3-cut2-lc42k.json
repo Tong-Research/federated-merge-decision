@@ -1,0 +1,21 @@
+{
+  "id": "R3-cut2-lc42k",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "lendingclub"
+  ],
+  "timeout": 21600,
+  "note": "Fitted cut with endpoints on lendingclub.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix lendingclub --seeds 3 --out results/cut_lc42k.csv",
+  "outputs": [
+    "results/cut_lc42k.csv"
+  ],
+  "predicted": "Rerun after fixing the fitted-gate grid, which lacked the endpoints and so could not express 'merge nothing' or 'merge everything' -- denying the FITTED gate two options the FIXED gate had by accident, and making an in-sample optimum score worse than a constant. With endpoints: gate_bestcut is now a true upper bound on any single-threshold gate. PREDICTION: gate_loso >= about -5 on every pool (it can now decline), gate_bestcut >= epv_gate on every pool by construction, and gate_bestcut still below blend on a majority -- because a single EPV threshold cannot express 'shrink partially', which is what the harmful pools need. FALSIFIABLE: if gate_bestcut matches blend everywhere, binary gating is adequate given the right cut and the continuous framing is only a fitting convenience.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/R3-cut2-lc42k.json",
+  "seconds": 35.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T10:34:05",
+  "tail": "lendingclub: 42423 records x 21 features, 43 sites, prevalence 0.151\n\n  1,536 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.2840    +0.0000                0.0%\n  always_merge          0.2947    +0.0107               25.3%\n  epv_gate              0.2948    +0.0108               25.5%\n  gate_loso             0.2943    +0.0104               24.4%\n  gate_bestcut          0.2948    +0.0108               25.5%\n  local_cv              0.2883    +0.0044               10.3%\n  fix_025               0.2888    +0.0048               11.3%\n  fix_050               0.2931    +0.0091               21.5%\n  fix_075               0.2960    +0.0121               28.4%\n  blend                 0.2904    +0.0064               15.1%\n  oracle_binary         0.3176    +0.0336               79.3%\n  oracle_lambda         0.3264    +0.0424              100.0%\n\n  LOSO cut: median 12.0, range 9.7-47.9   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.613\n  lambda optimal on test    : mean 0.616\n  correlation chosen vs optimal: -0.037\n\nwrote results/cut_lc42k.csv (1,536 rows)"
+}

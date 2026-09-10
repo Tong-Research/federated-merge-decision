@@ -1,0 +1,22 @@
+{
+  "id": "64-boundary-shift-clinical",
+  "machine": "dugong",
+  "priority": 2,
+  "note": "the same within-pool test on clinical data, where I2 was refuted as a benefit predictor (R6, R15) -- a cut that shifts with I2 would be a different use of it",
+  "cmd": ".venv/bin/python experiments/boundary_shift.py site_rules_all.csv site_rules_combined.csv site_rules_eicu_only.csv site_rules_10seed.csv | tee results/boundary_shift_clinical.log",
+  "inputs": [
+    "results/site_rules_all.csv"
+  ],
+  "outputs": [
+    "results/boundary_shift_clinical.log"
+  ],
+  "predicted": "if the mechanism is real it should appear here too; the clinical pools have the widest EPV range, so the cut has the most room to move. If it appears out of domain but not clinically, the mechanism is about ACS rather than about merging.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/64-boundary-shift-clinical.json",
+  "seconds": 0.0,
+  "exit_code": 2,
+  "missing_outputs": [
+    "results/boundary_shift_clinical.log"
+  ],
+  "finished": "2026-08-09T22:55:07",
+  "tail": "input check failed: declared inputs not present on dugong: ['results/site_rules_all.csv']"
+}

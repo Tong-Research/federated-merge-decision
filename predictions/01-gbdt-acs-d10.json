@@ -1,0 +1,21 @@
+{
+  "id": "01-gbdt-acs-d10",
+  "machine": "dugong",
+  "priority": 1,
+  "note": "closes queue item H: the ONLY collection whose sites reach past EPV 10",
+  "cmd": ".venv/bin/python experiments/site_rules_ext.py --matrix acs_d10 --seeds 3 --out results/site_rules_ext_acs_d10.csv",
+  "matrices": [
+    "acs_d10"
+  ],
+  "outputs": [
+    "results/site_rules_ext_acs_d10.csv",
+    "results/site_rules_ext_acs_d10_summary.csv"
+  ],
+  "predicted": "the boosted-ensemble cut lands materially ABOVE the logistic cut, near MIMIC's 17.7; if both land together near 8 then Result 10's complexity-scaling claim is an artefact of MIMIC and must be narrowed",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/01-gbdt-acs-d10.json",
+  "seconds": 140.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:21:59",
+  "tail": "  acs_d10: 15 done (330 rows)\n  acs_d10: 16 done (360 rows)\n  acs_d10: 17 done (390 rows)\n  acs_d10: 18 done (420 rows)\n  acs_d10: 19 done (450 rows)\n  acs_d10: 20 done (480 rows)\n  acs_d10: 21 done (510 rows)\n  acs_d10: 22 done (540 rows)\n  acs_d10: 23 done (570 rows)\n  acs_d10: 24 done (600 rows)\n  acs_d10: 25 done (630 rows)\n  acs_d10: 26 done (660 rows)\n  acs_d10: 27 done (690 rows)\n  acs_d10: 28 done (720 rows)\n  acs_d10: 29 done (750 rows)\n  acs_d10: 30 done (780 rows)\n  acs_d10: 31 done (810 rows)\n  acs_d10: 32 done (840 rows)\n  acs_d10: 33 done (870 rows)\n  acs_d10: 34 done (900 rows)\n  acs_d10: 35 done (930 rows)\n  acs_d10: 36 done (960 rows)\n  acs_d10: 37 done (990 rows)\n  acs_d10: 38 done (1020 rows)\n  acs_d10: 39 done (1050 rows)\n  acs_d10: 40 done (1080 rows)\n  acs_d10: 41 done (1110 rows)\n  acs_d10: 42 done (1140 rows)\n  acs_d10: 44 done (1170 rows)\n  acs_d10: 45 done (1200 rows)\n  acs_d10: 46 done (1230 rows)\n  acs_d10: 47 done (1260 rows)\n  acs_d10: 48 done (1290 rows)\n  acs_d10: 49 done (1320 rows)\n  acs_d10: 50 done (1350 rows)\n  acs_d10: 51 done (1380 rows)\n  acs_d10: 53 done (1410 rows)\n  acs_d10: 54 done (1440 rows)\n  acs_d10: 55 done (1470 rows)\n  acs_d10: 56 done (1500 rows)\n  acs_d10: 72 done (1530 rows)\n\ncombiner           n  rho(EPV,benefit)         p  best EPV cut    acc   base\nlr_merge        1530            -0.252   1.1e-23          17.7  0.582  0.580\nlr_ensemble     1530            -0.331   1.9e-40          17.7  0.625  0.563\nlr_pooled       1530            -0.271   3.0e-27          17.7  0.584  0.576\nlr_fedavg5      1530            -0.303   6.4e-34          25.3  0.600  0.592\ngb_ensemble     1530            -0.412   7.8e-64          37.4  0.697  0.735\ngb_pooled       1530            -0.337   5.7e-42          37.4  0.685  0.725\n\nexpected benefit by EPV band (AUPRC gain over the local model):\ncombiner                 0-2           2-5          5-10         10-20          20-\u221e\nlr_merge             +0.0461       +0.0368       +0.0158       +0.0012       -0.0009\nlr_ensemble          +0.0687       +0.0381       +0.0145       +0.0006       -0.0015\nlr_pooled            +0.0500       +0.0386       +0.0134       +0.0020       -0.0010\nlr_fedavg5           +0.0617       +0.0418       +0.0174       +0.0026       -0.0004\ngb_ensemble          +0.2233       +0.0945       +0.0325       +0.0203       +0.0079\ngb_pooled            +0.2194       +0.0985       +0.0282       +0.0200       +0.0125\n\nwrote results/site_rules_ext_acs_d10.csv"
+}

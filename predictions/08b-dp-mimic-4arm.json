@@ -1,0 +1,20 @@
+{
+  "id": "08b-dp-mimic-4arm",
+  "machine": "dugong",
+  "priority": 3,
+  "note": "retry after the merge_dp guard for non-finite standardisation constants",
+  "cmd": ".venv/bin/python experiments/dp_merge.py --dataset matrix --matrix mimic_sites_unit_x_system --seeds 2 --out results/dp_mimic_4arm.csv",
+  "matrices": [
+    "mimic_sites_unit_x_system"
+  ],
+  "outputs": [
+    "results/dp_mimic_4arm.csv"
+  ],
+  "predicted": "n^2 wins under DP; the non-private end is flat and its winner unstable",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/08b-dp-mimic-4arm.json",
+  "seconds": 51.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:25:06",
+  "tail": "CCU-care  (60 rows)\n  CCU-meta  (120 rows)\n  CSRU-care  (180 rows)\n  CSRU-meta  (240 rows)\n  MICU-care  (300 rows)\n  MICU-meta  (360 rows)\n  SICU-care  (420 rows)\n  SICU-meta  (480 rows)\n  TSICU-care  (540 rows)\n  TSICU-meta  (600 rows)\n\n=== A. where does the merge benefit die? (600 rows) ===\n  epsilon    local    merge   benefit        p  benefit(w=0.5)\n      0.5   0.1722   0.1992   +0.0270  9.7e-07         +0.0119\n        1   0.2145   0.2442   +0.0297  3.2e-07         +0.0165\n        2   0.2685   0.2851   +0.0166  8.2e-04         +0.0150\n        5   0.2910   0.3001   +0.0091  4.0e-02         +0.0100\n      inf   0.2994   0.3030   +0.0035  3.9e-01         +0.0051\n\n   split by target adequacy (privacy should cost small sites most):\n   target EPV 0-5:\n     eps= 0.5  local 0.0666  benefit +0.0390\n     eps=   1  local 0.1148  benefit +0.0493\n     eps=   2  local 0.1783  benefit +0.0499\n     eps=   5  local 0.2139  benefit +0.0345\n     eps= inf  local 0.2289  benefit +0.0222\n   target EPV 5-999:\n     eps= 0.5  local 0.1985  benefit +0.0240\n     eps=   1  local 0.2394  benefit +0.0248\n     eps=   2  local 0.2911  benefit +0.0083\n     eps=   5  local 0.3103  benefit +0.0028\n     eps= inf  local 0.3171  benefit -0.0011\n\n=== B. does composition reverse one-shot vs FedAvg? ===\n  epsilon   one-shot     fed 1r    fed 5r   fed 30r\n      0.5    +0.0270   -0.0446   -0.0601   -0.0591\n        1    +0.0297   -0.0768   -0.0862   -0.1024\n        2    +0.0166   -0.1062   -0.1378   -0.1477\n        5    +0.0091   -0.0828   -0.1330   -0.1596\n      inf    +0.0035   -0.0374   -0.0252   -0.0096\n\n(all figures are AUPRC gain over that site's own DP local model at the same epsilon)\n\nwrote results/dp_mimic_4arm.csv"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "92b-lc-full-rule",
+  "machine": "dugong",
+  "priority": 3,
+  "needs": [
+    "91-lc-full-build"
+  ],
+  "matrices": [
+    "lendingclub_full"
+  ],
+  "timeout": 18000,
+  "note": "the decisive test: does the rule beat the trivial baseline on a size distribution nobody chose and that reaches the harm regime? [retry: job 91's || fallback masked a build failure and silently rebuilt the 42k matrix; the loader now takes --all and the 1.87M matrix exists]",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix lendingclub_full --seeds 10 --out results/site_rules_lc_full.csv",
+  "outputs": [
+    "results/site_rules_lc_full.csv"
+  ],
+  "predicted": "site sizes are 2,701-263,057 with median 22,958, so nearly every site is past the 5,000-record harm threshold -- this is the NATURAL analogue of the ACS natural-size build, not a spanning pool. Expect a low helped rate, a trivial rule of 'never merge', and a small lift. It tests the law at high f rather than closing Result 55, and the honest read is that no natural spanning distribution has yet been found.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/92b-lc-full-rule.json",
+  "seconds": 2638.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T01:34:39",
+  "tail": "lendingclub_full: 1874349 records x 21 features, 50 sites, prevalence 0.174\nlendingclub_full: 5960 decisions\n\n5960 real merge decisions across 50 target sites; merging helped in 54%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.170   1.1e-39     0.561  0.536 lower\u2192merge\nn_target                          -0.170   5.3e-40     0.574  0.536 lower\u2192merge\nn_min                             -0.036   5.5e-03     0.554  0.536 lower\u2192merge\nn_partner_total                   +0.019   1.5e-01     0.514  0.536 higher\u2192merge\nratio_partner_to_target           +0.144   5.1e-29     0.531  0.536 higher\u2192merge\nn_partners                        +0.051   9.2e-05     0.531  0.536 higher\u2192merge\nschema_jaccard                    +0.014   2.9e-01     0.536  0.536 higher\u2192merge\nq_median                          -0.005   6.8e-01     0.502  0.536 lower\u2192merge\ni2_median                         -0.047   2.9e-04     0.491  0.536 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  lendingclub_full  53.6%  of 5960 decisions\n\nwrote results/site_rules_lc_full.csv"
+}

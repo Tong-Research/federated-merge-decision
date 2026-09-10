@@ -1,0 +1,21 @@
+{
+ "id": "HCAL-cand_airbnb",
+ "machine": "orca",
+ "priority": 1,
+ "matrices": [
+  "cand_airbnb"
+ ],
+ "timeout": 28800,
+ "note": "HCAL holdout, prereg/HCAL.md | output fetched by hand 21:57: same missing-parent rsync failure; run exit 0",
+ "cmd": ".venv/bin/python experiments/run_hcal.py --dataset cand_airbnb --slice holdout --out results/hcal/cand_airbnb.csv",
+ "outputs": [
+  "results/hcal/cand_airbnb.csv"
+ ],
+ "predicted": "prereg/HCAL.md P1 never worse (median AUPRC delta >= -0.002); P2 log-loss below tree p<0.05 on 12/17; P3 hier log-loss <= kappa=0 everywhere and kappa=0 harmful (>0.005) on 3+ sets; P4 AUPRC above tree p<0.05 on 6/17, road_safety > +0.003, never > +0.02; P5 global Platt delta exactly 0. Withdrawal: (a) P1 fails twice -> not safe; (c) kappa=0 as good on 3+ -> prior-art Mondrian recalibration, no hypergraph claim.",
+ "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HCAL-cand_airbnb.json",
+ "seconds": 120.8,
+ "exit_code": 0,
+ "missing_outputs": [],
+ "finished": "2026-09-04T21:53:28",
+ "tail": "cand_airbnb holdout: 60000 rows x 29 cols, prevalence 0.499\n  seed 0 fold 0: tree=0.9243 global=0.9243 pattern_k0=0.9243 hier_cv=0.9248 kappa=10 [7s]\n  seed 0 fold 1: tree=0.9258 global=0.9258 pattern_k0=0.9260 hier_cv=0.9262 kappa=10 [15s]\n  seed 0 fold 2: tree=0.9272 global=0.9272 pattern_k0=0.9272 hier_cv=0.9271 kappa=10 [22s]\n  seed 0 fold 3: tree=0.9282 global=0.9282 pattern_k0=0.9282 hier_cv=0.9284 kappa=10 [29s]\n  seed 0 fold 4: tree=0.9289 global=0.9289 pattern_k0=0.9293 hier_cv=0.9292 kappa=10 [37s]\n  seed 1 fold 0: tree=0.9264 global=0.9264 pattern_k0=0.9266 hier_cv=0.9270 kappa=10 [44s]\n  seed 1 fold 1: tree=0.9288 global=0.9288 pattern_k0=0.9290 hier_cv=0.9291 kappa=10 [51s]\n  seed 1 fold 2: tree=0.9220 global=0.9220 pattern_k0=0.9222 hier_cv=0.9221 kappa=10 [59s]\n  seed 1 fold 3: tree=0.9288 global=0.9288 pattern_k0=0.9289 hier_cv=0.9290 kappa=10 [66s]\n  seed 1 fold 4: tree=0.9285 global=0.9285 pattern_k0=0.9288 hier_cv=0.9288 kappa=10 [73s]\n  seed 2 fold 0: tree=0.9273 global=0.9273 pattern_k0=0.9278 hier_cv=0.9279 kappa=10 [81s]\n  seed 2 fold 1: tree=0.9251 global=0.9251 pattern_k0=0.9254 hier_cv=0.9255 kappa=10 [88s]\n  seed 2 fold 2: tree=0.9268 global=0.9268 pattern_k0=0.9264 hier_cv=0.9270 kappa=10 [95s]\n  seed 2 fold 3: tree=0.9289 global=0.9289 pattern_k0=0.9292 hier_cv=0.9291 kappa=10 [103s]\n  seed 2 fold 4: tree=0.9271 global=0.9271 pattern_k0=0.9272 hier_cv=0.9274 kappa=10 [110s]\nwrote results/hcal/cand_airbnb.csv (60 rows)"
+}

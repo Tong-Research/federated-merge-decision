@@ -1,0 +1,15 @@
+{
+  "id": "24-eicu-floor540",
+  "machine": "pilot",
+  "priority": 3,
+  "note": "the sensitivity check EICU-PRIOR-ART.md promised: our floor is 300 stays, Yang et al. use 540",
+  "cmd": "EICU_MIN_SITE_N=540 .venv/bin/python experiments/variant_runner.py --build-eicu --out-matrix eicu_floor540 2>/dev/null || EICU_MIN_SITE_N=540 .venv/bin/python -c \"import os,sys;sys.path.insert(0,'experiments');import numpy as np;from eicu_sites import load;X,y,g,n,_=load(verbose=True);np.savez_compressed(os.path.expanduser('~/.cache/phd-matrices/eicu_floor540.npz'),X=X,y=y,g=g,names=n);print('sites',len(n))\"",
+  "outputs": [],
+  "predicted": "fewer hospitals, all larger, median EPV rises -- and the benefit should FALL, because Result 26 said the standard benchmark cohort selects the sites that benefit least. This quantifies that selection effect.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/24-eicu-floor540.json",
+  "seconds": 3.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:14:08",
+  "tail": "sites 100"
+}

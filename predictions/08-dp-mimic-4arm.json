@@ -1,0 +1,22 @@
+{
+  "id": "08-dp-mimic-4arm",
+  "machine": "dugong",
+  "priority": 3,
+  "note": "the same gap on MIMIC, where the 9x amplification was first measured",
+  "cmd": ".venv/bin/python experiments/dp_merge.py --dataset matrix --matrix mimic_sites_unit_x_system --seeds 2 --out results/dp_mimic_4arm.csv",
+  "matrices": [
+    "mimic_sites_unit_x_system"
+  ],
+  "outputs": [
+    "results/dp_mimic_4arm.csv"
+  ],
+  "predicted": "n^2 wins under DP; the non-private end is flat and its winner unstable",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/08-dp-mimic-4arm.json",
+  "seconds": 8.5,
+  "exit_code": 1,
+  "missing_outputs": [
+    "results/dp_mimic_4arm.csv"
+  ],
+  "finished": "2026-08-09T20:22:08",
+  "tail": "Traceback (most recent call last):\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/experiments/dp_merge.py\", line 374, in <module>\n    main()\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/experiments/dp_merge.py\", line 288, in main\n    a_wepv = average_precision_score(\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/utils/_param_validation.py\", line 218, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/metrics/_ranking.py\", line 297, in average_precision_score\n    return _average_binary_score(\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/metrics/_base.py\", line 77, in _average_binary_score\n    return binary_metric(y_true, y_score, sample_weight=sample_weight)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/metrics/_ranking.py\", line 250, in _binary_uninterpolated_average_precision\n    precision, recall, _ = precision_recall_curve(\n                           ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/utils/_param_validation.py\", line 191, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/metrics/_ranking.py\", line 1161, in precision_recall_curve\n    _, fps, _, tps, thresholds = confusion_matrix_at_thresholds(\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py\", line 80, in inner_f\n    return f(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/utils/_param_validation.py\", line 191, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/metrics/_ranking.py\", line 1021, in confusion_matrix_at_thresholds\n    _sort_inputs_and_compute_classification_thresholds(\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/metrics/_ranking.py\", line 896, in _sort_inputs_and_compute_classification_thresholds\n    assert_all_finite(y_score)\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py\", line 227, in assert_all_finite\n    _assert_all_finite(\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py\", line 137, in _assert_all_finite\n    _assert_all_finite_element_wise(\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py\", line 186, in _assert_all_finite_element_wise\n    raise ValueError(msg_err)\nValueError: Input contains NaN."
+}

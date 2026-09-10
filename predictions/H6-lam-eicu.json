@@ -1,0 +1,21 @@
+{
+  "id": "H6-lam-eicu",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "eicu_sites"
+  ],
+  "timeout": 36000,
+  "note": "Fixed-lambda arms + lambda-oracle on eicu_sites. Decides whether the paper can recommend a PREDICTED shrinkage or only a constant one.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix eicu_sites --seeds 3 --out results/lam_eicu.csv",
+  "outputs": [
+    "results/lam_eicu.csv"
+  ],
+  "predicted": "Adds fixed-lambda arms and a lambda-oracle so every policy shares one ceiling, closing R76's stated caveat. Smoke test on freddiemac_sellername (356 decisions, 1 seed): fix_075 61.1% of the lambda-oracle against blend 30.5%, and the correlation between the lambda chosen on inner validation and the lambda that was optimal is +0.016 -- zero. PREDICTION: on a majority of the seven pools, at least one FIXED lambda beats adaptive blend, and the pooled chosen-vs-optimal lambda correlation is below 0.15. Mechanism is the one that killed local_cv: the inner validation split is untrustworthy exactly where the decision matters, so choosing lambda from it is noise. If instead blend beats every fixed arm, adaptivity is real and R76's recommendation stands as written.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/H6-lam-eicu.json",
+  "seconds": 25.7,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T03:44:47",
+  "tail": "eicu_sites: 95197 records x 42 features, 100 sites, prevalence 0.090\n\n  3,588 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.2616    +0.0000                0.0%\n  always_merge          0.2908    +0.0292               51.6%\n  epv_gate              0.2908    +0.0292               51.6%\n  local_cv              0.2812    +0.0196               34.5%\n  fix_025               0.2778    +0.0162               28.6%\n  fix_050               0.2900    +0.0285               50.2%\n  fix_075               0.2950    +0.0335               59.0%\n  blend                 0.2868    +0.0252               44.5%\n  oracle_binary         0.3083    +0.0467               82.4%\n  oracle_lambda         0.3183    +0.0567              100.0%\n\n  lambda chosen on inner val: mean 0.619\n  lambda optimal on test    : mean 0.618\n  correlation chosen vs optimal: +0.029\n\nwrote results/lam_eicu.csv (3,588 rows)"
+}

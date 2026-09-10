@@ -1,0 +1,21 @@
+{
+  "id": "23-large-federation-mimic",
+  "machine": "spinner",
+  "priority": 2,
+  "note": "the same at k=10 on MIMIC, the pool where merging usually HURTS",
+  "cmd": "MAX_PARTNERS=8 SUBSETS_PER_TARGET=20 .venv/bin/python experiments/site_rules.py --matrix mimic_sites_unit_x_system --seeds 3 --out results/site_rules_mimic_k8.csv",
+  "matrices": [
+    "mimic_sites_unit_x_system"
+  ],
+  "outputs": [
+    "results/site_rules_mimic_k8.csv",
+    "results/site_rules_mimic_k8_rules.csv"
+  ],
+  "predicted": "larger federations turn MIMIC's harm into benefit -- if so, 'how many partners' belongs in the rule alongside EPV, and Result 42's scope narrows again",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/23-large-federation-mimic.json",
+  "seconds": 37.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:14:51",
+  "tail": "mimic_sites_unit_x_system: 42002 records x 42 features, 10 sites, prevalence 0.111\nmimic_sites_unit_x_system: 567 decisions\n\n567 real merge decisions across 10 target sites; merging helped in 47%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.393   2.0e-22     0.704  0.531 lower\u2192merge\nn_target                          -0.412   1.3e-24     0.610  0.531 lower\u2192merge\nn_min                             -0.190   5.0e-06     0.492  0.531 lower\u2192merge\nn_partner_total                   +0.124   3.0e-03     0.591  0.531 higher\u2192merge\nratio_partner_to_target           +0.300   3.0e-13     0.557  0.531 higher\u2192merge\nn_partners                        +0.089   3.3e-02     0.520  0.531 higher\u2192merge\nschema_jaccard                    +0.019   6.5e-01     0.393  0.531 higher\u2192merge\nq_median                          +0.031   4.6e-01     0.423  0.531 higher\u2192merge\ni2_median                         -0.056   1.8e-01     0.381  0.531 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  mimic_sites_unit_x_system  46.9%  of 567 decisions\n\nwrote results/site_rules_mimic_k8.csv"
+}

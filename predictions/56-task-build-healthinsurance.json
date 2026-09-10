@@ -1,0 +1,15 @@
+{
+  "id": "56-task-build-healthinsurance",
+  "machine": "pilot",
+  "priority": 4,
+  "note": "prevalence lever: ACSHealthInsurance on the same states",
+  "cmd": ".venv/bin/python experiments/acs_sites.py --task ACSHealthInsurance --per-state 0 --log-uniform 250 --out acs_span_healthinsurance",
+  "outputs": [],
+  "predicted": "a different prevalence, so a different EPV at the same n",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/56-task-build-healthinsurance.json",
+  "seconds": 54.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:40:20",
+  "tail": "ACSHealthInsurance: (368981, 25), 51 states, prevalence 0.152\n  minority events per state: 46-9467 (median 354)\n  EPV at d=25: 1.8-378.7 (median 14.2)\n    EPV 0-2: 1 states\n    EPV 2-5: 11 states\n    EPV 5-10: 8 states\n    EPV 10-20: 9 states\n    EPV 20-999: 22 states"
+}

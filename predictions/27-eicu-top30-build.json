@@ -1,0 +1,15 @@
+{
+  "id": "27-eicu-top30-build",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "Result 26's REAL sensitivity check. The 540-stay floor could not test it -- every surviving hospital still sits below EPV 10 (median 1.52, max 6.35). Yang et al. use the 5-30 LARGEST hospitals, which is a different selection entirely.",
+  "cmd": ".venv/bin/python -c \"import os,sys,numpy as np;z=np.load(os.path.expanduser('~/.cache/phd-matrices/eicu_sites.npz'));X,y,g,n=z['X'],z['y'],z['g'],z['names'];cnt=np.bincount(g,minlength=len(n));keep=np.argsort(-cnt)[:30];m=np.isin(g,keep);remap={k:i for i,k in enumerate(sorted(keep))};g2=np.array([remap[v] for v in g[m]]);np.savez_compressed(os.path.expanduser('~/.cache/phd-matrices/eicu_top30.npz'),X=X[m],y=y[m],g=g2,names=np.array([str(n[k]) for k in sorted(keep)],dtype=np.str_));print('top30 sites',len(keep),'rows',m.sum(),'min site n',cnt[keep].min())\"",
+  "outputs": [],
+  "predicted": "the 30 largest hospitals still sit below EPV 10 at d=42, so even this cannot reach the harm regime -- in which case Result 26's selection effect is about eICU's SIZE distribution generally, not about any particular cohort convention",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/27-eicu-top30-build.json",
+  "seconds": 0.9,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:28:54",
+  "tail": "top30 sites 30 rows 54847 min site n 1035"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "70-seeds-mimic_sites_unit_x_system",
+  "priority": 10,
+  "matrices": [
+    "mimic_sites_unit_x_system"
+  ],
+  "timeout": 18000,
+  "note": "precision: mimic_sites_unit_x_system at 15 seeds against the 3 every claim currently rests on",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix mimic_sites_unit_x_system --seeds 15 --out results/site_rules_hs_mimic_sites_unit_x_system.csv",
+  "outputs": [
+    "results/site_rules_hs_mimic_sites_unit_x_system.csv"
+  ],
+  "predicted": "point estimates move by less than their current bootstrap half-widths; if any headline rho moves more than 0.05, the 3-seed figures were undersampled and every interval in the paper needs rewidening",
+  "machine": "dugong",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/70-seeds-mimic_sites_unit_x_system.json",
+  "seconds": 99.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:30:02",
+  "tail": "mimic_sites_unit_x_system: 42002 records x 42 features, 10 sites, prevalence 0.111\nmimic_sites_unit_x_system: 1710 decisions\n\n1710 real merge decisions across 10 target sites; merging helped in 45%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.175   2.8e-13     0.511  0.555 lower\u2192merge\nn_target                          -0.136   1.6e-08     0.509  0.555 lower\u2192merge\nn_min                             -0.047   5.0e-02     0.555  0.555 lower\u2192merge\nn_partner_total                   +0.035   1.5e-01     0.519  0.555 higher\u2192merge\nratio_partner_to_target           +0.101   2.8e-05     0.559  0.555 higher\u2192merge\nn_partners                        +0.046   5.6e-02     0.527  0.555 higher\u2192merge\nschema_jaccard                    +0.030   2.2e-01     0.544  0.555 higher\u2192merge\nq_median                          +0.038   1.1e-01     0.516  0.555 higher\u2192merge\ni2_median                         +0.018   4.6e-01     0.537  0.555 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  mimic_sites_unit_x_system  44.5%  of 1710 decisions\n\nwrote results/site_rules_hs_mimic_sites_unit_x_system.csv"
+}

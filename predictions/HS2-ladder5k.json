@@ -1,0 +1,21 @@
+{
+  "id": "HS2-ladder5k",
+  "machine": "spinner",
+  "priority": 10,
+  "matrices": [
+    "acs_ladder_5000"
+  ],
+  "timeout": 28800,
+  "note": "High-seed policy comparison on acs_ladder_5000 (ladder5k) -- completing the eleven-pool audit.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix acs_ladder_5000 --seeds 15 --out results/cut_hs_acs_ladder_5000.csv",
+  "outputs": [
+    "results/cut_hs_acs_ladder_5000.csv"
+  ],
+  "predicted": "Completing the section 6 high-seed audit. The eleven pools behind section 6 map to matrices: acs_full_income, acs_span_income, eicu_sites, freddiemac_propertystate, freddiemac_zip2, acs_ladder_10000, acs_ladder_5000, lendingclub, mimic_sites_unit_x_system, mimic4_sites, acs_span_traveltime. The first HS batch covered nine of the eleven and omitted BOTH ladder pools, so it could not have tested section 6's claim as stated. It also included bosch_d20 and lendingclub_full, which are NOT among the eleven -- useful as extra pools but not part of the claim. PREDICTION: blend stays non-negative against never_merge on both ladder pools at 15 seeds, so section 6's sentence -- 'the only deployable policy never negative on any of eleven pools' -- survives. NOTE THE CONTRARY EVIDENCE ALREADY IN HAND: at 15 seeds blend IS negative on bosch_d20 (-0.00092) and loses to always_merge on eicu_sites (0.29129 vs 0.29297). Neither falsifies the eleven-pool sentence, because Bosch is not one of the eleven and the sentence is about being negative rather than about winning every pool. WITHDRAWAL CONDITION: if blend is negative on either ladder pool, the sentence is FALSE and section 6 is rewritten rather than amended -- it is the paper's strongest single claim and it does not survive a caveat.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HS2-ladder5k.json",
+  "seconds": 95.4,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T12:42:03",
+  "tail": "acs_ladder_5000: 777299 records x 10 features, 51 sites, prevalence 0.365\n\n  9,150 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.7109    +0.0000                0.0%\n  always_merge          0.7080    -0.0030             -308.9%\n  epv_gate              0.7109    +0.0000                0.0%\n  gate_loso             0.7109    +0.0000                0.0%\n  gate_bestcut          0.7109    +0.0000                0.0%\n  local_cv              0.7110    +0.0000                2.9%\n  fix_025               0.7108    -0.0001              -11.3%\n  fix_050               0.7103    -0.0007              -70.0%\n  fix_075               0.7093    -0.0016             -170.5%\n  blend                 0.7112    +0.0002               24.2%\n  blend_cw              0.7112    +0.0002               24.2%\n  oracle_binary         0.7117    +0.0007               76.9%\n  oracle_lambda         0.7119    +0.0010              100.0%\n  oracle_lambda_cw      0.7119    +0.0010              100.0%\n\n  LOSO cut: median 0.0, range 0.0-0.0   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.383\n  lambda optimal on test    : mean 0.360\n  correlation chosen vs optimal: +0.549\n\nwrote results/cut_hs_acs_ladder_5000.csv (9,150 rows)"
+}

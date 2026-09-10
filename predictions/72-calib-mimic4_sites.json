@@ -1,0 +1,21 @@
+{
+  "id": "72-calib-mimic4_sites",
+  "priority": 30,
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "timeout": 14400,
+  "note": "Result 51's slope finding at 10 seeds on mimic4_sites -- it currently rests on 3",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix mimic4_sites --seeds 10 --out results/calib_hs_mimic4_sites.csv",
+  "outputs": [
+    "results/calib_hs_mimic4_sites.csv"
+  ],
+  "predicted": "MIMIC-IV keeps the only clearly negative slope change; if it does not, Result 51 was a 3-seed artefact and Result 50's conclusion was right",
+  "machine": "dugong",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/72-calib-mimic4_sites.json",
+  "seconds": 16.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T23:31:11",
+  "tail": "mimic4_sites: 66989 records x 42 features, 9 sites, prevalence 0.110\n  0/9 (10 rows)\n\n90 decisions on mimic4_sites, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       -0.0198    -0.0429     +0.02049\nB_merge_dp          -0.0230    +0.0809     +0.02357\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_hs_mimic4_sites.csv"
+}

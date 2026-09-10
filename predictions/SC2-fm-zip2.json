@@ -1,0 +1,21 @@
+{
+  "id": "SC2-fm-zip2",
+  "machine": "pilot",
+  "priority": 20,
+  "matrices": [
+    "freddiemac_zip2"
+  ],
+  "timeout": 43200,
+  "note": "SOTA extension: scaffold (lam=15) on fm-zip2, 5 seeds.",
+  "cmd": "MERGE_MODE=scaffold PFEDME_LAMBDA=15 FEDAVG_ROUNDS=30 .venv/bin/python experiments/gate_baselines.py --matrix freddiemac_zip2 --seeds 5 --out results/cut_sc2_freddiemac_zip2.csv",
+  "outputs": [
+    "results/cut_sc2_freddiemac_zip2.csv"
+  ],
+  "predicted": "Extends the aggregation-axis comparison from four above-floor pools to eight, queued 2026-08-24 01:00 when the queue drained and the machines would otherwise idle. Results 112 and 113 rest on four pools; these four add the above-floor pools the SOTA set was missing. All four added pools are ones where merging HELPS -- the two remaining harmful pools in the corpus (acs_ladder_5000, acs_ladder_10000) are both below the 0.002 attainable-gain floor, so no additional harmful evidence is available at any price. State that when reporting: the floor claim rests on two above-floor harmful pools and cannot be strengthened with the data we hold. PREDICTIONS. (1) Aggregation still does not matter: FedAvg, FedProx and SCAFFOLD stay within 0.002 AUPRC of each other on the merged model across all eight pools, as in Result 112. (2) pFedMe at lambda=1 beats adaptive shrinkage on these four, since all four are pools where merging helps and that is exactly where it won before -- eICU and Lending Club, by 10.3 and 13.1 share points. (3) Despite (2), adaptive shrinkage still leads on MEAN share across all eight, because pFedMe's two catastrophic pools (-94.0 and -89.7) outweigh four moderate wins. WITHDRAWAL: if (3) fails -- if pFedMe leads on mean share across eight pools -- then section 6's recommendation does not survive a fair comparison against a published personalisation method, and the paper must say so and reframe around the downside column alone rather than around mean performance.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/SC2-fm-zip2.json",
+  "seconds": 1808.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-24T03:02:42",
+  "tail": "freddiemac_zip2: 3069351 records x 16 features, 99 sites, prevalence 0.032\n\n  5,925 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.0925    +0.0000                0.0%\n  always_merge          0.0938    +0.0013               33.0%\n  epv_gate              0.0940    +0.0015               37.7%\n  gate_loso             0.0944    +0.0019               48.1%\n  gate_bestcut          0.0945    +0.0020               50.6%\n  local_cv              0.0939    +0.0014               35.7%\n  fix_025               0.0934    +0.0008               21.2%\n  fix_050               0.0939    +0.0014               33.9%\n  fix_075               0.0942    +0.0016               41.2%\n  blend                 0.0942    +0.0017               41.5%\n  blend_1se             0.0941    +0.0015               38.3%\n  blend_cv              0.0944    +0.0019               47.5%\n  blend_cw                 nan       +nan                nan%\n  ditto                    nan       +nan                nan%\n  oracle_binary         0.0960    +0.0035               86.2%\n  oracle_lambda         0.0965    +0.0040              100.0%\n  oracle_lambda_cw         nan       +nan                nan%\n  oracle_ditto             nan       +nan                nan%\n  oracle_extrap         0.0975    +0.0050              124.6%\n  oracle_rich           0.0975    +0.0050              124.6%\n  oracle_half           0.1026    +0.0101              252.2%\n  oracle_honest         0.0990    +0.0065              161.9%\n  blend_half            0.0990    +0.0065              162.1%\n  pfedme_personal          nan       +nan                nan%\n\n  LOSO cut: median 19.4, range 19.2-37.3   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.559\n  lambda optimal on test    : mean 0.522\n  correlation chosen vs optimal: +0.195\n\nwrote results/cut_sc2_freddiemac_zip2.csv (5,925 rows)"
+}

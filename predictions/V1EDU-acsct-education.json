@@ -1,0 +1,21 @@
+{
+  "id": "V1EDU-acsct-education",
+  "machine": "pilot",
+  "priority": 2,
+  "matrices": [
+    "acs_ct1_education"
+  ],
+  "timeout": 7200,
+  "note": "ACS carving education, site size 800 AND site count 20, draw seed 1.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_ct1_education --seeds 5 --out results/site_rules_acs_ct1_education.csv",
+  "outputs": [
+    "results/site_rules_acs_ct1_education.csv"
+  ],
+  "predicted": "Result 83 found the confound Result 82 left uncontrolled: the five size-matched ACS carvings run from 20 sites (education) to 496 (PUMA), and site COUNT sets the partner pool -- Result 45 established partner count sets the size of the prize. Education is the outlier on that variable and is simultaneously the counterexample defeating TWO proposed mechanisms (the feature-based account in R82, the outcome-ICC account in R83). These matrices hold site size at 800 AND site count at 20 across all five carvings, at three random draws of which 20 sites. PREDICTION: education's advantage shrinks by at least half once the partner pool is equalised, and the economic/geographic ordering (occupation and industry harmful, PUMA and state helpful) SURVIVES, because that contrast does not depend on site count -- occupation has 306 sites and industry 223, both far above education's 20, and they sit on opposite sides of the geographic carvings which have 51 and 496. FALSIFIABLE EITHER WAY: if the economic/geographic ordering collapses once count is held fixed, then R82's headline -- carving is causal for whether merging helps -- was partly a partner-count effect, and Section 5 must be rewritten. NOTE the residual confound MOVES rather than vanishing: drawing 20 of 306 occupation sites at random destabilises prevalence (0.439-0.487 across the three seeds against education's 0.266-0.269), which is why three seeds are run and why prevalence must be reported beside every benefit.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/V1EDU-acsct-education.json",
+  "seconds": 7.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T16:59:18",
+  "tail": "acs_ct1_education: 16000 records x 10 features, 20 sites, prevalence 0.268\nacs_ct1_education: 1185 decisions\n\n1185 real merge decisions across 20 target sites; merging helped in 54%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.047   1.0e-01     0.534  0.543 lower\u2192merge\nn_target                            +nan       nan     0.543  0.543 higher\u2192merge\nn_min                               +nan       nan     0.543  0.543 higher\u2192merge\nn_partner_total                   +0.036   2.2e-01     0.543  0.543 higher\u2192merge\nratio_partner_to_target           +0.036   2.2e-01     0.543  0.543 higher\u2192merge\nn_partners                        +0.036   2.2e-01     0.543  0.543 higher\u2192merge\nschema_jaccard                      +nan       nan     0.543  0.543 higher\u2192merge\nq_median                          +0.074   1.0e-02     0.550  0.543 higher\u2192merge\ni2_median                         +0.077   7.8e-03     0.508  0.543 higher\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_ct1_education  54.3%  of 1185 decisions\n\nwrote results/site_rules_acs_ct1_education.csv"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "OC-eicu_longstay",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "eicu_longstay"
+  ],
+  "timeout": 28800,
+  "note": "Outcome robustness: same eICU rows and sites, prolonged stay instead of mortality.",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix eicu_longstay --seeds 5 --out results/site_rules_eicu_longstay.csv",
+  "outputs": [
+    "results/site_rules_eicu_longstay.csv"
+  ],
+  "predicted": "Every result in section 4 uses one outcome per collection. eicu_longstay is the same 95,197 records in the same 100 eICU hospitals with a DIFFERENT outcome -- prolonged stay, prevalence 0.392 against mortality's 0.090, a 4.4x shift in class balance on identical rows and identical sites. Nothing in the corpus tests whether the adequacy gradient is a property of the data or of the outcome definition. PREDICTION: rho(EPV, benefit) stays negative and within 0.10 of the mortality figure (-0.086 on eicu_only, -0.089 on hs_eicu_sites), because the gradient is claimed to be about how much data a site has per parameter, not about what is being predicted. WHAT WOULD MATTER: if the gradient weakens or flips on a higher-prevalence outcome over the same rows, then EPV is doing its work through the EVENT COUNT rather than through adequacy per se -- prevalence 0.392 gives roughly four times the events per site at the same n -- and section 4 must say that its axis is confounded with class balance. WITHDRAWAL CONDITION: a sign flip, or |rho| below 0.03, means the gradient is outcome-specific and every cross-collection replication in section 4 needs re-reading, because those collections differ in prevalence as well as domain.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/OC-eicu_longstay.json",
+  "seconds": 29.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T14:52:22",
+  "tail": "eicu_longstay: 95197 records x 42 features, 100 sites, prevalence 0.392\neicu_longstay: 5980 decisions\n\n5980 real merge decisions across 100 target sites; merging helped in 55%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.046   3.6e-04     0.551  0.555 lower\u2192merge\nn_target                          -0.037   4.3e-03     0.536  0.555 lower\u2192merge\nn_min                             -0.022   8.4e-02     0.552  0.555 lower\u2192merge\nn_partner_total                   +0.015   2.4e-01     0.540  0.555 higher\u2192merge\nratio_partner_to_target           +0.038   3.3e-03     0.555  0.555 higher\u2192merge\nn_partners                        +0.017   2.0e-01     0.555  0.555 higher\u2192merge\nschema_jaccard                    +0.007   5.7e-01     0.545  0.555 higher\u2192merge\nq_median                          -0.003   8.0e-01     0.551  0.555 lower\u2192merge\ni2_median                         -0.006   6.6e-01     0.535  0.555 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  eicu_longstay   55.5%  of 5980 decisions\n\nwrote results/site_rules_eicu_longstay.csv"
+}

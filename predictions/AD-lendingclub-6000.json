@@ -1,0 +1,21 @@
+{
+  "id": "AD-lendingclub-6000",
+  "machine": "spinner",
+  "priority": 22,
+  "matrices": [
+    "lendingclub"
+  ],
+  "timeout": 28800,
+  "note": "Adequacy sweep: lendingclub capped to 6000 rec/site, 12 sites -- pushing ABOVE the boundary to look for harm.",
+  "cmd": ".venv/bin/python experiments/cap_matrix.py --matrix lendingclub --out ad_lendingclub_6000 --cap 6000 --max-sites 12 --seed 0 && .venv/bin/python experiments/site_rules.py --matrix ad_lendingclub_6000 --seeds 5 --out results/site_rules_ad_lendingclub_6000.csv",
+  "outputs": [
+    "results/site_rules_ad_lendingclub_6000.csv"
+  ],
+  "predicted": "Section 11's open item, unchanged by R90: the safety argument rests on six harmful pools of which three are ACS variants, leaving MIMIC-IV and ACS TravelTime as the only independent evidence. R90 supplies the lever it also failed to use. Its scope condition is that carving -- and merging generally -- decides the marginal case, and BELOW the adequacy boundary there is no marginal case: at median EPV 3.04 every Freddie Mac carving helped ~63% of decisions regardless. So harm should be manufacturable on demand by capping a collection ABOVE the boundary rather than below it. These cap Freddie Mac and Lending Club to EPV ~25-40, far above the EPV-10 region, on partitions that helped everywhere at low adequacy. PREDICTION: mean benefit turns NEGATIVE on at least one of these, giving section 11 an independent harmful collection that is neither ACS nor clinical. FALSIFIABLE AND INFORMATIVE EITHER WAY: if every pool still helps at EPV 40, then harm is not a function of adequacy alone and section 4's gradient needs a stated scope condition of its own -- which would be a bigger finding than the harmful pool.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/AD-lendingclub-6000.json",
+  "seconds": 9.8,
+  "exit_code": 1,
+  "missing_outputs": [],
+  "finished": "2026-08-23T13:03:15",
+  "tail": "ad_lendingclub_6000: 6,000 rows x 21 features, 1 sites, prevalence 0.168\n  from lendingclub: 42,423 rows, 43 sites -> retained 14.1% of rows, 2.3% of sites\n  site sizes 6,000-6,000 (median 6,000)\n  CAPPED: report prevalence 0.168 beside the benefit -- it is the confound size-matching does not remove\nad_lendingclub_6000: 6000 records x 21 features, 1 sites, prevalence 0.168\nad_lendingclub_6000: 0 decisions\n\n0 real merge decisions across 0 target sites; merging helped in nan%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\n\nper-dataset breakdown of how often merging helped:\nTraceback (most recent call last):\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/experiments/site_rules.py\", line 269, in <module>\n    main()\n  File \"/Users/tong/phd/papers/paper-plco-hypergraph/experiments/site_rules.py\", line 260, in main\n    w = csv.DictWriter(fh, fieldnames=list(rows[0]))\n                                           ~~~~^^^\nIndexError: list index out of range"
+}

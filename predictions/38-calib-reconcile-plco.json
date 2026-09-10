@@ -1,0 +1,20 @@
+{
+  "id": "38-calib-reconcile-plco",
+  "machine": "dugong",
+  "priority": 1,
+  "note": "Result 50 tested eICU/MIMIC/ACS. Result 33's slope claim may be specific to the collections it was fitted on -- heart and PLCO were not retested.",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix mimic4_sites --seeds 3 --out results/calib_reconcile_mimic4.csv",
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "outputs": [
+    "results/calib_reconcile_mimic4.csv"
+  ],
+  "predicted": "slope change again near zero for merge_rules; if MIMIC-IV shows real slope damage then Result 33 was collection-specific rather than wrong",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/38-calib-reconcile-plco.json",
+  "seconds": 18.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:39:23",
+  "tail": "mimic4_sites: 66989 records x 42 features, 9 sites, prevalence 0.110\n  0/9 (3 rows)\n\n27 decisions on mimic4_sites, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       -0.0147    -0.0531     +0.00933\nB_merge_dp          -0.0191    +0.0265     +0.01458\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_reconcile_mimic4.csv"
+}

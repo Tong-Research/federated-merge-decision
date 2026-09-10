@@ -1,0 +1,22 @@
+{
+  "id": "T1-tune-tree-mimic4",
+  "machine": "spinner",
+  "priority": 1,
+  "timeout": 14400,
+  "mem_gb": 8,
+  "note": "Referee 2026-09-03: tuned HistGB on MIMIC-IV full n, 3 seeds x 5 folds",
+  "cmd": ".venv/bin/python experiments/tune_tree.py --cohort mimic4 --seeds 3",
+  "matrices": [
+    "mimic4_sites"
+  ],
+  "outputs": [
+    "results/tune_tree_mimic4.csv"
+  ],
+  "predicted": "tuned tree >= default (+0.0865 over imputation) by 0 to +0.01; it remains the best method on MIMIC-IV",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/T1-tune-tree-mimic4.json",
+  "seconds": 1235.8,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-03T23:16:56",
+  "tail": "mimic4 seed 0 fold 0: default 0.4510 tuned 0.4531 {'max_depth': 6, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [82s]\n  mimic4 seed 0 fold 1: default 0.4459 tuned 0.4608 {'max_depth': 6, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [163s]\n  mimic4 seed 0 fold 2: default 0.4491 tuned 0.4565 {'max_depth': 6, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 20} [245s]\n  mimic4 seed 0 fold 3: default 0.4488 tuned 0.4626 {'max_depth': 6, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 20} [326s]\n  mimic4 seed 0 fold 4: default 0.4423 tuned 0.4498 {'max_depth': None, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [407s]\n  mimic4 seed 1 fold 0: default 0.4340 tuned 0.4474 {'max_depth': 6, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [489s]\n  mimic4 seed 1 fold 1: default 0.4437 tuned 0.4570 {'max_depth': None, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [571s]\n  mimic4 seed 1 fold 2: default 0.4467 tuned 0.4611 {'max_depth': 6, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [652s]\n  mimic4 seed 1 fold 3: default 0.4444 tuned 0.4549 {'max_depth': None, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [734s]\n  mimic4 seed 1 fold 4: default 0.4531 tuned 0.4656 {'max_depth': None, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [816s]\n  mimic4 seed 2 fold 0: default 0.4483 tuned 0.4622 {'max_depth': None, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [898s]\n  mimic4 seed 2 fold 1: default 0.4604 tuned 0.4759 {'max_depth': 6, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [980s]\n  mimic4 seed 2 fold 2: default 0.4259 tuned 0.4334 {'max_depth': 6, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [1061s]\n  mimic4 seed 2 fold 3: default 0.4457 tuned 0.4482 {'max_depth': None, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [1143s]\n  mimic4 seed 2 fold 4: default 0.4452 tuned 0.4516 {'max_depth': None, 'learning_rate': 0.03, 'max_iter': 500, 'min_samples_leaf': 100} [1225s]"
+}

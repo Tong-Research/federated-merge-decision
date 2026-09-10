@@ -1,0 +1,21 @@
+{
+  "id": "19-trivial-audit-pilot",
+  "machine": "pilot",
+  "priority": 1,
+  "note": "job 17's two missing pools, on the machine that actually holds them",
+  "cmd": ".venv/bin/python experiments/trivial_baseline.py results/site_rules_all.csv results/site_rules_combined.csv results/site_rules_multimetric.csv | tee results/trivial_baseline_3.log",
+  "inputs": [
+    "results/site_rules_all.csv",
+    "results/site_rules_combined.csv"
+  ],
+  "outputs": [
+    "results/trivial_baseline_3.log"
+  ],
+  "predicted": "site_rules_all (spanning several collections) beats trivial; the single-collection pools do not -- Result 42's scope condition, tested once more",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/19-trivial-audit-pilot.json",
+  "seconds": 0.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T20:43:22",
+  "tail": "=== results/site_rules_all.csv \u2014 711 decisions ===\n  always merge 0.390 | never merge 0.610 -> trivial baseline 0.610 (never merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        7.5   0.714   +0.104   beats trivial\n  n_target                       2489.0   0.736   +0.125   beats trivial\n  n_min                           698.0   0.672   +0.062   beats trivial\n  ratio_partner_to_target           6.1   0.616   +0.006   no better than trivial\n  i2_median                         0.9   0.662   +0.052   beats trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample.\n\n=== results/site_rules_combined.csv \u2014 2862 decisions ===\n  always merge 0.594 | never merge 0.406 -> trivial baseline 0.594 (always merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        8.9   0.639   +0.045   beats trivial\n  n_target                       2629.0   0.632   +0.038   beats trivial\n  n_min                           724.0   0.613   +0.019   beats trivial\n  ratio_partner_to_target           0.4   0.600   +0.006   no better than trivial\n  i2_median                         1.0   0.614   +0.020   beats trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample.\n\n=== results/site_rules_multimetric.csv \u2014 4293 decisions ===\n  always merge 0.604 | never merge 0.396 -> trivial baseline 0.604 (always merge)\n  statistic                    best cut     acc     lift   verdict\n  epv_target                        8.9   0.648   +0.045   beats trivial\n  n_target                       2629.0   0.652   +0.048   beats trivial\n  n_min                           588.0   0.635   +0.031   beats trivial\n  ratio_partner_to_target           0.4   0.610   +0.006   no better than trivial\n  i2_median                         1.0   0.630   +0.027   beats trivial\n  note: these are IN-SAMPLE cuts, so they flatter the rule. A statistic that cannot beat the trivial rule even in-sample cannot beat it out of sample."
+}

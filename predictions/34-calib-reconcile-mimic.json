@@ -1,0 +1,20 @@
+{
+  "id": "34-calib-reconcile-mimic",
+  "machine": "dugong",
+  "priority": 1,
+  "note": "the same on MIMIC, one of Result 33's own collections",
+  "cmd": ".venv/bin/python experiments/calib_reconcile.py --matrix mimic_sites_unit_x_system --seeds 3 --out results/calib_reconcile_mimic.csv",
+  "matrices": [
+    "mimic_sites_unit_x_system"
+  ],
+  "outputs": [
+    "results/calib_reconcile_mimic.csv"
+  ],
+  "predicted": "same; if merge_rules does NOT reproduce Result 33 here then the difference is the pool rather than the estimator, and Result 33 itself needs re-examining",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/34-calib-reconcile-mimic.json",
+  "seconds": 11.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T21:35:46",
+  "tail": "mimic_sites_unit_x_system: 42002 records x 42 features, 10 sites, prevalence 0.111\n  0/10 (3 rows)\n\n30 decisions on mimic_sites_unit_x_system, both estimators, same splits\n\nestimator            dAUPRC    d slope  d intercept\nA_merge_rules       -0.0002    -0.0015     +0.00873\nB_merge_dp          -0.0041    +0.0339     +0.00637\n\nslope: >0 means merging RAISES the slope (toward 1 if the local model was over-confident, i.e. an improvement)\nwrote results/calib_reconcile_mimic.csv"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "61-two-gate-rule",
+  "machine": "dugong",
+  "priority": 2,
+  "needs": [
+    "60-heterogeneity-gate"
+  ],
+  "note": "if I-squared flags the regime, does a TWO-condition gate (merge if EPV low AND I2 low) beat the single EPV gate on the pooled seven-outcome set?",
+  "cmd": ".venv/bin/python experiments/trivial_baseline.py site_rules_acs_span.csv site_rules_acs_pubcov.csv site_rules_employment.csv site_rules_mobility.csv site_rules_traveltime.csv site_rules_healthinsurance.csv site_rules_incomepovertyratio.csv | tee results/trivial_seven_outcomes.log",
+  "inputs": [
+    "results/site_rules_traveltime.csv"
+  ],
+  "outputs": [
+    "results/trivial_seven_outcomes.log"
+  ],
+  "predicted": "i2_median beats the trivial rule on TravelTime and on nothing else -- a statistic that is useless in six pools and decisive in the seventh is exactly what a regime detector looks like, and is why the earlier refutations were right for their pools and wrong as a general verdict",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/61-two-gate-rule.json",
+  "seconds": 0.0,
+  "exit_code": 2,
+  "missing_outputs": [
+    "results/trivial_seven_outcomes.log"
+  ],
+  "finished": "2026-08-09T22:51:11",
+  "tail": "input check failed: declared inputs not present on dugong: ['results/site_rules_traveltime.csv']"
+}

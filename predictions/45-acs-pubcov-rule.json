@@ -1,0 +1,24 @@
+{
+  "id": "45-acs-pubcov-rule",
+  "machine": "spinner",
+  "priority": 3,
+  "note": "the rule on the second outcome",
+  "matrices": [
+    "acs_span_pubcov"
+  ],
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_span_pubcov --seeds 3 --out results/site_rules_acs_pubcov.csv",
+  "outputs": [
+    "results/site_rules_acs_pubcov.csv",
+    "results/site_rules_acs_pubcov_rules.csv"
+  ],
+  "predicted": "same shape as income; if the two outcomes disagree, prevalence matters beyond its effect through EPV and the rule needs a prevalence term",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/45-acs-pubcov-rule.json",
+  "seconds": 3.4,
+  "exit_code": 1,
+  "missing_outputs": [
+    "results/site_rules_acs_pubcov.csv",
+    "results/site_rules_acs_pubcov_rules.csv"
+  ],
+  "finished": "2026-08-09T22:16:03",
+  "tail": "sync failed:\nmissing matrices on pilot: ['/Users/tong/.cache/phd-matrices/acs_span_pubcov.npz']"
+}

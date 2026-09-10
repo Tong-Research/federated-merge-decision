@@ -1,0 +1,23 @@
+{
+  "id": "FULL-colorectal",
+  "machine": "any",
+  "priority": 25,
+  "matrices": [],
+  "timeout": 172800,
+  "note": "Sensitivity analysis: full feature set on colorectal, 6 main-table methods, no mask_interaction and no kappa sweep. RE-QUEUED after dying on pilot 2026-08-27 18:54 with 50 of 300 rows and no traceback -- pilot runs OrbStack at ~68% CPU and is not trusted for long unattended work. First job dispatched by the generalised experiments/dispatch.py.",
+  "cmd": "mkdir -p results/FULL-colorectal && .venv/bin/python experiments/run_h1_h4.py --cohort colorectal --feature-set full --out-dir results/FULL-colorectal --methods ours,spsm_global,pattern_submodels,mean_impute,mean_indicator,histgb_native",
+  "outputs": [
+    "results/FULL-colorectal/main.csv"
+  ],
+  "predicted": "Queued 2026-09-02 11:34. PREDICTION: 300 rows, 6 methods x 50 cells. The ordering seen on the baseline feature set should persist -- mean_impute above ours on colorectal, where the baseline gap is +0.0055. WITHDRAWAL: if ours beats mean_impute on the full feature set, that is a feature-set interaction the article does not discuss and it must be reported rather than absorbed. NOTE ON PLATFORM: this may run on x86_64 Linux. Result 157 measured cross-architecture differences as indistinguishable from same-architecture ones (0.96x, p=0.85), so the platform is not a confound, but the run must not be SPLIT across hosts -- whole job to one machine.",
+  "exclusive": false,
+  "mem_gb": 8.0,
+  "mem_gb_basis": "Result 126 measured 6.30 GB inside mask_interaction on colorectal at the baseline feature set. This job excludes mask_interaction but doubles d to 379, so 8.0 is a padded estimate and NOT a measurement.",
+  "exit_code": 1,
+  "seconds": 20.0,
+  "missing_outputs": [
+    "results/FULL-colorectal/main.csv"
+  ],
+  "finished": "2026-09-02T11:36:01",
+  "tail": "Traceback (most recent call last):\n  File \"/home/tong/phd/papers/paper-plco-hypergraph/experiments/run_h1_h4.py\", line 113, in <module>\n    from hgmiss import estimator\nModuleNotFoundError: No module named 'hgmiss'"
+}

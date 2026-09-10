@@ -1,0 +1,21 @@
+{
+  "id": "FA-acs_span_travelt",
+  "machine": "spinner",
+  "priority": 12,
+  "matrices": [
+    "acs_span_traveltime"
+  ],
+  "timeout": 36000,
+  "note": "Iterative FedAvg policy comparison on acs_span_traveltime -- section 11's scope limit.",
+  "cmd": "MERGE_MODE=fedavg FEDAVG_ROUNDS=30 .venv/bin/python experiments/gate_baselines.py --matrix acs_span_traveltime --seeds 5 --out results/cut_fa_acs_span_traveltime.csv",
+  "outputs": [
+    "results/cut_fa_acs_span_traveltime.csv"
+  ],
+  "predicted": "Section 11's remaining scope limit: every result in Paper C is ONE-SHOT coefficient averaging, and section 6's recommendation -- shrink toward local by a locally chosen weight -- is established only for that setting. A reviewer will ask whether it survives iterative federated averaging, which is strictly more capable and is the standard baseline. MERGE_MODE=fedavg swaps the merged model at the SCORING boundary (30 rounds, 5 local epochs), leaving every policy definition untouched, so any difference is the merge rule and not a changed comparison. These are the five pools where the recommendation is most at risk: the three where merging HARMS (mimic4_sites, acs_span_traveltime, acs_full_income) and two where it clearly helps (eicu_sites, lendingclub). PREDICTION: blend still beats every binary policy on all five, and remains non-negative against never_merge, so section 6's recommendation carries over and section 11's scope limit can be narrowed rather than kept. A 1-seed probe on mimic4_sites already gives blend 37.5% of the lambda-oracle under FedAvg. WHAT WOULD MATTER: if a binary policy beats blend under iterative merging on any harmful pool, the recommendation is specific to one-shot merging and section 6 must SAY so rather than generalise. That is the honest outcome to look for, because iterative merging produces a stronger merged model and a stronger merged model is exactly the condition under which shrinking toward local should stop paying. blend_cw is reported as nan under this mode by design -- it needs the merged model's per-coordinate parameters, which FedAvg does not expose, and faking them would put a meaningless number in the table.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/FA-acs_span_travelt.json",
+  "seconds": 46.0,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T12:46:20",
+  "tail": "acs_span_traveltime: 219722 records x 16 features, 51 sites, prevalence 0.436\n\n  3,050 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.5021    +0.0000                0.0%\n  always_merge          0.4834    -0.0187             -143.9%\n  epv_gate              0.4942    -0.0079              -60.5%\n  gate_loso             0.5001    -0.0020              -15.3%\n  gate_bestcut          0.5025    +0.0004                3.4%\n  local_cv              0.5015    -0.0006               -4.6%\n  fix_025               0.5032    +0.0011                8.1%\n  fix_050               0.5017    -0.0004               -3.0%\n  fix_075               0.4964    -0.0057              -43.9%\n  blend                 0.5029    +0.0008                6.5%\n  blend_cw                 nan       +nan                nan%\n  oracle_binary         0.5114    +0.0093               71.8%\n  oracle_lambda         0.5151    +0.0130              100.0%\n  oracle_lambda_cw         nan       +nan                nan%\n\n  LOSO cut: median 6.4, range 4.2-6.4   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.435\n  lambda optimal on test    : mean 0.393\n  correlation chosen vs optimal: +0.277\n\nwrote results/cut_fa_acs_span_traveltime.csv (3,050 rows)"
+}

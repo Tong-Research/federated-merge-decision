@@ -1,0 +1,26 @@
+{
+  "id": "92-lc-full-rule",
+  "machine": "dugong",
+  "priority": 3,
+  "needs": [
+    "91-lc-full-build"
+  ],
+  "matrices": [
+    "lendingclub_full"
+  ],
+  "timeout": 18000,
+  "note": "the decisive test: does the rule beat the trivial baseline on a size distribution nobody chose and that reaches the harm regime?",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix lendingclub_full --seeds 10 --out results/site_rules_lc_full.csv",
+  "outputs": [
+    "results/site_rules_lc_full.csv"
+  ],
+  "predicted": "POSITIVE lift, and the harm fraction should place it near Result 56's peak. This is the single result that would close Result 55's limitation. If it fails with a substantial harm fraction, the law is wrong and so is the scope condition.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/92-lc-full-rule.json",
+  "seconds": 3.5,
+  "exit_code": 1,
+  "missing_outputs": [
+    "results/site_rules_lc_full.csv"
+  ],
+  "finished": "2026-08-10T00:48:50",
+  "tail": "sync failed:\nmissing matrices on pilot: ['/Users/tong/.cache/phd-matrices/lendingclub_full.npz']"
+}

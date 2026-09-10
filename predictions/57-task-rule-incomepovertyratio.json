@@ -1,0 +1,23 @@
+{
+  "id": "57-task-rule-incomepovertyratio",
+  "machine": "dugong",
+  "priority": 5,
+  "needs": [
+    "56-task-build-incomepovertyratio"
+  ],
+  "matrices": [
+    "acs_span_incomepovertyratio"
+  ],
+  "note": "the rule on ACSIncomePovertyRatio",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_span_incomepovertyratio --seeds 3 --out results/site_rules_incomepovertyratio.csv",
+  "outputs": [
+    "results/site_rules_incomepovertyratio.csv"
+  ],
+  "predicted": "EPV leads with a negative rho and a positive lift, as income and public coverage both gave -- seven outcomes agreeing makes 'prevalence acts through EPV' a claim rather than a coincidence",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/57-task-rule-incomepovertyratio.json",
+  "seconds": 169.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:44:06",
+  "tail": "acs_span_incomepovertyratio: 368981 records x 20 features, 51 sites, prevalence 0.336\nacs_span_incomepovertyratio: 1830 decisions\n\n1830 real merge decisions across 51 target sites; merging helped in 52%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        -0.247   9.2e-27     0.564  0.516 lower\u2192merge\nn_target                          -0.235   1.8e-24     0.572  0.516 lower\u2192merge\nn_min                             -0.150   1.2e-10     0.558  0.516 lower\u2192merge\nn_partner_total                   -0.028   2.4e-01     0.427  0.516 lower\u2192merge\nratio_partner_to_target           +0.150   1.1e-10     0.556  0.516 higher\u2192merge\nn_partners                        +0.003   8.8e-01     0.386  0.516 higher\u2192merge\nschema_jaccard                      +nan       nan     0.516  0.516 higher\u2192merge\nq_median                          -0.052   2.5e-02     0.524  0.516 lower\u2192merge\ni2_median                         -0.069   3.0e-03     0.526  0.516 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_span_incomepovertyratio  51.6%  of 1830 decisions\n\nwrote results/site_rules_incomepovertyratio.csv"
+}

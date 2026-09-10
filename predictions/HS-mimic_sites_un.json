@@ -1,0 +1,21 @@
+{
+  "id": "HS-mimic_sites_un",
+  "machine": "spinner",
+  "priority": 21,
+  "matrices": [
+    "mimic_sites_unit_x_system"
+  ],
+  "timeout": 36000,
+  "note": "High-seed policy comparison on mimic_sites_unit_x_system -- generalising R92 from one pool to eleven.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix mimic_sites_unit_x_system --seeds 15 --out results/cut_hs_mimic_sites_unit_x_system.csv",
+  "outputs": [
+    "results/cut_hs_mimic_sites_unit_x_system.csv"
+  ],
+  "predicted": "R92 re-ran MIMIC-IV's policy comparison at 15 seeds and found no policy mean moved by more than 0.00178 -- the 297-decision run was more stable than predicted. That was ONE pool, and it is the only one checked. Section 6's headline table (blend 30.7 mean, 29.6 median, +15.1 worst pool, 0 pools below zero) rests on the other ten at 3-5 seeds, and R62 showed three seeds could move rho by up to 0.103. PREDICTION: the policy ORDERING is unchanged on every pool -- blend still beats every binary policy and is still never negative -- and no per-pool mean moves by more than 0.005, generalising R92 from one pool to eleven. WHAT WOULD MATTER: if blend goes negative on any pool at high seed, the single strongest claim in the paper ('the only deployable policy never negative on any of eleven pools') is wrong, and section 6 must be rewritten rather than amended.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/HS-mimic_sites_un.json",
+  "seconds": 25.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T13:02:08",
+  "tail": "mimic_sites_unit_x_system: 42002 records x 42 features, 10 sites, prevalence 0.111\n\n  1,710 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.3336    +0.0000                0.0%\n  always_merge          0.3323    -0.0013               -7.2%\n  epv_gate              0.3363    +0.0027               15.1%\n  gate_loso             0.3328    -0.0007               -4.1%\n  gate_bestcut          0.3363    +0.0027               15.1%\n  local_cv              0.3358    +0.0022               12.5%\n  fix_025               0.3412    +0.0076               42.4%\n  fix_050               0.3437    +0.0101               56.4%\n  fix_075               0.3408    +0.0072               40.4%\n  blend                 0.3419    +0.0083               46.3%\n  blend_cw              0.3414    +0.0078               43.8%\n  oracle_binary         0.3459    +0.0123               68.7%\n  oracle_lambda         0.3515    +0.0179              100.0%\n  oracle_lambda_cw      0.3496    +0.0160               89.3%\n\n  LOSO cut: median 10.7, range 5.2-10.7   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.482\n  lambda optimal on test    : mean 0.471\n  correlation chosen vs optimal: +0.255\n\nwrote results/cut_hs_mimic_sites_unit_x_system.csv (1,710 rows)"
+}

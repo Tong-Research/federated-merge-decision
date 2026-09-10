@@ -1,0 +1,21 @@
+{
+  "id": "DT-fm-state",
+  "machine": "spinner",
+  "priority": 1,
+  "matrices": [
+    "freddiemac_propertystate"
+  ],
+  "timeout": 36000,
+  "note": "Ditto vs adaptive shrinkage on fm-state (freddiemac_propertystate), 15 seeds.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix freddiemac_propertystate --seeds 15 --out results/cut_dt_freddiemac_propertystate.csv",
+  "outputs": [
+    "results/cut_dt_freddiemac_propertystate.csv"
+  ],
+  "predicted": "Every policy in section 6's table is ours, so the table is internally complete and externally untested -- which is what a reviewer finds first. BASELINES.md identifies Ditto (Li et al., ICML 2021) as the single most important comparator: the same idea as adaptive shrinkage expressed as regularisation rather than interpolation, applicable to logistic regression unchanged, and the BEST-RANKED member of the regularisation family in PFL benchmarks (average rank 3.3 against pFedMe's 8.3 and FedRep's 8.0). Comparing against the strongest member is the honest choice. Implemented fairly: fitted in the merged model's standardisation so the penalty is not measuring a change of parameterisation, warm-started at w_global as Ditto prescribes and as the charitable choice, and its lambda selected on the SAME inner split over a grid of the SAME size that adaptive shrinkage gets -- a comparison where one method is tuned and the other is not measures the tuning. PREDICTION: adaptive shrinkage beats Ditto on mean share of the lambda-oracle across the eleven pools, but by less than it beats the best-possible-cut gate (10.8 points), because Ditto is a genuine personalisation method and the gate is not. A 1-seed probe on MIMIC-IV gave blend +27.7% against Ditto -82.1%, with oracle_ditto at +57.3% -- suggesting Ditto's ceiling is real but its inner-split selection is fragile. WHAT WOULD MATTER: if Ditto BEATS adaptive shrinkage on mean or worst pool, section 6's recommendation should be to use Ditto, and the paper's contribution narrows to the comparison itself rather than the policy. That is a real possibility and the reason to run it. SECOND THING TO WATCH: oracle_ditto is reported alongside, so a Ditto loss can be attributed to the method or to its tuning. If oracle_ditto exceeds oracle_lambda, Ditto's family is stronger and only its selection rule is failing, which is a different finding and must be said.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/DT-fm-state.json",
+  "seconds": 8823.5,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-23T19:30:29",
+  "tail": "freddiemac_propertystate: 3069179 records x 16 features, 53 sites, prevalence 0.032\n\n  9,525 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.0914    +0.0000                0.0%\n  always_merge          0.0914    +0.0000                1.0%\n  epv_gate              0.0913    -0.0001               -2.4%\n  gate_loso             0.0914    +0.0000                0.1%\n  gate_bestcut          0.0917    +0.0003               10.9%\n  local_cv              0.0914    -0.0000               -0.6%\n  fix_025               0.0920    +0.0006               19.7%\n  fix_050               0.0922    +0.0008               28.0%\n  fix_075               0.0920    +0.0006               21.6%\n  blend                 0.0917    +0.0003               10.9%\n  blend_cw              0.0916    +0.0003                8.4%\n  ditto                 0.0921    +0.0008               25.1%\n  oracle_binary         0.0937    +0.0024               78.9%\n  oracle_lambda         0.0944    +0.0030              100.0%\n  oracle_lambda_cw      0.0942    +0.0028               94.9%\n  oracle_ditto          0.0946    +0.0032              106.3%\n\n  LOSO cut: median 17.9, range 2.9-25.3   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.505\n  lambda optimal on test    : mean 0.487\n  correlation chosen vs optimal: +0.147\n\nwrote results/cut_dt_freddiemac_propertystate.csv (9,525 rows)"
+}

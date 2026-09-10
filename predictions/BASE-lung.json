@@ -1,0 +1,18 @@
+{
+  "id": "BASE-lung",
+  "machine": "spinner",
+  "priority": 10,
+  "matrices": [],
+  "timeout": 172800,
+  "note": "REBUILD after the 2026-08-24 main.csv loss: 7 base methods on lung",
+  "cmd": "mkdir -p results/rebuild-lung && .venv/bin/python experiments/run_h1_h4.py --cohort lung --out-dir results/rebuild-lung",
+  "outputs": [
+    "results/rebuild-lung/main.csv"
+  ],
+  "predicted": "Queued 2026-08-24 17:35. NOT a prediction -- a rebuild. These rows existed and were destroyed when a job declared the shared results/main.csv as its `outputs` and ran remotely; the runner rsynced the remote's near-empty copy back over pilot's 2,450-row file. 650 rows survived on the remote's own separate file, 1,850 did not. There was no Time Machine destination and no APFS snapshot. Writes to its OWN directory, which is the rule that now applies to every job. EXPECTATION: identical numbers to before, because the seeds and folds are fixed -- FULL_SEEDS is range(10) and n_splits is 5. If any recomputed cell differs from the values quoted in Results 107 or 118, the pipeline is not deterministic and that is a far bigger finding than the loss. Colorectal is the expensive one: mask_interaction alone took 12h40 there.",
+  "exit_code": 0,
+  "seconds": 140.9,
+  "missing_outputs": [],
+  "finished": "2026-08-25T23:23:49",
+  "tail": ""
+}

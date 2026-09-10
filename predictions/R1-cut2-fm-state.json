@@ -1,0 +1,21 @@
+{
+  "id": "R1-cut2-fm-state",
+  "machine": "spinner",
+  "priority": 2,
+  "matrices": [
+    "freddiemac_propertystate"
+  ],
+  "timeout": 21600,
+  "note": "Fitted cut with endpoints on freddiemac_propertystate.",
+  "cmd": ".venv/bin/python experiments/gate_baselines.py --matrix freddiemac_propertystate --seeds 3 --out results/cut_fm-state.csv",
+  "outputs": [
+    "results/cut_fm-state.csv"
+  ],
+  "predicted": "Rerun after fixing the fitted-gate grid, which lacked the endpoints and so could not express 'merge nothing' or 'merge everything' -- denying the FITTED gate two options the FIXED gate had by accident, and making an in-sample optimum score worse than a constant. With endpoints: gate_bestcut is now a true upper bound on any single-threshold gate. PREDICTION: gate_loso >= about -5 on every pool (it can now decline), gate_bestcut >= epv_gate on every pool by construction, and gate_bestcut still below blend on a majority -- because a single EPV threshold cannot express 'shrink partially', which is what the harmful pools need. FALSIFIABLE: if gate_bestcut matches blend everywhere, binary gating is adequate given the right cut and the continuous framing is only a fitting convenience.",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/R1-cut2-fm-state.json",
+  "seconds": 120.2,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-11T10:35:27",
+  "tail": "freddiemac_propertystate: 3069179 records x 16 features, 53 sites, prevalence 0.032\n\n  1,905 decisions\n\n  policy            mean AUPRC   vs never  % of lambda-oracle\n  never_merge           0.0920    +0.0000                0.0%\n  always_merge          0.0919    -0.0001               -1.8%\n  epv_gate              0.0917    -0.0003               -8.3%\n  gate_loso             0.0907    -0.0013              -42.0%\n  gate_bestcut          0.0926    +0.0006               18.7%\n  local_cv              0.0923    +0.0003               10.9%\n  fix_025               0.0926    +0.0006               21.2%\n  fix_050               0.0927    +0.0007               24.6%\n  fix_075               0.0926    +0.0006               20.4%\n  blend                 0.0925    +0.0005               15.6%\n  oracle_binary         0.0945    +0.0025               83.1%\n  oracle_lambda         0.0950    +0.0030              100.0%\n\n  LOSO cut: median 2.9, range 0.0-17.9   (the fixed gate uses 10)\n\n  lambda chosen on inner val: mean 0.499\n  lambda optimal on test    : mean 0.483\n  correlation chosen vs optimal: +0.152\n\nwrote results/cut_fm-state.csv (1,905 rows)"
+}

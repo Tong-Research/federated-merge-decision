@@ -1,0 +1,19 @@
+{
+  "id": "91-lc-full-build",
+  "machine": "pilot",
+  "priority": 2,
+  "needs": [
+    "90-lc-full-fetch"
+  ],
+  "timeout": 7200,
+  "note": "rebuild the matrix over every downloaded file",
+  "cmd": "LC_ALL_FILES=1 .venv/bin/python experiments/lendingclub_sites.py --all --out lendingclub_full 2>&1 || .venv/bin/python experiments/lendingclub_sites.py",
+  "outputs": [],
+  "predicted": "harm fraction rises well above 0.023; if it passes 0.3 this is the natural spanning distribution Result 55 says the project lacks",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/91-lc-full-build.json",
+  "seconds": 0.7,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-10T00:48:44",
+  "tail": "lendingclub: (42423, 21), 43 states, default rate 0.151\n  site sizes 57-7429 (median 516)\n  EPV at d=21: 0.2-58.7 (median 3.7)\n    EPV 0-2: 14 states\n    EPV 2-5: 9 states\n    EPV 5-10: 12 states\n    EPV 10-20: 5 states\n    EPV 20-999: 3 states\nwrote /Users/tong/.cache/phd-matrices/lendingclub.npz"
+}

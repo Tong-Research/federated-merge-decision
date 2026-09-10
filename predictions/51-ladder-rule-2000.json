@@ -1,0 +1,23 @@
+{
+  "id": "51-ladder-rule-2000",
+  "machine": "spinner",
+  "priority": 2,
+  "needs": [
+    "50-ladder-build-2000"
+  ],
+  "matrices": [
+    "acs_ladder_2000"
+  ],
+  "note": "the rule on ladder rung 2000",
+  "cmd": ".venv/bin/python experiments/site_rules.py --matrix acs_ladder_2000 --seeds 3 --out results/site_rules_ladder_2000.csv",
+  "outputs": [
+    "results/site_rules_ladder_2000.csv"
+  ],
+  "predicted": "helped rate falls monotonically along the ladder",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/51-ladder-rule-2000.json",
+  "seconds": 63.1,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-08-09T22:38:25",
+  "tail": "acs_ladder_2000: 629667 records x 10 features, 51 sites, prevalence 0.366\nacs_ladder_2000: 1830 decisions\n\n1830 real merge decisions across 51 target sites; merging helped in 40%\n\nfeature                     Spearman rho         p  LOSO acc   base  direction\nepv_target                        +0.036   1.2e-01     0.627  0.604 higher\u2192merge\nn_target                          +0.033   1.5e-01     0.608  0.604 higher\u2192merge\nn_min                             -0.023   3.3e-01     0.604  0.604 lower\u2192merge\nn_partner_total                   -0.228   4.2e-23     0.590  0.604 lower\u2192merge\nratio_partner_to_target           -0.225   1.8e-22     0.622  0.604 lower\u2192merge\nn_partners                        +0.002   9.3e-01     0.604  0.604 higher\u2192merge\nschema_jaccard                      +nan       nan     0.604  0.604 higher\u2192merge\nq_median                          -0.092   7.6e-05     0.597  0.604 lower\u2192merge\ni2_median                         -0.113   1.4e-06     0.597  0.604 lower\u2192merge\n\nper-dataset breakdown of how often merging helped:\n  acs_ladder_2000  39.6%  of 1830 decisions\n\nwrote results/site_rules_ladder_2000.csv"
+}

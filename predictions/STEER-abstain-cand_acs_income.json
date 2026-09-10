@@ -1,0 +1,21 @@
+{
+  "id": "STEER-abstain-cand_acs_income",
+  "machine": "spinner",
+  "priority": 3,
+  "matrices": [
+    "cand_acs_income"
+  ],
+  "timeout": 21600,
+  "note": "prereg/STEER.md abstain | v2 00:20: AUROC added, AUPRC of a retained subset is prevalence-confounded",
+  "cmd": ".venv/bin/python experiments/steer_probes.py abstain --dataset cand_acs_income",
+  "outputs": [
+    "results/steer/abstain_cand_acs_income.csv"
+  ],
+  "predicted": "expected NEGATIVE: confidence-ranked retention has higher retained-set AUROC than support-ranked at every coverage on >=6/8",
+  "_path": "/Users/tong/Works/tong/phd/papers/paper-plco-hypergraph/queue/running/STEER-abstain-cand_acs_income.json",
+  "seconds": 14.6,
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-05T00:26:48",
+  "tail": "fold 0: tree_confidence@0.7: 0.848 | lattice_support@0.7: 0.806 | pattern_depth@0.7: 0.824 | random@0.7: 0.799 | tree_confidence@0.9: 0.818 | lattice_support@0.9: 0.800 | pattern_depth@0.9: 0.804 | random@0.9: 0.800 [1s]\n  fold 1: tree_confidence@0.7: 0.856 | lattice_support@0.7: 0.810 | pattern_depth@0.7: 0.832 | random@0.7: 0.799 | tree_confidence@0.9: 0.824 | lattice_support@0.9: 0.804 | pattern_depth@0.9: 0.809 | random@0.9: 0.801 [1s]\n  fold 2: tree_confidence@0.7: 0.849 | lattice_support@0.7: 0.816 | pattern_depth@0.7: 0.833 | random@0.7: 0.811 | tree_confidence@0.9: 0.825 | lattice_support@0.9: 0.809 | pattern_depth@0.9: 0.812 | random@0.9: 0.808 [2s]\nwrote /Users/tong/phd/papers/paper-plco-hypergraph/results/steer/abstain_cand_acs_income.csv (36 rows)"
+}
