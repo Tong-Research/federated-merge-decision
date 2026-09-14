@@ -2,7 +2,7 @@
 
 Code, pre-registrations, aggregate results and figures for the article of the same title
 (Vivatchai Kaveeta, Prompong Sugunnasil, Juggapong Natwichai, Chiang Mai University). Generated from the authors' research monorepo at
-commit `0e37efc` on 2026-09-14 by `build_release.py`; the generator's verification step imported the
+commit `79bdc6f` on 2026-09-14 by `build_release.py`; the generator's verification step imported the
 library and regenerated the tables and figures in this tree.
 
 ## Layout
