@@ -1,21 +1,17 @@
 # From Binary Gating to Continuous Shrinkage: A Decision-Level Evaluation of Federated Data Merging
 
-Code, pre-registrations and aggregate results for the article of the same title
+Code, pre-registrations, aggregate results and figures for the article of the same title
 (Vivatchai Kaveeta, Prompong Sugunnasil, Juggapong Natwichai, Chiang Mai University). Generated from the authors' research monorepo at
-commit `d6a46e4` on 2026-09-10 by `build_release.py`; the generator's verification step imported the
+commit `0e37efc` on 2026-09-14 by `build_release.py`; the generator's verification step imported the
 library and regenerated the tables and figures in this tree.
 
 ## Layout
 - `src/hgmiss/` — the library (estimators, baselines, protocol, metrics, data loaders).
 - `experiments/` — every experiment script the article uses, and the queue tooling the runs were made with.
-- `figures/` — the figure and table generators (run from inside `figures/`) and their aggregate inputs.
+- `figures/` — the figure and table generators (run from inside `figures/`), the figures, and their aggregate inputs.
 - `results/` — aggregate outputs (per seed and fold, or per decision for public collections) that the tables are built from; files over 1 MB are gzip-compressed and `reproduce.sh` inflates them.
+- `figures/` — the figures as they appear in the article.
 - `predictions/` — the job files carrying each pre-registered prediction and the runner's record of the run (the ledger the article's 'What We Got Wrong' section counts).
-
-## What is not here
-The manuscript source is not included: this repository carries the code, the
-pre-registrations and the aggregate results only. `reproduce.sh` regenerates the tables and
-figures from `results/`.
 
 ## Reproduce the tables and figures from the shipped results
 ```

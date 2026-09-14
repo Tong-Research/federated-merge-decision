@@ -1,0 +1,21 @@
+{
+  "id": "CORRTRACE-rep10",
+  "cmd": ".venv/bin/python experiments/probe_corrtrace.py --rep 10 --out results/corrtrace/rep10.csv",
+  "outputs": [
+    "results/corrtrace/rep10.csv"
+  ],
+  "cpus": 2,
+  "mem_gb": 3,
+  "machine": "any",
+  "timeout": 7200,
+  "priority": 2,
+  "nomad_job_id": "phd-CORRTRACE-rep10",
+  "submitted": "2026-09-10T11:32:54",
+  "exit_code": 0,
+  "missing_outputs": [],
+  "finished": "2026-09-10T11:33:55",
+  "tail": "----- stdout -----\nrep 10: n 20,000 p 12 hospitals 69\n  gamma 0.0: pooled           median |corr| 0.00534 over 132 pairs (0 column(s) skipped)\n  gamma 0.0: within_hospital  median |corr| 0.04175 over 8,107 pairs (91 column(s) skipped)\n  gamma 1.0: pooled           median |corr| 0.01209 over 132 pairs (0 column(s) skipped)\n  gamma 1.0: within_hospital  median |corr| 0.04175 over 8,107 pairs (91 column(s) skipped)\n  gamma 2.0: pooled           median |corr| 0.01871 over 132 pairs (0 column(s) skipped)\n  gamma 2.0: within_hospital  median |corr| 0.04175 over 8,107 pairs (91 column(s) skipped)\nwrote results/corrtrace/rep10.csv (3 of 3 gamma cells)",
+  "seconds": 1.3,
+  "node": "trevally",
+  "nomad_alloc_id": "6ccaa432-e07e-07b3-ba47-dc1bbe535ef3"
+}
