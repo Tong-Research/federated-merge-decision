@@ -224,6 +224,15 @@ VERDICTS = {
     "71-boots-all":                ("CONFIRMED", 62, "2k vs 10k agree to printed precision"),
     "71-boots-acs_span":           ("CONFIRMED", 62, "2k vs 10k agree to printed precision"),
     "71-boots-combined":           ("CONFIRMED", 62, "2k vs 10k agree to printed precision"),
+    # TUNEBOOST, scored 2026-09-14 against prereg/TUNEBOOST.md. Each job carried the same
+    # five-prediction bundle; X1, X2, X4 and X5 held and X3 failed, so PARTLY is the honest
+    # verdict for every one of them rather than CONFIRMED for the four datasets that happened
+    # to fall inside the floor.
+    "TUNEBOOST-colorectal":        ("PARTLY", 231, "X1/X2/X4/X5 hold; X3 fails -- booster spread 0.0015 here but 2/4 cohorts overall"),
+    "TUNEBOOST-lung":              ("PARTLY", 231, "same bundle; spread 0.0012 here"),
+    "TUNEBOOST-ovarian":           ("PARTLY", 231, "same bundle; spread 0.0040 here, over the 0.002 floor"),
+    "TUNEBOOST-prostate":          ("PARTLY", 231, "same bundle; spread 0.0037 here, over the 0.002 floor"),
+    "TUNEBOOST-mimic4":            ("PARTLY", 231, "same bundle; outside X3 scope, spread 0.0009"),
     "71-boots-employment":         ("CONFIRMED", 62, "same"),
     "71-boots-traveltime":         ("CONFIRMED", 62, "same"),
     "71-boots-10seed":             ("CONFIRMED", 62, "same"),
