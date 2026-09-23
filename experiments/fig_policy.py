@@ -170,7 +170,7 @@ def main() -> int:
         clipped = sorted(v for v in vals if v < CLIP)
         for j, v in enumerate(clipped):
             dy = 8.2 * (j - (len(clipped) - 1) / 2)
-            ax.raw(f"\\node[font=\\tiny, text={colour}, anchor=east, "
+            ax.raw(f"\\node[font=\\tiny, text=hgslate, anchor=east, "
                    f"xshift=-3pt, yshift={dy:.1f}pt] "
                    f"at (axis cs:{CLIP:.0f},{i}) {{{v:.0f}}};")
 
@@ -205,7 +205,7 @@ def main() -> int:
     bx.raw(f"\\fill[hggreen, opacity=0.10] (axis cs:-132,0) rectangle "
            f"(axis cs:78,{fmt(yhi, 3)});")
     bx.raw(r"\draw[hg rule] (axis cs:-132,0) -- (axis cs:78,0);")
-    bx.raw(r"\node[font=\scriptsize, text=hggreen, anchor=north west, align=left] "
+    bx.raw(r"\node[font=\scriptsize, text=hgslate, anchor=north west, align=left] "
            f"at (axis cs:-128,{fmt(yhi, 3)}) "
            r"{never worse than\\keeping the local model};")
 
@@ -223,9 +223,11 @@ def main() -> int:
     for (m, sw, label), (anchor, dx, dy) in zip(
             lab, declutter(lab, (-132, 78), (ylo, yhi), box=(143, 137),
                            font_pt=8.0, radius=8.0)):
-        colour = next(c for k, l, c, _, _ in pts if l == label)
+        # labels in one dark grey: in print the marker, not the text, carries
+        # the series shade, and the lighter greys are unreadable as text
         weight = r"\bfseries" if label == "adaptive shrinkage" else ""
-        bx.raw(f"\\node[font=\\scriptsize{weight}, text={colour}, anchor={anchor}, "
+        bx.raw(f"\\node[font=\\scriptsize{weight}, text=hgslate, anchor={anchor}, "
+               f"fill=white, fill opacity=0.85, text opacity=1, inner sep=1pt, "
                f"xshift={dx}pt, yshift={dy}pt] at (axis cs:{fmt(m, 3)},{fmt(sw, 3)}) "
                f"{{{label}}};")
 
